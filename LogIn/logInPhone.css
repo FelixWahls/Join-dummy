@@ -1,0 +1,202 @@
+body {
+ font-family: 'Inter';
+ height: 100vh;
+ margin: 0;
+ background-color: rgb(245, 247, 248);
+}
+.smartphone-Website{
+ overflow: hidden;
+ display: none;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ height: 926px;
+ width: 428px;
+ margin: 0;
+}
+.logo-iconPhone {
+ width: 64px;
+ height: 78.03px;
+ position: absolute;
+ top: 37px;
+ left: 38px;
+}
+.SignUp-containerPhone {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;  
+ width: 279px;
+ height: 49px;
+}
+.noUserPhone {
+ width: 153px;
+ height: 24px;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 20px;
+ line-height: 120%;
+ color: #000000;
+ flex: none;
+ order: 0;
+ flex-grow: 0;
+}
+.signUp-buttonPhone{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 15px 16px;
+gap: 10px;
+width: 91px;
+height: 49px;
+background: #2A3647;
+border-radius: 8px;
+flex: none;
+order: 1;
+flex-grow: 0;
+color: white;
+font-size: 16px;
+cursor: pointer;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+line-height: 120%;
+}
+.logInFieldPhone{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+ background-color: white;
+ border-radius: 30px;
+ width: 396px;
+ height: 515px;
+ margin-bottom: 57.5px;
+ box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+}
+.h1Phone {
+ font-size: 47px;
+}
+.inputPhone {
+ padding: 40px;
+ width: 364px;
+ height: 152px;
+ gap: 32px;
+ }
+.input-containerPhone {
+ display: flex;
+ position: relative;
+ align-items: center;
+ width: 364px;
+ height: 48px;
+ margin-bottom: 36px; 
+}
+.input-containerPhone:last-child {
+  margin-bottom: 0;
+}
+.passwordPhone {
+ border: 1px solid rgb(232, 232, 232);
+ border-radius: 10px;
+ height: 48px;
+ width: 422px;
+ padding: 12px 21px;
+ font-size: 20px;
+}
+.emailPhone {
+ border: 1px solid rgb(232, 232, 232);
+ border-radius: 10px;
+ height: 48px;
+ width: 422px;
+ font-size: 20px;
+ padding: 12px 21px;
+}
+.emailPhone:focus, .passwordPhone:focus {
+ outline: none;
+ border-color: #29ABE2;
+}
+.email-iconPhone, .password-iconPhone {
+ position: absolute;
+ right: 10px;
+ height: 20px;
+ width: auto;
+ padding-right: 21px;
+}
+.logIn-buttonPhone {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ padding: 15px 24px;
+ gap: 10px;
+ width: 180px;
+ height: 48px;
+ color: white;
+ background: #2A3647;
+ border-radius: 8px;
+ flex: none;
+ order: 0;
+ flex-grow: 0;
+ font-size: 21px;
+ cursor: pointer;
+ font-family: 'Inter';
+ font-style: normal;
+ font-weight: 700;
+ line-height: 120%;
+}
+
+.guestlogIn-buttonPhone {
+ display: flex;
+ box-sizing: border-box;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ padding: 15px 24px;
+ gap: 10px;
+ width: 180px;
+ height: 48px;
+ border: 1px solid #2A3647;
+ border-radius: 8px;
+ flex: none;
+ order: 0;
+ flex-grow: 0;
+ background-color: white;
+ color: rgb(42, 55, 71);
+ font-size: 21px;
+ cursor: pointer;
+ font-family: 'Inter';
+ font-style: normal;
+ font-weight: 700;
+ line-height: 120%;
+}
+.log-buttonsPhone {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ gap: 21px;
+ width: 180px;
+ height: 123px;
+}
+.footerPhone {
+ position: fixed;
+ display: flex;
+ justify-content: space-between;
+ left: 50%;
+ transform: translateX(-50%);
+ bottom: 5px;
+ width: 246px;
+ height: 35px;
+ color: rgb(168, 168, 168);
+}
+
+#privacyPolicyPhone, #legalNoticePhone {
+ display: flex;
+ justify-content: center;
+ font-style: normal;
+ align-items: center;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 120%;
+ width: 121px;
+ cursor: pointer;
+}
