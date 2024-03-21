@@ -1,50 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Join</title>
- <link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
- <link rel="stylesheet" href="logIn.css">
- <script src="logIn.js"></script>
-</head>
-<body>
- <img src="../img/Join-Logo.png" alt="Join Logo" class="logo-icon">
- <div class="Website">
-  <div class="top-right-container">
-    <a class="noUser">Not a Join user?</a>
-    <a href="../SignUp/signUp.html">
-     <button class="signUp-button">Sign up</button>
-    </a>
-  </div>
-  <form class="logInField">
-   <div class="headline">
-    <h1>Log in</h1>
-   </div>
-    <div class="input">
-     <div class="input-container">
-      <input class="email" type="email" placeholder="Email" oninput="removeEmailBoxShadow(this);">
-      <img src="../img/Mail.png" class="email-icon">
-    </div>
-      <div class="password-container">
-       <input id="password" class="password" autocomplete="current-password" type="password" placeholder="Password" oninput="handlePasswordInput('password');">
-       <img id="passwordIcon" src="../img/Lock.png" class="password-icon" onclick="togglePasswordVisibility('password', 'passwordIcon');" alt="Toggle Password Visibility">
-     </div>
-      <a class="wrongPw">Wrong password Ups! Try again</a>
-      <div class="checkRemember">
-       <img src="../img/Checkbox.png" class="checkbox" onclick="toggleCheckbox();" alt="Checkbox">
-       <a class="remember">Remember me</a>
-     </div>
-    </div>
-    <div class="log-buttons">
-      <button class="logIn-button">Log in</button>
-      <button class="guestlogIn-button">Guest Log in</button>
-    </div>
-   </form>
-  <footer class="footer">
-    <a id="privacyPolicy">Privacy Policy</a>
-    <a id="legalNotice">Legal notice</a>
-  </footer>
-</div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Join</title>
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="../fonts.css" />
+		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="logIn.css" />
+		<script src="logIn.js"></script>
+	</head>
+	<body>
+		<img src="../img/Join-Logo.png" alt="Join Logo" class="logo-icon" />
+		<div class="Website">
+			<div class="top-right-container">
+				<a class="noUser">Not a Join user?</a>
+				<a href="../SignUp/signUp.html">
+					<button class="signUp-button">Sign up</button>
+				</a>
+			</div>
+			<form class="logInField">
+				<div class="headline">
+					<h1>Log in</h1>
+				</div>
+				<div class="input">
+					<div class="input-container">
+						<input
+							class="email"
+							type="email"
+							placeholder="Email"
+							oninput="removeEmailBoxShadow(this);" />
+						<img src="../img/Mail.png" class="email-icon" />
+					</div>
+					<div class="password-container">
+						<input
+							id="password"
+							class="password"
+							autocomplete="current-password"
+							type="password"
+							placeholder="Password"
+							oninput="handlePasswordInput('password');" />
+						<img
+							id="passwordIcon"
+							src="../img/Lock.png"
+							class="password-icon"
+							onclick="togglePasswordVisibility('password', 'passwordIcon');"
+							alt="Toggle Password Visibility" />
+					</div>
+					<a class="wrongPw">Wrong password Ups! Try again</a>
+					<div class="checkRemember">
+						<img
+							src="../img/Checkbox.png"
+							class="checkbox"
+							onclick="toggleCheckbox();"
+							alt="Checkbox" />
+						<a class="remember">Remember me</a>
+					</div>
+				</div>
+				<div class="log-buttons">
+					<button class="logIn-button">Log in</button>
+					<button class="guestlogIn-button">Guest Log in</button>
+				</div>
+			</form>
+			<footer class="footer">
+				<a id="privacyPolicy">Privacy Policy</a>
+				<a id="legalNotice">Legal notice</a>
+			</footer>
+		</div>
+	</body>
 </html>

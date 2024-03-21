@@ -1,141 +1,149 @@
 body {
-    margin: 0;
-    position: relative;
-    height: 100vh;
-  }
-  
-  .headerContainer {
-    width: Fixed (1, 440px) px;
-    height: Hug (96px) px;
-    padding: 20px 40px 20px 348px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 4px 4px 0px #0000001a;
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    left: 0;
-  }
-  
-  .headerText {
-    width: 319px;
-    height: 24px;
-    font-family: Inter;
-    font-size: 20px;
-    font-weight: 400;
-    height: 24px;
-    text-align: left;
-  }
-  
-  .headerIcons {
-    width: Hug (104px) px;
-    height: Hug (56px) px;
-    gap: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .helpIcon {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .profilIcon {
-    width: Hug (56px) px;
-    height: Hug (56px) px;
-    gap: 16px;
-    cursor: pointer;
-  }
-  
-  .inter-uniquifier {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-    font-variation-settings: "slnt" 0;
-  }
-  
-  .profilCircle {
-    width: 56px;
-    height: 56px;
-    border: 3px 0px 0px 0px;
-    position: relative;
-  }
-  
-  .profilName {
-    position: absolute;
-    top: 37.5%;
-    left: 25%;
-  }
-  
-  .smProfil {
-    width: 27.94px;
-    height: 14.24px;
-    top: 16.88px;
-    left: 10.03px;
-  }
-  
-  .helpPng {
-    width: 20px;
-    height: 20px;
-    top: 6px;
-    left: 6px;
-    cursor: pointer;
-  }
-  
-  .sidebar {
-    width: 232px;
-    height: 1024px; 
-    padding: 64px 0;
-    background: #2a3647;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    z-index: 9999;
-  }
-  
-  .menuIcons {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .menuText {
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.2px;
-  text-align: left;
-  color: white;
-  cursor: pointer;
-  
-  }
-  
-  .menuItem {
-    width: 232px;
-    height: 46px;
-    padding: 8px 56px 8px 56px;
-    gap: 8px;
-    display: flex;
-    text-align: center;
-  }
-  
-  
-  .joinLogo {
-    width: 100.3px;
-    height: 121.97px;
-    padding-left: 65.98px;
-    padding-top: 64px;
-  }
-  
-  .menuBottom {
-    padding-bottom: 64px;
-  }
-  
-  .menuItems {
-    padding-top: 58px;
-  }
-  
+	margin: 0;
+	position: relative;
+	height: 100vh;
+	font-family: 'Inter';
+}
+
+.headerContainer {
+	width: Fixed (1, 440px) px;
+	height: Hug (96px) px;
+	padding: 20px 40px 20px 348px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0px 4px 4px 0px #0000001a;
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	left: 0;
+}
+
+.headerText {
+	width: 319px;
+	height: 24px;
+	font-family: Inter;
+	font-size: 20px;
+	font-weight: 400;
+	height: 24px;
+	text-align: left;
+}
+
+.headerIcons {
+	width: Hug (104px) px;
+	height: Hug (56px) px;
+	gap: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.helpIcon {
+	width: 32px;
+	height: 32px;
+}
+
+.profilIcon {
+	width: Hug (56px) px;
+	height: Hug (56px) px;
+	gap: 16px;
+	cursor: pointer;
+}
+
+.inter-uniquifier {
+	font-family: 'Inter', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: weight;
+	font-style: normal;
+	font-variation-settings: 'slnt' 0;
+}
+
+.profilCircle {
+	width: 56px;
+	height: 56px;
+	border: 3px 0px 0px 0px;
+	position: relative;
+}
+
+.profilName {
+	position: absolute;
+	top: 37.5%;
+	left: 25%;
+}
+
+.smProfil {
+	width: 27.94px;
+	height: 14.24px;
+	top: 16.88px;
+	left: 10.03px;
+}
+
+.helpPng {
+	width: 20px;
+	height: 20px;
+	top: 6px;
+	left: 6px;
+	cursor: pointer;
+}
+
+.sidebar {
+	width: 232px;
+	height: 1024px;
+	padding: 64px 0;
+	background: #2a3647;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+	z-index: 9999;
+}
+
+.menuIcons {
+	width: 30px;
+	height: 30px;
+}
+
+.menuText {
+	font-family: Inter;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19.2px;
+	text-align: left;
+	color: white;
+	cursor: pointer;
+}
+
+.menuItem {
+	width: 232px;
+	height: 46px;
+	padding: 8px 56px 8px 56px;
+	gap: 8px;
+	display: flex;
+	text-align: center;
+}
+
+.joinLogo {
+	width: 100.3px;
+	height: 121.97px;
+	padding-left: 65.98px;
+	padding-top: 64px;
+}
+
+.menuBottom {
+	padding-bottom: 64px;
+}
+
+.menuItems {
+	padding-top: 58px;
+}
+
+.main-content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 232px;
+	padding: 110px 0 0 96px;
+	background-color: #f6f7f8;
+}

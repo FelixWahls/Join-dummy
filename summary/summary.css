@@ -1,0 +1,21 @@
+h1 {
+	font-size: 61px;
+	font-weight: 700;
+}
+
+.summary-header {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	max-width: 627px;
+}
+
+.vertical-line {
+	border: 1.5px solid #29abe2;
+	height: 59px;
+}
+
+.slogan {
+	font-size: 27px;
+	font-weight: 400;
+}
