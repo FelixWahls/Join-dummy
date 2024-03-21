@@ -140,8 +140,10 @@ body {
 
 .main-content {
 	position: absolute;
-	top: 96px;
+	top: 0;
 	bottom: 0;
 	right: 0;
 	left: 232px;
+	padding: 110px 0 0 96px;
+	background-color: #f6f7f8;
 }
