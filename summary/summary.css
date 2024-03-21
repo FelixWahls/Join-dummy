@@ -19,3 +19,50 @@ h1 {
 	font-size: 27px;
 	font-weight: 400;
 }
+
+.main-tasks-container {
+	width: 560px;
+	height: 562px;
+	margin-top: 56px;
+}
+
+.top-row {
+	display: flex;
+	gap: 32px;
+}
+
+.summary-btn {
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.summary-btn-top {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 18px;
+	width: 264px;
+	height: 168px;
+	border-radius: 30px;
+	background-color: white;
+}
+
+.summary-btn-top img {
+	width: 69px;
+	height: 69px;
+}
+
+.amount {
+	font-size: 64px;
+	font-weight: 600;
+}
+
+.counter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.counter p {
+	margin: 0;
+}
