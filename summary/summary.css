@@ -1,7 +1,21 @@
+body {
+	font-size: 16px;
+}
+
 h1 {
 	font-size: 61px;
 	font-weight: 700;
 	margin: 0;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+	gap: 80px;
+}
+
+.d-none {
+	display: nonne;
 }
 
 .summary-header {
@@ -29,6 +43,10 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	gap: 28px;
+}
+
+.main-tasks-container p {
+	color: #2a3647;
 }
 
 .top-row {
@@ -94,6 +112,46 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
 	gap: 13px;
+	color: #2a3647;
+}
+
+.deadline-date {
+	font-weight: 700;
+	font-size: 21px;
+}
+
+.bottom-row {
+	display: flex;
+	gap: 28px;
+}
+
+.summary-btn-bottom {
+	width: 168px;
+	height: 168px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
+}
+
+.summary-btn-bottom p {
+	font-size: 20px;
+	line-height: 24px;
+	text-align: center;
+	max-width: 90px;
+	height: 48px;
+}
+
+.greeting {
+	color: #2a3647;
+	font-size: 47px;
+	font-weight: 500;
+}
+
+#greeting-name {
+	font-size: 64px;
+	font-weight: 700;
+	color: #29abe2;
 }
