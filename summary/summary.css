@@ -1,6 +1,7 @@
 h1 {
 	font-size: 61px;
 	font-weight: 700;
+	margin: 0;
 }
 
 .summary-header {
@@ -18,12 +19,16 @@ h1 {
 .slogan {
 	font-size: 27px;
 	font-weight: 400;
+	margin: 0;
 }
 
 .main-tasks-container {
 	width: 560px;
 	height: 562px;
 	margin-top: 56px;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
 }
 
 .top-row {
@@ -33,17 +38,17 @@ h1 {
 
 .summary-btn {
 	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-}
-
-.summary-btn-top {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 18px;
-	width: 264px;
 	height: 168px;
 	border-radius: 30px;
 	background-color: white;
+	gap: 18px;
+}
+
+.summary-btn-top {
+	width: 264px;
 }
 
 .summary-btn-top img {
@@ -63,6 +68,32 @@ h1 {
 	justify-content: center;
 }
 
-.counter p {
-	margin: 0;
+.urgent-task {
+	display: flex;
+	gap: 61px;
+}
+
+.urgent-task-left {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 18px;
+}
+
+.urgent-task-left img {
+	width: 60px;
+	height: 60px;
+}
+
+.vertical-line-urgent {
+	border: 2px solid #d1d1d1;
+	height: 102px;
+}
+
+.urgent-task-right {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 13px;
 }

@@ -2,12 +2,9 @@ body {
 	margin: 0;
 	position: relative;
 	height: 100vh;
-	font-family: 'Inter';
 }
 
 .headerContainer {
-	width: Fixed (1, 440px) px;
-	height: Hug (96px) px;
 	padding: 20px 40px 20px 348px;
 	display: flex;
 	justify-content: space-between;
@@ -22,7 +19,6 @@ body {
 .headerText {
 	width: 319px;
 	height: 24px;
-	font-family: Inter;
 	font-size: 20px;
 	font-weight: 400;
 	height: 24px;
@@ -30,8 +26,6 @@ body {
 }
 
 .headerIcons {
-	width: Hug (104px) px;
-	height: Hug (56px) px;
 	gap: 16px;
 	display: flex;
 	justify-content: center;
@@ -41,17 +35,15 @@ body {
 .helpIcon {
 	width: 32px;
 	height: 32px;
+	text-align: center;
 }
 
 .profilIcon {
-	width: Hug (56px) px;
-	height: Hug (56px) px;
 	gap: 16px;
 	cursor: pointer;
 }
 
 .inter-uniquifier {
-	font-family: 'Inter', sans-serif;
 	font-optical-sizing: auto;
 	font-weight: weight;
 	font-style: normal;
@@ -105,7 +97,6 @@ body {
 }
 
 .menuText {
-	font-family: Inter;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 19.2px;
@@ -126,8 +117,8 @@ body {
 .joinLogo {
 	width: 100.3px;
 	height: 121.97px;
-	padding-left: 65.98px;
-	padding-top: 64px;
+	margin-left: 65.98px;
+	margin-top: 64px;
 }
 
 .menuBottom {
@@ -140,7 +131,7 @@ body {
 
 .main-content {
 	position: absolute;
-	top: 0;
+	top: 96px;
 	bottom: 0;
 	right: 0;
 	left: 232px;
