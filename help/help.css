@@ -1,0 +1,372 @@
+body {
+    font-family: 'Inter';
+    height: 100vh;
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+.title {
+width: Hug (138px)px;
+height: Hug (73px)px;
+top: 206px;
+left: 328px;
+gap: 30px;
+opacity: 0px;
+}
+
+.titleText {
+font-family: Inter;
+font-size: 61px;
+font-weight: 700;
+line-height: 73.2px;
+text-align: left;
+}
+
+.helpDescription {
+width: Fixed (1,014px)px;
+height: Hug (1,024px)px;
+top: 311px;
+left: 328px;
+gap: 24px;
+opacity: 0px;
+}
+
+.arrow {
+width: 37px;
+height: 37px;
+position: fixed;
+top: 225px;
+left: 1307px;
+padding: 3px 2.5px 2px 2.5px;
+gap: 0px;
+opacity: 0px;
+}
+
+.joinBlue {
+    color: #0C8CE9;
+}
+
+.greeting {
+width: 1014px;
+height: 38px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.aboutJoin {
+width: Fill (1,014px)px;
+height: Hug (238px)px;
+gap: 16px;
+opacity: 0px;
+margin-top: 24px;
+}
+
+.aboutJoinTitle {
+width: 346px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}
+
+.aboutJoinDescription {
+width: 1014px;
+height: 190px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.howToUse {
+width: 346px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}
+
+.howToDescription {
+width: Fill (1,014px)px;
+height: Hug (556px)px;
+gap: 16px;
+opacity: 0px;
+}
+
+.joinInstructions {
+width: 1014px;
+height: 19px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.stepByStepGuide {
+width: Fill (1,014px)px;
+height: Hug (521px)px;
+gap: 16px;
+opacity: 0px;
+}
+
+.exploringContainer {
+width: Fill (1,014px)px;
+height: Hug (61px)px;
+gap: 35px;
+opacity: 0px;
+display: flex;
+justify-content: flex-start;
+}
+
+.stepOne {
+width: 21px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}
+
+.exploring {
+width: 958px;
+height: 61px;
+gap: 0px;
+opacity: 0px;
+}
+
+.exploringDescriptionTitle {
+font-family: Inter;
+font-size: 20px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+}
+
+.exploringDescription {
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.creatingContainer {
+width: Fill (1,014px)px;
+height: Hug (80px)px;
+gap: 35px;
+opacity: 0px;
+display: flex;
+justify-content: flex-start;
+margin-top: 16px;
+}
+
+.stepTwo {
+width: 26px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}
+
+.creating {
+width: 953px;
+height: 80px;
+gap: 0px;
+opacity: 0px;
+}
+
+.creatingDescriptionTitle {
+font-family: Inter;
+font-size: 20px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+}
+
+.creatingDescription {
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.addingContainer {
+width: Fill (1,014px)px;
+height: Hug (80px)px;
+gap: 35px;
+opacity: 0px;
+display: flex;
+justify-content: flex-start;
+margin-top: 16px;
+}
+
+.stepThree {
+width: 26px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}
+
+.adding {
+width: 953px;
+height: 80px;
+gap: 0px;
+opacity: 0px;
+}
+
+.addingDescriptionTitle {
+font-family: Inter;
+font-size: 20px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+}
+
+.addingDescription {
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.movingContainer {
+width: Fill (1,014px)px;
+height: Hug (61px)px;
+gap: 35px;
+opacity: 0px;
+display: flex;
+justify-content: flex-start;
+margin-top: 16px;
+}
+
+.stepFour {
+width: 26px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}
+
+.moving {
+width: 953px;
+height: 61px;
+gap: 0px;
+opacity: 0px;
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+}
+
+.movingDescriptionTitle {
+font-family: Inter;
+font-size: 20px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+}
+
+.movingDescription {
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.deletingContainer {
+width: Fill (1,014px)px;
+height: Hug (175px)px;
+gap: 35px;
+opacity: 0px;
+display: flex;
+justify-content: flex-start;
+margin-top: 16px;
+}
+
+.stepFive {
+width: 25px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}
+
+.deleting {
+width: 954px;
+height: 175px;
+gap: 0px;
+opacity: 0px;
+display: flex;
+flex-direction: column;
+}
+
+.deletingDescriptionTitle {
+font-family: Inter;
+font-size: 20px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+}
+
+.deletingDescription {
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+}
+
+.enjoy {
+width: 346px;
+height: 64px;
+margin-top: 32px;
+}
+
+.enjoyText {
+font-family: Inter;
+font-size: 27px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: left;
+}

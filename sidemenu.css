@@ -80,7 +80,7 @@ body {
 
 .sidebar {
 	width: 232px;
-	height: 1024px;
+	height: 100vh;
 	padding: 64px 0;
 	background: #2a3647;
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
