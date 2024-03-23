@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="../fonts.css" />
+		<link rel="stylesheet" href="../sidemenu.css" />
+		<link rel="stylesheet" href="add_task.css" />
+		<script src="../script.js"></script>
+		<title>Add Task</title>
+	</head>
+	<body onload="includeHTML()">
+		<div w3-include-html="../templates/sidemenu.html"></div>
+		<div class="main-content">
+			<h1>Add Task</h1>
+			<form id="add-task-form">
+				<div class="left-col task-col">
+					<div class="d-flex-col">
+						<label for="title-input">Title</label>
+						<input type="text" id="title-input" />
+					</div>
+				</div>
+				<div class="mid-line"></div>
+				<div class="right-col task-col"></div>
+			</form>
+		</div>
+	</body>
+</html>
