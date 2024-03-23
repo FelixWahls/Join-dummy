@@ -166,15 +166,15 @@ h1 {
 
 /* Hover */
 
-.summary-btn-top:hover {
-	width: 282.5px;
-	height: 184px;
+.summary-btn:hover {
+	transform: scale(105%);
 	background-color: #2a3647;
 	color: white;
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+	transition: all 100ms ease-in-out;
 }
 
-.summary-btn:hover .counter p {
+.summary-btn:hover p {
 	color: white;
 }
 
@@ -184,4 +184,28 @@ h1 {
 
 .summary-btn-top:hover .top-row-img-r {
 	background-image: url(../img/done-hover.png);
+}
+
+/* Click */
+
+.summary-btn:active {
+	transform: scale(100%);
+	background-color: white;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.summary-btn:active p {
+	color: #2a3647;
+}
+
+.summary-btn:active .amount {
+	color: black;
+}
+
+.summary-btn-top:active .top-row-img-l {
+	background-image: url(../img/pen-normal.png);
+}
+
+.summary-btn-top:active .top-row-img-r {
+	background-image: url(../img/done-img.png);
 }
