@@ -1,5 +1,9 @@
 body {
 	margin: 0;
+	
+}
+
+.relativeContainer {
 	position: relative;
 	height: 100vh;
 }
@@ -10,8 +14,8 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: 0px 4px 4px 0px #0000001a;
-	position: absolute;
-	z-index: 1;
+	position: fixed;
+	z-index: 9998;
 	right: 0;
 	left: 0;
 }
@@ -93,7 +97,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	position: relative;
+	position: fixed;
 	z-index: 9999;
 }
 
