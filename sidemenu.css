@@ -18,6 +18,7 @@ body {
 	z-index: 9998;
 	right: 0;
 	left: 0;
+	background-color: white;
 }
 
 .headerText {
@@ -59,6 +60,11 @@ body {
 	height: 56px;
 	border: 3px 0px 0px 0px;
 	position: relative;
+	
+}
+
+.profilCircle:hover {
+	background-image: url("../img/EllipseHover.png");
 }
 
 .profilName {
@@ -83,9 +89,7 @@ body {
 }
 
 .helpPng:hover {
-	width: 24px;
-	height: 24px;
-	top: 10px;
+	scale: 115%;
 }
 
 .sidebar {
