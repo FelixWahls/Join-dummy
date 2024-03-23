@@ -1,6 +1,5 @@
 body {
 	margin: 0;
-	
 }
 
 .relativeContainer {
@@ -18,6 +17,7 @@ body {
 	z-index: 9998;
 	right: 0;
 	left: 0;
+	background-color: white;
 }
 
 .headerText {
@@ -120,7 +120,7 @@ body {
 	padding: 8px 56px 8px 56px;
 	gap: 8px;
 	display: flex;
-	text-align: center;	
+	text-align: center;
 	align-items: center;
 	cursor: pointer;
 }
@@ -131,7 +131,7 @@ body {
 	gap: 8px;
 }
 .menuItem:hover {
-	background-color: #4A5878;
+	background-color: #4a5878;
 }
 
 .joinLogo {
@@ -159,7 +159,7 @@ body {
 }
 
 .bluehover:hover {
-	color: #0C8CE9;
+	color: #0c8ce9;
 	cursor: pointer;
 }
 
