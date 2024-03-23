@@ -78,6 +78,12 @@ body {
 	cursor: pointer;
 }
 
+.helpPng:hover {
+	width: 24px;
+	height: 24px;
+	top: 10px;
+}
+
 .sidebar {
 	width: 232px;
 	height: 100vh;
@@ -94,6 +100,7 @@ body {
 .menuIcons {
 	width: 30px;
 	height: 30px;
+	margin-top: -5px;
 }
 
 .menuText {
@@ -102,23 +109,31 @@ body {
 	line-height: 19.2px;
 	text-align: left;
 	color: white;
-	cursor: pointer;
 }
 
 .menuItem {
-	width: 232px;
 	height: 46px;
 	padding: 8px 56px 8px 56px;
 	gap: 8px;
 	display: flex;
-	text-align: center;
+	text-align: center;	
+	align-items: center;
+	cursor: pointer;
+}
+
+.menuBottomItem {
+	height: 46px;
+	padding: 8px 56px 8px 56px;
+	gap: 8px;
+}
+.menuItem:hover {
+	background-color: #4A5878;
 }
 
 .joinLogo {
 	width: 100.3px;
 	height: 121.97px;
 	margin-left: 65.98px;
-	margin-top: 64px;
 }
 
 .menuBottom {
@@ -137,4 +152,9 @@ body {
 	left: 232px;
 	padding: 110px 0 0 96px;
 	background-color: #f6f7f8;
+}
+
+.bluehover:hover {
+	color: #0C8CE9;
+	cursor: pointer;
 }
