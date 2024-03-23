@@ -63,15 +63,23 @@ h1 {
 	border-radius: 30px;
 	background-color: white;
 	gap: 18px;
+	transition: all 80ms ease-in-out;
 }
 
 .summary-btn-top {
 	width: 264px;
 }
 
-.summary-btn-top img {
+.top-row-img-l {
 	width: 69px;
 	height: 69px;
+	background-image: url(../img/pen-normal.png);
+}
+
+.top-row-img-r {
+	width: 69px;
+	height: 69px;
+	background-image: url(../img/done-img.png);
 }
 
 .amount {
@@ -154,4 +162,26 @@ h1 {
 	font-size: 64px;
 	font-weight: 700;
 	color: #29abe2;
+}
+
+/* Hover */
+
+.summary-btn-top:hover {
+	width: 282.5px;
+	height: 184px;
+	background-color: #2a3647;
+	color: white;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.summary-btn:hover .counter p {
+	color: white;
+}
+
+.summary-btn-top:hover .top-row-img-l {
+	background-image: url(../img/pen-hover.png);
+}
+
+.summary-btn-top:hover .top-row-img-r {
+	background-image: url(../img/done-hover.png);
 }
