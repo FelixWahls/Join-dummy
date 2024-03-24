@@ -17,11 +17,13 @@
 			<form id="add-task-form">
 				<div class="left-col task-col">
 					<div class="d-flex-col">
-						<label for="title-input">Title</label>
-						<input
-							type="text"
-							id="title-input"
-							placeholder="Enter a title" />
+						<label for="title-input" class="req-label">Title</label>
+						<div class="input-container">
+							<input
+								type="text"
+								id="title-input"
+								placeholder="Enter a title" />
+						</div>
 					</div>
 					<div class="d-flex-col">
 						<label for="description-input">Description</label>
@@ -34,7 +36,7 @@
 					</div>
 					<div class="d-flex-col">
 						<label for="assigned-to">Assigned to</label>
-						<div class="assigned-to-container">
+						<div class="input-container">
 							<input
 								type="text"
 								id="assigned-to"
@@ -43,8 +45,46 @@
 						</div>
 					</div>
 				</div>
-				<div class="mid-line"></div>
-				<div class="right-col task-col"></div>
+				<span class="mid-line"></span>
+				<div class="right-col task-col">
+					<div class="d-flex-col">
+						<label for="due-date" class="req-label">Due date</label>
+						<div class="input-container">
+							<input
+								type="date"
+								id="due-date"
+								placeholder="dd/mm/yyyy" />
+							<img src="../img/calendar.png" alt="" />
+						</div>
+					</div>
+					<div class="d-flex-col">
+						<label for="prio-container">Prio</label>
+						<div id="prio-container">
+							<div class="prio">
+								<p>Urgent</p>
+								<img src="../img/prio-urgent.png" alt="" />
+							</div>
+							<div class="prio">
+								<p>Medium</p>
+								<img src="../img/prio-medium.png" alt="" />
+							</div>
+							<div class="prio">
+								<p>Low</p>
+								<img src="../img/prio-low.png" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="d-flex-col">
+						<label for="category" class="req-label">Assigned to</label>
+						<div class="input-container">
+							<input
+								type="text"
+								id="category"
+								placeholder="Select task category" />
+							<img src="../img/arrow-drop-down.png" alt="" />
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	</body>

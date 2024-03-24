@@ -4,21 +4,36 @@ h1 {
 	margin-bottom: 48px;
 }
 
+form {
+	display: flex;
+	gap: 48px;
+}
+
 label {
 	font-weight: 400;
 	font-size: 20px;
 }
 
-label::after {
-	content: "*";
-	color: red;
+input {
+	font-size: 20px;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
 textarea {
 	width: 100%;
 	height: 120px;
 	border: 1px solid #d1d1d1;
 	border-radius: 10px;
 	padding: 18px 16px;
+	font-size: 20px;
+}
+
+.req-label::after {
+	content: "*";
+	color: red;
 }
 
 .task-col {
@@ -26,23 +41,27 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	flex: 1;
 }
 
-#title-input {
-	width: 100%;
-	padding: 12px 21px;
-	border: 1px solid #d1d1d1;
-	border-radius: 10px;
-}
-
-.assigned-to-container {
+.input-container {
 	display: flex;
 	justify-content: space-between;
+	height: 48px;
 	padding: 12px 16px;
 	background-color: white;
 	border-radius: 10px;
 	border: 1px solid #d1d1d1;
 	position: relative;
+}
+
+#title-input {
+	border: none;
+	width: 240px;
+}
+
+#title-input:focus {
+	outline: none;
 }
 
 .assigned-to-container img {
@@ -51,12 +70,14 @@ textarea {
 	top: 8px;
 }
 
-#assigned-to {
+#assigned-to,
+#category {
 	border: none;
 	width: 240px;
 }
 
-#assigned-to:focus {
+#assigned-to:focus,
+#category:focus {
 	outline: none;
 }
 
@@ -64,4 +85,44 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+}
+
+.mid-line {
+	height: 424px;
+	border: 0.5px solid #d1d1d1;
+}
+
+/* right section */
+
+#due-date {
+	border: none;
+	width: 240px;
+}
+
+#due-date:focus {
+	outline: none;
+}
+
+#prio-container {
+	display: flex;
+	gap: 16px;
+	width: 440px;
+}
+
+.prio {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px 10px;
+	gap: 8px;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+	flex: 1;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.prio:hover {
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
