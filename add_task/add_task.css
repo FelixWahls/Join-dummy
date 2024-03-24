@@ -1,3 +1,7 @@
+.d-none {
+	display: none;
+}
+
 h1 {
 	font-weight: 700;
 	font-size: 61px;
@@ -6,7 +10,7 @@ h1 {
 
 form {
 	display: flex;
-	gap: 48px;
+	flex-direction: column;
 }
 
 label {
@@ -31,6 +35,11 @@ textarea {
 	font-size: 20px;
 }
 
+.task-container {
+	display: flex;
+	gap: 48px;
+}
+
 .req-label::after {
 	content: '*';
 	color: red;
@@ -40,11 +49,14 @@ textarea {
 	max-width: 440px;
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
 	flex: 1;
 }
 
 /* left section */
+
+.left-col {
+	gap: 16px;
+}
 
 .input-container {
 	display: flex;
@@ -86,17 +98,6 @@ textarea {
 	margin-bottom: 16px;
 }
 
-.required-info {
-	margin-top: 223px;
-	font-size: 16px;
-	font-weight: 400;
-}
-
-.required-info::before {
-	content: '*';
-	color: red;
-}
-
 /* mid section */
 .mid-line {
 	height: 424px;
@@ -104,6 +105,10 @@ textarea {
 }
 
 /* right section */
+
+.right-col {
+	gap: 24px;
+}
 
 #due-date {
 	border: none;
@@ -141,6 +146,98 @@ textarea {
 .subtask-plus {
 	width: 14px;
 	height: 14px;
+}
+
+.m-0 {
+	margin-bottom: 0;
+}
+
+/* button section */
+
+.add-task-btns {
+	display: flex;
+	gap: 16px;
+	justify-content: flex-end;
+	margin-top: 122px;
+}
+
+button {
+	border: 1px solid #2a3647;
+	border-radius: 10px;
+	padding: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+button img {
+	width: 24px;
+	height: 24px;
+}
+
+.clear-field {
+	background-color: #f6f7f8;
+	font-size: 20px;
+}
+
+.clear-field:hover {
+	border-color: #29abe2;
+	color: #29abe2;
+}
+
+.clear-field:hover img {
+	display: none;
+}
+
+.clear-field:hover .d-none {
+	display: block;
+}
+
+.clear-field:active {
+	border-color: #2a3647;
+	color: #2a3647;
+}
+
+.clear-field:active img {
+	display: block;
+}
+
+.clear-field:active .d-none {
+	display: none;
+}
+
+.create-task {
+	background-color: #2a3647;
+	color: white;
+	font-size: 21px;
+	font-weight: 700;
+}
+
+.create-task:hover {
+	border-color: #29abe2;
+	background-color: #29abe2;
+}
+
+.create-task:active {
+	border-color: #091931;
+	background-color: #091931;
+}
+
+.required-info {
+	font-size: 16px;
+	font-weight: 400;
+	margin-top: 207px;
+}
+
+.required-info::before {
+	content: '*';
+	color: red;
 }
 
 /* for Javascript */
