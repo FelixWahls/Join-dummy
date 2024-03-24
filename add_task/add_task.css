@@ -68,6 +68,10 @@ textarea {
 	border-radius: 10px;
 	border: 1px solid #d1d1d1;
 	position: relative;
+	cursor: pointer;
+}
+.input-container input {
+	width: 100%;
 }
 
 .assigned-to-container img {
@@ -81,7 +85,6 @@ textarea {
 #category,
 #subtask {
 	border: none;
-	width: 240px;
 }
 
 #title-input:focus,

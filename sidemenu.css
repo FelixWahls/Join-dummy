@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	background-color: #f6f7f8;
 }
 
 .relativeContainer {
@@ -128,7 +129,7 @@ body {
 	right: 0;
 	left: 232px;
 	padding: 110px 0 0 96px;
-	background-color: #f6f7f8;
+	max-width: 1208px;
 }
 
 .bluehover:hover {
