@@ -20,27 +20,20 @@ body {
 .titleText {
 	width: 371px;
 	height: 73px;
-	gap: 0px;
-	opacity: 0px;
-	font-family: Inter;
 	font-size: 61px;
 	font-weight: 700;
-	line-height: 73.2px;
 	text-align: left;
 }
 
 .legalNoticeDescription {
 	max-width: 1014px;
-	top: 311px;
-	left: 328px;
 	gap: 24px;
 }
 
 .imprint {
-	width: Fill (1, 014px) px;
-	height: Hug (167px) px;
+	width: 1014px;
+	height: 167px;
 	gap: 16px;
-	opacity: 0px;
 }
 
 .imprintTitle {
