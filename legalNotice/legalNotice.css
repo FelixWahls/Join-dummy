@@ -16,8 +16,8 @@ position: fixed;
 }
 
 .title {
-width: Hug (371px)px;
-height: Hug (73px)px;
+width: 1014;
+height:73px;
 top: 206px;
 left: 328px;
 gap: 30px;
@@ -44,8 +44,8 @@ gap: 24px;
 }
 
 .imprint {
-width: Fill (1,014px)px;
-height: Hug (167px)px;
+width: 1014px;
+height: 167px;
 gap: 16px;
 opacity: 0px;
 }
