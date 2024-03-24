@@ -47,6 +47,7 @@ textarea {
 .input-container {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	height: 48px;
 	padding: 12px 16px;
 	background-color: white;
@@ -71,13 +72,15 @@ textarea {
 }
 
 #assigned-to,
-#category {
+#category,
+#subtask {
 	border: none;
 	width: 240px;
 }
 
 #assigned-to:focus,
-#category:focus {
+#category:focus,
+#subtask:focus {
 	outline: none;
 }
 
@@ -125,4 +128,9 @@ textarea {
 
 .prio:hover {
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.subtask-plus {
+	width: 14px;
+	height: 14px;
 }
