@@ -31,7 +31,6 @@ body {
 }
 
 .imprint {
-	width: 1014px;
 	height: 167px;
 	gap: 16px;
 }
@@ -62,4 +61,8 @@ body {
 	text-align: left;
 	padding-top: 24px;
 	padding-bottom: 4px;
+}
+
+.joinBlue {
+    color: #0C8CE9;
 }
