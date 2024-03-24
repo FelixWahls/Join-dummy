@@ -18,7 +18,7 @@ input {
 	font-size: 20px;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type='date']::-webkit-calendar-picker-indicator {
 	display: none;
 }
 
@@ -32,7 +32,7 @@ textarea {
 }
 
 .req-label::after {
-	content: "*";
+	content: '*';
 	color: red;
 }
 
@@ -43,6 +43,8 @@ textarea {
 	gap: 16px;
 	flex: 1;
 }
+
+/* left section */
 
 .input-container {
 	display: flex;
@@ -56,21 +58,13 @@ textarea {
 	position: relative;
 }
 
-#title-input {
-	border: none;
-	width: 240px;
-}
-
-#title-input:focus {
-	outline: none;
-}
-
 .assigned-to-container img {
 	position: absolute;
 	right: 16px;
 	top: 8px;
 }
 
+#title-input,
 #assigned-to,
 #category,
 #subtask {
@@ -78,6 +72,7 @@ textarea {
 	width: 240px;
 }
 
+#title-input:focus,
 #assigned-to:focus,
 #category:focus,
 #subtask:focus {
@@ -88,8 +83,21 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+	margin-bottom: 16px;
 }
 
+.required-info {
+	margin-top: 223px;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.required-info::before {
+	content: '*';
+	color: red;
+}
+
+/* mid section */
 .mid-line {
 	height: 424px;
 	border: 0.5px solid #d1d1d1;
@@ -133,4 +141,10 @@ textarea {
 .subtask-plus {
 	width: 14px;
 	height: 14px;
+}
+
+/* for Javascript */
+
+.add-task-input {
+	border-color: #29abe2;
 }
