@@ -70,9 +70,6 @@ textarea {
 	position: relative;
 	cursor: pointer;
 }
-.input-container input {
-	width: 100%;
-}
 
 .assigned-to-container img {
 	position: absolute;
@@ -115,7 +112,8 @@ textarea {
 
 #due-date {
 	border: none;
-	width: 240px;
+	width: 100%;
+	cursor: pointer;
 }
 
 #due-date:focus {
@@ -125,11 +123,11 @@ textarea {
 #prio-container {
 	display: flex;
 	gap: 16px;
-	width: 440px;
+	max-width: 440px;
 }
 
 .prio {
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	padding: 16px 10px;
