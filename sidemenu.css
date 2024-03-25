@@ -204,7 +204,7 @@ a {
 
     .menuItemsResponsiv {
         display: flex; /* Diese Zeile stellt sicher, dass alle .menuItemResponsiv Elemente nebeneinander angeordnet werden */
-        justify-content: center; /* Zentriert die .menuItemResponsiv Elemente horizontal */
+        justify-content: space-between; /* Zentriert die .menuItemResponsiv Elemente horizontal */
         align-items: center; /* Zentriert die .menuItemResponsiv Elemente vertikal */
         width: 100%; /* Optional: Stellt sicher, dass der Container die volle Breite einnimmt */
     }

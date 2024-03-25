@@ -335,4 +335,8 @@ color: #D1D1D1;
  font-size: 16px;
  line-height: 120%;
  color: #29ABE2;
+} 
+
+a {
+  text-decoration: none;
 }
