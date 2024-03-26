@@ -19,7 +19,7 @@
                     </div>
         `;
         }
-        
+        document.getElementById('submenu').classList.add('submenuTransition');
         
         
     }
