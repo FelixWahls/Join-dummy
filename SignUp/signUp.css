@@ -10,6 +10,9 @@ body {
 	height: 100vh;
 	margin: 0;
 }
+a {
+ text-decoration: none; 
+}
 .logo-icon {
 	width: 100.03px;
 	height: 121.97px;
@@ -40,6 +43,14 @@ body {
 	font-style: normal;
 	font-weight: 700;
 	line-height: 120%;
+}
+.signUp-button:hover{
+ background: #29ABE2;
+ box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+ border: none;
+ border-radius: 8px;
+ flex: none;
+ text-decoration: none;
 }
 .arrow-icon {
 	position: absolute;
