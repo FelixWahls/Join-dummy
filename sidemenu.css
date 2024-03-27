@@ -202,12 +202,12 @@ a {
 }
 
 .submenuTransition {
-	transition: transform 0.25s ease-in-out;
+	transition: transform 0.35s ease-in-out;
 	transform: translateX(-2990px);
 }
 
 .submenuTransitionRemove {
-	transition: transform 0.25s ease-in-out;
+	transition: transform 0.35s ease-in-out;
 	transform: translateX(2990px);
 }
 

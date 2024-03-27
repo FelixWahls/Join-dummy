@@ -1,13 +1,22 @@
+    let submenuActive = false;
+
     
+
+    function notCloseSidebar(event){
+        if(submenuActive == true){
+            closeSidemenu();
+            submenuActive = false
+        }else{
+            event.stopPropagation();
+            submenuInit();
+            submenuActive = true;
+        }
+        
+    }
 
     function closeSidemenu(){
         document.getElementById('submenu').classList.add('submenuTransitionRemove');
         document.getElementById('submenu').classList.remove('submenuTransition');
-    }
-
-    function notCloseSidebar(event){
-        event.stopPropagation();
-        submenuInit();
     }
 
     function submenuInit(){
