@@ -6,8 +6,8 @@ body {
 }
 
 .title {
-width: Hug (138px)px;
-height: Hug (73px)px;
+max-width: 138px;
+height: 73px;
 top: 206px;
 left: 328px;
 gap: 30px;
@@ -23,8 +23,8 @@ text-align: left;
 }
 
 .helpDescription {
-width: Fixed (1,014px)px;
-height: Hug (1,024px)px;
+max-width: 1014px;
+height: 1024px;
 top: 311px;
 left: 328px;
 gap: 24px;
@@ -54,7 +54,7 @@ margin-top: -4px;
 }
 
 .greeting {
-width: 1014px;
+max-width: 1014px;
 height: 38px;
 gap: 0px;
 opacity: 0px;
@@ -66,8 +66,8 @@ text-align: left;
 }
 
 .aboutJoin {
-width: Fill (1,014px)px;
-height: Hug (238px)px;
+max-width: 1014px;
+height: 238px;
 gap: 16px;
 opacity: 0px;
 margin-top: 24px;
@@ -86,7 +86,7 @@ text-align: left;
 }
 
 .aboutJoinDescription {
-width: 1014px;
+max-width: 1014px;
 height: 190px;
 gap: 0px;
 opacity: 0px;
@@ -98,7 +98,7 @@ text-align: left;
 }
 
 .howToUse {
-width: 346px;
+max-width: 346px;
 height: 32px;
 gap: 0px;
 opacity: 0px;
@@ -110,14 +110,14 @@ text-align: left;
 }
 
 .howToDescription {
-width: Fill (1,014px)px;
-height: Hug (556px)px;
+max-width: 1014px;
+height: 556px;
 gap: 16px;
 opacity: 0px;
 }
 
 .joinInstructions {
-width: 1014px;
+max-width: 1014px;
 height: 19px;
 gap: 0px;
 opacity: 0px;
@@ -129,15 +129,15 @@ text-align: left;
 }
 
 .stepByStepGuide {
-width: Fill (1,014px)px;
-height: Hug (521px)px;
+max-width: 1014px;
+height: 521px;
 gap: 16px;
 opacity: 0px;
 }
 
 .exploringContainer {
-width: Fill (1,014px)px;
-height: Hug (61px)px;
+max-width: 1014px;
+height: 61px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -180,8 +180,8 @@ text-align: left;
 }
 
 .creatingContainer {
-width: Fill (1,014px)px;
-height: Hug (80px)px;
+max-width: 1014px;
+height: 80px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -225,8 +225,8 @@ text-align: left;
 }
 
 .addingContainer {
-width: Fill (1,014px)px;
-height: Hug (80px)px;
+max-width: 1014px;
+height: 80px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -270,8 +270,8 @@ text-align: left;
 }
 
 .movingContainer {
-width: Fill (1,014px)px;
-height: Hug (61px)px;
+max-width: 1014px;
+height: 61px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -318,8 +318,8 @@ text-align: left;
 }
 
 .deletingContainer {
-width: Fill (1,014px)px;
-height: Hug (175px)px;
+max-width: 1014px;
+height: 175px;
 gap: 35px;
 opacity: 0px;
 display: flex;
