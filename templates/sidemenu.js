@@ -1,3 +1,15 @@
+    
+
+    function closeSidemenu(){
+        document.getElementById('submenu').classList.add('submenuTransitionRemove');
+        document.getElementById('submenu').classList.remove('submenuTransition');
+    }
+
+    function notCloseSidebar(event){
+        event.stopPropagation();
+        submenuInit();
+    }
+
     function submenuInit(){
         let submenu = document.getElementById('submenu');
         if(window.innerWidth <= 1100){
@@ -24,6 +36,8 @@
         `;
         }
         document.getElementById('submenu').classList.add('submenuTransition');
+        document.getElementById('submenu').classList.remove('submenuTransitionRemove');
+
         
         
     }

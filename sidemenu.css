@@ -206,6 +206,11 @@ a {
 	transform: translateX(-2990px);
 }
 
+.submenuTransitionRemove {
+	transition: transform 0.25s ease-in-out;
+	transform: translateX(2990px);
+}
+
 .submenuItem {
 	width: 130px;
 	height: 46px;
