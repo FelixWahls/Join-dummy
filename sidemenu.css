@@ -244,6 +244,10 @@ white-space: nowrap;
 		display: none;
 	}
 
+	.helpIcon {
+		display: none;
+	}
+
     .sidebarResponsiv {
         display: flex;
         justify-content: center;
