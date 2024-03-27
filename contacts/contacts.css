@@ -1,0 +1,70 @@
+.contactList {
+width: 456px;
+height: 928px;
+box-shadow: 4px 0px 6px 0px #00000014;
+margin-top: -120px;
+margin-left: -96px;
+display: flex;
+justify-content: center;
+background-color: white;
+}
+
+.addContactsBtnDiv {
+width: 456px;
+height: 101px;
+padding: 22.5px 52px 22.5px 52px;
+gap: 10px;
+opacity: 0px;
+}
+
+.addContactBtn {
+width: 352px;
+height: 56px;
+top: 22.5px;
+left: 52px;
+padding: 12px 0px 12px 0px;
+gap: 16px;
+border-radius: 10px;
+border: 1px 0px 0px 0px;
+opacity: 0px;
+background: #2A3647;
+border: 1px solid #2A3647;
+cursor: pointer;
+}
+
+.addContactBtn:hover {
+    background-color: #0C8CE9;
+    border: 1px solid #0C8CE9;
+}
+
+.addNewContactText {
+width: 175px;
+height: 25px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 21px;
+font-weight: 700;
+line-height: 25.2px;
+text-align: left;
+color:#FFFFFF;
+}
+
+.addPersonToListIcon {
+width: 29.33px;
+height: 20.91px;
+margin-top: 4px;
+margin-left: 10px;
+color: #D9D9D9;
+
+
+}
+
+.listIniciale {
+width: 352px;
+height: 58px;
+padding: 17px 36px 17px 36px;
+gap: 8px;
+opacity: 0px;
+
+}
