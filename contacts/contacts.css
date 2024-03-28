@@ -241,11 +241,56 @@ cursor: pointer;
 
 .scrollLineContainer {
     position: fixed;
-    top: 130px;
+    top: 115px;
 }
 
 .arrowDownContainer {
     position: fixed;
     bottom: 5px;
+}
+
+.contactsTitle {
+position: fixed;
+width: 569px;
+height: 73px;
+top: 206px;
+left: 743px;
+gap: 30px;
+opacity: 0px;
+display: flex;
+align-items: center;
+}
+
+.title {
+width: 274px;
+height: 73px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 61px;
+font-weight: 700;
+line-height: 73.2px;
+text-align: left;
+}
+
+.blueLine {
+width: 0px;
+height: 59px;
+gap: 0px;
+border: 3px 0px 0px 0px;
+opacity: 0px;
+border: 3px solid #29ABE2;
+}
+
+.subtitle {
+width: 235px;
+height: 32px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 27px;
+font-weight: 400;
+line-height: 32.4px;
+text-align: left;
 }
 
