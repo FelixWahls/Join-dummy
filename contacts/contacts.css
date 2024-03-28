@@ -346,6 +346,7 @@ width: 287px;
 height: 56px;
 gap: 5px;
 opacity: 0px;
+margin-bottom: 8px;
 }
 
 .fullname {
@@ -365,6 +366,9 @@ width: 159px;
 height: 24px;
 gap: 16px;
 opacity: 0px;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 
 .editButtonContainer {
@@ -379,9 +383,108 @@ display: flex;
 .editIcon {
 width: 18.28px;
 height: 18.25px;
-top: 2.75px;
-left: 3px;
 gap: 0px;
 opacity: 0px;
 color: #2A3647;
+}
+
+.editText {
+width: 18.28px;
+height: 18.25px;
+gap: 0px;
+opacity: 0px;
+color: #2A3647;
+}
+
+.deleteButtonContainer {
+width: 81px;
+height: 24px;
+left: 78px;
+gap: 8px;
+opacity: 0px;
+cursor: pointer;
+display: flex;
+}
+
+.deleteIcon {
+width: 24px;
+height: 24px;
+gap: 0px;
+opacity: 0px;
+color: #2A3647;
+margin-top: -3px;
+}
+
+.deleteText {
+width: 49px;
+height: 19px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+color:#2A3647;
+}
+
+.contactInformationTitle {
+width: 207px;
+height: 74px;
+gap: 59px;
+display: flex;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.contactInformation {
+width: 207px;
+height: 74px;
+font-family: Inter;
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+padding-top: 23px;
+}
+
+.accessibility {
+width: 140px;
+height: 128px;
+gap: 22px;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+flex-direction: column;
+}
+
+.mailDiv {
+width: 140px;
+height: 53px;
+gap: 15px;
+display: flex;
+align-items:flex-start;
+justify-content: space-between;
+flex-direction: column;
+}
+
+.mailAdressTitel {
+width: 43px;
+height: 19px;
+font-family: Inter;
+font-size: 16px;
+font-weight: 700;
+line-height: 19.2px;
+text-align: left;
+}
+
+.mailAdress{
+width: 140px;
+height: 19px;
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+color: #007CEE;
 }
