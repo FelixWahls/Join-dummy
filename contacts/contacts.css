@@ -294,3 +294,94 @@ line-height: 32.4px;
 text-align: left;
 }
 
+.ContactOverview {
+width: 461px;
+height: 364px;
+position: fixed;
+top: 311px;
+left: 750px;
+gap: 21px;
+opacity: 0px;
+background-color: #F6F7F8;
+}
+
+.nameContainer {
+width: 461px;
+height: 120px;
+gap: 54px;
+opacity: 0px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.inicialeCircle {
+background-color : #FF7A00;
+width: 120px;
+height: 120px;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.inicial {
+font-family: Inter;
+font-size: 47px;
+font-weight: 500;
+line-height: 56.4px;
+text-align: center;
+color: #FFFFFF;
+}
+
+.editContactContainer {
+width: 287px;
+height: 88px;
+gap: 8px;
+opacity: 0px;
+}
+
+.name {
+width: 287px;
+height: 56px;
+gap: 5px;
+opacity: 0px;
+}
+
+.fullname {
+width: 287px;
+height: 56px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 47px;
+font-weight: 500;
+line-height: 56.4px;
+text-align: left;
+}
+
+.changeButtonsContainer {
+width: 159px;
+height: 24px;
+gap: 16px;
+opacity: 0px;
+}
+
+.editButtonContainer {
+width: 62px;
+height: 24px;
+gap: 13px;
+opacity: 0px;
+cursor: pointer; 
+display: flex;
+}
+
+.editIcon {
+width: 18.28px;
+height: 18.25px;
+top: 2.75px;
+left: 3px;
+gap: 0px;
+opacity: 0px;
+color: #2A3647;
+}
