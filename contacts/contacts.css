@@ -80,3 +80,76 @@ text-align: left;
 color: #000000;
 
 }
+
+.contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.partingLineDiv {
+width: 352px;
+height: 16px;
+padding: 8px 0px 8px 0px;
+gap: 10px;
+opacity: 0px;
+
+}
+
+.partingLine {
+width: 352px;
+height: 0px;
+gap: 0px;
+border: 1px 0px 0px 0px;
+opacity: 0px;
+border: 1px solid #D1D1D1;
+}
+
+.contactCard {
+width: 352px;
+height: 78px;
+padding: 15px 24px 15px 24px;
+gap: 35px;
+border-radius: 10px 0px 0px 0px;
+opacity: 0px;
+background: #FFFFFF;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.monogramCircleDiv {
+width: 42px;
+height: 42px;
+gap: 10px;
+border-radius: 45px 0px 0px 0px;
+opacity: 0px;
+background: #FFFFFF;
+border: 2px solid #FFFFFF;
+}
+
+.monogramCircle {
+    background-color : #FF7A00;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mongram {
+
+font-family: Inter;
+font-size: 12px;
+font-weight: 400;
+line-height: 14.4px;
+text-align: center;
+color: white;
+
+
+
+}
+
