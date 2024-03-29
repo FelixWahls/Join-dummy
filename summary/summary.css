@@ -154,7 +154,6 @@ h1 {
 	font-size: 20px;
 	text-align: center;
 	max-width: 90px;
-	height: 48px;
 }
 
 .greeting {
@@ -346,5 +345,14 @@ h1 {
 @media (max-width: 550px) {
 	.summary-btn {
 		gap: 8px;
+	}
+
+	.summary-btn-bottom {
+		gap: 0;
+	}
+
+	.top-row,
+	.bottom-row {
+		gap: 16px;
 	}
 }
