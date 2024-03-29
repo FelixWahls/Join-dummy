@@ -8,6 +8,10 @@ h1 {
 	margin: 0;
 }
 
+.horizontal-line {
+	display: none;
+}
+
 .flex {
 	display: flex;
 	align-items: center;
@@ -148,7 +152,6 @@ h1 {
 
 .summary-btn-bottom p {
 	font-size: 20px;
-	line-height: 24px;
 	text-align: center;
 	max-width: 90px;
 	height: 48px;
@@ -211,4 +214,137 @@ h1 {
 
 .summary-btn-top:active .top-row-img-r {
 	background-image: url(../img/done-img.png);
+}
+
+@media (max-width: 1100px) {
+	.main-tasks-container {
+		width: auto;
+	}
+
+	.summary-btn {
+		border-radius: 20px;
+		width: 100%;
+	}
+
+	.top-row,
+	.bottom-row {
+		gap: 24px;
+	}
+
+	.summary-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	h1 {
+		font-size: 47px;
+	}
+
+	.slogan {
+		font-size: 20px;
+	}
+
+	.vertical-line {
+		display: none;
+	}
+
+	.horizontal-line {
+		display: inline-block;
+		border: 1.5px solid #29abe2;
+		width: 90px;
+	}
+
+	.summary-btn-top {
+		height: 110px;
+		padding: 38px 19px;
+	}
+
+	.top-row-img-l,
+	.top-row-img-r {
+		width: 40px;
+		height: 40px;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+	.amount {
+		font-size: 47px;
+	}
+
+	p {
+		font-size: 14px;
+	}
+
+	.urgent-task {
+		height: 110px;
+		padding: 28px 0px;
+		justify-content: center;
+		gap: 20px;
+	}
+
+	.urgent-task-left img {
+		width: 40px;
+		height: 40px;
+	}
+
+	.vertical-line-urgent {
+		height: 68px;
+		border-width: 1px;
+	}
+
+	.deadline-date {
+		font-size: 16px;
+	}
+
+	.deadline-text {
+		font-size: 14px;
+	}
+
+	.summary-btn-bottom {
+		height: 116px;
+		padding: 25px 0;
+	}
+
+	.summary-btn-bottom p {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 850px) {
+	.wrapper {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		background-color: #f6f7f8;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		animation: greeting 1s 400ms ease-in forwards;
+	}
+
+	.main-tasks-container {
+		width: 100%;
+	}
+
+	@keyframes greeting {
+		0% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 550px) {
+	.summary-btn {
+		gap: 8px;
+	}
 }

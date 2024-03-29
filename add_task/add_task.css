@@ -291,11 +291,19 @@ button img {
 	.clear-field {
 		font-size: 18px;
 	}
+
+	.right-col {
+		margin-right: 0;
+	}
 }
 
 @media (max-width: 1200px) {
 	.task-container {
 		flex-direction: column;
+	}
+
+	.task-col {
+		max-width: 880px;
 	}
 
 	.mid-line {
@@ -318,7 +326,8 @@ button img {
 		max-width: 100%;
 	}
 
-	.left-col {
+	.left-col,
+	.right-col {
 		margin-right: 96px;
 	}
 }
