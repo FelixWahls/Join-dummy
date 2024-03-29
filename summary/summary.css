@@ -64,6 +64,7 @@ h1 {
 	background-color: white;
 	gap: 18px;
 	transition: all 80ms ease-in-out;
+	cursor: pointer;
 }
 
 .summary-btn-top {
