@@ -99,6 +99,7 @@ body {
 	text-align: center;
 	align-items: center;
 	cursor: pointer;
+	margin-bottom: 16px;
 }
 
 .menuBottomItem {
@@ -196,11 +197,10 @@ a {
 	border-radius: 20px 0px 20px 20px;
 	opacity: 1;
 	background-color: #2a3647;
-	box-shadow: 0px 0px 4px 0px #0000001A;
+	box-shadow: 0px 0px 4px 0px #0000001a;
 	position: absolute;
 	right: 10px;
 	margin-right: -3000px;
-	
 }
 
 .submenuTransition {
@@ -221,7 +221,6 @@ a {
 	border-radius: 8px 0px 0px 0px;
 	opacity: 0px;
 	cursor: pointer;
-
 }
 
 .submenuItem:hover {
@@ -229,15 +228,13 @@ a {
 }
 
 .submenuText {
-font-family: Inter;
-font-size: 16px;
-font-weight: 400;
-line-height: 19.2px;
-text-align: left;
-color: #CDCDCD;
-white-space: nowrap;
-
-
+	font-family: Inter;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19.2px;
+	text-align: left;
+	color: #cdcdcd;
+	white-space: nowrap;
 }
 
 .joinIconResponsiv {
@@ -255,33 +252,30 @@ white-space: nowrap;
 		display: none;
 	}
 
-    .sidebarResponsiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 80px;
-        background-color: #2a3647;
-        z-index: 9997;
+	.sidebarResponsiv {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		height: 80px;
+		background-color: #2a3647;
+		z-index: 9997;
 		padding: 0px, 16px, 0px, 16px;
-		box-shadow: 0px 0px 4px 0px #0000001A;
+		box-shadow: 0px 0px 4px 0px #0000001a;
+	}
 
-		
-    }
-
-    .menuItemsResponsiv {
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
+	.menuItemsResponsiv {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		padding-left: 16px;
 		padding-right: 16px;
 		gap: 15px;
-        width: 100%; 
+		width: 100%;
 		white-space: nowrap;
-		
 	}
 
 	.menuItemResponsiv:hover {
@@ -289,10 +283,10 @@ white-space: nowrap;
 		border-radius: 16px;
 	}
 
-    .menuItemResponsiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+	.menuItemResponsiv {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		flex-direction: column;
 		width: 80px;
 		height: 76px;
@@ -305,7 +299,7 @@ white-space: nowrap;
 		padding: 8px 0px 8px 0px;
 		gap: 10px;
 		opacity: 0px;
-}
+	}
 
 	.menuIcons {
 		width: 24px;
@@ -329,7 +323,7 @@ white-space: nowrap;
 		font-weight: 400;
 		line-height: 16.8px;
 		text-align: left;
-		color:  #CDCDCD;
+		color: #cdcdcd;
 	}
 
 	.headerContainer {
@@ -337,7 +331,6 @@ white-space: nowrap;
 		padding: 20px 16px 20px 16px;
 		display: flex;
 		justify-content: space-between;
-
 	}
 
 	.headerText {
@@ -351,17 +344,14 @@ white-space: nowrap;
 
 @media (max-width: 380px) {
 	.menuItemsResponsiv {
-        
 		padding-left: 4px;
 		padding-right: 4px;
-		
-		
 	}
 
 	.menuItemResponsiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		flex-direction: column;
 		width: 80px;
 		height: 76px;
@@ -373,6 +363,5 @@ white-space: nowrap;
 		padding: 4px 0px 4px 0px;
 		gap: 4px;
 		opacity: 0px;
+	}
 }
-}
-
