@@ -124,7 +124,22 @@ background: #FFFFFF;
 display: flex;
 justify-content: flex-start;
 align-items: center;
+cursor: pointer;
 }
+
+.contactCard:hover {
+    width: 352px;
+    height: 78px;
+    padding: 15px 24px 15px 24px;
+    gap: 35px;
+    border-radius: 10px;
+    opacity: 0px;
+    background: #F5F5F5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    }
 
 .monogramCircleDiv {
 width: 42px;
@@ -389,6 +404,14 @@ opacity: 0px;
 color: #2A3647;
 }
 
+.editIcon:hover {
+    width: 18.28px;
+    height: 18.25px;
+    gap: 0px;
+    opacity: 0px;
+    background-color: #007CEE;
+    }
+
 .editText {
 width: 18.28px;
 height: 18.25px;
@@ -396,6 +419,14 @@ gap: 0px;
 opacity: 0px;
 color: #2A3647;
 }
+
+.editText:hover {
+    width: 18.28px;
+    height: 18.25px;
+    gap: 0px;
+    opacity: 0px;
+    color: #007CEE;
+    }
 
 .deleteButtonContainer {
 width: 81px;
@@ -429,6 +460,19 @@ text-align: left;
 color:#2A3647;
 }
 
+.deleteText:hover {
+width: 49px;
+height: 19px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+color: #007CEE;
+}
+
 .contactInformationTitle {
 width: 207px;
 height: 74px;
@@ -447,6 +491,7 @@ font-weight: 400;
 line-height: 24px;
 text-align: left;
 padding-top: 23px;
+color:#2A3647;
 }
 
 .accessibility {
