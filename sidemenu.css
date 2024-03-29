@@ -105,7 +105,7 @@ body {
 	gap: 8px;
 }
 .menuItem:hover {
-	background-color: #4a5878;
+	background-color: #091931;
 }
 
 .joinLogo {
@@ -144,6 +144,7 @@ a {
 .circle {
 	width: 56px;
 	height: 56px;
+	margin-top: 0px;
 	border: 3px solid #2a3647;
 	border-radius: 50%;
 	display: flex;
@@ -182,10 +183,73 @@ a {
 	display: none;
 }
 
+.submenu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 150px;
+	height: 204px;
+	padding: 10px 0px 0px 0px;
+	border-radius: 20px 0px 20px 20px;
+	opacity: 1;
+	background-color: #2a3647;
+	box-shadow: 0px 0px 4px 0px #0000001A;
+	position: absolute;
+	right: 10px;
+	margin-right: -3000px;
+	
+}
+
+.submenuTransition {
+	transition: transform 0.35s ease-in-out;
+	transform: translateX(-2990px);
+}
+
+.submenuTransitionRemove {
+	transition: transform 0.35s ease-in-out;
+	transform: translateX(2990px);
+}
+
+.submenuItem {
+	width: 130px;
+	height: 46px;
+	padding: 8px 16px 8px 16px;
+	gap: 8px;
+	border-radius: 8px 0px 0px 0px;
+	opacity: 0px;
+	cursor: pointer;
+
+}
+
+.submenuItem:hover {
+	background-color: #091931;
+}
+
+.submenuText {
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+color: #CDCDCD;
+white-space: nowrap;
+
+
+}
+
+.joinIconResponsiv {
+	display: none;
+}
+
 /* Responsiv */
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
 	.sidebar {
+		display: none;
+	}
+
+	.helpIcon {
 		display: none;
 	}
 
@@ -201,6 +265,8 @@ a {
         background-color: #2a3647;
         z-index: 9997;
 		padding: 0px, 16px, 0px, 16px;
+		box-shadow: 0px 0px 4px 0px #0000001A;
+
 		
     }
 
@@ -208,12 +274,16 @@ a {
         display: flex; 
         justify-content: space-between; 
         align-items: center; 
+		padding-left: 16px;
+		padding-right: 16px;
+		gap: 15px;
         width: 100%; 
+		white-space: nowrap;
 		
 	}
 
-	.menuItemsResponsiv:hover {
-		background-color: #4a5878;
+	.menuItemResponsiv:hover {
+		background-color: #091931;
 		border-radius: 16px;
 	}
 
@@ -225,11 +295,15 @@ a {
 		width: 80px;
 		height: 76px;
 		padding: 8px 53px 8px 53px;
-		gap: 20px;
+		gap: 6px;
 		border-radius: 16px 0px 0px 0px;
 		opacity: 0px;
-
-    }
+		width: 80px;
+		height: 76px;
+		padding: 8px 0px 8px 0px;
+		gap: 10px;
+		opacity: 0px;
+}
 
 	.menuIcons {
 		width: 24px;
@@ -244,7 +318,59 @@ a {
 		right: 0;
 		left: 0px;
 		padding: 110px 0 0 96px;
-		max-width: 1208px;
+		max-width: 1200px;
 	}
+
+	.menuTextResponsiv {
+		font-family: Open Sans;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 16.8px;
+		text-align: left;
+		color:  #CDCDCD;
+	}
+
+	.headerContainer {
+		height: 80px;
+		padding: 20px 16px 20px 16px;
+		display: flex;
+		justify-content: space-between;
+
+	}
+
+	.headerText {
+		display: none;
+	}
+
+	.joinIconResponsiv {
+		display: block;
+	}
+}
+
+@media (max-width: 380px) {
+	.menuItemsResponsiv {
+        
+		padding-left: 4px;
+		padding-right: 4px;
+		
+		
+	}
+
+	.menuItemResponsiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+		flex-direction: column;
+		width: 80px;
+		height: 76px;
+		gap: 6px;
+		border-radius: 16px 0px 0px 0px;
+		opacity: 0px;
+		width: 80px;
+		height: 76px;
+		padding: 4px 0px 4px 0px;
+		gap: 4px;
+		opacity: 0px;
+}
 }
 

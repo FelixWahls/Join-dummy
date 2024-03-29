@@ -1,13 +1,22 @@
 <div class="relativeContainer">
 	<div class="headerContainer">
+		<div class="joinIconResponsiv">
+			<img src="../img/JoinLogoBlack.png">
+		</div>
 		<div class="headerText">Kanban Project Management Tool</div>
 		<div class="headerIcons">
 			<div class="helpIcon">
 				<a href="../help/help.html"><img src="../img/help.png" class="helpPng" /></a>
 			</div>
-			<div class="circle">
-				<div class="initials">SM</div>
+			<div>
+				<div class="circle" onclick="notCloseSidebar(event)">
+					<div class="initials">SM</div>
+				</div>
+				<div id="submenu">
+
+				</div>
 			</div>
+
 		</div>
 	</div>
 
@@ -37,8 +46,13 @@
 				<span class="menuText"> Board</span>
 			</div>
 			<div class="menuItem">
-				<img src="../img/contacts_logo.png" class="menuIcons" />
-				<span class="menuText">Contacts</span>
+				<a href="../contacts/contacts.html">
+					<div>
+						<img src="../img/contacts_logo.png" class="menuIcons" />
+						<span class="menuText">Contacts</span>
+					</div>
+
+				</a>
 			</div>
 		</div>
 		<div class="menuBottom">
@@ -51,33 +65,38 @@
 			</div>
 		</div>
 	</div>
-	<div class="sidebarResponsiv">
+	<div class="sidebarResponsiv" onclick="notCloseSidebar(event)">
 		<div class="menuItemsResponsiv">
 			<div>
 				<a href="../summary/summary.html">
 					<div class="menuItemResponsiv">
 						<img src="../img/summary_logo.png" class="menuIcons" />
-						<span class="menuText">Summary</span>
+						<span class="menuTextResponsiv">Summary</span>
 					</div>
 				</a>
 			</div>
-			
+
 			<div>
 				<a href="../add_task/add_task.html">
 					<div class="menuItemResponsiv">
 						<img src="../img/addTask_logo.png" class="menuIcons" />
-						<span class="menuText">Add Task</span>
+						<span class="menuTextResponsiv">Add Task</span>
 					</div>
 				</a>
 			</div>
 			<div class="menuItemResponsiv">
 				<img src="../img/board_logo.png" class="menuIcons" />
-				<span class="menuText"> Board</span>
+				<span class="menuTextResponsiv"> Board</span>
 			</div>
-			<div class="menuItemResponsiv">
-				<img src="../img/contacts_logo.png" class="menuIcons" />
-				<span class="menuText">Contacts</span>
+			<div>
+				<a href="../contacts/contacts.html">
+					<div class="menuItemResponsiv">
+						<img src="../img/contacts_logo.png" class="menuIcons" />
+						<span class="menuTextResponsiv">Contacts</span>
+					</div>
+				</a>
 			</div>
+
 		</div>
 	</div>
 </div>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../templates/sidemenu.js"></script>
+        <script src="../script.js"></script>
+        <script src="../contacts/contacts.js"></script>
+		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="../fonts.css" />
+		<link rel="stylesheet" href="../sidemenu.css" />
+		<link rel="stylesheet" href="../contacts/contacts.css" />
+		<title>Add Task</title>
+	</head>
+	<body onload="includeHTML()" onclick="closeSidemenu()">
+		<div w3-include-html="../templates/sidemenu.html"></div>
+		<div class="main-content">
+			<div class="contactList">
+				<div>
+					<div class="contacts">
+						<div class="addContactsBtnDiv">
+							<button class="addContactBtn">
+								<span class="addNewContactText">Add new contact</span>
+								<img src="../img/person_add.png" class="addPersonToListIcon">
+							</button>
+						</div>
+						<div class="listIniciale">
+							<span class="firstCharacter">A</span>
+						</div>
+						<div class="partingLineDiv">
+							<div class="partingLine">
+
+							</div>
+						</div>
+						<div class="contactCard">
+							<div class="monogramCircleDiv">
+								<div class="monogramCircle">
+									<span class="mongram">AM</span>
+								</div>
+								
+							</div>
+							<div class="contactDetails">
+								<div>
+									<span class="contactName">Anton Mayer</span>
+								</div>
+								<div>
+									<span class="contactMail">antom@gmail.com</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+				<div class="scrollbar">
+					<div class="arrowUpContainer">
+						<img src="../img/Vector 12.png" class="arrowUp">
+					</div>
+					<div class="scrollLineContainer">
+						<img src="../img/Vector 11.png" class="scrollLine">
+					</div>
+					<div class="arrowDownContainer">
+						<img src="../img/Vector 13.png" class="arrowDown">
+					</div>
+				</div>
+			</div>
+			<div class="contactsTitle">
+				<div>
+					<span class="title">Contacts</span>
+				</div>
+				<div class="blueLine"></div>
+				<div>
+					<span class="subtitle">Better with a team</span>
+				</div>
+			</div>
+			<div class="ContactOverview">
+				<div class="nameContainer">
+					<div class="inicialeCircle">
+						<span class="inicial">AM</span>
+					</div>
+					<div class="editContactContainer">
+						<div class="name">
+							<span class="fullname">Anton Mayer</span>
+						</div>
+						<div class="changeButtonsContainer">
+							<div class="editButtonContainer">
+								<img src="../img/edit.png" class="editIcon">
+								<span class="editText">Edit</span>
+							</div>
+							<div class="deleteButtonContainer">
+								<img src="../img/delete.png" class="deleteIcon">
+								<span class="deleteText">Delete</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="contactInformationTitle">
+					<span class="contactInformation">Contact Information</span>
+				</div>
+				<div class="accessibility">
+					<div class="mailDiv">
+						<div>
+							<span class="mailAdressTitel">Email</span>
+						</div>
+						<div>
+							<span class="mailAdress">antom@gmail.com</span>
+						</div>
+						
+					</div>
+					<div class="mailDiv">
+						<div>
+							<span class="mailAdressTitel">Phone</span>
+						</div>
+						<div>
+							<span class="mailAdress">+49 1111 111 11 1</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
