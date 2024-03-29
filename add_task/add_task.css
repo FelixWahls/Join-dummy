@@ -53,12 +53,6 @@ textarea {
 	flex: 1;
 }
 
-/* left section */
-
-.left-col {
-	gap: 16px;
-}
-
 .input-container {
 	display: flex;
 	justify-content: space-between;
@@ -80,6 +74,21 @@ textarea {
 .input-container img:hover {
 	background-color: lightgray;
 	border-radius: 50%;
+}
+
+textarea:focus-visible {
+	outline: none;
+	border-color: #29abe2;
+}
+
+.input-container:focus-within {
+	border-color: #29abe2;
+}
+
+/* left section */
+
+.left-col {
+	gap: 16px;
 }
 
 .assigned-to-container img {
