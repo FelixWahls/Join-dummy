@@ -5,11 +5,71 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../style.css" />
 		<link rel="stylesheet" href="../sidemenu.css" />
+		<link rel="stylesheet" href="../fonts.css" />
 		<link rel="stylesheet" href="../add_task/add_task.css" />
 		<link rel="stylesheet" href="../templates/add-task-temp.css" />
-		<title>Document</title>
+		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="board.css" />
+		<script src="../script.js"></script>
+		<script src="../templates/sidemenu.js"></script>
+		<title>Board</title>
 	</head>
 	<body onload="includeHTML()" onclick="closeSidemenu()">
 		<div w3-include-html="../templates/sidemenu.html"></div>
+		<div class="main-content">
+			<section class="top-section">
+				<div class="first-section">
+					<h1>Board</h1>
+					<div class="d-flex">
+						<div class="input-container">
+							<input type="text" id="search-bar" placeholder="Find Task" />
+							<span class="vertical-line"></span>
+							<img src="../img/search.png" alt="" />
+							<img src="../img/search-active.png" alt="" class="d-none" />
+						</div>
+						<button class="add-task">
+							<p>Add Task</p>
+							<img src="../img/add-task-board.png" alt="" />
+						</button>
+					</div>
+				</div>
+			</section>
+			<section class="tasks">
+				<div class="col-name">
+					<h2>To do</h2>
+					<div class="plus-btns">
+						<img src="../img/plus-btn.png" alt="" />
+						<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
+						<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+					</div>
+				</div>
+				<div class="tasks-container"></div>
+
+				<div class="col-name">
+					<h2>In progress</h2>
+					<div class="plus-btns">
+						<img src="../img/plus-btn.png" alt="" />
+						<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
+						<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+					</div>
+				</div>
+				<div class="tasks-container"></div>
+
+				<div class="col-name">
+					<h2>Await feedback</h2>
+					<div class="plus-btns">
+						<img src="../img/plus-btn.png" alt="" />
+						<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
+						<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+					</div>
+				</div>
+				<div class="tasks-container"></div>
+
+				<div class="col-name">
+					<h2>Done</h2>
+				</div>
+				<div class="tasks-container"></div>
+			</section>
+		</div>
 	</body>
 </html>
