@@ -1,14 +1,14 @@
 let contacts = [
-    { 'name': 'Max Meyer', 'email': 'maxmeyer@gmail.com', 'telefon': '0123456789' },
-    { 'name': 'Anna Schmidt', 'email': 'annaschmidt@gmail.com', 'telefon': '0123456790' },
-    { 'name': 'Lukas Bauer', 'email': 'lukasbauer@gmail.com', 'telefon': '0123456791' },
-    { 'name': 'Sophia Becker', 'email': 'sophiabecker@gmail.com', 'telefon': '0123456792' },
-    { 'name': 'Felix Klein', 'email': 'felixklein@gmail.com', 'telefon': '0123456793' },
-    { 'name': 'Emilia Hoffmann', 'email': 'emiliahoffmann@gmail.com', 'telefon': '0123456794' },
-    { 'name': 'Noah Schmid', 'email': 'noahschmid@gmail.com', 'telefon': '0123456795' },
-    { 'name': 'Mia Fischer', 'email': 'miafischer@gmail.com', 'telefon': '0123456796' },
-    { 'name': 'Elias Wolf', 'email': 'eliaswolf@gmail.com', 'telefon': '0123456797' },
-    { 'name': 'Lena Krause', 'email': 'lenakrause@gmail.com', 'telefon': '0123456798' }
+    { 'name': 'Max Meyer', 'email': 'maxmeyer@gmail.com', 'telefon': '0123456789', 'color': '' },
+    { 'name': 'Anna Schmidt', 'email': 'annaschmidt@gmail.com', 'telefon': '0123456790', 'color': ''  },
+    { 'name': 'Lukas Bauer', 'email': 'lukasbauer@gmail.com', 'telefon': '0123456791', 'color': ''  },
+    { 'name': 'Sophia Becker', 'email': 'sophiabecker@gmail.com', 'telefon': '0123456792', 'color': ''  },
+    { 'name': 'Felix Klein', 'email': 'felixklein@gmail.com', 'telefon': '0123456793', 'color': ''  },
+    { 'name': 'Emilia Hoffmann', 'email': 'emiliahoffmann@gmail.com', 'telefon': '0123456794', 'color': ''  },
+    { 'name': 'Noah Schmid', 'email': 'noahschmid@gmail.com', 'telefon': '0123456795', 'color': ''  },
+    { 'name': 'Mia Fischer', 'email': 'miafischer@gmail.com', 'telefon': '0123456796', 'color': ''  },
+    { 'name': 'Elias Wolf', 'email': 'eliaswolf@gmail.com', 'telefon': '0123456797', 'color': ''  },
+    { 'name': 'Lena Krause', 'email': 'lenakrause@gmail.com', 'telefon': '0123456798', 'color': ''  }
   ];
 
   function extractCapitalLetters(name) {
@@ -39,7 +39,7 @@ let contacts = [
       if (currentInitial !== lastInitial) {
         // Wenn nicht, füge einen neuen Abschnitt mit der ersten Großbuchstabe hinzu
         initContacts.innerHTML += `
-          <div class="listInitial">
+          <div class="listInitiale">
             <span class="firstCharacter">${currentInitial}</span>
           </div>
           <div class="partingLineDiv">
@@ -54,7 +54,7 @@ let contacts = [
       initContacts.innerHTML += `
         <div class="contactCard" id='contactCard${i}' onclick='openContactCard(${i})'>
           <div class="monogramCircleDiv">
-            <div class="monogramCircle" style="background-color: ${getRandomColor()}">
+            <div class="monogramCircle" style="background-color: ${getRandomColor(i)}">
               <span class="mongram">${extractCapitalLetters(contact.name)}</span>
             </div>
           </div>
@@ -71,23 +71,31 @@ let contacts = [
     };
   }
 
-  function getRandomColor() {
+  function getRandomColor(k) {
     // Erzeugt eine zufällige Farbe im Hex-Format
     const letters = '0123456789ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
+    contacts[k].color = color;
     return color;
     
 }
 
 function openContactCard(i){
     let contactOverview = document.querySelector('.contactOverview');
+    for (let j = 0; j < contacts.length; j++) {
+        const contact = contacts[j];
+        let contactCard = document.querySelector(`#contactCard${j}`);
+        contactCard.style.backgroundColor = "#FFFFFF";
+    }
+    let contactCard = document.querySelector(`#contactCard${i}`);
+    contactCard.style.backgroundColor = "#2A3647";
     contactOverview.innerHTML = '';
     contactOverview.innerHTML = `
             <div class="nameContainer">
-				<div class="inicialeCircle">
+				<div class="inicialeCircle"  style="background-color: ${contacts[i].color}">
 					<span class="inicial">${extractCapitalLetters(contacts[i].name)}</span>
 				</div>
 				<div class="editContactContainer">
