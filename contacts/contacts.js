@@ -20,37 +20,6 @@ let contacts = [
     }
     return capitals;
   }
-  
-  /*function initContactlist() {
-    let initContacts = document.querySelector('#initContacts');
-    initContacts.innerHTML = '';
-    contacts.forEach(contact => {
-      const capitals = extractCapitalLetters(contact.name);
-      initContacts.innerHTML += `
-        <div class="listInitial">
-          <span class="firstCharacter">${capitals[0]}</span>
-        </div>
-        <div class="partingLineDiv">
-          <div class="partingLine"></div>
-        </div>
-        <div class="contactCard">
-          <div class="monogramCircleDiv">
-            <div class="monogramCircle">
-              <span class="mongram">${capitals}</span>
-            </div>
-          </div>
-          <div class="contactDetails">
-            <div>
-              <span class="contactName">${contact.name}</span>
-            </div>
-            <div>
-              <span class="contactMail">${contact.email}</span>
-            </div>
-          </div>
-        </div>
-      `;
-    });
-  }*/
 
   function initContactlist() {
     let initContacts = document.querySelector('#initContacts');
@@ -60,7 +29,10 @@ let contacts = [
     // Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
     contacts.sort((a, b) => a.name.localeCompare(b.name));
   
-    contacts.forEach(contact => {
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        
+    
       // Extrahiere den ersten Großbuchstaben des aktuellen Namens
       const currentInitial = contact.name[0].toUpperCase();
       // Überprüfe, ob der aktuelle Großbuchstabe gleich dem letzten ist
@@ -80,9 +52,9 @@ let contacts = [
       
       // Füge den Kontakt in der entsprechenden Gruppe hinzu
       initContacts.innerHTML += `
-        <div class="contactCard">
+        <div class="contactCard" id='contactCard${i}' onclick='openContactCard(${i})'>
           <div class="monogramCircleDiv">
-            <div class="monogramCircle">
+            <div class="monogramCircle" style="background-color: ${getRandomColor()}">
               <span class="mongram">${extractCapitalLetters(contact.name)}</span>
             </div>
           </div>
@@ -96,7 +68,113 @@ let contacts = [
           </div>
         </div>
       `;
-    });
+    };
   }
+
+  function getRandomColor() {
+    // Erzeugt eine zufällige Farbe im Hex-Format
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+    
+}
+
+function openContactCard(i){
+    let contactOverview = document.querySelector('.contactOverview');
+    contactOverview.innerHTML = '';
+    contactOverview.innerHTML = `
+            <div class="nameContainer">
+				<div class="inicialeCircle">
+					<span class="inicial">${extractCapitalLetters(contacts[i].name)}</span>
+				</div>
+				<div class="editContactContainer">
+					<div class="name">
+						<span class="fullname">${contacts[i].name}</span>
+					</div>
+					<div class="changeButtonsContainer">
+						<div class="editButtonContainer">
+							<img src="../img/edit.png" class="editIcon">
+							<span class="editText">Edit</span>
+						</div>
+						<div class="deleteButtonContainer">
+							<img src="../img/delete.png" class="deleteIcon">
+							<span class="deleteText">Delete</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contactInformationTitle">
+				<span class="contactInformation">Contact Information</span>
+			</div>
+			<div class="accessibility">
+				<div class="mailDiv">
+					<div>
+						<span class="mailAdressTitel">Email</span>
+					</div>
+					<div>
+						<span class="mailAdress">${contacts[i].email}</span>
+					</div>
+
+				</div>
+				<div class="mailDiv">
+					<div>
+						<span class="mailAdressTitel">Phone</span>
+					</div>
+					<div>
+						<span class="mailAdress">${contacts[i].telefon}</span>
+					</div>
+				</div>
+			</div>
+    `;
+}
+
+
+/*
+<div class="nameContainer">
+				<div class="inicialeCircle">
+					<span class="inicial">AM</span>
+				</div>
+				<div class="editContactContainer">
+					<div class="name">
+						<span class="fullname">Anton Mayer</span>
+					</div>
+					<div class="changeButtonsContainer">
+						<div class="editButtonContainer">
+							<img src="../img/edit.png" class="editIcon">
+							<span class="editText">Edit</span>
+						</div>
+						<div class="deleteButtonContainer">
+							<img src="../img/delete.png" class="deleteIcon">
+							<span class="deleteText">Delete</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contactInformationTitle">
+				<span class="contactInformation">Contact Information</span>
+			</div>
+			<div class="accessibility">
+				<div class="mailDiv">
+					<div>
+						<span class="mailAdressTitel">Email</span>
+					</div>
+					<div>
+						<span class="mailAdress">antom@gmail.com</span>
+					</div>
+
+				</div>
+				<div class="mailDiv">
+					<div>
+						<span class="mailAdressTitel">Phone</span>
+					</div>
+					<div>
+						<span class="mailAdress">+49 1111 111 11 1</span>
+					</div>
+				</div>
+			</div>
+*/
   
   

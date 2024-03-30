@@ -311,7 +311,7 @@ text-align: left;
 white-space: nowrap;
 }
 
-.ContactOverview {
+.contactOverview {
 width: 461px;
 height: 364px;
 position: fixed;
@@ -376,6 +376,7 @@ font-size: 47px;
 font-weight: 500;
 line-height: 56.4px;
 text-align: left;
+white-space: nowrap;
 }
 
 .changeButtonsContainer {
