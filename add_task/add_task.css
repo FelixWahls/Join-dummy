@@ -313,7 +313,7 @@ button img {
 	.bottom-section {
 		flex-direction: column;
 		align-items: flex-start;
-		margin-bottom: 16px;
+		margin-bottom: 90px;
 	}
 
 	.required-info {
