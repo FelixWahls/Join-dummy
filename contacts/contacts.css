@@ -79,6 +79,7 @@ align-items: center;
 }
 
 .firstCharacter {
+margin-left: 38px;    
 font-family: Inter;
 font-size: 20px;
 font-weight: 400;
@@ -546,7 +547,8 @@ left: 50%;
 transform: translate(-50%, -50%);
 border-radius: 30px;
 z-index: 222222;
-background-color: #000000;
+background-color: white;
+display: none;
 }
 
 .containerLeft {
@@ -618,3 +620,24 @@ border: 3px 0px 0px 0px;
 border: 3px solid #29ABE2;
 margin-top: 16px;
 }
+
+.closeDiv {
+width: 32px;
+height: 32px;
+position: fixed;
+top: 48px;
+left: 1132px;
+padding: 4px 0px 0px 0px;
+}
+
+.closeButton {
+width: 24px;
+height: 24px;
+top: 4px;
+left: 4px;
+gap: 0px;
+opacity: 0px;
+color: #2A3647;
+cursor: pointer;
+}
+
