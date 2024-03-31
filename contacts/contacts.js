@@ -137,6 +137,12 @@ function openContactCard(i){
 				</div>
 			</div>
     `;
+    contactOverview.classList.add('contactOverviewTransition');
+    contactOverview.classList.remove('contactOverviewTransitionRemove');
+}
+
+function addNewContact(){
+    alert('uhsdg');
 }
 
 
