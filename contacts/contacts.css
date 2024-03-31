@@ -402,6 +402,16 @@ cursor: pointer;
 display: flex;
 }
 
+.editButtonContainer:hover {
+width: 62px;
+height: 24px;
+gap: 13px;
+opacity: 0px;
+cursor: pointer; 
+display: flex;
+filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg) brightness(97%) contrast(88%);
+}
+
 .editIcon {
 width: 18.28px;
 height: 18.25px;
@@ -418,14 +428,6 @@ opacity: 0px;
 color: #2A3647;
 }
 
-.editText:hover {
-    width: 18.28px;
-    height: 18.25px;
-    gap: 0px;
-    opacity: 0px;
-    color: #007CEE;
-    }
-
 .deleteButtonContainer {
 width: 81px;
 height: 24px;
@@ -434,6 +436,17 @@ gap: 8px;
 opacity: 0px;
 cursor: pointer;
 display: flex;
+}
+
+.deleteButtonContainer:hover {
+width: 81px;
+height: 24px;
+left: 78px;
+gap: 8px;
+opacity: 0px;
+cursor: pointer;
+display: flex;
+filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg) brightness(97%) contrast(88%);
 }
 
 .deleteIcon {
@@ -456,19 +469,6 @@ font-weight: 400;
 line-height: 19.2px;
 text-align: left;
 color:#2A3647;
-}
-
-.deleteText:hover {
-width: 49px;
-height: 19px;
-gap: 0px;
-opacity: 0px;
-font-family: Inter;
-font-size: 16px;
-font-weight: 400;
-line-height: 19.2px;
-text-align: left;
-color: #007CEE;
 }
 
 .contactInformationTitle {
@@ -538,7 +538,7 @@ color: #007CEE;
 .addNewContactContainer {
 width: 1212px;
 height: 592px;
-position: fixed;
+position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
