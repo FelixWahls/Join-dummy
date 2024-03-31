@@ -142,19 +142,6 @@ align-items: center;
 cursor: pointer;
 }
 
-.monogramCircleDiv {
-width: 42px;
-height: 42px;
-gap: 10px;
-border-radius: 50%;
-opacity: 0px;
-background: #FFFFFF;
-border: 2px solid #FFFFFF;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
 .monogramCircle {
 width: 42px;
 height: 42px;

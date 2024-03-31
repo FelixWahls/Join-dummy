@@ -53,10 +53,8 @@ let contacts = [
       // Füge den Kontakt in der entsprechenden Gruppe hinzu
       initContacts.innerHTML += `
         <div class="contactCard" id='contactCard${i}' onclick='openContactCard(${i})'>
-          <div class="monogramCircleDiv">
-            <div class="monogramCircle" style="background-color: ${getRandomColor(i)}">
-              <span class="mongram">${extractCapitalLetters(contact.name)}</span>
-            </div>
+          <div class="monogramCircle" style="background-color: ${getRandomColor(i)}">
+            <span class="mongram">${extractCapitalLetters(contact.name)}</span>
           </div>
           <div class="contactDetails">
             <div>
