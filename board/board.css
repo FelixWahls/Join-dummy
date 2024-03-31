@@ -16,7 +16,8 @@ h2 {
 }
 
 .main-content {
-	margin: 80px 88px 0 64px;
+	margin: 80px 0 0 64px;
+	padding-right: 64px;
 }
 
 .first-section {
@@ -96,19 +97,25 @@ h2 {
 }
 
 .tasks {
-	width: 1208px;
+	width: 1144px;
 	margin-top: 48px;
 	display: flex;
 	justify-content: center;
 	gap: 26px;
-	padding-right: 64px;
+	padding-right: 48px;
 }
 
 .flex-col {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	width: 100%;
+}
+
+.tasks-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .col-name {
@@ -117,6 +124,7 @@ h2 {
 	align-items: center;
 	width: 244px;
 	color: #42526e;
+	margin-bottom: 16px;
 }
 
 .col-name img {
@@ -148,4 +156,105 @@ h2 {
 
 .plus-btns:active .active {
 	display: block;
+}
+
+/* no-card design */
+
+.no-tasks {
+	width: 100%;
+	height: 48px;
+	border: 1px dashed #a8a8a8;
+	background-color: #e7e7e7;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	color: #a8a8a8;
+}
+
+/* small card design */
+.single-task {
+	background-color: white;
+	border-radius: 24px;
+	padding: 16px;
+	font-size: 16px;
+	gap: 24px;
+	box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+}
+
+.task-type {
+	padding: 4px 16px;
+	background-color: #0038ff;
+	border-radius: 8px;
+	display: inline;
+	width: fit-content;
+	color: white;
+}
+
+h3 {
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+.task-content p {
+	color: #a8a8a8;
+}
+
+.subtask-content {
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+	justify-content: space-between;
+}
+
+.subtask-bar-empty {
+	height: 8px;
+	width: 128px;
+	background-color: #f4f4f4;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+}
+
+.subtask-bar-progress {
+	width: calc(128px / 2);
+	height: 8px;
+	background-color: #4589ff;
+	border-radius: 8px;
+}
+
+.bottom-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.assigned-workers {
+	display: flex;
+}
+
+.worker {
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 45px;
+	border: 1px solid white;
+	background-color: #ff7a00;
+	margin-left: -6px;
+}
+
+.worker:first-child {
+	margin-left: 0;
+}
+
+.priority {
+	height: 32px;
+	width: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

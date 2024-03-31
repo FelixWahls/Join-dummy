@@ -35,40 +35,77 @@
 				</div>
 			</section>
 			<section class="tasks">
-				<div class="col-name">
-					<h2>To do</h2>
-					<div class="plus-btns">
-						<img src="../img/plus-btn.png" alt="" />
-						<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
-						<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+				<div class="flex-col">
+					<div class="col-name">
+						<h2>To do</h2>
+						<div class="plus-btns">
+							<img src="../img/plus-btn.png" alt="" />
+							<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
+							<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+						</div>
+					</div>
+					<div class="tasks-container">
+						<!-- start of no-card template -->
+						<div class="no-tasks">
+							<div id="no-task-text">No tasks To do</div>
+						</div>
+						<!-- End of no-card template -->
 					</div>
 				</div>
-				<div class="tasks-container"></div>
-
-				<div class="col-name">
-					<h2>In progress</h2>
-					<div class="plus-btns">
-						<img src="../img/plus-btn.png" alt="" />
-						<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
-						<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+				<div class="flex-col">
+					<div class="col-name">
+						<h2>In progress</h2>
+						<div class="plus-btns">
+							<img src="../img/plus-btn.png" alt="" />
+							<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
+							<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+						</div>
+					</div>
+					<div class="tasks-container">
+						<!-- start of small card template -->
+						<div class="flex-col single-task">
+							<div class="task-type">User Story</div>
+							<div class="task-content">
+								<h3>Kochwelt Page & Recipe Recommender</h3>
+								<p>Build start Page with recipe recommendation.</p>
+							</div>
+							<div class="subtask-content">
+								<span class="subtask-bar-empty">
+									<span class="subtask-bar-progress"></span>
+								</span>
+								<span>1/2 Subtasks</span>
+							</div>
+							<div class="bottom-content">
+								<div class="assigned-workers">
+									<div class="worker worker-one">AM</div>
+									<div class="worker worker-two">EM</div>
+									<div class="worker worker-three">MB</div>
+								</div>
+								<div class="priority">
+									<img src="../img/prio-medium.png" alt="" />
+								</div>
+							</div>
+						</div>
+						<!-- end of small card template -->
 					</div>
 				</div>
-				<div class="tasks-container"></div>
-
-				<div class="col-name">
-					<h2>Await feedback</h2>
-					<div class="plus-btns">
-						<img src="../img/plus-btn.png" alt="" />
-						<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
-						<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+				<div class="flex-col">
+					<div class="col-name">
+						<h2>Await feedback</h2>
+						<div class="plus-btns">
+							<img src="../img/plus-btn.png" alt="" />
+							<img src="../img/plus-btn-hover.png" alt="" class="d-none hover" />
+							<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
+						</div>
 					</div>
+					<div class="tasks-container"></div>
 				</div>
-				<div class="tasks-container"></div>
-
-				<div class="col-name">
-					<h2>Done</h2>
+				<div class="flex-col">
+					<div class="col-name">
+						<h2>Done</h2>
+					</div>
+					<div class="tasks-container"></div>
 				</div>
-				<div class="tasks-container"></div>
 			</section>
 		</div>
 	</body>
