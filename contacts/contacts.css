@@ -102,7 +102,12 @@ height: 16px;
 padding: 8px 0px 8px 0px;
 gap: 10px;
 opacity: 0px;
+margin-top: 12px;
+margin-bottom: 4px;
+}
 
+.listInitiale {
+    margin-top: 8px;
 }
 
 .partingLine {
