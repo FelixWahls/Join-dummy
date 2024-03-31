@@ -539,14 +539,13 @@ color: #007CEE;
 width: 1212px;
 height: 592px;
 position: absolute;
-top: 50%;
-left: 50%;
+top: 25%;
+left: 25%;
 transform: translate(-50%, -50%);
 border-radius: 30px;
 border: 2px solid; /* Noch entfernen*/
 z-index: 222222;
 background-color: white;
-display: none;
 }
 
 .containerLeft {
@@ -637,5 +636,141 @@ gap: 0px;
 opacity: 0px;
 color: #2A3647;
 cursor: pointer;
+}
+
+.image {
+width: 120px;
+height: 120px;
+position: fixed;
+top: 204px;
+left: 550px;
+gap: 10px;
+border-radius: 70px 0px 0px 0px;
+border: 3px 0px 0px 0px;
+}
+
+.imageCircle {
+width: 120px;
+height: 120px;
+border-radius: 50%;
+background-color: #D1D1D1;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.addContactImage {
+width: 42.67px;
+height: 42.67px;
+}
+
+.inputFileds {
+position: fixed;
+width: 422px;
+height: 215px;
+top: 137px;
+left: 742px;
+gap: 32px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+flex-direction: column;
+}
+
+.nameInputContainer {
+width: 422px;
+height: 50px;
+padding: 13px 21px 13px 21px;
+gap: 10px;
+border-radius: 10px;
+border: 1px solid #D1D1D1;
+display: flex;
+align-items: center;
+background-image: url('../img/Person.png');
+background-position: 380px;
+background-size: 24px;
+background-repeat: no-repeat;
+}
+
+input::placeholder {
+width: 56px;
+height: 24px;
+font-family: Inter;
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+margin-top: 5px;
+color: #D1D1D1;
+}
+
+.buttons {
+position: fixed;
+width: 364px;
+height: 57px;
+top: 400px;
+left: 742px;
+gap: 24px;
+display: flex;
+justify-content: space-between;
+}
+
+.cancelButtonContainer {
+width: 126px;
+height: 56px;
+padding: 16px;
+gap: 4px;
+border-radius: 10px;
+border: 1px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: 1px solid #2A3647;
+cursor: pointer;
+}
+
+.cancel {
+width: 66px;
+height: 24px;
+font-family: Inter;
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #2A3647;
+}
+
+.cancelIcon {
+width: 24px;
+height: 24px;
+}
+
+.createButtonContainer {
+width: 214px;
+height: 57px;
+padding: 16px;
+gap: 4px;
+border-radius: 10px;
+background: #2A3647;
+cursor: pointer;
+}
+
+.create {
+width: 154px;
+height: 25px;
+font-family: Inter;
+font-size: 21px;
+font-weight: 700;
+line-height: 25.2px;
+text-align: left;
+color: #FFFFFF;
+}
+
+.createIcon {
+width: 15.49px;
+height: 11.22px;
+top: 22.88px;
+left: 178.26px;
+color: #FFFFFF;
 }
 
