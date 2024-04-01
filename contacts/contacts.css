@@ -7,8 +7,8 @@
 .contactList {
 	width: 464px;
 	box-shadow: 4px 0px 6px 0px #00000014;
-	margin-top: -120px;
 	margin-left: -96px;
+	margin-top: -110px;
 	display: flex;
 	justify-content: center;
 	background-color: white;

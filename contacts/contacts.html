@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../templates/sidemenu.js"></script>
+		<script src="../script.js"></script>
+		<script src="../contacts/contacts.js"></script>
+		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="../fonts.css" />
+		<link rel="stylesheet" href="../sidemenu.css" />
+		<link rel="stylesheet" href="../contacts/contacts.css" />
+		<title>Add Task</title>
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script src="../templates/sidemenu.js"></script>
-	<script src="../script.js"></script>
-	<script src="../contacts/contacts.js"></script>
-	<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
-	<link rel="stylesheet" href="../style.css" />
-	<link rel="stylesheet" href="../fonts.css" />
-	<link rel="stylesheet" href="../sidemenu.css" />
-	<link rel="stylesheet" href="../contacts/contacts.css" />
-	<title>Add Task</title>
-</head>
-
-<body onload="includeHTML(), initContactlist()" onclick="closeSidemenu()">
-	<div w3-include-html="../templates/sidemenu.html"></div>
-	<div class="main-content">
-		<div class="contactList">
-			<div>
-				<div class="contacts">
-					<div class="addContactsBtnDiv" onclick="openAddNewContactWindow()">
-						<button class="addContactBtn">
-							<span class="addNewContactText">Add new contact</span>
-							<img src="../img/person_add.png" class="addPersonToListIcon">
-						</button>
+	<body onload="includeHTML(), initContactlist()" onclick="closeSidemenu()">
+		<div w3-include-html="../templates/sidemenu.html"></div>
+		<div class="main-content">
+			<div class="contactList">
+				<div>
+					<div class="contacts">
+						<div class="addContactsBtnDiv" onclick="openAddNewContactWindow()">
+							<button class="addContactBtn">
+								<span class="addNewContactText">Add new contact</span>
+								<img src="../img/person_add.png" class="addPersonToListIcon" />
+							</button>
+						</div>
+						<div id="initContacts"></div>
 					</div>
-					<div id="initContacts">
-
-					</div>
-
 				</div>
-
-
-			</div>
-			<div class="scrollbar">
+				<!-- <div class="scrollbar">
 				<div class="arrowUpContainer">
 					<img src="../img/Vector 12.png" class="arrowUp">
 				</div>
@@ -45,125 +39,138 @@
 				<div class="arrowDownContainer">
 					<img src="../img/Vector 13.png" class="arrowDown">
 				</div>
+			</div> -->
 			</div>
-		</div>
-		<div class="contactsTitle">
-			<div>
-				<span class="title">Contacts</span>
-			</div>
-			<div class="blueLine"></div>
-			<div>
-				<span class="subtitle">Better with a team</span>
-			</div>
-		</div>
-		<div class="contactOverview">
-
-		</div>
-		<div class="addNewContactContainer" id="addNewContactContainer">
-			<div class="containerLeft">
-				<div class="LogoContainerAddNewContact">
-					<img src="../img/join_logo.png" class="LogoAddNewContact">
-				</div>
-				<div class="addNewContactTitle">
-					<div class="addContactText">
-						<span class="addContact">Add contact</span>
-						<span class="addContactSubtext">Tasks are better with a team!</span>
-					</div>
-					<div class="underLineBlue">
-
-					</div>
-				</div>
-			</div>
-			<div class="containerRight">
-				<div class="closeDiv" onclick="closeAddNewContactWindow()">
-					<img src="../img/close.png" class="closeButton">
-				</div>
-				<div class="imageEndInputField">
-					<div class="image">
-						<div class="imageCircle">
-							<img src="../img/imgPerson.png" class="addContactImage">
-						</div>
-					</div>
-				</div>
+			<div class="contactsTitle">
 				<div>
-					<form class="inputFileds" onsubmit="addNewContact(event)">
-						<div>
-							<input type="text" class="nameInputContainer" required placeholder="Name">
-						</div>
-						<div>
-							<input type="email" class="emailInputContainer" required placeholder="Email">
-						</div>
-						<div>
-							<input type="text" class="phoneInputContainer" required placeholder="Phone">
-						</div>
-						<div class="buttons">
-							<div class="cancelButtonContainer" onclick="cancelInputValue()">
-								<span class="cancel">Cancel</span>
-								<img src="../img/iconoir_cancel.png" class="cancelIcon">
-							</div>
-							<button type="submit" class="createButtonContainer">
-								<span class="create">Create contact</span>
-								<img src="../img/check.png" class="createIcon">
-							</button>
-						</div>
-					</form>
+					<span class="title">Contacts</span>
 				</div>
-				
-			</div>
-		</div>
-		<div class="addNewContactContainer" id="editContactContainer">
-			<div class="containerLeft">
-				<div class="LogoContainerAddNewContact">
-					<img src="../img/join_logo.png" class="LogoAddNewContact">
-				</div>
-				<div class="addNewContactTitle">
-					<div class="addContactText">
-						<span class="addContact">Edit contact</span>
-					</div>
-					<div class="underLineBlue">
-
-					</div>
-				</div>
-			</div>
-			<div class="containerRight">
-				<div class="closeDiv" onclick="closeEditContactWindow()">
-					<img src="../img/close.png" class="closeButton">
-				</div>
-				<div class="imageEndInputField">
-					<div class="image">
-						<div class="imageCircle">
-							<img src="../img/imgPerson.png" class="addContactImage">
-						</div>
-					</div>
-				</div>
+				<div class="blueLine"></div>
 				<div>
-					<form class="inputFileds" onsubmit="editContact(event)">
-						<div>
-							<input type="text" class="nameEditContainer" required placeholder="Name">
-						</div>
-						<div>
-							<input type="email" class="emailEditContainer" required placeholder="Email">
-						</div>
-						<div>
-							<input type="text" class="phoneEditContainer" required placeholder="Phone">
-						</div>
-						<div class="buttons">
-							<div class="cancelButtonContainer" onclick="cancelInputValue()">
-								<span class="cancel">Delete</span>
-								
-							</div>
-							<button type="submit" class="createButtonContainer">
-								<span class="create">Save</span>
-								<img src="../img/check.png" class="createIcon">
-							</button>
-						</div>
-					</form>
+					<span class="subtitle">Better with a team</span>
 				</div>
-				
+			</div>
+			<div class="contactOverview"></div>
+			<div class="addNewContactContainer" id="addNewContactContainer">
+				<div class="containerLeft">
+					<div class="LogoContainerAddNewContact">
+						<img src="../img/join_logo.png" class="LogoAddNewContact" />
+					</div>
+					<div class="addNewContactTitle">
+						<div class="addContactText">
+							<span class="addContact">Add contact</span>
+							<span class="addContactSubtext">Tasks are better with a team!</span>
+						</div>
+						<div class="underLineBlue"></div>
+					</div>
+				</div>
+				<div class="containerRight">
+					<div class="closeDiv" onclick="closeAddNewContactWindow()">
+						<img src="../img/close.png" class="closeButton" />
+					</div>
+					<div class="imageEndInputField">
+						<div class="image">
+							<div class="imageCircle">
+								<img src="../img/imgPerson.png" class="addContactImage" />
+							</div>
+						</div>
+					</div>
+					<div>
+						<form class="inputFileds" onsubmit="addNewContact(event)">
+							<div>
+								<input
+									type="text"
+									class="nameInputContainer"
+									required
+									placeholder="Name" />
+							</div>
+							<div>
+								<input
+									type="email"
+									class="emailInputContainer"
+									required
+									placeholder="Email" />
+							</div>
+							<div>
+								<input
+									type="text"
+									class="phoneInputContainer"
+									required
+									placeholder="Phone" />
+							</div>
+							<div class="buttons">
+								<div class="cancelButtonContainer" onclick="cancelInputValue()">
+									<span class="cancel">Cancel</span>
+									<img src="../img/iconoir_cancel.png" class="cancelIcon" />
+								</div>
+								<button type="submit" class="createButtonContainer">
+									<span class="create">Create contact</span>
+									<img src="../img/check.png" class="createIcon" />
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="addNewContactContainer" id="editContactContainer">
+				<div class="containerLeft">
+					<div class="LogoContainerAddNewContact">
+						<img src="../img/join_logo.png" class="LogoAddNewContact" />
+					</div>
+					<div class="addNewContactTitle">
+						<div class="addContactText">
+							<span class="addContact">Edit contact</span>
+						</div>
+						<div class="underLineBlue"></div>
+					</div>
+				</div>
+				<div class="containerRight">
+					<div class="closeDiv" onclick="closeEditContactWindow()">
+						<img src="../img/close.png" class="closeButton" />
+					</div>
+					<div class="imageEndInputField">
+						<div class="image">
+							<div class="imageCircle">
+								<img src="../img/imgPerson.png" class="addContactImage" />
+							</div>
+						</div>
+					</div>
+					<div>
+						<form class="inputFileds" onsubmit="editContact(event)">
+							<div>
+								<input
+									type="text"
+									class="nameEditContainer"
+									required
+									placeholder="Name" />
+							</div>
+							<div>
+								<input
+									type="email"
+									class="emailEditContainer"
+									required
+									placeholder="Email" />
+							</div>
+							<div>
+								<input
+									type="text"
+									class="phoneEditContainer"
+									required
+									placeholder="Phone" />
+							</div>
+							<div class="buttons">
+								<div class="cancelButtonContainer" onclick="cancelInputValue()">
+									<span class="cancel">Delete</span>
+								</div>
+								<button type="submit" class="createButtonContainer">
+									<span class="create">Save</span>
+									<img src="../img/check.png" class="createIcon" />
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-
-</body>
-
+	</body>
 </html>
