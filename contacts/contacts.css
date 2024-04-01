@@ -731,6 +731,51 @@ background-size: 18px;
 background-repeat: no-repeat;
 }
 
+.nameEditContainer {
+    width: 422px;
+    height: 50px;
+    padding: 13px 21px 13px 21px;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    display: flex;
+    align-items: center;
+    background-image: url('../img/Person.png');
+    background-position: 380px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    }
+    
+    .emailEditContainer {
+    width: 422px;
+    height: 50px;
+    padding: 13px 21px 13px 21px;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    display: flex;
+    align-items: center;
+    background-image: url('../img/Mail.png');
+    background-position: 380px;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    }
+    
+    .phoneEditContainer {
+    width: 422px;
+    height: 50px;
+    padding: 13px 21px 13px 21px;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    display: flex;
+    align-items: center;
+    background-image: url('../img/call.png');
+    background-position: 380px;
+    background-size: 18px;
+    background-repeat: no-repeat;
+    }
+
 input::placeholder {
 width: 56px;
 height: 24px;
