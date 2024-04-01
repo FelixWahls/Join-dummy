@@ -20,7 +20,6 @@
 	height: 101px;
 	padding: 22.5px 52px 22.5px 52px;
 	gap: 10px;
-	opacity: 0px;
 	margin-top: 24px;
 }
 
@@ -33,7 +32,6 @@
 	gap: 16px;
 	border-radius: 10px;
 	border: 1px 0px 0px 0px;
-	opacity: 0px;
 	background: #2a3647;
 	border: 1px solid #2a3647;
 	cursor: pointer;
@@ -48,7 +46,6 @@
 	width: 175px;
 	height: 25px;
 	gap: 0px;
-	opacity: 0px;
 	font-family: Inter;
 	font-size: 21px;
 	font-weight: 700;
@@ -66,11 +63,8 @@
 }
 
 .listIniciale {
-	width: 352px;
-	height: 58px;
 	padding: 17px 36px 17px 36px;
 	gap: 8px;
-	opacity: 0px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -94,11 +88,8 @@
 }
 
 .partingLineDiv {
-	width: 352px;
-	height: 16px;
 	padding: 8px 0px 8px 0px;
 	gap: 10px;
-	opacity: 0px;
 	margin-top: 12px;
 	margin-bottom: 4px;
 }
@@ -112,17 +103,13 @@
 	height: 0px;
 	gap: 0px;
 	border: 1px 0px 0px 0px;
-	opacity: 0px;
 	border: 1px solid #d1d1d1;
 }
 
 .contactCard {
-	width: 352px;
-	height: 78px;
 	padding: 15px 24px 15px 24px;
 	gap: 35px;
 	border-radius: 10px;
-	opacity: 0px;
 	background: #ffffff;
 	display: flex;
 	justify-content: flex-start;
@@ -131,12 +118,9 @@
 }
 
 .contactCard:hover {
-	width: 352px;
-	height: 78px;
 	padding: 15px 24px 15px 24px;
 	gap: 35px;
 	border-radius: 10px;
-	opacity: 0px;
 	background: #f5f5f5;
 	display: flex;
 	justify-content: flex-start;
@@ -163,10 +147,7 @@
 }
 
 .contactDetails {
-	width: 140px;
-	height: 48px;
 	gap: 5px;
-	opacity: 0px;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -177,7 +158,6 @@
 	width: 121px;
 	height: 24px;
 	gap: 0px;
-	opacity: 0px;
 	font-family: Inter;
 	font-size: 20px;
 	font-weight: 400;
@@ -189,7 +169,6 @@
 	width: 140px;
 	height: 19px;
 	gap: 0px;
-	opacity: 0px;
 	font-family: Inter;
 	font-size: 16px;
 	font-weight: 400;
@@ -203,7 +182,6 @@
 	height: 100%;
 	left: 432px;
 	gap: 0px;
-	opacity: 0px;
 }
 
 .arrowUp {
@@ -212,7 +190,6 @@
 	top: 20px;
 	left: 8px;
 	gap: 0px;
-	opacity: 0px;
 	color: #a8a8a8;
 	cursor: pointer;
 }
@@ -223,7 +200,6 @@
 	top: 908px;
 	left: 17px;
 	gap: 0px;
-	opacity: 0px;
 	color: #a8a8a8;
 	cursor: pointer;
 }
@@ -234,7 +210,6 @@
 	top: 77px;
 	left: 13px;
 	gap: 0px;
-	opacity: 0px;
 	border: 4px solid #a8a8a8;
 	border-radius: 4px;
 	cursor: pointer;
@@ -262,7 +237,6 @@
 	top: 206px;
 	left: 743px;
 	gap: 30px;
-	opacity: 0px;
 	display: flex;
 	align-items: center;
 }
@@ -271,7 +245,6 @@
 	width: 274px;
 	height: 73px;
 	gap: 0px;
-	opacity: 0px;
 	font-family: Inter;
 	font-size: 61px;
 	font-weight: 700;
@@ -284,7 +257,6 @@
 	height: 59px;
 	gap: 0px;
 	border: 3px 0px 0px 0px;
-	opacity: 0px;
 	border: 3px solid #29abe2;
 }
 
@@ -292,7 +264,6 @@
 	width: 235px;
 	height: 32px;
 	gap: 0px;
-	opacity: 0px;
 	font-family: Inter;
 	font-size: 27px;
 	font-weight: 400;
@@ -308,7 +279,6 @@
 	top: 311px;
 	left: 750px;
 	gap: 21px;
-	opacity: 0px;
 	background-color: #f6f7f8;
 	margin-left: 3000px;
 }
@@ -327,7 +297,6 @@
 	width: 461px;
 	height: 120px;
 	gap: 54px;
-	opacity: 0px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -355,14 +324,12 @@
 	width: 287px;
 	height: 88px;
 	gap: 8px;
-	opacity: 0px;
 }
 
 .name {
 	width: 287px;
 	height: 56px;
 	gap: 5px;
-	opacity: 0px;
 	margin-bottom: 8px;
 }
 
@@ -370,7 +337,6 @@
 	width: 287px;
 	height: 56px;
 	gap: 0px;
-	opacity: 0px;
 	font-family: Inter;
 	font-size: 47px;
 	font-weight: 500;
@@ -383,7 +349,6 @@
 	width: 159px;
 	height: 24px;
 	gap: 16px;
-	opacity: 0px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -393,7 +358,6 @@
 	width: 62px;
 	height: 24px;
 	gap: 13px;
-	opacity: 0px;
 	cursor: pointer;
 	display: flex;
 }
@@ -402,7 +366,6 @@
 	width: 62px;
 	height: 24px;
 	gap: 13px;
-	opacity: 0px;
 	cursor: pointer;
 	display: flex;
 	filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
@@ -413,7 +376,6 @@
 	width: 18.28px;
 	height: 18.25px;
 	gap: 0px;
-	opacity: 0px;
 	color: #2a3647;
 }
 
@@ -421,7 +383,6 @@
 	width: 18.28px;
 	height: 18.25px;
 	gap: 0px;
-	opacity: 0px;
 	color: #2a3647;
 }
 
@@ -430,7 +391,6 @@
 	height: 24px;
 	left: 78px;
 	gap: 8px;
-	opacity: 0px;
 	cursor: pointer;
 	display: flex;
 }
@@ -440,7 +400,6 @@
 	height: 24px;
 	left: 78px;
 	gap: 8px;
-	opacity: 0px;
 	cursor: pointer;
 	display: flex;
 	filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
@@ -451,7 +410,6 @@
 	width: 24px;
 	height: 24px;
 	gap: 0px;
-	opacity: 0px;
 	color: #2a3647;
 	margin-top: -3px;
 }
@@ -459,8 +417,6 @@
 .deleteText {
 	width: 49px;
 	height: 19px;
-	gap: 0px;
-	opacity: 0px;
 	font-family: Inter;
 	font-size: 16px;
 	font-weight: 400;
@@ -639,8 +595,6 @@
 	height: 24px;
 	top: 4px;
 	left: 4px;
-	gap: 0px;
-	opacity: 0px;
 	color: #2a3647;
 	cursor: pointer;
 }
