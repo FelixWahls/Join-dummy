@@ -1,3 +1,26 @@
+const prioButtons = [
+	{
+		'priority': 'urgent',
+		'activePrioImg': '../img/active-urgent.png',
+		'inactivePrioImg': '../img/prio-urgent.png',
+	},
+	{
+		'priority': 'medium',
+		'activePrioImg': '../img/active-medium.png',
+		'inactivePrioImg': '../img/prio-medium.png',
+	},
+	{
+		'priority': 'low',
+		'activePrioImg': '../img/active-low.png',
+		'inactivePrioImg': '../img/prio-low.png',
+	},
+];
+
+let activePrio = '../img/prio-medium.png';
+
+/**
+ * prevents the page from reloading when pressing the button
+ */
 const form = document.getElementById('add-task-form');
 
 form.addEventListener('submit', function (event) {
@@ -65,5 +88,34 @@ function selectedUser(i) {
 	} else {
 		activeUser.classList.remove('active-user');
 		image.src = '../img/Checkbox.png';
+	}
+}
+
+function setPrio(priority) {
+	let allBtns = document.getElementsByClassName('prio');
+	setPrioColor(allBtns, priority);
+	setPrioImage(priority);
+}
+
+function setPrioColor(allBtns, priority) {
+	for (let i = 0; i < allBtns.length; i++) {
+		allBtns[i].classList.remove('active-urgent');
+		allBtns[i].classList.remove('active-medium');
+		allBtns[i].classList.remove('active-low');
+	}
+	let prioBtn = document.getElementById(priority);
+	prioBtn.classList.add('active-' + priority);
+}
+
+function setPrioImage(priority) {
+	let prioImages = document.getElementsByClassName('prio-image');
+	for (let i = 0; i < prioButtons.length; i++) {
+		const element = prioButtons[i];
+		if (element['priority'] === priority) {
+			prioImages[i].src = prioButtons[i]['activePrioImg'];
+			activePrio = prioButtons[i]['inactivePrioImg'];
+		} else {
+			prioImages[i].src = prioButtons[i]['inactivePrioImg'];
+		}
 	}
 }

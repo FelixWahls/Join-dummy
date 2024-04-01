@@ -101,10 +101,11 @@ textarea:focus-visible {
 	gap: 16px;
 }
 
-.assigned-to-container img {
+#assigned-arrow {
 	position: absolute;
 	right: 16px;
-	top: 8px;
+	top: calc(50% - 12px);
+	cursor: pointer;
 }
 
 #title-input,
@@ -335,4 +336,14 @@ button img {
 
 .active-user:hover {
 	background-color: #091931;
+}
+
+.title-input {
+	border-color: #ff8190;
+}
+
+.error {
+	color: #ff8190;
+	font-size: 12px;
+	margin-top: -6px;
 }
