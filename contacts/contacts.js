@@ -1,3 +1,5 @@
+let currentContact = 0;
+
 /**
  *
  * @param {string} name
@@ -79,6 +81,7 @@ function getRandomColor(k) {
 
 function openContactCard(i) {
 	let contactOverview = document.querySelector('.contactOverview');
+  //document.querySelector('.contactName').style.color = 'white';      !!!!!!!!!!!!!!!!!!!!
 	for (let j = 0; j < contacts.length; j++) {
 		const contact = contacts[j];
 		let contactCard = document.querySelector(`#contactCard${j}`);
@@ -188,21 +191,29 @@ function openEditContactWindow(i){
   document.querySelector('.nameEditContainer').value = contacts[i].name;
   document.querySelector('.emailEditContainer').value = contacts[i].email;
   document.querySelector('.phoneEditContainer').value = contacts[i].telefon;
+  currentContact = i;
 }
 
 function closeEditContactWindow(){
   document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
   document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
+  currentContact = 0;
 }
 
 function deleteContactInEditWindow(){
-  for (let i = 0; i < contacts.length; i++) {
-		if (contacts[i].name === document.querySelector('.nameEditContainer').value){
-      contacts.splice(i,1);
-      initContactlist();
-      document.querySelector('.contactOverview').innerHTML = '';
-      closeEditContactWindow();
-    }
-  }
+  contacts.splice(currentContact,1);
+  initContactlist();
+  document.querySelector('.contactOverview').innerHTML = '';
+  closeEditContactWindow();
+}
+
+function editContact(event){
+  event.preventDefault();
+  contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
+  contacts[currentContact].email = document.querySelector('.emailEditContainer').value; 
+  contacts[currentContact].telefon = document.querySelector('.phoneEditContainer').value;
+  initContactlist();
+  closeEditContactWindow();
+  openContactCard(currentContact);
 }
 
