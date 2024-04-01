@@ -71,6 +71,24 @@ let contacts = [
 	},
 ];
 
+const prioButtons = [
+	{
+		'priority': 'urgent',
+		'activePrioImg': '../img/active-urgent.png',
+		'inactivePrioImg': '../img/prio-urgent.png',
+	},
+	{
+		'priority': 'medium',
+		'activePrioImg': '../img/active-medium.png',
+		'inactivePrioImg': '../img/prio-medium.png',
+	},
+	{
+		'priority': 'low',
+		'activePrioImg': '../img/active-low.png',
+		'inactivePrioImg': '../img/prio-low.png',
+	},
+];
+
 async function includeHTML() {
 	let includeElements = document.querySelectorAll('[w3-include-html]');
 	for (let i = 0; i < includeElements.length; i++) {

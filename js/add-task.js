@@ -1,21 +1,3 @@
-const prioButtons = [
-	{
-		'priority': 'urgent',
-		'activePrioImg': '../img/active-urgent.png',
-		'inactivePrioImg': '../img/prio-urgent.png',
-	},
-	{
-		'priority': 'medium',
-		'activePrioImg': '../img/active-medium.png',
-		'inactivePrioImg': '../img/prio-medium.png',
-	},
-	{
-		'priority': 'low',
-		'activePrioImg': '../img/active-low.png',
-		'inactivePrioImg': '../img/prio-low.png',
-	},
-];
-
 let activePrio = '../img/prio-medium.png';
 
 /**
@@ -57,24 +39,6 @@ function renderUsers(userList) {
 }
 
 /**
- * creates html template for every assignable contact
- * @param {object} user
- * @param {number} i
- * @returns
- */
-function createUserHtml(user, i) {
-	return /*html*/ `
-        <div class="single-user d-flex align-c" onclick="selectedUser(${i})" id="user${i}">
-			<div class="user-info d-flex align-c">
-				<div class="user-icon">${user.capitals}</div>
-				<div class="user-name">${user.name}</div>
-			</div>
-			<img src="../img/Checkbox.png" />
-		</div>
-    `;
-}
-
-/**
  * checks if a user is already assigned and adjustes the design accordingly
  * @param {number} i
  */
@@ -89,6 +53,12 @@ function selectedUser(i) {
 		activeUser.classList.remove('active-user');
 		image.src = '../img/Checkbox.png';
 	}
+	renderUserSelection(activeUser);
+}
+
+function renderUserSelection() {
+	let capitalsHtml = document.getElementById('user-capitals').innerHTML;
+	console.log(capitalsHtml);
 }
 
 function setPrio(priority) {
@@ -97,6 +67,11 @@ function setPrio(priority) {
 	setPrioImage(priority);
 }
 
+/**
+ * iterates through all Buttons and removes a possible active class after that assigns active class to selected button
+ * @param {HTMLElement} allBtns list of all Buttons
+ * @param {String} priority property selected button
+ */
 function setPrioColor(allBtns, priority) {
 	for (let i = 0; i < allBtns.length; i++) {
 		allBtns[i].classList.remove('active-urgent');
@@ -107,6 +82,13 @@ function setPrioColor(allBtns, priority) {
 	prioBtn.classList.add('active-' + priority);
 }
 
+/**
+ * iterates over priority-JSON and compares the selected Button with every priority.
+ * If prioritys are equal it changes the img.src attr. of the buttons Image.
+ * If they are not the same it resets the img.sry attr. to the original value.
+ * sets activePrio to the specific src value
+ * @param {string} priority
+ */
 function setPrioImage(priority) {
 	let prioImages = document.getElementsByClassName('prio-image');
 	for (let i = 0; i < prioButtons.length; i++) {

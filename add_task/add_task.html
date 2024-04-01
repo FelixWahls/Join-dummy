@@ -31,7 +31,8 @@
 								id="description-input"
 								placeholder="Enter a Description"
 								cols="30"
-								rows="10"></textarea>
+								rows="10"
+								maxlength="250"></textarea>
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="assigned-to-input">Assigned to</label>
@@ -79,6 +80,9 @@
 						<div class="d-flex-col m-0">
 							<label for="category-input" class="req-label">Category</label>
 							<select name="category-input" id="category-input">
+								<option value="" disabled selected hidden>
+									Select task category
+								</option>
 								<option value="user-story">User Story</option>
 								<option value="technical-task">Technical Task</option>
 							</select>
@@ -115,5 +119,6 @@
 		</div>
 		<script src="../script.js"></script>
 		<script src="../js/add-task.js"></script>
+		<script src="../js/add_task_html.js"></script>
 	</body>
 </html>
