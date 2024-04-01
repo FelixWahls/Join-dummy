@@ -29,10 +29,23 @@ label {
 input {
 	font-size: 20px;
 	width: 100%;
+	padding: 12px 16px;
+	max-height: 48px;
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
-	display: none;
+select {
+	width: 100%;
+	font-size: 20px;
+	padding: 12px 16px;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	background-color: #fafafa;
+	width: 100%;
+	background-image: url(../img/arrow-drop-down.png);
+	background-position: 97%;
+	background-repeat: no-repeat;
+	border: 1px solid #ccc;
+	border-radius: 0;
 }
 
 textarea {
@@ -56,27 +69,20 @@ textarea {
 
 .task-col {
 	max-width: 440px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 }
 
 .input-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 48px;
-	padding: 12px 16px;
-	background-color: white;
-	border-radius: 10px;
-	border: 1px solid #d1d1d1;
 	position: relative;
-	cursor: pointer;
 }
 
 .input-container img {
 	position: absolute;
 	right: 16px;
+	top: calc(50% - 12px);
 }
 
 .input-container img:hover {
@@ -86,10 +92,6 @@ textarea {
 
 textarea:focus-visible {
 	outline: none;
-	border-color: #29abe2;
-}
-
-.input-container:focus-within {
 	border-color: #29abe2;
 }
 
@@ -108,15 +110,21 @@ textarea:focus-visible {
 #title-input,
 #assigned-to-input,
 #category-input,
-#subtask-input {
-	border: none;
+#subtask-input,
+#due-date-input {
+	border-radius: 10px;
+	border: 1px solid #d1d1d1;
+	position: relative;
+	cursor: pointer;
 }
 
 #title-input:focus,
 #assigned-to-input:focus,
 #category-input:focus,
-#subtask-input:focus {
+#subtask-input:focus,
+#due-date-input:focus {
 	outline: none;
+	border-color: #29abe2;
 }
 
 .d-flex-col {
@@ -137,20 +145,6 @@ textarea:focus-visible {
 .right-col {
 	gap: 24px;
 	margin-right: 96px;
-}
-
-#due-date-input {
-	border: none;
-	width: 100%;
-	cursor: pointer;
-}
-
-.due-date-img:hover {
-	background-color: white !important;
-}
-
-#due-date-input:focus {
-	outline: none;
 }
 
 #prio-container {
@@ -177,6 +171,21 @@ textarea:focus-visible {
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
+.active-urgent {
+	background-color: #ff3d00;
+	color: white;
+}
+
+.active-medium {
+	background-color: #ffa800;
+	color: white;
+}
+
+.active-low {
+	background-color: #7ae229;
+	color: white;
+}
+
 .m-0 {
 	margin-bottom: 0;
 }
@@ -189,6 +198,7 @@ textarea:focus-visible {
 	align-items: flex-end;
 	margin-top: 100px;
 	margin-right: 96px;
+	margin-bottom: 16px;
 }
 
 .add-task-btns {
@@ -275,17 +285,29 @@ button img {
 	color: red;
 }
 
+/* error handeling */
+
 /* user-list */
 
 #user-list {
 	width: 100%;
 	max-height: 285px;
 	overflow-y: scroll;
+	background-color: white;
+	border-radius: 10px;
+	margin-top: -8px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 .single-user {
 	justify-content: space-between;
 	padding: 7px 16px;
+	font-size: 20px;
+	border-radius: 10px;
+}
+
+.single-user:hover {
+	background-color: #d1d1d1;
 }
 
 .single-user img {
@@ -297,11 +319,20 @@ button img {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 32px;
-	height: 32px;
+	width: 42px;
+	height: 42px;
 	border-radius: 45px;
 	border: 1px solid white;
 	background-color: #ff7a00;
-	margin-left: -6px;
 	color: white;
+	margin-right: 16px;
+}
+
+.active-user {
+	background-color: #2a3647;
+	color: white;
+}
+
+.active-user:hover {
+	background-color: #091931;
 }

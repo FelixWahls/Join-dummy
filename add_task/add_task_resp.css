@@ -1,6 +1,7 @@
 @media (max-width: 1250px) {
 	input,
 	textarea,
+	select,
 	.prio {
 		font-size: 18px;
 	}
@@ -57,18 +58,25 @@
 	}
 }
 
+@media (max-width: 600px) {
+	.main-content {
+		margin-left: 0;
+	}
+
+	.left-col,
+	.right-col {
+		margin-right: 0;
+	}
+}
+
 @media (max-width: 500px) {
 	.main-content {
 		padding-left: 24px;
 	}
 
-	.left-col,
-	.right-col {
-		margin-right: 24px;
-	}
-
 	input,
 	textarea,
+	select,
 	.prio {
 		font-size: 16px;
 	}

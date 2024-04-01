@@ -21,13 +21,12 @@
 					<div class="left-col task-col">
 						<div class="d-flex-col">
 							<label for="title-input" class="req-label">Title</label>
-							<div class="input-container">
-								<input
-									type="text"
-									id="title-input"
-									placeholder="Enter a title"
-									required />
-							</div>
+							<input
+								type="text"
+								id="title-input"
+								placeholder="Enter a title"
+								required />
+							<div class="error d-none">This field ist required</div>
 						</div>
 						<div class="d-flex-col">
 							<label for="description-input">Description</label>
@@ -40,22 +39,18 @@
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="assigned-to-input">Assigned to</label>
-							<div class="input-container">
+							<div class="input-container" onclick="openUserList()">
 								<input
 									type="text"
 									id="assigned-to-input"
 									placeholder="Select contacts to assign" />
-								<img src="../img/arrow-drop-down.png" alt="" />
+								<img
+									src="../img/arrow-drop-down.png"
+									id="assigned-arrow"
+									onclick="openUserList()" />
 							</div>
-							<div id="user-list">
+							<div id="user-list" class="d-none">
 								<!-- start of user list template -->
-								<div class="single-user d-flex align-c">
-									<div class="user-info d-flex align-c">
-										<div class="user-icon">FW</div>
-										<div class="user-name">Felix Wahls</div>
-									</div>
-									<img src="../img/Checkbox.png" alt="" />
-								</div>
 							</div>
 							<div id="selected-users"></div>
 						</div>
@@ -64,14 +59,11 @@
 					<div class="right-col task-col">
 						<div class="d-flex-col">
 							<label for="due-date-input" class="req-label">Due date</label>
-							<div class="input-container">
-								<input
-									type="date"
-									id="due-date-input"
-									placeholder="dd/mm/yyyy"
-									required />
-								<img src="../img/calendar.png" alt="" class="due-date-img" />
-							</div>
+							<input
+								type="date"
+								id="due-date-input"
+								placeholder="dd/mm/yyyy"
+								required />
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="prio-container">Prio</label>
@@ -92,14 +84,10 @@
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="category-input" class="req-label">Category</label>
-							<div class="input-container">
-								<input
-									type="text"
-									id="category-input"
-									placeholder="Select task category"
-									required />
-								<img src="../img/arrow-drop-down.png" alt="" />
-							</div>
+							<select name="category-input" id="category-input">
+								<option value="user-story">User Story</option>
+								<option value="technical-task">Technical Task</option>
+							</select>
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="subtask-input" class="">Subtasks</label>
@@ -107,8 +95,8 @@
 								<input
 									type="text"
 									id="subtask-input"
-									placeholder="Select task category" />
-								<img src="../img/add-subtask.png" class="subtask-plus" />
+									placeholder="Add new subtask" />
+								<img src="../img/add-subtask.png" />
 							</div>
 						</div>
 					</div>
@@ -129,7 +117,7 @@
 				</div>
 			</form>
 		</div>
-		<script src="../js/add-task.js"></script>
 		<script src="../script.js"></script>
+		<script src="../js/add-task.js"></script>
 	</body>
 </html>
