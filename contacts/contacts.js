@@ -131,8 +131,7 @@ function openContactCard(i) {
 				</div>
 			</div>
     `;
-	contactOverview.classList.add('contactOverviewTransition');
-	contactOverview.classList.remove('contactOverviewTransitionRemove');
+
 }
 
 function addNewContact(){
@@ -140,47 +139,7 @@ function addNewContact(){
   document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 }
 
-/*
-<div class="nameContainer">
-				<div class="inicialeCircle">
-					<span class="inicial">AM</span>
-				</div>
-				<div class="editContactContainer">
-					<div class="name">
-						<span class="fullname">Anton Mayer</span>
-					</div>
-					<div class="changeButtonsContainer">
-						<div class="editButtonContainer">
-							<img src="../img/edit.png" class="editIcon">
-							<span class="editText">Edit</span>
-						</div>
-						<div class="deleteButtonContainer">
-							<img src="../img/delete.png" class="deleteIcon">
-							<span class="deleteText">Delete</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="contactInformationTitle">
-				<span class="contactInformation">Contact Information</span>
-			</div>
-			<div class="accessibility">
-				<div class="mailDiv">
-					<div>
-						<span class="mailAdressTitel">Email</span>
-					</div>
-					<div>
-						<span class="mailAdress">antom@gmail.com</span>
-					</div>
-
-				</div>
-				<div class="mailDiv">
-					<div>
-						<span class="mailAdressTitel">Phone</span>
-					</div>
-					<div>
-						<span class="mailAdress">+49 1111 111 11 1</span>
-					</div>
-				</div>
-			</div>
-*/
+function closeAddNewContact(){
+  document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
+  document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
+}
