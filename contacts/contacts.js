@@ -101,7 +101,7 @@ function openContactCard(i) {
 							<img src="../img/edit.png" class="editIcon">
 							<span class="editText">Edit</span>
 						</div>
-						<div class="deleteButtonContainer">
+						<div class="deleteButtonContainer"  onclick="deleteContact(${i})">
 							<img src="../img/delete.png" class="deleteIcon">
 							<span class="deleteText">Delete</span>
 						</div>
@@ -167,6 +167,12 @@ function addNewContact(event) {
   closeAddNewContactWindow();
   cancelInputValue();
   return false;
+}
+
+function deleteContact(i){
+  contacts.splice(i,1);
+  initContactlist();
+  document.querySelector('.contactOverview').innerHTML = '';
 }
 
 function cancelInputValue(){
