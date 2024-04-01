@@ -135,14 +135,9 @@ function openContactCard(i) {
 	contactOverview.classList.remove('contactOverviewTransitionRemove');
 }
 
-<<<<<<< HEAD
 function addNewContact(){
   document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
   document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
-=======
-function addNewContact() {
-	alert('uhsdg');
->>>>>>> 171c0efb0bad2e337dbcbfb943022ef5b0b993cd
 }
 
 /*
