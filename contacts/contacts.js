@@ -131,15 +131,28 @@ function openContactCard(i) {
 				</div>
 			</div>
     `;
-
+    contactOverview.classList.add('contactOverviewTransition');
+    contactOverview.classList.remove('contactOverviewTransitionRemove');
 }
 
-function addNewContact(){
+function openAddNewContactWindow(){
+  //document.body.style.filter = "grayscale(40%)";
+  //document.getElementById('addNewContactContainer').style.filter = "grayscale(0%)";
   document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
   document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 }
 
-function closeAddNewContact(){
+function closeAddNewContactWindow(){
   document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
   document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
+}
+
+function addNewContact(){
+  let name = document.querySelector('.nameInputContainer').value;
+  let email = document.querySelector('.emailInputContainer').value;
+  let phone = document.querySelector('.phoneInputContainer').value;
+  name.push(contacts.name);
+  email.push(contacts.email);
+  phone.push(contacts.telefon);
+  initContactlist();
 }

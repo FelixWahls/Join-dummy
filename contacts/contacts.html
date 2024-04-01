@@ -21,7 +21,7 @@
 		<div class="contactList">
 			<div>
 				<div class="contacts">
-					<div class="addContactsBtnDiv" onclick="addNewContact()">
+					<div class="addContactsBtnDiv" onclick="openAddNewContactWindow()">
 						<button class="addContactBtn">
 							<span class="addNewContactText">Add new contact</span>
 							<img src="../img/person_add.png" class="addPersonToListIcon">
@@ -75,7 +75,7 @@
 				</div>
 			</div>
 			<div class="containerRight">
-				<div class="closeDiv" onclick="closeAddNewContact()">
+				<div class="closeDiv" onclick="closeAddNewContactWindow()">
 					<img src="../img/close.png" class="closeButton">
 				</div>
 				<div class="imageEndInputField">
@@ -86,28 +86,29 @@
 					</div>
 				</div>
 				<div>
-					<form  class="inputFileds">
+					<form class="inputFileds" onsubmit="return addNewContact()">
 						<div>
 							<input type="text" class="nameInputContainer" required placeholder="Name">
 						</div>
 						<div>
-							<input type="text" class="emailInputContainer" required placeholder="Email">
+							<input type="email" class="emailInputContainer" required placeholder="Email">
 						</div>
 						<div>
-							<input type="text" class="phoneInputContainer" required placeholder="Phone">
+							<input type="number" class="phoneInputContainer" required placeholder="Phone">
+						</div>
+						<div class="buttons">
+							<div class="cancelButtonContainer">
+								<span class="cancel">Cancel</span>
+								<img src="../img/iconoir_cancel.png" class="cancelIcon">
+							</div>
+							<button type="submit" class="createButtonContainer">
+								<span class="create">Create contact</span>
+								<img src="../img/check.png" class="createIcon">
+							</button>
 						</div>
 					</form>
 				</div>
-				<div class="buttons">
-					<div class="cancelButtonContainer">
-						<span class="cancel">Cancel</span>
-						<img src="../img/iconoir_cancel.png" class="cancelIcon">
-					</div>
-					<div class="createButtonContainer">
-						<span class="create">Create contact</span>
-						<img src="../img/check.png" class="createIcon">
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

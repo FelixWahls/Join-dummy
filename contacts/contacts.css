@@ -1,3 +1,7 @@
+body {
+    filter: grayscale(20%);
+}
+
 .main-content {
     background-color:#F6F7F8;
     display: flex;
