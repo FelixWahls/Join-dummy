@@ -147,12 +147,33 @@ function closeAddNewContactWindow(){
   document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
 }
 
-function addNewContact(){
+function addNewContact(event) {
+  // Verhindern, dass das Formular auf herkömmliche Weise gesendet wird
+  event.preventDefault();
+
   let name = document.querySelector('.nameInputContainer').value;
   let email = document.querySelector('.emailInputContainer').value;
   let phone = document.querySelector('.phoneInputContainer').value;
-  name.push(contacts.name);
-  email.push(contacts.email);
-  phone.push(contacts.telefon);
+  
+  let newContact = {
+      'name': name,
+      'email': email,
+      'telefon': phone,
+      'color': '',   
+      'capitals': '',  
+  };
+  
+  contacts.push(newContact);
+
+  // Optional: Aktualisiere die Anzeige deiner Kontakte, wenn du eine Funktion dafür hast
+  // Dies könnte eine Funktion sein, die deine Kontaktliste neu rendert
   initContactlist();
+
+
+
+  // Da wir nicht möchten, dass das Formular auf herkömmliche Weise verarbeitet wird,
+  // verhindern wir das Neuladen der Seite mit preventDefault()
+  // und geben false zurück, um die Ausführung zu stoppen.
+  return false;
 }
+
