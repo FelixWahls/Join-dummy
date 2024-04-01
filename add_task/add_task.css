@@ -2,6 +2,14 @@
 	display: none;
 }
 
+.d-flex {
+	display: flex;
+}
+
+.align-c {
+	align-items: center;
+}
+
 h1 {
 	font-weight: 700;
 	font-size: 61px;
@@ -98,16 +106,16 @@ textarea:focus-visible {
 }
 
 #title-input,
-#assigned-to,
-#category,
-#subtask {
+#assigned-to-input,
+#category-input,
+#subtask-input {
 	border: none;
 }
 
 #title-input:focus,
-#assigned-to:focus,
-#category:focus,
-#subtask:focus {
+#assigned-to-input:focus,
+#category-input:focus,
+#subtask-input:focus {
 	outline: none;
 }
 
@@ -131,7 +139,7 @@ textarea:focus-visible {
 	margin-right: 96px;
 }
 
-#due-date {
+#due-date-input {
 	border: none;
 	width: 100%;
 	cursor: pointer;
@@ -141,7 +149,7 @@ textarea:focus-visible {
 	background-color: white !important;
 }
 
-#due-date:focus {
+#due-date-input:focus {
 	outline: none;
 }
 
@@ -267,102 +275,33 @@ button img {
 	color: red;
 }
 
-/* for Javascript */
+/* user-list */
 
-.add-task-input {
-	border-color: #29abe2;
+#user-list {
+	width: 100%;
+	max-height: 285px;
+	overflow-y: scroll;
 }
 
-@media (max-width: 1250px) {
-	input,
-	textarea,
-	.prio {
-		font-size: 18px;
-	}
-
-	.prio img {
-		width: 19px;
-	}
-
-	.create-task {
-		font-size: 19px;
-	}
-
-	.clear-field {
-		font-size: 18px;
-	}
-
-	.right-col {
-		margin-right: 0;
-	}
+.single-user {
+	justify-content: space-between;
+	padding: 7px 16px;
 }
 
-@media (max-width: 1200px) {
-	.task-container {
-		flex-direction: column;
-	}
-
-	.task-col {
-		max-width: 880px;
-	}
-
-	.mid-line {
-		display: none;
-	}
-
-	.bottom-section {
-		flex-direction: column;
-		align-items: flex-start;
-		margin-bottom: 90px;
-	}
-
-	.required-info {
-		margin-bottom: 16px;
-	}
+.single-user img {
+	width: 24px;
 }
 
-@media (max-width: 1000px) {
-	.task-col {
-		max-width: 100%;
-	}
-
-	.left-col,
-	.right-col {
-		margin-right: 96px;
-	}
-}
-
-@media (max-width: 500px) {
-	.main-content {
-		padding-left: 24px;
-	}
-
-	.left-col,
-	.right-col {
-		margin-right: 24px;
-	}
-
-	input,
-	textarea,
-	.prio {
-		font-size: 16px;
-	}
-
-	.prio img {
-		width: 16px;
-	}
-
-	.create-task {
-		font-size: 17px;
-	}
-
-	.clear-field {
-		font-size: 16px;
-	}
-}
-
-@media (max-width: 400px) {
-	#prio-container {
-		flex-direction: column;
-	}
+.user-icon {
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 45px;
+	border: 1px solid white;
+	background-color: #ff7a00;
+	margin-left: -6px;
+	color: white;
 }

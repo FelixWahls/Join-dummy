@@ -4,3 +4,16 @@
 	box-sizing: border-box;
 	font-family: 'Inter';
 }
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgb(168, 168, 168);
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+	border-radius: 8px;
+}

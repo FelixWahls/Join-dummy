@@ -1,0 +1,93 @@
+@media (max-width: 1250px) {
+	input,
+	textarea,
+	.prio {
+		font-size: 18px;
+	}
+
+	.prio img {
+		width: 19px;
+	}
+
+	.create-task {
+		font-size: 19px;
+	}
+
+	.clear-field {
+		font-size: 18px;
+	}
+
+	.right-col {
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 1200px) {
+	.task-container {
+		flex-direction: column;
+	}
+
+	.task-col {
+		max-width: 880px;
+	}
+
+	.mid-line {
+		display: none;
+	}
+
+	.bottom-section {
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 90px;
+	}
+
+	.required-info {
+		margin-bottom: 16px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.task-col {
+		max-width: 100%;
+	}
+
+	.left-col,
+	.right-col {
+		margin-right: 96px;
+	}
+}
+
+@media (max-width: 500px) {
+	.main-content {
+		padding-left: 24px;
+	}
+
+	.left-col,
+	.right-col {
+		margin-right: 24px;
+	}
+
+	input,
+	textarea,
+	.prio {
+		font-size: 16px;
+	}
+
+	.prio img {
+		width: 16px;
+	}
+
+	.create-task {
+		font-size: 17px;
+	}
+
+	.clear-field {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 400px) {
+	#prio-container {
+		flex-direction: column;
+	}
+}
