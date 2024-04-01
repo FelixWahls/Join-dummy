@@ -140,7 +140,8 @@ function openContactCard(i){
 }
 
 function addNewContact(){
-    alert('uhsdg');
+  document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
+  document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 }
 
 
