@@ -541,9 +541,8 @@ height: 592px;
 position: fixed;
 top: 50%;
 left: 50%;
-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);   /*500, -50  */
 border-radius: 30px;
-border: 2px solid; /* Noch entfernen*/
 z-index: 222222;
 background-color: white;
 }
@@ -689,6 +688,36 @@ align-items: center;
 background-image: url('../img/Person.png');
 background-position: 380px;
 background-size: 24px;
+background-repeat: no-repeat;
+}
+
+.emailInputContainer {
+width: 422px;
+height: 50px;
+padding: 13px 21px 13px 21px;
+gap: 10px;
+border-radius: 10px;
+border: 1px solid #D1D1D1;
+display: flex;
+align-items: center;
+background-image: url('../img/Mail.png');
+background-position: 380px;
+background-size: 22px;
+background-repeat: no-repeat;
+}
+
+.phoneInputContainer {
+width: 422px;
+height: 50px;
+padding: 13px 21px 13px 21px;
+gap: 10px;
+border-radius: 10px;
+border: 1px solid #D1D1D1;
+display: flex;
+align-items: center;
+background-image: url('../img/call.png');
+background-position: 380px;
+background-size: 18px;
 background-repeat: no-repeat;
 }
 
