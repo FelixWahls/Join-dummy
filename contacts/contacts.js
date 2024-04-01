@@ -195,3 +195,14 @@ function closeEditContactWindow(){
   document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
 }
 
+function deleteContactInEditWindow(){
+  for (let i = 0; i < contacts.length; i++) {
+		if (contacts[i].name === document.querySelector('.nameEditContainer').value){
+      contacts.splice(i,1);
+      initContactlist();
+      document.querySelector('.contactOverview').innerHTML = '';
+      closeEditContactWindow();
+    }
+  }
+}
+
