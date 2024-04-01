@@ -162,18 +162,9 @@ function addNewContact(event) {
       'color': '',   
       'capitals': '',  
   };
-  
   contacts.push(newContact);
-
-  // Optional: Aktualisiere die Anzeige deiner Kontakte, wenn du eine Funktion dafür hast
-  // Dies könnte eine Funktion sein, die deine Kontaktliste neu rendert
   initContactlist();
-
-
-
-  // Da wir nicht möchten, dass das Formular auf herkömmliche Weise verarbeitet wird,
-  // verhindern wir das Neuladen der Seite mit preventDefault()
-  // und geben false zurück, um die Ausführung zu stoppen.
+  closeAddNewContactWindow();
   return false;
 }
 
