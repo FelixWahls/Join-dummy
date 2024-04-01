@@ -165,6 +165,14 @@ function addNewContact(event) {
   contacts.push(newContact);
   initContactlist();
   closeAddNewContactWindow();
+  cancelInputValue();
   return false;
+}
+
+function cancelInputValue(){
+  document.querySelector('.nameInputContainer').value = '';
+  document.querySelector('.emailInputContainer').value = '';
+  document.querySelector('.phoneInputContainer').value = '';
+
 }
 
