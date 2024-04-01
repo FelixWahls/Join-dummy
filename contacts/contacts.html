@@ -94,7 +94,7 @@
 							<input type="email" class="emailInputContainer" required placeholder="Email">
 						</div>
 						<div>
-							<input type="number" class="phoneInputContainer" required placeholder="Phone">
+							<input type="text" class="phoneInputContainer" required placeholder="Phone">
 						</div>
 						<div class="buttons">
 							<div class="cancelButtonContainer" onclick="cancelInputValue()">
@@ -103,6 +103,57 @@
 							</div>
 							<button type="submit" class="createButtonContainer">
 								<span class="create">Create contact</span>
+								<img src="../img/check.png" class="createIcon">
+							</button>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+		<div class="addNewContactContainer" id="editContactContainer">
+			<div class="containerLeft">
+				<div class="LogoContainerAddNewContact">
+					<img src="../img/join_logo.png" class="LogoAddNewContact">
+				</div>
+				<div class="addNewContactTitle">
+					<div class="addContactText">
+						<span class="addContact">Edit contact</span>
+					</div>
+					<div class="underLineBlue">
+
+					</div>
+				</div>
+			</div>
+			<div class="containerRight">
+				<div class="closeDiv" onclick="closeEditContactWindow()">
+					<img src="../img/close.png" class="closeButton">
+				</div>
+				<div class="imageEndInputField">
+					<div class="image">
+						<div class="imageCircle">
+							<img src="../img/imgPerson.png" class="addContactImage">
+						</div>
+					</div>
+				</div>
+				<div>
+					<form class="inputFileds" onsubmit="editContact(event)">
+						<div>
+							<input type="text" class="nameInputContainer" required placeholder="Name">
+						</div>
+						<div>
+							<input type="email" class="emailInputContainer" required placeholder="Email">
+						</div>
+						<div>
+							<input type="text" class="phoneInputContainer" required placeholder="Phone">
+						</div>
+						<div class="buttons">
+							<div class="cancelButtonContainer" onclick="cancelInputValue()">
+								<span class="cancel">Delete</span>
+								
+							</div>
+							<button type="submit" class="createButtonContainer">
+								<span class="create">Save</span>
 								<img src="../img/check.png" class="createIcon">
 							</button>
 						</div>

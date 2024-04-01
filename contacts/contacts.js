@@ -97,7 +97,7 @@ function openContactCard(i) {
 						<span class="fullname">${contacts[i].name}</span>
 					</div>
 					<div class="changeButtonsContainer">
-						<div class="editButtonContainer">
+						<div class="editButtonContainer" onclick="openEditContactWindow(${i})">
 							<img src="../img/edit.png" class="editIcon">
 							<span class="editText">Edit</span>
 						</div>
@@ -174,5 +174,10 @@ function cancelInputValue(){
   document.querySelector('.emailInputContainer').value = '';
   document.querySelector('.phoneInputContainer').value = '';
 
+}
+
+function openEditContactWindow(i){
+  document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
+  document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 }
 
