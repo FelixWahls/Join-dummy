@@ -1,44 +1,41 @@
-let contacts = [
-    { 'name': 'Max Meyer', 'email': 'maxmeyer@gmail.com', 'telefon': '0123456789', 'color': '' },
-    { 'name': 'Anna Schmidt', 'email': 'annaschmidt@gmail.com', 'telefon': '0123456790', 'color': ''  },
-    { 'name': 'Lukas Bauer', 'email': 'lukasbauer@gmail.com', 'telefon': '0123456791', 'color': ''  },
-    { 'name': 'Sophia Becker', 'email': 'sophiabecker@gmail.com', 'telefon': '0123456792', 'color': ''  },
-    { 'name': 'Felix Klein', 'email': 'felixklein@gmail.com', 'telefon': '0123456793', 'color': ''  },
-    { 'name': 'Emilia Hoffmann', 'email': 'emiliahoffmann@gmail.com', 'telefon': '0123456794', 'color': ''  },
-    { 'name': 'Noah Schmid', 'email': 'noahschmid@gmail.com', 'telefon': '0123456795', 'color': ''  },
-    { 'name': 'Mia Fischer', 'email': 'miafischer@gmail.com', 'telefon': '0123456796', 'color': ''  },
-    { 'name': 'Elias Wolf', 'email': 'eliaswolf@gmail.com', 'telefon': '0123456797', 'color': ''  },
-    { 'name': 'Lena Krause', 'email': 'lenakrause@gmail.com', 'telefon': '0123456798', 'color': ''  }
-  ];
+/**
+ *
+ * @param {string} name
+ * @returns
+ */
+function extractCapitalLetters(name) {
+	let capitals = '';
+	for (let i = 0; i < contacts.length; i++) {
+		if (contacts[i].name === name) {
+			for (let j = 0; j < name.length; j++) {
+				if (name[j] === name[j].toUpperCase() && name[j] !== ' ') {
+					capitals += name[j];
+				}
+			}
+			contacts[i].capitals = capitals;
+			break; // Once found, no need to continue looping
+		}
+	}
+	return capitals;
+}
 
-  function extractCapitalLetters(name) {
-    let capitals = '';
-    for (let i = 0; i < name.length; i++) {
-      if (name[i] === name[i].toUpperCase() && name[i] !== ' ') {
-        capitals += name[i];
-      }
-    }
-    return capitals;
-  }
+function initContactlist() {
+	let initContacts = document.querySelector('#initContacts');
+	initContacts.innerHTML = '';
+	let lastInitial = null;
 
-  function initContactlist() {
-    let initContacts = document.querySelector('#initContacts');
-    initContacts.innerHTML = '';
-    let lastInitial = null;
-  
-    // Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
-    contacts.sort((a, b) => a.name.localeCompare(b.name));
-  
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        
-    
-      // Extrahiere den ersten Großbuchstaben des aktuellen Namens
-      const currentInitial = contact.name[0].toUpperCase();
-      // Überprüfe, ob der aktuelle Großbuchstabe gleich dem letzten ist
-      if (currentInitial !== lastInitial) {
-        // Wenn nicht, füge einen neuen Abschnitt mit der ersten Großbuchstabe hinzu
-        initContacts.innerHTML += `
+	// Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
+	contacts.sort((a, b) => a.name.localeCompare(b.name));
+
+	for (let i = 0; i < contacts.length; i++) {
+		const contact = contacts[i];
+
+		// Extrahiere den ersten Großbuchstaben des aktuellen Namens
+		const currentInitial = contact.name[0].toUpperCase();
+		// Überprüfe, ob der aktuelle Großbuchstabe gleich dem letzten ist
+		if (currentInitial !== lastInitial) {
+			// Wenn nicht, füge einen neuen Abschnitt mit der ersten Großbuchstabe hinzu
+			initContacts.innerHTML += `
           <div class="listInitiale">
             <span class="firstCharacter">${currentInitial}</span>
           </div>
@@ -47,11 +44,11 @@ let contacts = [
             </div>
           </div>
         `;
-        lastInitial = currentInitial; // Aktualisiere den letzten Großbuchstaben
-      }
-      
-      // Füge den Kontakt in der entsprechenden Gruppe hinzu
-      initContacts.innerHTML += `
+			lastInitial = currentInitial; // Aktualisiere den letzten Großbuchstaben
+		}
+
+		// Füge den Kontakt in der entsprechenden Gruppe hinzu
+		initContacts.innerHTML += `
         <div class="contactCard" id='contactCard${i}' onclick='openContactCard(${i})'>
           <div class="monogramCircle" style="background-color: ${getRandomColor(i)}">
             <span class="mongram">${extractCapitalLetters(contact.name)}</span>
@@ -66,32 +63,31 @@ let contacts = [
           </div>
         </div>
       `;
-    };
-  }
-
-  function getRandomColor(k) {
-    // Erzeugt eine zufällige Farbe im Hex-Format
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    contacts[k].color = color;
-    return color;
-    
+	}
 }
 
-function openContactCard(i){
-    let contactOverview = document.querySelector('.contactOverview');
-    for (let j = 0; j < contacts.length; j++) {
-        const contact = contacts[j];
-        let contactCard = document.querySelector(`#contactCard${j}`);
-        contactCard.style.backgroundColor = "#FFFFFF";
-    }
-    let contactCard = document.querySelector(`#contactCard${i}`);
-    contactCard.style.backgroundColor = "#2A3647";
-    contactOverview.innerHTML = '';
-    contactOverview.innerHTML = `
+function getRandomColor(k) {
+	// Erzeugt eine zufällige Farbe im Hex-Format
+	const letters = '0123456789ABCDEF';
+	let color = '#';
+	for (let i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	contacts[k].color = color;
+	return color;
+}
+
+function openContactCard(i) {
+	let contactOverview = document.querySelector('.contactOverview');
+	for (let j = 0; j < contacts.length; j++) {
+		const contact = contacts[j];
+		let contactCard = document.querySelector(`#contactCard${j}`);
+		contactCard.style.backgroundColor = '#FFFFFF';
+	}
+	let contactCard = document.querySelector(`#contactCard${i}`);
+	contactCard.style.backgroundColor = '#2A3647';
+	contactOverview.innerHTML = '';
+	contactOverview.innerHTML = `
             <div class="nameContainer">
 				<div class="inicialeCircle"  style="background-color: ${contacts[i].color}">
 					<span class="inicial">${extractCapitalLetters(contacts[i].name)}</span>
@@ -135,15 +131,19 @@ function openContactCard(i){
 				</div>
 			</div>
     `;
-    contactOverview.classList.add('contactOverviewTransition');
-    contactOverview.classList.remove('contactOverviewTransitionRemove');
+	contactOverview.classList.add('contactOverviewTransition');
+	contactOverview.classList.remove('contactOverviewTransitionRemove');
 }
 
+<<<<<<< HEAD
 function addNewContact(){
   document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
   document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+=======
+function addNewContact() {
+	alert('uhsdg');
+>>>>>>> 171c0efb0bad2e337dbcbfb943022ef5b0b993cd
 }
-
 
 /*
 <div class="nameContainer">
@@ -189,5 +189,3 @@ function addNewContact(){
 				</div>
 			</div>
 */
-  
-  
