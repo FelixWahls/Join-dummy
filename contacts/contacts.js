@@ -59,7 +59,7 @@ function initContactlist() {
           </div>
           <div class="contactDetails">
             <div>
-              <span class="contactName">${contact.name}</span>
+              <span class="contactName" id="contactName${i}">${contact.name}</span>
             </div>
             <div>
               <span class="contactMail">${contact.email}</span>
@@ -87,10 +87,12 @@ function getRandomColor(k) {
 
 function openContactCard(i) {
   let contactOverview = document.querySelector(".contactOverview");
-  //document.querySelector('.contactName').style.color = 'white';      !!!!!!!!!!!!!!!!!!!!
+        
   for (let j = 0; j < contacts.length; j++) {
     const contact = contacts[j];
     let contactCard = document.querySelector(`#contactCard${j}`);
+    document.querySelector(`#contactName${j}`).style.color = 'black';
+    document.querySelector(`#contactName${i}`).style.color = '#FFFFFF';
     contactCard.style.backgroundColor = "#FFFFFF";
   }
   let contactCard = document.querySelector(`#contactCard${i}`);
@@ -147,21 +149,13 @@ function openContactCard(i) {
 function openAddNewContactWindow() {
   //document.body.style.filter = "grayscale(40%)";
   //document.getElementById('addNewContactContainer').style.filter = "grayscale(0%)";
-  document
-    .getElementById("addNewContactContainer")
-    .classList.add("addNewContactContainerTransition");
-  document
-    .getElementById("addNewContactContainer")
-    .classList.remove("addNewContactContainerTransitionRemove");
+  document.getElementById("addNewContactContainer").classList.add("addNewContactContainerTransition");
+  document.getElementById("addNewContactContainer").classList.remove("addNewContactContainerTransitionRemove");
 }
 
 function closeAddNewContactWindow() {
-  document
-    .getElementById("addNewContactContainer")
-    .classList.add("addNewContactContainerTransitionRemove");
-  document
-    .getElementById("addNewContactContainer")
-    .classList.remove("addNewContactContainerTransition");
+  document.getElementById("addNewContactContainer").classList.add("addNewContactContainerTransitionRemove");
+  document.getElementById("addNewContactContainer").classList.remove("addNewContactContainerTransition");
 }
 
 function addNewContact(event) {
@@ -199,14 +193,9 @@ function cancelInputValue() {
 }
 
 function openEditContactWindow(i) {
-  document
-    .getElementById("editContactContainer")
-    .classList.add("addNewContactContainerTransition");
-  document
-    .getElementById("editContactContainer")
-    .classList.remove("addNewContactContainerTransitionRemove");
-  document.querySelector("#imageColor").style.backgroundColor =
-    contacts[i].color;
+  document.getElementById("editContactContainer").classList.add("addNewContactContainerTransition");
+  document.getElementById("editContactContainer").classList.remove("addNewContactContainerTransitionRemove");
+  document.querySelector("#imageColor").style.backgroundColor = contacts[i].color;
   document.querySelector("#ContactInicial").innerHTML = contacts[i].capitals;
   document.querySelector(".nameEditContainer").value = contacts[i].name;
   document.querySelector(".emailEditContainer").value = contacts[i].email;
@@ -215,12 +204,8 @@ function openEditContactWindow(i) {
 }
 
 function closeEditContactWindow() {
-  document
-    .getElementById("editContactContainer")
-    .classList.remove("addNewContactContainerTransition");
-  document
-    .getElementById("editContactContainer")
-    .classList.add("addNewContactContainerTransitionRemove");
+  document.getElementById("editContactContainer").classList.remove("addNewContactContainerTransition");
+  document.getElementById("editContactContainer").classList.add("addNewContactContainerTransitionRemove");
   currentContact = 0;
 }
 
@@ -235,12 +220,8 @@ function editContact(event) {
   event.preventDefault();
   contacts[currentContact].name =
     document.querySelector(".nameEditContainer").value;
-  contacts[currentContact].email = document.querySelector(
-    ".emailEditContainer"
-  ).value;
-  contacts[currentContact].telefon = document.querySelector(
-    ".phoneEditContainer"
-  ).value;
+  contacts[currentContact].email = document.querySelector(".emailEditContainer").value;
+  contacts[currentContact].telefon = document.querySelector(".phoneEditContainer").value;
   initContactlist();
   closeEditContactWindow();
   openContactCard(currentContact);
