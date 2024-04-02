@@ -189,6 +189,7 @@ function openEditContactWindow(i){
   document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
   document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
   document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
+  document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
   document.querySelector('.nameEditContainer').value = contacts[i].name;
   document.querySelector('.emailEditContainer').value = contacts[i].email;
   document.querySelector('.phoneEditContainer').value = contacts[i].telefon;
