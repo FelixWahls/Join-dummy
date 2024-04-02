@@ -765,6 +765,52 @@ input::placeholder {
 	cursor: pointer;
 }
 
+.cancelButtonContainer:hover {
+	width: 126px;
+	height: 56px;
+	padding: 16px;
+	gap: 4px;
+	border-radius: 10px;
+	border: 1px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid #2a3647;
+	cursor: pointer;
+    filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
+		brightness(97%) contrast(88%);
+}
+
+.deleteContainer {
+	width: 126px;
+	height: 56px;
+	padding: 16px;
+	gap: 4px;
+	border-radius: 10px;
+	border: 1px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #2a3647;
+	cursor: pointer;
+}
+
+.deleteContainer:hover {
+	width: 126px;
+	height: 56px;
+	padding: 16px;
+	gap: 4px;
+	border-radius: 10px;
+	border: 1px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #007cee;
+	cursor: pointer;
+    filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
+		brightness(97%) contrast(88%);
+}
+
 .cancel {
 	width: 66px;
 	height: 24px;
@@ -788,6 +834,39 @@ input::placeholder {
 	gap: 4px;
 	border-radius: 10px;
 	background: #2a3647;
+	cursor: pointer;
+}
+
+.createButtonContainer:hover {
+	width: 214px;
+	height: 57px;
+	padding: 16px;
+	gap: 4px;
+	border-radius: 10px;
+	background: #007cee;
+    border: none;
+	cursor: pointer;
+}
+
+.saveButtonContainer {
+	width: 126px;
+	height: 57px;
+	padding: 16px;
+	gap: 4px;
+	border-radius: 10px;
+	background: #2a3647;
+    border: none;
+	cursor: pointer;
+}
+
+.saveButtonContainer:hover {
+	width: 126px;
+	height: 57px;
+	padding: 16px;
+	gap: 4px;
+	border-radius: 10px;
+    border: none;
+	background: #007cee;
 	cursor: pointer;
 }
 
