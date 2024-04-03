@@ -215,6 +215,12 @@ h1 {
 	background-image: url(../img/done-img.png);
 }
 
+@media (max-width: 1250px) {
+	.main-content {
+		margin: 0 8px 80px 8px;
+	}
+}
+
 @media (max-width: 1100px) {
 	.main-tasks-container {
 		width: auto;

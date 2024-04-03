@@ -115,13 +115,20 @@ function deactivateInput() {
 
 	addSubtask.classList.remove('d-none');
 	subtasksInputActions.classList.add('d-none');
+	document.querySelector('#subtask-input').value = '';
 }
 
 document.addEventListener('click', function (event) {
 	const clickInsideInput = document.getElementById('subtask-input').contains(event.target);
-	const clickOnCloseImage = event.target.classList.contains('submit-input');
 
-	if (!clickInsideInput && !clickOnCloseImage) {
+	if (!clickInsideInput) {
 		deactivateInput();
 	}
 });
+
+function submitSubtask() {
+	let subtaskContent = document.querySelector('#subtask-input').value;
+	subtasks.push(subtaskContent);
+	document.querySelector('#subtask-input').value = '';
+	renderSubtasks();
+}

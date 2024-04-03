@@ -15,3 +15,26 @@ function createUserHtml(user, i) {
 		</div>
     `;
 }
+
+function renderSubtasks() {
+	let subtaskList = document.querySelector('#subtask-container');
+	subtaskList.innerHTML = '';
+	for (let i = 0; i < subtasks.length; i++) {
+		const element = subtasks[i];
+		subtaskList.innerHTML += /*html*/ `
+            <li
+				id="todo-id-${i}"
+				class="todo-subtask d-flex"
+				ondblclick="editSubtask(${i})">
+				<p>${element}</p>
+				<div class="subtask-imgs d-flex align-c">
+					<img
+						src="../img/check-blue.png"
+						class="subtask-actions" />
+					<span class="vertical-line-sub"></span>
+					<img src="../img/delete.png" class="subtask-actions" />
+				</div>
+			</li>
+        `;
+	}
+}

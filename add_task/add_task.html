@@ -106,26 +106,13 @@
 									class="d-flex align-c add-subtasks-btn d-none">
 									<img
 										src="../img/check-blue.png"
-										class="subtask-actions submit-input" />
+										class="subtask-actions submit-input"
+										onclick="submitSubtask()" />
 									<span class="vertical-line-sub"></span>
 									<img src="../img/close.png" class="subtask-actions" />
 								</div>
 							</div>
-							<ul id="subtask-container">
-								<li
-									id="todo-id-"
-									class="todo-subtask d-flex"
-									ondblclick="editSubtask()">
-									<p>Contact Form</p>
-									<div class="subtask-imgs d-flex align-c">
-										<img
-											src="../img/check-blue.png"
-											class="subtask-actions d-" />
-										<span class="vertical-line-sub"></span>
-										<img src="../img/delete.png" class="subtask-actions" />
-									</div>
-								</li>
-							</ul>
+							<ul id="subtask-container"></ul>
 						</div>
 					</div>
 				</div>
