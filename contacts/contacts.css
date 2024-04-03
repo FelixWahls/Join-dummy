@@ -177,6 +177,59 @@
 	color: #007cee;
 }
 
+.scrollbar {
+	width: 24px;
+	height: 100%;
+	left: 432px;
+	gap: 0px;
+}
+
+.arrowUp {
+	width: 8px;
+	height: 4px;
+	top: 20px;
+	left: 8px;
+	gap: 0px;
+	color: #a8a8a8;
+	cursor: pointer;
+}
+
+.arrowDown {
+	width: 8px;
+	height: 4px;
+	top: 908px;
+	left: 17px;
+	gap: 0px;
+	color: #a8a8a8;
+	cursor: pointer;
+}
+
+.scrollLine {
+	width: 0px;
+	height: 53px;
+	top: 77px;
+	left: 13px;
+	gap: 0px;
+	border: 4px solid #a8a8a8;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.arrowUpContainer {
+	position: fixed;
+	top: 92px;
+}
+
+.scrollLineContainer {
+	position: fixed;
+	top: 115px;
+}
+
+.arrowDownContainer {
+	position: fixed;
+	bottom: 5px;
+}
+
 .contactsTitle {
 	position: fixed;
 	width: 569px;
@@ -879,39 +932,66 @@ color: #FFFFFF;
 
 /*Responsiv*/
 
+@media(max-width:1350px){
+	.nameContainer {
+		gap: 20px;
+		justify-content: flex-start;
+	}
+	.inicialeCircle {
+		width: 90px;
+		height: 90px;
+	}
+	.inicial {
+		font-size: 28px;
+	}
+	.fullname {
+		font-size: 34px;
+	}
+	.name {
+		margin-bottom: 0;
+	}
+	.title {
+		font-size: 50px;
+	}
+	.contactsTitle {
+		gap: 20px;
+	}
+	.subtitle {
+		font-size: 21px;
+	}
+}
+
 @media(max-width:1250px){
     .contactOverview {
+        left: 500px;
+    }
+	.contactsTitle {
+        left: 500px;
+    }
+}
+
+@media(max-width:850px){
+	.inicialeCircle {
+		width: 70px;
+		height: 70px;
+	}
+	.inicial {
+		font-size: 22px;
+	}
+	.fullname {
+		font-size: 30px;
+	}
+}
+
+@media(max-width:960px){
+	.contactOverview {
         display: none;
     }
-
-    .contactsTitle {
-        display: none;
+	.contactsTitle {
+		display: none;
     }
 }
 
 @media(max-width:500px){
-    .main-content{
-        padding: 0;
-   }
-    .addContactsBtnDiv {
-        width: 100%;
-        padding: 22.5px 52px 22.5px 52px;
-    }
-    .addContactBtn {
-        width: 100%;
-        padding: 0px;
-    }
-    .addPersonToListIcon {
-        width: 26.33px;
-        height: 20.91px;
-        margin-left: 5px;
-        color: #d9d9d9;
-    }
-    .partingLine {
-        width: 75%;
-    }
-    .contactList {
-        width: 150%;
-    }
     
 }
