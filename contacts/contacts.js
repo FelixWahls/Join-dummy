@@ -23,7 +23,7 @@ function extractCapitalLetters(name) {
 
 function initContactlist() {
   let initContacts = document.querySelector("#initContacts");
-  initContacts.innerHTML = "";
+  //initContacts.innerHTML = "";
   let lastInitial = null;
 
   // Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
@@ -231,4 +231,8 @@ function editContact(event) {
   initContactlist();
   closeEditContactWindow();
   openContactCard(currentContact);
+}
+
+function openAddNewContactRespWindow(){
+  alert('adgh');
 }
