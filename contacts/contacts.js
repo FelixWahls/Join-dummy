@@ -52,7 +52,9 @@ function initContactlist() {
     // Füge den Kontakt in der entsprechenden Gruppe hinzu
     initContacts.innerHTML += `
         <div class="contactCard" id='contactCard${i}' onclick='openContactCard(${i})'>
-          <div class="monogramCircle" style="background-color: ${getRandomColor(i)}">
+          <div class="monogramCircle" style="background-color: ${getRandomColor(
+            i
+          )}">
             <span class="mongram">${extractCapitalLetters(contact.name)}</span>
           </div>
           <div class="contactDetails">
@@ -157,6 +159,7 @@ function closeAddNewContactWindow() {
 }
 
 function addNewContact(event) {
+  // Verhindern, dass das Formular auf herkömmliche Weise gesendet wird
   event.preventDefault();
 
   let name = document.querySelector(".nameInputContainer").value;
@@ -170,7 +173,7 @@ function addNewContact(event) {
     color: "",
     capitals: "",
   };
-  //contacts.push(newContact);
+  contacts.push(newContact);
   initContactlist();
   closeAddNewContactWindow();
   cancelInputValue();

@@ -888,3 +888,15 @@ input::placeholder {
 	left: 178.26px;
 	color: #ffffff;
 }
+
+/*Responsiv*/
+
+@media(max-width:1250px){
+    .contactOverview {
+        display: none;
+    }
+
+    .contactsTitle {
+        display: none;
+    }
+}
