@@ -1,10 +1,9 @@
 let activePrio = '../img/prio-medium.png';
+const form = document.getElementById('add-task-form');
 
 /**
  * prevents the page from reloading when pressing the button
  */
-const form = document.getElementById('add-task-form');
-
 form.addEventListener('submit', function (event) {
 	event.preventDefault();
 });
@@ -101,3 +100,28 @@ function setPrioImage(priority) {
 		}
 	}
 }
+
+function activateInput() {
+	let addSubtask = document.querySelector('#add-subtask');
+	let subtasksInputActions = document.querySelector('#subtask-input-actions');
+
+	addSubtask.classList.add('d-none');
+	subtasksInputActions.classList.remove('d-none');
+}
+
+function deactivateInput() {
+	let addSubtask = document.querySelector('#add-subtask');
+	let subtasksInputActions = document.querySelector('#subtask-input-actions');
+
+	addSubtask.classList.remove('d-none');
+	subtasksInputActions.classList.add('d-none');
+}
+
+document.addEventListener('click', function (event) {
+	const clickInsideInput = document.getElementById('subtask-input').contains(event.target);
+	const clickOnCloseImage = event.target.classList.contains('submit-input');
+
+	if (!clickInsideInput && !clickOnCloseImage) {
+		deactivateInput();
+	}
+});

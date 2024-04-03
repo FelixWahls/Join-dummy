@@ -1,13 +1,13 @@
-.d-none {
-	display: none;
-}
-
 .d-flex {
 	display: flex;
 }
 
 .align-c {
 	align-items: center;
+}
+
+.d-none {
+	display: none;
 }
 
 h1 {
@@ -58,7 +58,6 @@ textarea {
 }
 
 .task-container {
-	display: flex;
 	gap: 48px;
 }
 
@@ -70,7 +69,6 @@ textarea {
 .task-col {
 	max-width: 440px;
 	width: 100%;
-	display: flex;
 	flex-direction: column;
 	flex: 1;
 }
@@ -79,7 +77,7 @@ textarea {
 	position: relative;
 }
 
-.input-container img {
+.add-subtasks-btn {
 	position: absolute;
 	right: 16px;
 	top: calc(50% - 12px);
@@ -116,6 +114,10 @@ textarea:focus-visible {
 	border-radius: 10px;
 	border: 1px solid #d1d1d1;
 	position: relative;
+}
+
+#category-input,
+#due-date-input {
 	cursor: pointer;
 }
 
@@ -149,13 +151,11 @@ textarea:focus-visible {
 }
 
 #prio-container {
-	display: flex;
 	gap: 16px;
 	max-width: 440px;
 }
 
 .prio {
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 16px 10px;
@@ -194,7 +194,6 @@ textarea:focus-visible {
 /* button section */
 
 .bottom-section {
-	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
 	margin-top: 100px;
@@ -203,7 +202,6 @@ textarea:focus-visible {
 }
 
 .add-task-btns {
-	display: flex;
 	gap: 16px;
 	justify-content: flex-end;
 }
@@ -221,11 +219,6 @@ button {
 
 button:hover {
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-}
-
-button img {
-	width: 24px;
-	height: 24px;
 }
 
 .clear-field {
@@ -286,8 +279,6 @@ button img {
 	color: red;
 }
 
-/* error handeling */
-
 /* user-list */
 
 #user-list {
@@ -317,7 +308,6 @@ button img {
 
 .user-icon {
 	font-size: 12px;
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 42px;
@@ -346,4 +336,55 @@ button img {
 	color: #ff8190;
 	font-size: 12px;
 	margin-top: -6px;
+}
+
+/* subtask-container */
+
+.todo-subtask {
+	align-items: center;
+	justify-content: space-between;
+	padding: 6px 16px;
+	height: 32px;
+	position: relative;
+	max-width: 440px;
+	border-radius: 10px;
+}
+
+.todo-subtask:hover {
+	background-color: #eeeeee;
+}
+
+.subtask-imgs {
+	visibility: hidden;
+}
+
+.todo-subtask:hover .subtask-imgs {
+	visibility: visible;
+}
+
+.todo-subtask::before {
+	content: '•';
+	position: absolute;
+	top: calc(50% - 11px);
+}
+
+li p {
+	margin-left: 16px;
+}
+
+.vertical-line-sub {
+	height: 24px;
+	width: 1px;
+	background-color: #a8a8a8;
+	margin: 0 6px;
+}
+
+.subtask-imgs {
+	justify-content: flex-end;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.subtask-actions:hover {
+	scale: 105%;
 }
