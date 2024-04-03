@@ -177,6 +177,7 @@ function addNewContact(event) {
   initContactlist();
   closeAddNewContactWindow();
   cancelInputValue();
+  document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
   document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
   setTimeout(() => {
     document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
