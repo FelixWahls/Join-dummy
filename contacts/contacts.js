@@ -177,6 +177,11 @@ function addNewContact(event) {
   initContactlist();
   closeAddNewContactWindow();
   cancelInputValue();
+  document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
+  setTimeout(() => {
+    document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
+    document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
+  }, 1500);
   return false;
 }
 
