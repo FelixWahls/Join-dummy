@@ -890,8 +890,11 @@ color: #FFFFFF;
 }
 
 @media(max-width:500px){
+    .main-content{
+        padding: 0;
+   }
     .addContactsBtnDiv {
-        width: 100vw;
+        width: 100%;
         padding: 22.5px 52px 22.5px 52px;
     }
     .addContactBtn {
@@ -905,7 +908,7 @@ color: #FFFFFF;
         color: #d9d9d9;
     }
     .partingLine {
-        width: 75vw;
+        width: 75%;
     }
     .contactList {
         width: 150%;
