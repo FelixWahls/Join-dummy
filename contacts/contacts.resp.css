@@ -1,3 +1,8 @@
+#initContacts {
+  display: none;
+}
+
+
 .CreateResponseContainer {
   position: fixed;
   width: 326px;
@@ -331,6 +336,201 @@ line-height: 24px;
 text-align: left;
 color: #FFFFFF;
 }
+
+.contactRespHeaderCont {
+width: 213px;
+height: 104px;
+top: 128px;
+left: 16px;
+gap: 16px;
+position: fixed;
+}
+
+.contactRespHeader {
+width: 213px;
+height: 88px;
+gap: 8px;
+}
+
+.contactsRespHeaderTitle {
+width: 211px;
+height: 56px;
+font-size: 47px;
+font-weight: 700;
+line-height: 56.4px;
+text-align: left;
+color: #000000;
+display: inline-block;
+margin-bottom: 8px;
+}
+
+.contactsRespHeaderSubtitle {
+width: 175px;
+height: 24px;
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #2A3647;
+display: inline-block;
+margin-bottom: 14px;
+}
+
+.contactsRespHeaderBlueLine {
+width: 90px;
+height: 0px;
+border: 3px;  
+border: 3px solid #29ABE2
+}
+
+.blueArrowLeftContainer {
+width: 32px;
+height: 32px;
+top: 128px;
+left: 380px;
+position: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+}
+
+.blueArrowLeft {
+width: 24.6px;
+height: 23.92px;
+top: 6.49px;
+left: 6.15px;
+}
+
+.contactDetailsRespCont {
+width: 330px;
+height: 274px;
+top: 280px;
+left: 16px;
+gap: 21px;
+position: fixed;
+}
+
+.contactDetailsRespHeader {
+width: 320px;
+height: 80px;
+gap: 20px;
+display: flex;
+align-items: center;
+}
+
+.inicialCircleRespCont {
+width: 80px;
+height: 80px;
+gap: 10px;
+border-radius: 70px;
+border: 3px;
+background: #FFFFFF;
+border: 3px solid #FFFFFF;
+box-shadow: 0px 0px 4px 0px #0000001A;
+}
+
+.inicialCircleResp {
+width: 80px;
+height: 80px;
+}
+
+.inicialCircleRespLetters {       /*.innerHTML Js*/
+font-size: 27px;
+font-weight: 400;
+line-height: 32.4px;
+text-align: center;
+position: fixed;
+color: #FFFFFF;
+}
+
+.inicialCircleGroundResp {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+background-color:  #FFC700;;  /*JS*/
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.contactNameRespCont {
+width: 220px;
+height: 43px;
+gap: 13px;
+}
+
+.contactNameResp {
+width: 220px;
+height: 43px;
+gap: 5px;
+}
+
+.contactNameTextResp {
+width: 220px;
+height: 43px;
+font-size: 36px;
+font-weight: 700;
+line-height: 43.2px;
+text-align: left;
+color: #000000;
+}
+
+.contInfTitleCont {
+width: 330px;
+height: 24px;
+gap: 30px;
+position: fixed;
+margin-top: 20px;
+}
+
+.contInfTitle {
+width: 207px;
+height: 24px;
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+}
+
+.detailsFieldContactResp {
+width: 146px;
+height: 128px;
+gap: 22px;
+margin-top: 60px;
+}
+
+.emailFieldContactResp {
+width: 124px;
+height: 53px;
+gap: 15px;
+}
+
+.emailContactRespTitle {
+width: 43px;
+height: 19px;
+font-size: 16px;
+font-weight: 700;
+line-height: 19.2px;
+text-align: left;
+}
+
+.emailContactResp {
+width: 150px;
+height: 19px;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+color: #007CEE;
+display: inline-block;
+margin-top: 13px;
+}
+
+.marginTop {
+margin-top: 14px;
+}
+
 
 
 

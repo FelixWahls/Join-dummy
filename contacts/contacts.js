@@ -274,6 +274,6 @@ function addNewContactResp(event) {
   setTimeout(() => {
     document.querySelector('.createResponseContainerResponsiv').classList.remove('createResponseContainerResponsivTransition');
   }, 1500);
-  document.querySelector('#initContacts').innerHTML = '';
+  document.querySelector('#initContacts').style.display = 'none';
   return false;
 }
