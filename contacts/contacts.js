@@ -102,6 +102,8 @@ function openContactCard(i) {
   if(window.innerWidth > 960){
     contactCard.style.backgroundColor = "#2A3647";
   }
+
+  
   
   contactOverview.innerHTML = "";
   contactOverview.innerHTML = `
@@ -287,10 +289,22 @@ function addNewContactResp(event) {
   }, 1500);
   document.querySelector('#initContacts').style.display = 'none';
   document.querySelector('.contRespWindow').style.display = 'flex';
+  document.querySelector('.addNewContactIconContResp').style.display = 'none'
+  for (let i = 0; i < contacts.length; i++) {
+    if(name == contacts[i].name){
+      document.querySelector('.inicialCircleRespLetters').innerHTML = contacts[i].capitals;
+  document.querySelector('.contactNameTextResp').innerHTML = contacts[i].name;
+  document.querySelector('.emailContactResp').innerHTML = contacts[i].email;
+  document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
+  document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
+    }
+    
+  }
   return false;
 }
 
 function closeContactDetailsResp(){
   document.querySelector('#initContacts').style.display = 'block';
   document.querySelector('.contRespWindow').style.display = 'none';
+  document.querySelector('.addNewContactIconContResp').style.display = 'flex';
 }

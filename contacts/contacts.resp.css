@@ -435,7 +435,7 @@ width: 80px;
 height: 80px;
 }
 
-.inicialCircleRespLetters {       /*.innerHTML Js*/
+.inicialCircleRespLetters {       
 font-size: 27px;
 font-weight: 400;
 line-height: 32.4px;
@@ -448,7 +448,7 @@ color: #FFFFFF;
 width: 80px;
 height: 80px;
 border-radius: 50%;
-background-color:  #FFC700;;  /*JS*/
+background-color:  #FFC700;;  
 display: flex;
 justify-content: center;
 align-items: center;
@@ -474,6 +474,7 @@ font-weight: 700;
 line-height: 43.2px;
 text-align: left;
 color: #000000;
+white-space: nowrap;
 }
 
 .contInfTitleCont {
@@ -526,6 +527,17 @@ color: #007CEE;
 display: inline-block;
 margin-top: 13px;
 }
+
+.phoneContactResp {
+  width: 150px;
+  height: 19px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  display: inline-block;
+  margin-top: 13px;
+  }
 
 .marginTop {
 margin-top: 14px;
