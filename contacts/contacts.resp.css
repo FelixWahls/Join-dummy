@@ -167,7 +167,7 @@ border: 3px solid #29ABE2;
 }
 
 .addNewContactRespImageContainer {
-position: fixed;
+    position: relative;
 width: 120px;
 height: 120px;
 top: 292px;
@@ -189,13 +189,22 @@ background: #D1D1D1;
 display: flex;
 justify-content: center;
 align-items: center;
+position: fixed;
+}
+
+.addNewContactRespImageSubContainer2 {
+width: 64px;
+height: 64px;
+position: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .addNewContactRespImage {
-width: 64px;
-height: 64px;
-top: 28px;
-left: 28px;
+width: 42.67px;
+height: 42.67px;
+position: relative;
 }
 
 /*Responsiv*/
