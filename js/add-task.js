@@ -1,4 +1,3 @@
-let activePrio = '../img/prio-medium.png';
 const form = document.getElementById('add-task-form');
 
 /**
@@ -166,4 +165,32 @@ function submitChange(i) {
 	let newSubtaskContent = document.querySelector(`#edit-subtask-${i}`).value;
 	subtasks[i] = newSubtaskContent;
 	renderSubtasks();
+}
+
+function createTask() {
+	titleInput = document.querySelector('#title-input').value;
+	descriptionInput = document.querySelector('#description-input').value;
+	dateInput = document.querySelector('#due-date-input').value;
+	categoryInput = getCategory();
+	pushTask();
+}
+
+function getCategory() {
+	selectElement = document.querySelector('#category-input');
+	output = selectElement.value;
+	return output;
+}
+
+function pushTask() {
+	let newTask = {
+		title: titleInput,
+		description: descriptionInput,
+		users: selectedUsers,
+		date: dateInput,
+		priority: activePrio,
+		category: categoryInput,
+		subtasks: subtasks,
+	};
+	allTasks.push(newTask);
+	console.log(allTasks);
 }

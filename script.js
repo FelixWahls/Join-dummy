@@ -91,6 +91,8 @@ const prioButtons = [
 	},
 ];
 
+let allTasks = [];
+
 let titleInput;
 let descriptionInput;
 let selectedUsers = [];
