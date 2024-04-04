@@ -292,15 +292,19 @@ function addNewContactResp(event) {
   document.querySelector('.addNewContactIconContResp').style.display = 'none'
   for (let i = 0; i < contacts.length; i++) {
     if(name == contacts[i].name){
-      document.querySelector('.inicialCircleRespLetters').innerHTML = contacts[i].capitals;
-  document.querySelector('.contactNameTextResp').innerHTML = contacts[i].name;
-  document.querySelector('.emailContactResp').innerHTML = contacts[i].email;
-  document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
-  document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
+      openContactCardResp(i)
     }
     
   }
   return false;
+}
+
+function openContactCardResp(i){
+  document.querySelector('.inicialCircleRespLetters').innerHTML = contacts[i].capitals;
+  document.querySelector('.contactNameTextResp').innerHTML = contacts[i].name;
+  document.querySelector('.emailContactResp').innerHTML = contacts[i].email;
+  document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
+  document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
 }
 
 function closeContactDetailsResp(){
