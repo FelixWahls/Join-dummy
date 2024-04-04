@@ -43,7 +43,7 @@ function renderUsers(userList) {
  */
 function selectedUser(i) {
 	let currentUser = document.querySelector(`#user${i}`);
-	let userCapitals = document.querySelector(`#user-capitals-${i}`);
+	let userCapitals = document.querySelector(`#user-capitals-${i}`).textContent;
 	let image = currentUser.querySelector('img');
 
 	if (!currentUser.classList.contains('active-user')) {
@@ -57,13 +57,19 @@ function setActiveUser(currentUser, userCapitals, image) {
 	currentUser.classList.add('active-user');
 	image.src = '../img/checkbox-check-white.png';
 	selectedUsers.push(userCapitals);
+	console.log(userCapitals);
 	renderSelectedUsers();
 }
 
 function deactivateUser(currentUser, i, image) {
 	currentUser.classList.remove('active-user');
 	image.src = '../img/Checkbox.png';
-	selectedUsers.splice(i, 1);
+	const index = selectedUsers.indexOf(
+		currentUser.querySelector(`#user-capitals-${i}`).textContent
+	);
+	if (index !== -1) {
+		selectedUsers.splice(index, 1);
+	}
 	renderSelectedUsers();
 }
 

@@ -196,7 +196,7 @@ textarea:focus-visible {
 .bottom-section {
 	justify-content: space-between;
 	align-items: flex-end;
-	margin-top: 100px;
+	margin-top: 64px;
 	margin-right: 96px;
 	margin-bottom: 16px;
 }

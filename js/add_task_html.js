@@ -4,12 +4,12 @@
  * @param {number} i
  * @returns
  */
-function createUserHtml(user, i) {
+function createUserHtml(contact, i) {
 	return /*html*/ `
         <div class="single-user d-flex align-c" onclick="selectedUser(${i})" id="user${i}">
 			<div class="user-info d-flex align-c">
-				<div class="user-icon d-flex" id="user-capitals-${i}">${user.capitals}</div>
-				<div class="user-name">${user.name}</div>
+				<div class="user-icon d-flex" id="user-capitals-${i}">${contact.capitals}</div>
+				<div class="user-name">${contact.name}</div>
 			</div>
 			<img src="../img/Checkbox.png" />
 		</div>
@@ -17,17 +17,17 @@ function createUserHtml(user, i) {
 }
 
 function renderSelectedUsers() {
-	let selectedHtml = document.querySelector('#selected-users');
-	selectedHtml.innerHTML = '';
+	let selectedContainer = document.querySelector('#selected-users');
+	selectedContainer.innerHTML = '';
 	if (selectedUsers.length > 0) {
 		for (let i = 0; i < selectedUsers.length; i++) {
 			const element = selectedUsers[i];
-			selectedHtml.innerHTML += /*html*/ `
-            				<div class="user-icon d-flex" id="user-capitals-${i}"></div>
+			selectedContainer.innerHTML += /*html*/ `
+            				<div class="user-icon d-flex">${selectedUsers[i]}</div>
         `;
 		}
 	} else {
-		selectedHtml = '';
+		selectedContainer = '';
 	}
 }
 
