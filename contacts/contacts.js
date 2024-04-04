@@ -234,5 +234,11 @@ function editContact(event) {
 }
 
 function openAddNewContactRespWindow(){
-  alert('adgh');
+  document.getElementById("addNewContactRespContainer").classList.add("addNewContactRespContainerTransition");
+  document.getElementById("addNewContactRespContainer").classList.remove("addNewContactRespContainerTransitionRemove");
+}
+
+function closeAddNewContactRespWindow(){
+  document.getElementById("addNewContactRespContainer").classList.add("addNewContactRespContainerTransitionRemove");
+  document.getElementById("addNewContactRespContainer").classList.remove("addNewContactRespContainerTransition");
 }
