@@ -70,11 +70,25 @@
   left: 13.33px;
 }
 
+.createIconAddNewContResp {
+width: 15.49px;
+height: 11.23px;
+z-index: 100;
+color: #FFFFFF;
+position: relative;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .addNewContactRespContainer{
 width: 396px;
 height: 760px;
 position: fixed;
-left: 40;
+left: 10;
 bottom: 0;
 margin-bottom: -3000px;
 gap: 49px;
@@ -96,13 +110,15 @@ background: #FFFFFF;
 .addNewContactRespCloseContainer {
 width: 24px;
 height: 24px;
-position: fixed;
+position: absolute;
 display: flex;
 justify-content: center;
 align-items: center;
 top: 24px;
 left: 348px;
 padding: 4px 0px 0px 0px;
+z-index: 100;
+cursor: pointer;
 }
 
 .AddNewContactRespCloseButton {
@@ -205,6 +221,76 @@ align-items: center;
 width: 42.67px;
 height: 42.67px;
 position: relative;
+}
+
+.addINewContWindowInputfields {
+width: 364px;
+height: 153px;
+top: 444px;
+left: 16px;
+gap: 15px;
+position: absolute;
+}
+
+.inputResp {
+width: 364px;
+height: 41px;
+margin-bottom: 16px;
+gap: 8px;
+padding: 13px 21px 13px 21px;
+gap: 10px;
+border-radius: 10px;
+border: 1px;
+border: 1px solid #D1D1D1;
+background-position: 324px;
+background-repeat: no-repeat;
+}
+
+.inputResp:focus {
+border: 1px solid #29ABE2;
+}
+
+.nameInputResp {
+background-image: url('../img/Person.png');
+background-size: 24px;
+}
+
+.emailInputResp {
+background-image: url('../img/Mail.png');
+background-size: 22px;
+}
+
+.phoneInputResp {
+background-image: url('../img/call.png');
+background-size: 18px;
+}
+
+.createButtonContainerAddNewContResp {
+width: 202px;
+height: 51px;
+top: 629px;
+left: 97px;
+padding: 18px 10px 18px 10px;
+gap: 4px;
+border-radius: 10px;
+background: #2A3647;
+position: absolute;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+}
+
+.createTextAddNewContResp {
+position: relative;
+width: 154px;
+height: 25px;
+font-size: 21px;
+font-weight: 700;
+line-height: 25.2px;
+text-align: left;
+color: #FFFFFF;
 }
 
 /*Responsiv*/
