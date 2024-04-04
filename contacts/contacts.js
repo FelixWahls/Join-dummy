@@ -266,6 +266,13 @@ function addNewContactResp(event) {
   contacts.push(newContact);
   initContactlist();
   closeAddNewContactRespWindow();
-  //cancelInputValue();
+  document.querySelector(".nameInputResp").value = '';
+  document.querySelector(".emailInputResp").value = '';
+  document.querySelector(".phoneInputResp").value = '';
+  
+  document.querySelector('.createResponseContainerResponsiv').classList.add('createResponseContainerResponsivTransition');
+  setTimeout(() => {
+    document.querySelector('.createResponseContainerResponsiv').classList.remove('createResponseContainerResponsivTransition');
+  }, 1500);
   return false;
 }
