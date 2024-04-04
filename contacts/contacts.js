@@ -1,5 +1,5 @@
 let currentContact = 0;
-
+let currentName = '';
 /**
  *
  * @param {string} name
@@ -189,6 +189,12 @@ function addNewContact(event) {
     document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
     document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
   }, 1500);
+  for (let k = 0; k < contacts.length; k++) {
+    if(name == contacts[k].name){
+      openContactCard(k);
+    }
+    
+  }
   return false;
 }
 
@@ -236,7 +242,12 @@ function editContact(event) {
   contacts[currentContact].telefon = document.querySelector(".phoneEditContainer").value;
   initContactlist();
   closeEditContactWindow();
-  openContactCard(currentContact);
+  for (let k = 0; k < contacts.length; k++) {
+    if( document.querySelector(".nameEditContainer").value == contacts[k].name){
+      openContactCard(k);
+    }
+    
+  }
 }
 
 function openAddNewContactRespWindow(){
