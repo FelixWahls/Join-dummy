@@ -275,5 +275,11 @@ function addNewContactResp(event) {
     document.querySelector('.createResponseContainerResponsiv').classList.remove('createResponseContainerResponsivTransition');
   }, 1500);
   document.querySelector('#initContacts').style.display = 'none';
+  document.querySelector('.contRespWindow').style.display = 'flex';
   return false;
+}
+
+function closeContactDetailsResp(){
+  document.querySelector('#initContacts').style.display = 'block';
+  document.querySelector('.contRespWindow').style.display = 'none';
 }
