@@ -73,7 +73,7 @@
 .createIconAddNewContResp {
 width: 15.49px;
 height: 11.23px;
-z-index: 100;
+z-index: 2000;
 color: #FFFFFF;
 position: relative;
 }

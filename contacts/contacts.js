@@ -23,7 +23,7 @@ function extractCapitalLetters(name) {
 
 function initContactlist() {
   let initContacts = document.querySelector("#initContacts");
-  //initContacts.innerHTML = "";
+  //initContacts.innerHTML = "";              !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   let lastInitial = null;
 
   // Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
@@ -241,4 +241,25 @@ function openAddNewContactRespWindow(){
 function closeAddNewContactRespWindow(){
   document.getElementById("addNewContactRespContainer").classList.add("addNewContactRespContainerTransitionRemove");
   document.getElementById("addNewContactRespContainer").classList.remove("addNewContactRespContainerTransition");
+}
+
+function addNewContactResp(event) {
+  event.preventDefault();
+
+  let name = document.querySelector(".nameInputResp").value;
+  let email = document.querySelector(".emailInputResp").value;
+  let phone = document.querySelector(".phoneInputResp").value;
+
+  let newContact = {
+    name: name,
+    email: email,
+    telefon: phone,
+    color: "",
+    capitals: "",
+  };
+  contacts.push(newContact);
+  initContactlist();
+  closeAddNewContactRespWindow();
+  //cancelInputValue();
+  return false;
 }

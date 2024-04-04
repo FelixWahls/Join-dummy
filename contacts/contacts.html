@@ -56,7 +56,7 @@
 								
 							</div>
 						</div>
-						<form>
+						<form  onsubmit="addNewContactResp(event)">
 							<div class="addINewContWindowInputfields">
 							
 								<input type="text" class="inputResp nameInputResp" placeholder="Name" required>
@@ -64,15 +64,15 @@
 								<input type="number" class="inputResp phoneInputResp" placeholder="Phone" required>
 	
 							</div>
-							<div class="createButtonContainerAddNewContResp">
+							<button class="createButtonContainerAddNewContResp">
 								<div class="center">
 									<span class="createTextAddNewContResp">Create contact</span>
 								</div>
-								<div class="center imageMargin">
-									<img scr="../img/check.png" class="createIconAddNewContResp">
+								<div>
+									<img src="../img/check.png" class="createIconAddNewContResp">
 								</div>
 								
-							</div>
+							</button>
 						</form>
 						
 					</div>
