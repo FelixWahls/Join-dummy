@@ -26,14 +26,16 @@ function renderSubtasks() {
 				id="todo-id-${i}"
 				class="todo-subtask d-flex"
 				ondblclick="editSubtask(${i})">
-				<p>${element}</p>
-				<div class="subtask-imgs d-flex align-c">
-					<img
-						src="../img/check-blue.png"
-						class="subtask-actions" />
-					<span class="vertical-line-sub"></span>
-					<img src="../img/delete.png" class="subtask-actions" />
-				</div>
+                <div class="d-flex align-c todo-subtask-container">
+                    <p>${element}</p>
+                    <div class="subtask-imgs d-flex align-c" id="subtask-edit-imgs">
+					    <img
+						    src="../img/edit.png"
+						    class="subtask-actions" />
+					    <span class="vertical-line-sub"></span>
+					    <img src="../img/delete.png" onclick="deleteSubtask(${i})" class="subtask-actions" />
+				    </div>
+                </div>
 			</li>
         `;
 	}
