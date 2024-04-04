@@ -132,3 +132,9 @@ function submitSubtask() {
 	document.querySelector('#subtask-input').value = '';
 	renderSubtasks();
 }
+
+function deleteSubtask(i) {
+	let subtask = document.querySelector(`#todo-id-${i}`);
+	subtasks.splice(subtask);
+	renderSubtasks();
+}

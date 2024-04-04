@@ -342,12 +342,16 @@ button:hover {
 
 .todo-subtask {
 	align-items: center;
-	justify-content: space-between;
 	padding: 6px 16px;
 	height: 32px;
 	position: relative;
 	max-width: 440px;
 	border-radius: 10px;
+}
+
+.todo-subtask-container {
+	justify-content: space-between;
+	width: 100%;
 }
 
 .todo-subtask:hover {
