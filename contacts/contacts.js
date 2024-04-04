@@ -23,7 +23,7 @@ function extractCapitalLetters(name) {
 
 function initContactlist() {
   let initContacts = document.querySelector("#initContacts");
-  //initContacts.innerHTML = "";              !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  initContacts.innerHTML = "";
   let lastInitial = null;
 
   // Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
@@ -91,12 +91,18 @@ function openContactCard(i) {
   for (let j = 0; j < contacts.length; j++) {
     const contact = contacts[j];
     let contactCard = document.querySelector(`#contactCard${j}`);
-    document.querySelector(`#contactName${j}`).style.color = 'black';
+    if(window.innerWidth > 960){
+      document.querySelector(`#contactName${j}`).style.color = 'black';
     document.querySelector(`#contactName${i}`).style.color = '#FFFFFF';
+    }
+    
     contactCard.style.backgroundColor = "#FFFFFF";
   }
   let contactCard = document.querySelector(`#contactCard${i}`);
-  contactCard.style.backgroundColor = "#2A3647";
+  if(window.innerWidth > 960){
+    contactCard.style.backgroundColor = "#2A3647";
+  }
+  
   contactOverview.innerHTML = "";
   contactOverview.innerHTML = `
             <div class="nameContainer">
