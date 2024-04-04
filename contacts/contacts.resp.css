@@ -366,6 +366,9 @@ color: #FFFFFF;
 }
 
 @media (max-width: 1250px) {
+    .contactList {
+        margin-top: -157px;
+    }
   .contactOverview {
     left: 500px;
   }
