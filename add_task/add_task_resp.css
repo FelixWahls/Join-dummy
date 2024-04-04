@@ -6,6 +6,12 @@
 		font-size: 18px;
 	}
 
+	.main-content {
+		margin: 0 0 80px 24px;
+		padding-right: 24px;
+		overflow: scroll;
+	}
+
 	.prio img {
 		width: 19px;
 	}
@@ -24,12 +30,16 @@
 }
 
 @media (max-width: 1200px) {
+	.main-content {
+		margin: 0;
+	}
+
 	.task-container {
 		flex-direction: column;
 	}
 
 	.task-col {
-		max-width: 880px;
+		max-width: 100%;
 	}
 
 	.mid-line {
@@ -92,10 +102,17 @@
 	.clear-field {
 		font-size: 16px;
 	}
+	.bottom-section {
+		margin-right: 0;
+	}
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
 	#prio-container {
+		flex-direction: column;
+	}
+
+	.add-task-btns {
 		flex-direction: column;
 	}
 }

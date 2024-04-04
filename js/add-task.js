@@ -1,4 +1,3 @@
-let activePrio = '../img/prio-medium.png';
 const form = document.getElementById('add-task-form');
 
 /**
@@ -42,22 +41,35 @@ function renderUsers(userList) {
  * @param {number} i
  */
 function selectedUser(i) {
-	let activeUser = document.querySelector(`#user${i}`);
-	let image = activeUser.querySelector('img');
+	let currentUser = document.querySelector(`#user${i}`);
+	let userCapitals = document.querySelector(`#user-capitals-${i}`).textContent;
+	let image = currentUser.querySelector('img');
 
-	if (!activeUser.classList.contains('active-user')) {
-		activeUser.classList.add('active-user');
-		image.src = '../img/checkbox-check-white.png';
+	if (!currentUser.classList.contains('active-user')) {
+		setActiveUser(currentUser, userCapitals, image);
 	} else {
-		activeUser.classList.remove('active-user');
-		image.src = '../img/Checkbox.png';
+		deactivateUser(currentUser, i, image);
 	}
-	renderUserSelection(activeUser);
 }
 
-function renderUserSelection() {
-	let capitalsHtml = document.getElementById('user-capitals').innerHTML;
-	console.log(capitalsHtml);
+function setActiveUser(currentUser, userCapitals, image) {
+	currentUser.classList.add('active-user');
+	image.src = '../img/checkbox-check-white.png';
+	selectedUsers.push(userCapitals);
+	console.log(userCapitals);
+	renderSelectedUsers();
+}
+
+function deactivateUser(currentUser, i, image) {
+	currentUser.classList.remove('active-user');
+	image.src = '../img/Checkbox.png';
+	const index = selectedUsers.indexOf(
+		currentUser.querySelector(`#user-capitals-${i}`).textContent
+	);
+	if (index !== -1) {
+		selectedUsers.splice(index, 1);
+	}
+	renderSelectedUsers();
 }
 
 function setPrio(priority) {
@@ -135,6 +147,50 @@ function submitSubtask() {
 
 function deleteSubtask(i) {
 	let subtask = document.querySelector(`#todo-id-${i}`);
-	subtasks.splice(subtask);
+	subtasks.splice(i, 1);
 	renderSubtasks();
+}
+
+function editSubtask(i) {
+	let subtaskContent = document.querySelector(`#subtask-element${i}`);
+	let editContainer = document.querySelector('#edit-subtask-container');
+	let subtaskEditInput = document.querySelector(`#edit-subtask-${i}`);
+	subtaskContent.classList.add('d-none');
+	editContainer.classList.remove('d-none');
+	document.getElementById(`edit-subtask-${i}`).focus();
+	subtaskEditInput.value = subtasks[i];
+}
+
+function submitChange(i) {
+	let newSubtaskContent = document.querySelector(`#edit-subtask-${i}`).value;
+	subtasks[i] = newSubtaskContent;
+	renderSubtasks();
+}
+
+function createTask() {
+	titleInput = document.querySelector('#title-input').value;
+	descriptionInput = document.querySelector('#description-input').value;
+	dateInput = document.querySelector('#due-date-input').value;
+	categoryInput = getCategory();
+	pushTask();
+}
+
+function getCategory() {
+	selectElement = document.querySelector('#category-input');
+	output = selectElement.value;
+	return output;
+}
+
+function pushTask() {
+	let newTask = {
+		title: titleInput,
+		description: descriptionInput,
+		users: selectedUsers,
+		date: dateInput,
+		priority: activePrio,
+		category: categoryInput,
+		subtasks: subtasks,
+	};
+	allTasks.push(newTask);
+	console.log(allTasks);
 }
