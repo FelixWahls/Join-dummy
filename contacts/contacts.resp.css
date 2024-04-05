@@ -105,6 +105,7 @@ background: #FFFFFF;
   border-radius: 30px;
   background-color: #FFFFFF;  
   position: fixed;
+  display: none;
 }
 
 .addNewContactRespContainerTransition {
@@ -601,6 +602,8 @@ top: 647px;
 left: 97.5px;
 gap: 20px;
 position: absolute;
+display: flex;
+justify-content: space-between;
 }
 
 .editContactRespDeleteBtnCont {
@@ -626,7 +629,62 @@ color: #2A3647;
 }
 
 .editContactRespEditBtnCont {
+width: 99px;
+height: 51px;
+padding: 18px 10px 18px 10px;
+gap: 4px;
+border-radius: 10px;
+background-color: #2A3647;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
+.editContactRespEditBtn {
+width: 51px;
+height: 25px;
+font-size: 21px;
+font-weight: 700;
+line-height: 25.2px;
+text-align: left;
+color: #FFFFFF;
+}
+
+.editContactRespCheckIconCont {
+width: 24px;
+height: 24px;
+}
+
+.editContactRespCheckIconCont {
+width: 15.49px;
+height: 11.23px;
+top: 19.88px;
+left: 69.26px;
+}
+
+.editContSmallContResp {
+width: 116px;
+height: 100px;
+padding: 10px 0px 0px 0px;
+border-radius: 20px 20px 0px 20px;
+bottom: 100px;
+left: 370px;
+position: fixed;
+}
+
+.editBtnCont {
+width: 96px;
+height: 40px;
+padding: 8px 0px 0px 0px;
+gap: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.editIconSmall {
+  width: 24px;
+  height: 24px;
 }
 
 /*Responsiv*/

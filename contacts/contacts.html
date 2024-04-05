@@ -32,6 +32,15 @@
 							<img src="../img/more_vert.png" class="editNewContIconResp">
 						</div>
 					</div>
+					<div class="editContSmallContResp">
+						<div class="editBtnCont">
+							<div class="editIconSmall">
+								
+							</div>
+							<span>Edit</span>
+						</div>
+						<div></div>
+					</div>
 					<div class="addContactsBtnDiv" onclick="openAddNewContactWindow()">
 						<button class="addContactBtn">
 							<span class="addNewContactText">Add new contact</span>
@@ -106,17 +115,21 @@
 						<form onsubmit="editContactResp(event)">
 							<div class="addINewContWindowInputfields">
 
-								<input type="text" class="inputResp nameInputResp" placeholder="Name" required>
-								<input type="email" class="inputResp emailInputResp" placeholder="Email" required>
-								<input type="number" class="inputResp phoneInputResp" placeholder="Phone" required>
+								<input type="text" class="inputResp nameEditResp" placeholder="Name" required>
+								<input type="email" class="inputResp emailEditResp" placeholder="Email" required>
+								<input type="number" class="inputResp phoneEditResp" placeholder="Phone" required>
 
 							</div>
 							<div class="editContactRespButtons">
 								<button class="editContactRespDeleteBtnCont">
 									<div class="editContactRespDeleteBtn">Delete</div>
+									<img src="" class="cancelIcon">
 								</button>
 								<button class="editContactRespEditBtnCont">
 									<div class="editContactRespEditBtn">Save</div>
+									<div class="editContactRespCheckIconCont">
+										<img src="../img/check.png" class="editContactRespCheckIconCont">
+									</div>
 								</button>
 							</div>
 							

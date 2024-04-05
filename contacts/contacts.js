@@ -324,3 +324,6 @@ function closeContactDetailsResp(){
 function editContactRespWindow() {
 
 }
+
+function closeEditContactRespWindow(){
+}
