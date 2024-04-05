@@ -106,26 +106,26 @@ textarea:focus-visible {
 	cursor: pointer;
 }
 
-#title-input,
-#assigned-to-input,
-#category-input,
-#subtask-input,
-#due-date-input {
+.title-input,
+.assigned-to-input,
+.category-input,
+.subtask-input,
+.due-date-input {
 	border-radius: 10px;
 	border: 1px solid #d1d1d1;
 	position: relative;
 }
 
-#category-input,
-#due-date-input {
+.category-input,
+.due-date-input {
 	cursor: pointer;
 }
 
-#title-input:focus,
-#assigned-to-input:focus,
-#category-input:focus,
-#subtask-input:focus,
-#due-date-input:focus {
+.title-input:focus,
+.assigned-to-input:focus,
+.category-input:focus,
+.subtask-input:focus,
+.due-date-input:focus {
 	outline: none;
 	border-color: #29abe2;
 }
@@ -332,7 +332,7 @@ button:hover {
 	display: flex;
 }
 
-.title-input {
+.input-error {
 	border-color: #ff8190;
 }
 

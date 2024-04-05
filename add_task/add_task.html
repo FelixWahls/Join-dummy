@@ -16,19 +16,24 @@
 		<div w3-include-html="../templates/sidemenu.html"></div>
 		<div class="main-content">
 			<h1>Add Task</h1>
-			<form id="add-task-form" onsubmit="createTask()">
+			<form id="add-task-form" onsubmit="return createTask(event)">
 				<div class="task-container d-flex">
 					<div class="left-col task-col d-flex">
 						<div class="d-flex-col">
 							<label for="title-input" class="req-label">Title</label>
-							<input type="text" id="title-input" placeholder="Enter a title" />
-							<div class="error d-none">This field ist required</div>
+							<input
+								type="text"
+								id="title-input"
+								class="title-input"
+								placeholder="Enter a title" />
+							<div class="error d-none" id="error-title">This field is required</div>
 						</div>
 						<div class="d-flex-col">
 							<label for="description-input">Description</label>
 							<textarea
 								name="description-input"
 								id="description-input"
+								class="description-input"
 								placeholder="Enter a Description"
 								cols="30"
 								rows="10"
@@ -40,6 +45,7 @@
 								<input
 									type="text"
 									id="assigned-to-input"
+									class="assigned-to-input"
 									placeholder="Select contacts to assign" />
 								<img
 									src="../img/arrow-drop-down.png"
@@ -54,12 +60,18 @@
 					<div class="right-col task-col d-flex">
 						<div class="d-flex-col">
 							<label for="due-date-input" class="req-label">Due date</label>
-							<input type="date" id="due-date-input" placeholder="dd/mm/yyyy" />
-							<div class="error d-none">This field ist required</div>
+							<input
+								type="date"
+								id="due-date-input"
+								class="due-date-input"
+								placeholder="dd/mm/yyyy" />
+							<div class="error d-none" id="error-due-date">
+								This field is required
+							</div>
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="prio-container">Prio</label>
-							<div id="prio-container" class="d-flex">
+							<div id="prio-container" class="prio-container d-flex">
 								<div class="prio d-flex" id="urgent" onclick="setPrio('urgent')">
 									<p>Urgent</p>
 									<img src="../img/prio-urgent.png" class="prio-image" />
@@ -79,14 +91,19 @@
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="category-input" class="req-label">Category</label>
-							<select name="category-input" id="category-input">
+							<select
+								name="category-input"
+								id="category-input"
+								class="category-input">
 								<option value="" disabled selected hidden>
 									Select task category
 								</option>
 								<option value="user-story">User Story</option>
 								<option value="technical-task">Technical Task</option>
 							</select>
-							<div class="error d-none">This field ist required</div>
+							<div class="error d-none" id="error-category">
+								This field is required
+							</div>
 						</div>
 						<div class="d-flex-col m-0">
 							<label for="subtask-input" class="">Subtasks</label>
@@ -94,6 +111,7 @@
 								<input
 									type="text"
 									id="subtask-input"
+									class="subtask-input"
 									placeholder="Add new subtask"
 									onclick="activateInput()" />
 								<img

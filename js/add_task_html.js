@@ -9,7 +9,7 @@ function createUserHtml(contact, i) {
         <div class="single-user d-flex align-c" onclick="selectedUser(${i})" id="user${i}">
 			<div class="user-info d-flex align-c">
 				<div class="user-icon d-flex" id="user-capitals-${i}">${contact.capitals}</div>
-				<div class="user-name">${contact.name}</div>
+				<div class="user-name" id="full-user-name-${i}">${contact.name}</div>
 			</div>
 			<img src="../img/Checkbox.png" />
 		</div>
@@ -19,15 +19,24 @@ function createUserHtml(contact, i) {
 function renderSelectedUsers() {
 	let selectedContainer = document.querySelector('#selected-users');
 	selectedContainer.innerHTML = '';
+	let capitalsHtml = createUserCapitalsHtml();
 	if (selectedUsers.length > 0) {
 		for (let i = 0; i < selectedUsers.length; i++) {
 			const element = selectedUsers[i];
-			selectedContainer.innerHTML += /*html*/ `
-            				<div class="user-icon d-flex">${selectedUsers[i]}</div>
-        `;
+			selectedContainer.innerHTML += capitalsHtml;
 		}
 	} else {
 		selectedContainer = '';
+	}
+}
+
+function createUserCapitalsHtml() {
+	for (let i = 0; i < selectedUsers.length; i++) {
+		const element = selectedUsers[i]['userCapitals'];
+		console.log(element);
+		return /*html*/ `
+            <div class="user-icon d-flex">${element}</div>
+        `;
 	}
 }
 

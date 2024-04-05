@@ -1,11 +1,11 @@
-const form = document.getElementById('add-task-form');
+// const form = document.getElementById('add-task-form');
 
-/**
- * prevents the page from reloading when pressing the button
- */
-form.addEventListener('submit', function (event) {
-	event.preventDefault();
-});
+// /**
+//  * prevents the page from reloading when pressing the button
+//  */
+// form.addEventListener('submit', function (event) {
+// 	event.preventDefault();
+// });
 
 /**
  * checks if user List is already opened and either closes or opens it
@@ -19,9 +19,13 @@ function openUserList() {
 		arrow.src = '../img/arrow-drop-up.png';
 		renderUsers(userList);
 	} else {
-		userList.classList.add('d-none');
-		arrow.src = '../img/arrow-drop-down.png';
+		deactivateUserList(userList, arrow);
 	}
+}
+
+function deactivateUserList(userList, arrow) {
+	userList.classList.add('d-none');
+	arrow.src = '../img/arrow-drop-down.png';
 }
 
 /**
@@ -46,30 +50,34 @@ function selectedUser(i) {
 	let image = currentUser.querySelector('img');
 
 	if (!currentUser.classList.contains('active-user')) {
-		setActiveUser(currentUser, userCapitals, image);
+		setActiveUser(currentUser, userCapitals, image, i);
 	} else {
 		deactivateUser(currentUser, i, image);
 	}
 }
 
-function setActiveUser(currentUser, userCapitals, image) {
+function setActiveUser(currentUser, userCapitals, image, i) {
+	let selectedUserName = document.querySelector(`#full-user-name-${i}`).textContent;
 	currentUser.classList.add('active-user');
 	image.src = '../img/checkbox-check-white.png';
-	selectedUsers.push(userCapitals);
-	console.log(userCapitals);
+	let selectedUserList = {
+		userCapitals: userCapitals,
+		fullUserNames: selectedUserName,
+	};
+	selectedUsers.push(selectedUserList);
 	renderSelectedUsers();
 }
 
 function deactivateUser(currentUser, i, image) {
 	currentUser.classList.remove('active-user');
 	image.src = '../img/Checkbox.png';
-	const index = selectedUsers.indexOf(
-		currentUser.querySelector(`#user-capitals-${i}`).textContent
+	const index = selectedUsers.findIndex(
+		(user) => user.fullUserNames === document.querySelector(`#full-user-name-${i}`).textContent
 	);
 	if (index !== -1) {
 		selectedUsers.splice(index, 1);
+		renderSelectedUsers();
 	}
-	renderSelectedUsers();
 }
 
 function setPrio(priority) {
@@ -131,10 +139,16 @@ function deactivateInput() {
 }
 
 document.addEventListener('click', function (event) {
-	const clickInsideInput = document.getElementById('subtask-input').contains(event.target);
+	const clickInsideCategory = document.getElementById('subtask-input').contains(event.target);
+	const clickInsideAssigned = document.getElementById('assigned-to-input').contains(event.target);
 
-	if (!clickInsideInput) {
+	if (!clickInsideCategory) {
 		deactivateInput();
+	}
+	if (!clickInsideAssigned) {
+		let userList = document.querySelector('#user-list');
+		let arrow = document.querySelector('#assigned-arrow');
+		deactivateUserList(userList, arrow);
 	}
 });
 
@@ -167,12 +181,31 @@ function submitChange(i) {
 	renderSubtasks();
 }
 
-function createTask() {
-	titleInput = document.querySelector('#title-input').value;
+function createTask(event) {
+	event.preventDefault(); // Prevent form submission
+	titleInput = validateField('#title-input', '#error-title');
 	descriptionInput = document.querySelector('#description-input').value;
-	dateInput = document.querySelector('#due-date-input').value;
-	categoryInput = getCategory();
-	pushTask();
+	dateInput = validateField('#due-date-input', '#error-due-date');
+	categoryInput = validateField('#category-input', '#error-category');
+
+	if (titleInput && dateInput && categoryInput) {
+		pushTask();
+	}
+}
+
+function validateField(fieldId, errorId) {
+	let field = document.querySelector(fieldId);
+	let errorContainer = document.querySelector(errorId);
+
+	if (field.value.trim() !== '') {
+		field.classList.remove('input-error');
+		errorContainer.classList.add('d-none');
+		return field.value.trim();
+	} else {
+		field.classList.add('input-error');
+		errorContainer.classList.remove('d-none');
+		return null;
+	}
 }
 
 function getCategory() {
