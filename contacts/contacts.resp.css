@@ -52,7 +52,6 @@
   box-shadow: 0px 4px 4px 0px #00000040;
   border: 1px solid #2a3647;
   background: #2a3647;
-  display: none;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -668,9 +667,22 @@ height: 100px;
 padding: 10px 0px 0px 0px;
 border-radius: 20px 20px 0px 20px;
 bottom: 100px;
-left: 370px;
+left: 340px;
+margin-left: 1500px;
 position: fixed;
+box-shadow: 0px 4px 4px 0px #00000040;
 }
+
+.editContSmallContRespTransition {
+  transition: transform 0.35s ease-in-out;
+  transform: translateX(-1500px);
+  }
+  
+  .editContSmallContRespTransitionRemove {
+  transition: transform 0.35s ease-in-out;
+  transform: translateX(+1500px);
+  }
+  
 
 .editBtnCont {
 width: 96px;
@@ -680,11 +692,48 @@ gap: 8px;
 display: flex;
 justify-content: center;
 align-items: center;
+cursor: pointer;
+}
+
+.editIconSmallCont {
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
 }
 
 .editIconSmall {
-  width: 24px;
-  height: 24px;
+  width: 18.28px;
+height: 18.25px;
+top: 10.75px;
+left: 11px;
+}
+
+.editTextSmall {
+width: 30px;
+height: 19px;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+color: #2A3647;
+}
+
+.deleteBtnCont {
+width: 96px;
+height: 40px;
+padding: 8px 0px 0px 0px;
+gap: 8px;
+display: flex;
+justify-content: center;
+cursor: pointer;
+}
+
+.deleteIconSmallCont {
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
 }
 
 /*Responsiv*/

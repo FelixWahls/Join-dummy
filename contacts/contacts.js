@@ -1,5 +1,4 @@
 let currentContact = 0;
-let currentName = '';
 /**
  *
  * @param {string} name
@@ -312,6 +311,14 @@ function openContactCardResp(i){
   document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
   document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
   document.querySelector('.editContactIconContResp').style.display = 'flex';
+  document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
+  document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
+  setTimeout(() => {
+    document.querySelector('.editContactIconContResp').style.backgroundColor = '#2a3647';
+  document.querySelector('.editContactIconContResp').style.border = '#2a3647';
+  }, 1000);
+  currentContact = i;
+  
 }
 
 function closeContactDetailsResp(){
@@ -322,8 +329,31 @@ function closeContactDetailsResp(){
 }
 
 function editContactRespWindow() {
-
+  document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
+  document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
+  document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransitionRemove');
+  document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransition');
+  setTimeout(() => {
+    document.querySelector('.editContactIconContResp').style.display = 'none';
+  }, 350);
 }
 
-function closeEditContactRespWindow(){
+function deleteContactResp(){
+  contacts.splice(currentContact, 1);
+  initContactlist();
+  closeContactDetailsResp();
+  document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+  document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
+  document.querySelector('.editContactIconContResp').style.backgroundColor = '#2a3647';
+  document.querySelector('.editContactIconContResp').style.border = '#2a3647';
+}
+
+function editContactResp(){
+
+  
+  /*contacts[currentContact].name =
+    document.querySelector(".nameEditResp").value;
+  contacts[currentContact].email = document.querySelector(".emailEditResp").value;
+  contacts[currentContact].telefon = document.querySelector(".phoneEditResp").value;
+  initContactlist();*/
 }
