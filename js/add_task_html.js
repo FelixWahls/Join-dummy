@@ -4,7 +4,7 @@
  * @param {number} i
  * @returns
  */
-function createUserHtml(contact, i) {
+function createUnselectedUserHtml(contact, i) {
 	return /*html*/ `
         <div class="single-user d-flex align-c" onclick="selectedUser(${i})" id="user${i}">
 			<div class="user-info d-flex align-c">
@@ -12,6 +12,18 @@ function createUserHtml(contact, i) {
 				<div class="user-name" id="full-user-name-${i}">${contact.name}</div>
 			</div>
 			<img src="../img/Checkbox.png" />
+		</div>
+    `;
+}
+
+function createSelectedUserHtml(contact, i) {
+	return /*html*/ `
+        <div class="single-user d-flex align-c active-user" onclick="selectedUser(${i})" id="user${i}">
+			<div class="user-info d-flex align-c">
+				<div class="user-icon d-flex" id="user-capitals-${i}">${contact.capitals}</div>
+				<div class="user-name" id="full-user-name-${i}">${contact.name}</div>
+			</div>
+			<img src="../img/checkbox-check-white.png" />
 		</div>
     `;
 }

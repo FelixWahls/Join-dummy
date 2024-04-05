@@ -26,8 +26,13 @@ function deactivateUserList(userList, arrow) {
 function renderUsers(userList) {
 	userList.innerHTML = '';
 	for (let i = 0; i < contacts.length; i++) {
-		const contact = contacts[i];
-		userList.innerHTML += createUserHtml(contact, i);
+		if (contacts[i]['addTask'] == false) {
+			const contact = contacts[i];
+			userList.innerHTML += createUnselectedUserHtml(contact, i);
+		} else if (contacts[i]['addTask'] == true) {
+			const contact = contacts[i];
+			userList.innerHTML += createSelectedUserHtml(contact, i);
+		}
 	}
 }
 
@@ -42,8 +47,10 @@ function selectedUser(i) {
 
 	if (!currentUser.classList.contains('active-user')) {
 		setActiveUser(currentUser, userCapitals, image, i);
+		contacts[i]['addTask'] = true;
 	} else {
 		deactivateUser(currentUser, i, image);
+		contacts[i]['addTask'] = false;
 	}
 }
 

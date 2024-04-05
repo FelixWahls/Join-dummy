@@ -7,6 +7,7 @@ let contacts = [
 		'telefon': '0123456789',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Anna Schmidt',
@@ -14,6 +15,7 @@ let contacts = [
 		'telefon': '0123456790',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Lukas Bauer',
@@ -21,6 +23,7 @@ let contacts = [
 		'telefon': '0123456791',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Sophia Becker',
@@ -28,6 +31,7 @@ let contacts = [
 		'telefon': '0123456792',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Felix Klein',
@@ -35,6 +39,7 @@ let contacts = [
 		'telefon': '0123456793',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Emilia Hoffmann',
@@ -42,6 +47,7 @@ let contacts = [
 		'telefon': '0123456794',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Noah Schmid',
@@ -49,6 +55,7 @@ let contacts = [
 		'telefon': '0123456795',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Mia Fischer',
@@ -56,6 +63,7 @@ let contacts = [
 		'telefon': '0123456796',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Elias Wolf',
@@ -63,6 +71,7 @@ let contacts = [
 		'telefon': '0123456797',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 	{
 		'name': 'Lena Krause',
@@ -70,6 +79,7 @@ let contacts = [
 		'telefon': '0123456798',
 		'color': '',
 		'capitals': '',
+		'addTask': false,
 	},
 ];
 
