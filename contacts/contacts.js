@@ -152,6 +152,12 @@ function openContactCard(i) {
     `;
   contactOverview.classList.add("contactOverviewTransition");
   contactOverview.classList.remove("contactOverviewTransitionRemove");
+  openContactCardResp(i);
+  if(window.innerWidth < 960){
+    document.querySelector('#initContacts').style.display = 'none';
+  document.querySelector('.contRespWindow').style.display = 'flex';
+  document.querySelector('.addNewContactIconContResp').style.display = 'none'
+  }
 }
 
 function openAddNewContactWindow() {
