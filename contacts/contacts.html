@@ -82,6 +82,47 @@
 						</form>
 
 					</div>
+
+					<div class="editContactRespContainer">
+						<div class="addNewContactRespCloseContainer" onclick="closeEditContactRespWindow()">
+							<img src="../img/close (1).png" class="AddNewContactRespCloseButton">
+						</div>
+						<div class="addNewContactWindowHeaderContainer">
+							<div class="addNewContactWindowHeader">
+								<div class="addNewContactWindowTextfield">
+									<span class="editContactText">Edit contact</span>
+									<div class="blueLineAddNewContResp"></div>
+								</div>
+							</div>
+						</div>
+						<div class="addNewContactRespImageContainer">
+							<div class="addNewContactRespImageSubContainer">
+								<div class="addNewContactRespImageSubContainer2">
+									<img src="../img/person (1).png" class="addNewContactRespImage">
+								</div>
+
+							</div>
+						</div>
+						<form onsubmit="editContactResp(event)">
+							<div class="addINewContWindowInputfields">
+
+								<input type="text" class="inputResp nameInputResp" placeholder="Name" required>
+								<input type="email" class="inputResp emailInputResp" placeholder="Email" required>
+								<input type="number" class="inputResp phoneInputResp" placeholder="Phone" required>
+
+							</div>
+							<div class="editContactRespButtons">
+								<button class="editContactRespDeleteBtnCont">
+									<div class="editContactRespDeleteBtn">Delete</div>
+								</button>
+								<button class="editContactRespEditBtnCont">
+									<div class="editContactRespEditBtn">Save</div>
+								</button>
+							</div>
+							
+						</form>
+					</div>
+
 					<div class="createResponseContainerResponsiv">
 						<div class="CreateResponseResponsiv">
 							<span class="responseResponsiv">Contact successfully created </span>
