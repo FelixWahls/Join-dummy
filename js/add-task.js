@@ -1,12 +1,3 @@
-// const form = document.getElementById('add-task-form');
-
-// /**
-//  * prevents the page from reloading when pressing the button
-//  */
-// form.addEventListener('submit', function (event) {
-// 	event.preventDefault();
-// });
-
 /**
  * checks if user List is already opened and either closes or opens it
  */
@@ -141,11 +132,12 @@ function deactivateInput() {
 document.addEventListener('click', function (event) {
 	const clickInsideCategory = document.getElementById('subtask-input').contains(event.target);
 	const clickInsideAssigned = document.getElementById('assigned-to-input').contains(event.target);
+	const clickInsideUserList = document.getElementById('user-list').contains(event.target);
 
 	if (!clickInsideCategory) {
 		deactivateInput();
 	}
-	if (!clickInsideAssigned) {
+	if (!clickInsideAssigned && !clickInsideUserList) {
 		let userList = document.querySelector('#user-list');
 		let arrow = document.querySelector('#assigned-arrow');
 		deactivateUserList(userList, arrow);
