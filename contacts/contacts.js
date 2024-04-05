@@ -362,9 +362,9 @@ function openEditContactRespWindow(){
   document.querySelector(".editContactRespContainer").classList.add("addNewContactRespContainerTransition");
   document.querySelector(".editContactRespContainer").classList.remove("addNewContactRespContainerTransitionRemove");
   document.querySelector(".contRespWindow").style.display = 'none';
-  document.querySelector("#nameEditResp").innerHTML = contacts[currentContact].name;
-  document.querySelector("#emailEditResp").innerHTML = contacts[currentContact].email;
-  document.querySelector("#phoneEditResp").innerHTML = contacts[currentContact].telefon;
+  document.querySelector("#nameEditResp").value = contacts[currentContact].name;
+  document.querySelector("#emailEditResp").value = contacts[currentContact].email;
+  document.querySelector("#phoneEditResp").value = contacts[currentContact].telefon;
   
 }
 
