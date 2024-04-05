@@ -357,3 +357,19 @@ function editContactResp(){
   contacts[currentContact].telefon = document.querySelector(".phoneEditResp").value;
   initContactlist();*/
 }
+
+function openEditContactRespWindow(){
+  document.querySelector(".editContactRespContainer").classList.add("addNewContactRespContainerTransition");
+  document.querySelector(".editContactRespContainer").classList.remove("addNewContactRespContainerTransitionRemove");
+  document.querySelector(".contRespWindow").style.display = 'none';
+  document.querySelector("#nameEditResp").innerHTML = contacts[currentContact].name;
+  document.querySelector("#emailEditResp").innerHTML = contacts[currentContact].email;
+  document.querySelector("#phoneEditResp").innerHTML = contacts[currentContact].telefon;
+  
+}
+
+function closeEditContactRespWindow(){
+  document.querySelector(".editContactRespContainer").classList.add("addNewContactRespContainerTransitionRemove");
+  document.querySelector(".editContactRespContainer").classList.remove("addNewContactRespContainerTransition");
+  
+}

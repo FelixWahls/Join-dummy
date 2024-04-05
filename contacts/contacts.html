@@ -33,7 +33,7 @@
 						</div>
 					</div>
 					<div class="editContSmallContResp">
-						<div class="editBtnCont" onclick="editContactResp()">
+						<div class="editBtnCont" onclick="openEditContactRespWindow()">
 							<div class="editIconSmallCont">
 								<img src="../img/edit.png" class="editIconSmall">
 							</div>
@@ -120,9 +120,9 @@
 						<form onsubmit="editContactResp(event)">
 							<div class="addINewContWindowInputfields">
 
-								<input type="text" class="inputResp nameEditResp" placeholder="Name" required>
-								<input type="email" class="inputResp emailEditResp" placeholder="Email" required>
-								<input type="number" class="inputResp phoneEditResp" placeholder="Phone" required>
+								<input type="text" class="inputResp nameEditResp" id="nameEditResp" placeholder="Name" required>
+								<input type="email" class="inputResp emailEditResp" id="emailEditResp" placeholder="Email" required>
+								<input type="number" class="inputResp phoneEditResp" id="phoneEditResp" placeholder="Phone" required>
 
 							</div>
 							<div class="editContactRespButtons">

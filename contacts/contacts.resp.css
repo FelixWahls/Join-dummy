@@ -99,12 +99,12 @@ background: #FFFFFF;
 .editContactRespContainer {
   width: 396px;
   height: 760px;
-  bottom: 82px;
+  bottom: 0px;
+  margin-bottom: -3000px;
   gap: 49px;
   border-radius: 30px;
   background-color: #FFFFFF;  
   position: fixed;
-  display: none;
 }
 
 .addNewContactRespContainerTransition {
@@ -113,6 +113,16 @@ background: #FFFFFF;
 }
 
 .addNewContactRespContainerTransitionRemove {
+	transition: transform 0.85s ease-in-out;
+	transform: translateY(+3082px);
+}
+
+.editContactRespContainerTransition {
+	transition: transform 0.45s ease-in-out;
+	transform: translateY(-3082px);
+}
+
+.editContactRespContainerTransitionRemove {
 	transition: transform 0.85s ease-in-out;
 	transform: translateY(+3082px);
 }
