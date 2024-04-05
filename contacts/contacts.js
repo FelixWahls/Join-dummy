@@ -311,10 +311,16 @@ function openContactCardResp(i){
   document.querySelector('.emailContactResp').innerHTML = contacts[i].email;
   document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
   document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
+  document.querySelector('.editContactIconContResp').style.display = 'flex';
 }
 
 function closeContactDetailsResp(){
   document.querySelector('#initContacts').style.display = 'block';
   document.querySelector('.contRespWindow').style.display = 'none';
   document.querySelector('.addNewContactIconContResp').style.display = 'flex';
+  document.querySelector('.editContactIconContResp').style.display = 'none';
+}
+
+function editContactRespWindow() {
+
 }
