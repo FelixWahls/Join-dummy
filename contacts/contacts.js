@@ -358,6 +358,8 @@ contacts.splice(currentContact, 1);
 initContactlist();
 closeEditContactRespWindow();
 closeContactDetailsResp();
+document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+  document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
 }
 
 function openEditContactRespWindow(){
