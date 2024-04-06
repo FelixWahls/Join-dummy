@@ -326,6 +326,8 @@ function closeContactDetailsResp(){
   document.querySelector('.contRespWindow').style.display = 'none';
   document.querySelector('.addNewContactIconContResp').style.display = 'flex';
   document.querySelector('.editContactIconContResp').style.display = 'none';
+  document.querySelector(".editContactRespContainer").classList.add("addNewContactRespContainerTransitionRemove");
+  document.querySelector(".editContactRespContainer").classList.remove("addNewContactRespContainerTransition");
 }
 
 function editContactRespWindow() {
@@ -348,8 +350,17 @@ function deleteContactResp(){
   document.querySelector('.editContactIconContResp').style.border = '#2a3647';
 }
 
-function editContactResp(){
-
+function editContactResp(event){
+  event.preventDefault();
+  contacts[currentContact].name =
+    document.querySelector('#nameEditResp').value;
+  contacts[currentContact].email = document.querySelector('#emailEditResp').value;
+  contacts[currentContact].telefon = document.querySelector('#phoneEditResp').value;
+  initContactlist();
+  closeEditContactRespWindow();
+  openContactCard(currentContact);
+  document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+  document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
 }
 
 function deleteContactByEditResp(event){
@@ -377,5 +388,6 @@ function openEditContactRespWindow(){
 function closeEditContactRespWindow(){
   document.querySelector(".editContactRespContainer").classList.add("addNewContactRespContainerTransitionRemove");
   document.querySelector(".editContactRespContainer").classList.remove("addNewContactRespContainerTransition");
-  
+  openContactCard(currentContact);
+  document.querySelector('.editContactIconContResp').style.display = 'none';
 }
