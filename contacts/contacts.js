@@ -1,5 +1,11 @@
 let currentContact = 0;
 let initContactlistLoaded = false;
+
+async function initContacts() {
+	await includeHTML();
+	contacts = await getItem('contacts');
+	initContactlist();
+}
 /**
  *
  * @param {string} name
@@ -22,9 +28,9 @@ function extractCapitalLetters(name) {
 }
 
 async function initContactlist() {
-  let initContacts = document.querySelector("#initContacts");
-  initContacts.innerHTML = "";
-  let lastInitial = null;
+	let initContacts = document.querySelector('#initContacts');
+	initContacts.innerHTML = '';
+	let lastInitial = null;
 
 	// Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
 	contacts.sort((a, b) => a.name.localeCompare(b.name));
@@ -177,38 +183,46 @@ function closeAddNewContactWindow() {
 }
 
 function addNewContact(event) {
-  // Verhindern, dass das Formular auf herkömmliche Weise gesendet wird
-  event.preventDefault();
+	// Verhindern, dass das Formular auf herkömmliche Weise gesendet wird
+	event.preventDefault();
 
 	let name = document.querySelector('.nameInputContainer').value;
 	let email = document.querySelector('.emailInputContainer').value;
 	let phone = document.querySelector('.phoneInputContainer').value;
 
-  let newContact = {
-    name: name,
-    email: email,
-    telefon: phone,
-    color: "",
-    capitals: "",
-    addTask: false,
-  };
-  contacts.push(newContact);
-  setItem('contacts', contacts);
-  initContactlist();
-  closeAddNewContactWindow();
-  cancelInputValue();
-  document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
-  document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
-  setTimeout(() => {
-    document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
-    document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
-  }, 1500);
-  for (let k = 0; k < contacts.length; k++) {
-    if(name == contacts[k].name){
-      openContactCard(k);
-    }
-  }
-  return false;
+	let newContact = {
+		name: name,
+		email: email,
+		telefon: phone,
+		color: '',
+		capitals: '',
+		addTask: false,
+	};
+	contacts.push(newContact);
+	setItem('contacts', contacts);
+	initContactlist();
+	closeAddNewContactWindow();
+	cancelInputValue();
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.remove('CreateResponseContainerTransitionRemove');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.add('CreateResponseContainerTransition');
+	setTimeout(() => {
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.remove('CreateResponseContainerTransition');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.add('CreateResponseContainerTransitionRemove');
+	}, 1500);
+	for (let k = 0; k < contacts.length; k++) {
+		if (name == contacts[k].name) {
+			openContactCard(k);
+		}
+	}
+	return false;
 }
 
 function deleteContact(i) {
