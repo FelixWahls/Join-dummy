@@ -20,7 +20,8 @@ function extractCapitalLetters(name) {
   return capitals;
 }
 
-function initContactlist() {
+async function initContactlist() {
+  await getItem('contacts');
   let initContacts = document.querySelector("#initContacts");
   initContacts.innerHTML = "";
   let lastInitial = null;
@@ -171,7 +172,7 @@ function closeAddNewContactWindow() {
   document.getElementById("addNewContactContainer").classList.remove("addNewContactContainerTransition");
 }
 
-function addNewContact(event) {
+async function addNewContact(event) {
   // Verhindern, dass das Formular auf herkömmliche Weise gesendet wird
   event.preventDefault();
 
@@ -187,6 +188,7 @@ function addNewContact(event) {
     capitals: "",
   };
   contacts.push(newContact);
+  await setItem('contacts', contacts);
   initContactlist();
   closeAddNewContactWindow();
   cancelInputValue();
