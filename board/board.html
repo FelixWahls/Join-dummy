@@ -19,18 +19,20 @@
 	</head>
 	<body onload="initBoard()" onclick="closeSidemenu()">
 		<div w3-include-html="../templates/sidemenu.html"></div>
+		<div w3-include-html="../templates/add-task-temp.html"></div>
+		<div class="wrapper-add-task d-none" id="slide-transition-wrapper"></div>
 		<div class="main-content">
 			<section class="top-section">
 				<div class="first-section">
 					<h1>Board</h1>
 					<div class="d-flex">
-						<div class="input-container">
+						<div class="searchbar-container">
 							<input type="text" id="search-bar" placeholder="Find Task" />
 							<span class="vertical-line"></span>
 							<img src="../img/search.png" alt="" />
 							<img src="../img/search-active.png" alt="" class="d-none" />
 						</div>
-						<button class="add-task">
+						<button class="add-task" onclick="slideIn()">
 							<p>Add Task</p>
 							<img src="../img/add-task-board.png" alt="" />
 						</button>
@@ -66,29 +68,7 @@
 					</div>
 					<div class="tasks-container" id="in-progress-container">
 						<!-- start of small card template -->
-						<div class="flex-col single-task">
-							<div class="task-type">User Story</div>
-							<div class="task-content">
-								<h3>Kochwelt Page & Recipe Recommender</h3>
-								<p>Build start Page with recipe recommendation.</p>
-							</div>
-							<div class="subtask-content">
-								<span class="subtask-bar-empty">
-									<span class="subtask-bar-progress"></span>
-								</span>
-								<span>1/2 Subtasks</span>
-							</div>
-							<div class="bottom-content">
-								<div class="assigned-users">
-									<div class="user user-one">AM</div>
-									<div class="user user-two">EM</div>
-									<div class="user user-three">MB</div>
-								</div>
-								<div class="priority">
-									<img src="../img/prio-medium.png" alt="" />
-								</div>
-							</div>
-						</div>
+
 						<!-- end of small card template -->
 					</div>
 				</div>

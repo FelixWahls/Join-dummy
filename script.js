@@ -110,6 +110,7 @@ let dateInput;
 let activePrio = '../img/prio-medium.png';
 let categoryInput;
 let subtasks = [];
+let toDoContainer = 'to-do-container';
 
 async function includeHTML() {
 	let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -138,7 +139,8 @@ async function getItem(key) {
 		.then((res) => res.json())
 		.then((res) => {
 			// Verbesserter code
-			if (res.data) {
+			if (res.data && res.data.value) {
+				res.data.value = JSON.parse(res.data.value);
 				return res.data.value;
 			}
 			throw `Could not find data with key "${key}".`;

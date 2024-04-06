@@ -1,87 +1,133 @@
-<div class="main-container">
+<div class="main-container" id="add-task-slider">
+	<img src="../img/close.png" class="close-window-btn" onclick="slideIn()" />
 	<h1>Add Task</h1>
-	<form id="add-task-form">
-		<div class="task-container">
-			<div class="left-col task-col">
+	<form id="add-task-form" onsubmit="return createTask(event)">
+		<div class="task-container d-flex">
+			<div class="left-col task-col d-flex">
 				<div class="d-flex-col">
 					<label for="title-input" class="req-label">Title</label>
-					<div class="input-container">
-						<input type="text" id="title-input" placeholder="Enter a title" />
-					</div>
+					<input
+						type="text"
+						id="title-input"
+						class="title-input"
+						placeholder="Enter a title" />
+					<div class="error d-none" id="error-title">This field is required</div>
 				</div>
 				<div class="d-flex-col">
 					<label for="description-input">Description</label>
 					<textarea
 						name="description-input"
 						id="description-input"
+						class="description-input"
 						placeholder="Enter a Description"
 						cols="30"
-						rows="10"></textarea>
+						rows="10"
+						maxlength="250"></textarea>
 				</div>
 				<div class="d-flex-col m-0">
-					<label for="assigned-to">Assigned to</label>
-					<div class="input-container">
+					<label for="assigned-to-input">Assigned to</label>
+					<div class="input-container" onclick="openUserList()">
 						<input
 							type="text"
-							id="assigned-to"
-							placeholder="Select contacts to assign" />
-						<img src="../img/arrow-drop-down.png" alt="" />
+							id="assigned-to-input"
+							class="assigned-to-input"
+							placeholder="Select contacts to assign"
+							onkeyup="renderUsers()" />
+						<img
+							src="../img/arrow-drop-down.png"
+							id="assigned-arrow"
+							onclick="event.stopPropagation(); openUserList()" />
 					</div>
+					<div id="user-list" class="d-none"></div>
+					<div id="selected-users"></div>
 				</div>
-				<div class="required-info">This field is required</div>
 			</div>
 			<span class="mid-line"></span>
-			<div class="right-col task-col">
+			<div class="right-col task-col d-flex">
 				<div class="d-flex-col">
-					<label for="due-date" class="req-label">Due date</label>
-					<div class="input-container">
-						<input type="date" id="due-date" placeholder="dd/mm/yyyy" />
-						<img src="../img/calendar.png" alt="" />
-					</div>
+					<label for="due-date-input" class="req-label">Due date</label>
+					<input
+						type="date"
+						id="due-date-input"
+						class="due-date-input"
+						placeholder="dd/mm/yyyy" />
+					<div class="error d-none" id="error-due-date">This field is required</div>
 				</div>
 				<div class="d-flex-col m-0">
 					<label for="prio-container">Prio</label>
-					<div id="prio-container">
-						<div class="prio">
+					<div id="prio-container" class="prio-container d-flex">
+						<div class="prio d-flex" id="urgent" onclick="setPrio('urgent')">
 							<p>Urgent</p>
-							<img src="../img/prio-urgent.png" alt="" />
+							<img src="../img/prio-urgent.png" class="prio-image" />
 						</div>
-						<div class="prio">
+						<div
+							class="prio d-flex active-medium"
+							id="medium"
+							onclick="setPrio('medium')">
 							<p>Medium</p>
-							<img src="../img/prio-medium.png" alt="" />
+							<img src="../img/active-medium.png" class="prio-image" />
 						</div>
-						<div class="prio">
+						<div class="prio d-flex" id="low" onclick="setPrio('low')">
 							<p>Low</p>
-							<img src="../img/prio-low.png" alt="" />
+							<img src="../img/prio-low.png" class="prio-image" />
 						</div>
 					</div>
 				</div>
 				<div class="d-flex-col m-0">
-					<label for="category" class="req-label">Category</label>
-					<div class="input-container">
-						<input type="text" id="category" placeholder="Select task category" />
-						<img src="../img/arrow-drop-down.png" alt="" />
-					</div>
+					<label for="category-input" class="req-label">Category</label>
+					<select name="category-input" id="category-input" class="category-input">
+						<option value="" disabled selected hidden>Select task category</option>
+						<option value="user-story">User Story</option>
+						<option value="technical-task">Technical Task</option>
+					</select>
+					<div class="error d-none" id="error-category">This field is required</div>
 				</div>
 				<div class="d-flex-col m-0">
-					<label for="subtask" class="">Subtasks</label>
+					<label for="subtask-input" class="">Subtasks</label>
 					<div class="input-container">
-						<input type="text" id="subtask" placeholder="Select task category" />
-						<img src="../img/add-subtask.png" class="subtask-plus" />
+						<input
+							type="text"
+							id="subtask-input"
+							class="subtask-input"
+							placeholder="Add new subtask"
+							onclick="activateInput()" />
+						<img
+							src="../img/add-subtask.png"
+							onclick="event.stopPropagation(); activateInput()"
+							id="add-subtask"
+							class="add-subtasks-btn" />
+						<div
+							id="subtask-input-actions"
+							class="d-flex align-c add-subtasks-btn d-none">
+							<img
+								src="../img/check-blue.png"
+								class="subtask-actions submit-input"
+								onclick="submitSubtask()" />
+							<span class="vertical-line-sub"></span>
+							<img src="../img/close.png" class="subtask-actions" />
+						</div>
 					</div>
-				</div>
-				<div class="add-task-btns">
-					<button class="clear-field" type="reset">
-						<p>Clear</p>
-						<img src="../img/close.png" alt="" />
-						<img src="../img/close-hover.png" class="d-none" />
-					</button>
-					<button class="create-task" type="submit">
-						<p>Create Task</p>
-						<img src="../img/create-task.png" alt="" />
-					</button>
+					<ul id="subtask-container"></ul>
 				</div>
 			</div>
 		</div>
+		<div class="bottom-section d-flex">
+			<div class="required-info">This field is required</div>
+			<div class="add-task-btns d-flex">
+				<button class="clear-field" type="reset" onclick="resetForm()">
+					<p>Clear</p>
+					<img src="../img/close.png" alt="" />
+					<img src="../img/close-hover.png" class="d-none" />
+				</button>
+				<button class="create-task" type="submit">
+					<p>Create Task</p>
+					<img src="../img/create-task.png" alt="" />
+				</button>
+			</div>
+		</div>
 	</form>
+	<div class="task-added-slider">
+		<p>Task added to board</p>
+		<img src="../img/tasks.png" alt="" />
+	</div>
 </div>

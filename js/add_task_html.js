@@ -45,7 +45,6 @@ function renderSelectedUsers() {
 function createUserCapitalsHtml() {
 	for (let i = 0; i < selectedUsers.length; i++) {
 		const element = selectedUsers[i]['userCapitals'];
-		console.log(element);
 		return /*html*/ `
             <div class="user-icon d-flex">${element}</div>
         `;
@@ -86,4 +85,40 @@ function renderSubtasks() {
 			</li>
         `;
 	}
+}
+
+function createCardHtml(task, i) {
+	let assignedUsersHtml = createAssignedUsersHtml(task);
+	return /*html*/ `
+        <div class="flex-col single-task">
+			<div class="task-type">${task.category}</div>
+			<div class="task-content">
+				<h3>${task.title}</h3>
+				<p>${task.description}</p>
+			</div>
+			<div class="subtask-content">
+				<span class="subtask-bar-empty">
+					<span class="subtask-bar-progress"></span>
+				</span>
+				<span>0/${task.subtasks.length} Subtasks</span>
+			</div>
+			<div class="bottom-content">
+				<div class="assigned-users">
+                    ${assignedUsersHtml}
+				</div>
+				<div class="priority">
+					<img src="${task.priority}" alt="" />
+				</div>
+			</div>
+		</div>
+    `;
+}
+
+function createAssignedUsersHtml(task) {
+	let assignedUserCapitals = '';
+	for (let i = 0; i < task.users.length; i++) {
+		const element = task.users[i];
+		assignedUserCapitals += `<div class="user user-one">${element.userCapitals}</div>`;
+	}
+	return assignedUserCapitals;
 }

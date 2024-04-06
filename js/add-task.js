@@ -1,4 +1,38 @@
 let userList = document.querySelector('#user-list');
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.body.addEventListener('click', function (event) {
+		let userList = document.getElementById('user-list');
+		let inputContainer = document.querySelector('#assigned-to-input');
+		let isClickInsideUserList = userList && userList.contains(event.target);
+		let isClickInsideInputContainer = inputContainer && inputContainer.contains(event.target);
+
+		if (!isClickInsideUserList && !isClickInsideInputContainer) {
+			closeUserList(userList);
+		}
+	});
+});
+
+function closeUserList(userList) {
+	if (userList) {
+		userList.classList.add('d-none');
+		document.querySelector('#assigned-arrow').src = '../img/arrow-drop-down.png';
+	}
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.body.addEventListener('click', function (event) {
+		let subtaskInput = document.getElementById('subtask-input');
+		let subtaskInputActions = document.getElementById('subtask-input-actions');
+		let isClickInsideSubtaskInput = subtaskInput && subtaskInput.contains(event.target);
+		let isClickInsideSubtaskInputActions =
+			subtaskInputActions && subtaskInputActions.contains(event.target);
+
+		if (!isClickInsideSubtaskInput && !isClickInsideSubtaskInputActions) {
+			deactivateInput();
+		}
+	});
+});
 /**
  * checks if user List is already opened and either closes or opens it
  */
@@ -10,13 +44,9 @@ function openUserList() {
 		arrow.src = '../img/arrow-drop-up.png';
 		renderUsers();
 	} else {
-		deactivateUserList(arrow);
+		userList.classList.add('d-none');
+		arrow.src = '../img/arrow-drop-down.png';
 	}
-}
-
-function deactivateUserList(userList, arrow) {
-	userList.classList.add('d-none');
-	arrow.src = '../img/arrow-drop-down.png';
 }
 
 /**
@@ -158,30 +188,19 @@ function deactivateInput() {
 	document.querySelector('#subtask-input').value = '';
 }
 
-document.addEventListener('click', function (event) {
-	const clickInsideCategory = document.getElementById('subtask-input').contains(event.target);
-	const clickInsideAssigned = document.getElementById('assigned-to-input').contains(event.target);
-	const clickInsideUserList = document.getElementById('user-list').contains(event.target);
-
-	if (!clickInsideCategory) {
-		deactivateInput();
-	}
-	if (!clickInsideAssigned && !clickInsideUserList) {
-		let userList = document.querySelector('#user-list');
-		let arrow = document.querySelector('#assigned-arrow');
-		deactivateUserList(userList, arrow);
-	}
-});
-
 function submitSubtask() {
 	let subtaskContent = document.querySelector('#subtask-input').value;
-	subtasks.push(subtaskContent);
-	document.querySelector('#subtask-input').value = '';
-	renderSubtasks();
+	if (subtaskContent == '') {
+		deactivateInput();
+	} else {
+		subtasks.push(subtaskContent);
+		document.querySelector('#subtask-input').value = '';
+		renderSubtasks();
+		deactivateInput();
+	}
 }
 
 function deleteSubtask(i) {
-	let subtask = document.querySelector(`#todo-id-${i}`);
 	subtasks.splice(i, 1);
 	renderSubtasks();
 }
@@ -244,6 +263,7 @@ async function pushTask() {
 		priority: activePrio,
 		category: categoryInput,
 		subtasks: subtasks,
+		cardContainer: toDoContainer,
 	};
 	allTasks.push(newTask);
 	await setItem('allTasks', allTasks);

@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="add_task_resp.css" />
 		<title>Add Task</title>
 	</head>
-	<body onload="includeHTML()" onclick="closeSidemenu()">
+	<body onload="initAddTask()" onclick="closeSidemenu()">
 		<div w3-include-html="../templates/sidemenu.html"></div>
 		<div class="main-content">
 			<h1>Add Task</h1>
@@ -25,6 +25,7 @@
 								type="text"
 								id="title-input"
 								class="title-input"
+								autocomplete="off"
 								placeholder="Enter a title" />
 							<div class="error d-none" id="error-title">This field is required</div>
 						</div>
@@ -45,6 +46,7 @@
 								<input
 									type="text"
 									id="assigned-to-input"
+									autocomplete="off"
 									class="assigned-to-input"
 									placeholder="Select contacts to assign"
 									onkeyup="renderUsers()" />
@@ -113,6 +115,7 @@
 									type="text"
 									id="subtask-input"
 									class="subtask-input"
+									autocomplete="off"
 									placeholder="Add new subtask"
 									onclick="activateInput()" />
 								<img
@@ -128,7 +131,10 @@
 										class="subtask-actions submit-input"
 										onclick="submitSubtask()" />
 									<span class="vertical-line-sub"></span>
-									<img src="../img/close.png" class="subtask-actions" />
+									<img
+										src="../img/close.png"
+										class="subtask-actions"
+										onclick="deactivateInput()" />
 								</div>
 							</div>
 							<ul id="subtask-container"></ul>
