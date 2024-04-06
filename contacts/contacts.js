@@ -1,5 +1,4 @@
 let currentContact = 0;
-let initContactlistLoaded = false;
 
 async function initContacts() {
 	await includeHTML();
@@ -18,10 +17,12 @@ function extractCapitalLetters(name) {
 			for (let j = 0; j < name.length; j++) {
 				if (name[j] === name[j].toUpperCase() && name[j] !== ' ') {
 					capitals += name[j];
+				}else{
+					capitals = name[0];
 				}
 			}
 			contacts[i].capitals = capitals;
-			break; // Once found, no need to continue looping
+			break; 
 		}
 	}
 	return capitals;
@@ -31,18 +32,11 @@ async function initContactlist() {
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;
-
-	// Sortiere die Kontakte alphabetisch nach Namen, um die Gruppierung zu vereinfachen
 	contacts.sort((a, b) => a.name.localeCompare(b.name));
-
 	for (let i = 0; i < contacts.length; i++) {
 		const contact = contacts[i];
-
-		// Extrahiere den ersten Großbuchstaben des aktuellen Namens
 		const currentInitial = contact.name[0].toUpperCase();
-		// Überprüfe, ob der aktuelle Großbuchstabe gleich dem letzten ist
 		if (currentInitial !== lastInitial) {
-			// Wenn nicht, füge einen neuen Abschnitt mit der ersten Großbuchstabe hinzu
 			initContacts.innerHTML += `
           <div class="listInitiale">
             <span class="firstCharacter">${currentInitial}</span>
@@ -52,13 +46,11 @@ async function initContactlist() {
             </div>
           </div>
         `;
-			lastInitial = currentInitial; // Aktualisiere den letzten Großbuchstaben
+		lastInitial = currentInitial; 
 		}
-
-		// Füge den Kontakt in der entsprechenden Gruppe hinzu
 		initContacts.innerHTML += `
         <div class="contactCard" id='contactCard${i}' onclick='openContactCard(${i})'>
-          <div class="monogramCircle" style="background-color: ${getRandomColor(i)}">
+          <div class="monogramCircle" style="background-color: ${contact.color}">
             <span class="mongram">${extractCapitalLetters(contact.name)}</span>
           </div>
           <div class="contactDetails">
@@ -74,19 +66,16 @@ async function initContactlist() {
 	}
 }
 
-function getRandomColor(k) {
+function getRandomColor() {
 	// Erzeugt eine zufällige Farbe im Hex-Format
-	if (!contacts[k].color) {
+	
 		const letters = '0123456789ABCDEF';
 		let color = '#';
 		for (let i = 0; i < 6; i++) {
 			color += letters[Math.floor(Math.random() * 16)];
 		}
-		contacts[k].color = color;
 		return color;
-	} else {
-		return contacts[k].color;
-	}
+	
 }
 
 function openContactCard(i) {
@@ -194,7 +183,7 @@ function addNewContact(event) {
 		name: name,
 		email: email,
 		telefon: phone,
-		color: '',
+		color: getRandomColor(),
 		capitals: '',
 		addTask: false,
 	};
@@ -225,8 +214,9 @@ function addNewContact(event) {
 	return false;
 }
 
-function deleteContact(i) {
+async function deleteContact(i) {
 	contacts.splice(i, 1);
+	setItem('contacts', contacts);
 	initContactlist();
 	document.querySelector('.contactOverview').innerHTML = '';
 }
@@ -262,18 +252,20 @@ function closeEditContactWindow() {
 	currentContact = 0;
 }
 
-function deleteContactInEditWindow() {
+async function deleteContactInEditWindow() {
 	contacts.splice(currentContact, 1);
+	setItem('contacts', contacts);
 	initContactlist();
 	document.querySelector('.contactOverview').innerHTML = '';
 	closeEditContactWindow();
 }
 
-function editContact(event) {
+async function editContact(event) {
 	event.preventDefault();
 	contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
 	contacts[currentContact].email = document.querySelector('.emailEditContainer').value;
 	contacts[currentContact].telefon = document.querySelector('.phoneEditContainer').value;
+	setItem('contacts', contacts);
 	initContactlist();
 	closeEditContactWindow();
 	for (let k = 0; k < contacts.length; k++) {
@@ -301,7 +293,7 @@ function closeAddNewContactRespWindow() {
 		.classList.remove('addNewContactRespContainerTransition');
 }
 
-function addNewContactResp(event) {
+async function addNewContactResp(event) {
 	event.preventDefault();
 
 	let name = document.querySelector('.nameInputResp').value;
@@ -312,10 +304,11 @@ function addNewContactResp(event) {
 		name: name,
 		email: email,
 		telefon: phone,
-		color: '',
+		color: getRandomColor(),
 		capitals: '',
 	};
 	contacts.push(newContact);
+	setItem('contacts', contacts);
 	initContactlist();
 	closeAddNewContactRespWindow();
 	document.querySelector('.nameInputResp').value = '';
@@ -387,8 +380,9 @@ function editContactRespWindow() {
 	}, 350);
 }
 
-function deleteContactResp() {
+async function deleteContactResp() {
 	contacts.splice(currentContact, 1);
+	setItem('contacts', contacts);
 	initContactlist();
 	closeContactDetailsResp();
 	document
@@ -401,11 +395,12 @@ function deleteContactResp() {
 	document.querySelector('.editContactIconContResp').style.border = '#2a3647';
 }
 
-function editContactResp(event) {
+async function editContactResp(event) {
 	event.preventDefault();
 	contacts[currentContact].name = document.querySelector('#nameEditResp').value;
 	contacts[currentContact].email = document.querySelector('#emailEditResp').value;
 	contacts[currentContact].telefon = document.querySelector('#phoneEditResp').value;
+	setItem('contacts', contacts);
 	initContactlist();
 	closeEditContactRespWindow();
 	openContactCard(currentContact);
@@ -417,9 +412,10 @@ function editContactResp(event) {
 		.classList.remove('editContSmallContRespTransition');
 }
 
-function deleteContactByEditResp(event) {
+async function deleteContactByEditResp(event) {
 	event.preventDefault();
 	contacts.splice(currentContact, 1);
+	setItem('contacts', contacts);
 	initContactlist();
 	closeEditContactRespWindow();
 	closeContactDetailsResp();
