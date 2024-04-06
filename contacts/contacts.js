@@ -1,4 +1,5 @@
 let currentContact = 0;
+let initContactlistLoaded = false;
 /**
  *
  * @param {string} name
@@ -21,7 +22,6 @@ function extractCapitalLetters(name) {
 }
 
 async function initContactlist() {
-  await getItem('contacts');
   let initContacts = document.querySelector("#initContacts");
   initContacts.innerHTML = "";
   let lastInitial = null;
@@ -172,7 +172,7 @@ function closeAddNewContactWindow() {
   document.getElementById("addNewContactContainer").classList.remove("addNewContactContainerTransition");
 }
 
-async function addNewContact(event) {
+function addNewContact(event) {
   // Verhindern, dass das Formular auf herkömmliche Weise gesendet wird
   event.preventDefault();
 
@@ -189,6 +189,7 @@ async function addNewContact(event) {
     addTask: false,
   };
   contacts.push(newContact);
+  setItem('contacts', contacts);
   initContactlist();
   closeAddNewContactWindow();
   cancelInputValue();
@@ -202,7 +203,6 @@ async function addNewContact(event) {
     if(name == contacts[k].name){
       openContactCard(k);
     }
-    await setItem('contacts', contacts);
   }
   return false;
 }
