@@ -1,16 +1,16 @@
+let userList = document.querySelector('#user-list');
 /**
  * checks if user List is already opened and either closes or opens it
  */
 function openUserList() {
-	let userList = document.querySelector('#user-list');
 	let arrow = document.querySelector('#assigned-arrow');
 
 	if (userList.classList.contains('d-none')) {
 		userList.classList.remove('d-none');
 		arrow.src = '../img/arrow-drop-up.png';
-		renderUsers(userList);
+		renderUsers();
 	} else {
-		deactivateUserList(userList, arrow);
+		deactivateUserList(arrow);
 	}
 }
 
@@ -23,14 +23,36 @@ function deactivateUserList(userList, arrow) {
  *  iterates over all contacts
  * @param {HTMLElement} userList
  */
-function renderUsers(userList) {
+function renderUsers() {
 	userList.innerHTML = '';
-	for (let i = 0; i < contacts.length; i++) {
-		if (contacts[i]['addTask'] == false) {
-			const contact = contacts[i];
+	let userSearchInput = document.querySelector('#assigned-to-input').value;
+	let filteredContacts = contacts.filter((contact) =>
+		contact.name.toLowerCase().includes(userSearchInput)
+	);
+	if (userSearchInput !== '') {
+		showFilteredUsers(filteredContacts);
+	} else {
+		showAllContacts();
+	}
+}
+
+function showFilteredUsers(filteredContacts) {
+	for (let i = 0; i < filteredContacts.length; i++) {
+		const contact = filteredContacts[i];
+		if (contact.addTask == false) {
 			userList.innerHTML += createUnselectedUserHtml(contact, i);
-		} else if (contacts[i]['addTask'] == true) {
-			const contact = contacts[i];
+		} else {
+			userList.innerHTML += createSelectedUserHtml(contact, i);
+		}
+	}
+}
+
+function showAllContacts() {
+	for (let i = 0; i < contacts.length; i++) {
+		const contact = contacts[i];
+		if (contact.addTask == false) {
+			userList.innerHTML += createUnselectedUserHtml(contact, i);
+		} else {
 			userList.innerHTML += createSelectedUserHtml(contact, i);
 		}
 	}
@@ -213,7 +235,7 @@ function getCategory() {
 	return output;
 }
 
-function pushTask() {
+async function pushTask() {
 	let newTask = {
 		title: titleInput,
 		description: descriptionInput,
@@ -224,5 +246,37 @@ function pushTask() {
 		subtasks: subtasks,
 	};
 	allTasks.push(newTask);
-	console.log(allTasks);
+	await setItem('allTasks', allTasks);
+	resetForm();
+	showSlider();
+}
+
+function showSlider() {
+	document.querySelector('.task-added-slider').classList.remove('task-added-transition-remove');
+	document.querySelector('.task-added-slider').classList.add('task-added-transition');
+	setTimeout(() => {
+		document.querySelector('.task-added-slider').classList.remove('task-added-transition');
+		document.querySelector('.task-added-slider').classList.add('task-added-transition-remove');
+	}, 900);
+}
+
+function resetForm() {
+	let myForm = document.querySelector('#add-task-form');
+	resetAssignedUsers();
+	titleInput = '';
+	descriptionInput = '';
+	dateInput = '';
+	categoryInput = '';
+	selectedUsers = [];
+	renderSelectedUsers();
+	setPrio('medium');
+	subtasks = [];
+	renderSubtasks();
+	myForm.reset();
+}
+
+function resetAssignedUsers() {
+	contacts.forEach((contact) => {
+		contact.addTask = false;
+	});
 }

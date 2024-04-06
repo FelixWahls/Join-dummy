@@ -420,3 +420,34 @@ li p {
 .set-edit .subtask-imgs {
 	visibility: visible;
 }
+
+.task-added-slider {
+	width: 326px;
+	height: 74px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: fixed;
+	bottom: -2600px;
+	left: 47%;
+	background-color: #2a3647;
+	border-radius: 20px;
+	color: white;
+	font-size: 20px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.task-added-slider img {
+	width: 30px;
+	height: 30px;
+}
+
+.task-added-transition {
+	transition: transform 0.1s ease-in-out;
+	transform: translateY(-3000px);
+}
+
+.task-added-transition-remove {
+	transition: transform 0.1s ease-in;
+	transform: translateY(3000px);
+}

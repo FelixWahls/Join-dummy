@@ -46,7 +46,8 @@
 									type="text"
 									id="assigned-to-input"
 									class="assigned-to-input"
-									placeholder="Select contacts to assign" />
+									placeholder="Select contacts to assign"
+									onkeyup="renderUsers()" />
 								<img
 									src="../img/arrow-drop-down.png"
 									id="assigned-arrow"
@@ -137,7 +138,7 @@
 				<div class="bottom-section d-flex">
 					<div class="required-info">This field is required</div>
 					<div class="add-task-btns d-flex">
-						<button class="clear-field" type="reset">
+						<button class="clear-field" type="reset" onclick="resetForm()">
 							<p>Clear</p>
 							<img src="../img/close.png" alt="" />
 							<img src="../img/close-hover.png" class="d-none" />
@@ -149,6 +150,10 @@
 					</div>
 				</div>
 			</form>
+			<div class="task-added-slider">
+				<p>Task added to board</p>
+				<img src="../img/tasks.png" alt="" />
+			</div>
 		</div>
 		<script src="../script.js"></script>
 		<script src="../js/add-task.js"></script>
