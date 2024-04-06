@@ -12,9 +12,12 @@
 		<link rel="stylesheet" href="board.css" />
 		<script src="../script.js"></script>
 		<script src="../templates/sidemenu.js"></script>
+		<script src="../js/add-task.js"></script>
+		<script src="../js/add_task_html.js"></script>
+		<script src="board.js"></script>
 		<title>Board</title>
 	</head>
-	<body onload="includeHTML()" onclick="closeSidemenu()">
+	<body onload="initBoard()" onclick="closeSidemenu()">
 		<div w3-include-html="../templates/sidemenu.html"></div>
 		<div class="main-content">
 			<section class="top-section">
@@ -44,7 +47,7 @@
 							<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
 						</div>
 					</div>
-					<div class="tasks-container">
+					<div class="tasks-container" id="to-do-container">
 						<!-- start of no-card template -->
 						<div class="no-tasks">
 							<div id="no-task-text">No tasks To do</div>
@@ -61,7 +64,7 @@
 							<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
 						</div>
 					</div>
-					<div class="tasks-container">
+					<div class="tasks-container" id="in-progress-container">
 						<!-- start of small card template -->
 						<div class="flex-col single-task">
 							<div class="task-type">User Story</div>
@@ -98,13 +101,13 @@
 							<img src="../img/plus-btn-active.png" alt="" class="d-none active" />
 						</div>
 					</div>
-					<div class="tasks-container"></div>
+					<div class="tasks-container" id="await-feedback-container"></div>
 				</div>
 				<div class="flex-col">
 					<div class="col-name">
 						<h2>Done</h2>
 					</div>
-					<div class="tasks-container"></div>
+					<div class="tasks-container" id="done-container"></div>
 				</div>
 			</section>
 		</div>
