@@ -1,5 +1,11 @@
 let userList = document.querySelector('#user-list');
 
+async function initAddTask() {
+	await includeHTML();
+	allTasks = await getItem('allTasks');
+	contacts = await getItem('contacts');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 	document.body.addEventListener('click', function (event) {
 		let userList = document.getElementById('user-list');
