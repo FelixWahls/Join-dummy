@@ -251,6 +251,15 @@ justify-content: center;
 align-items: center;
 }
 
+.editContactRespLetters {
+font-size: 31px;
+font-weight: 500;
+line-height: 32.4px;
+text-align: center;
+position: fixed;
+color: #FFFFFF;
+}
+
 .addNewContactRespImage {
 width: 42.67px;
 height: 42.67px;

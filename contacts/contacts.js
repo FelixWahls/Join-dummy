@@ -350,12 +350,14 @@ function deleteContactResp(){
 
 function editContactResp(){
 
-  
-  /*contacts[currentContact].name =
-    document.querySelector(".nameEditResp").value;
-  contacts[currentContact].email = document.querySelector(".emailEditResp").value;
-  contacts[currentContact].telefon = document.querySelector(".phoneEditResp").value;
-  initContactlist();*/
+}
+
+function deleteContactByEditResp(event){
+event.preventDefault();
+contacts.splice(currentContact, 1);
+initContactlist();
+closeEditContactRespWindow();
+closeContactDetailsResp();
 }
 
 function openEditContactRespWindow(){
@@ -365,6 +367,8 @@ function openEditContactRespWindow(){
   document.querySelector("#nameEditResp").value = contacts[currentContact].name;
   document.querySelector("#emailEditResp").value = contacts[currentContact].email;
   document.querySelector("#phoneEditResp").value = contacts[currentContact].telefon;
+  document.querySelector('#editContactRespImageSubContainer').style.backgroundColor = contacts[currentContact].color;
+  document.querySelector('.editContactRespLetters').innerHTML = contacts[currentContact].capitals;
   
 }
 
