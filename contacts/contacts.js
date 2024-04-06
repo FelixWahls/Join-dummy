@@ -310,7 +310,10 @@ function openContactCardResp(i){
   document.querySelector('.emailContactResp').innerHTML = contacts[i].email;
   document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
   document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
-  document.querySelector('.editContactIconContResp').style.display = 'flex';
+  if(window.innerWidth < 960){
+    document.querySelector('.editContactIconContResp').style.display = 'flex';
+  }
+  
   document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
   document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
   setTimeout(() => {

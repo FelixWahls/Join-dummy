@@ -816,11 +816,8 @@ align-items: center;
   .addNewContactIconContResp {
     display: flex;
   }
-  .editContactIconContResp {
-    display: flex;
-  }
   .editContSmallContResp {
-    display: flex;
+    display: block;
   }
 }
 
