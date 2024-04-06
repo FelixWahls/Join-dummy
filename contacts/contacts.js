@@ -72,7 +72,7 @@ async function initContactlist() {
 
 function getRandomColor(k) {
   // Erzeugt eine zufällige Farbe im Hex-Format
-  if (!contacts[k].color && contacts[k].color == 'white') {
+  if (!contacts[k].color) {
     const letters = "0123456789ABCDEF";
     let color = "#";
     for (let i = 0; i < 6; i++) {
@@ -184,11 +184,11 @@ async function addNewContact(event) {
     name: name,
     email: email,
     telefon: phone,
-    color: "white",
-    capitals: "AA",
+    color: "",
+    capitals: "",
+    addTask: false,
   };
   contacts.push(newContact);
-  await setItem('contacts', contacts);
   initContactlist();
   closeAddNewContactWindow();
   cancelInputValue();
@@ -202,7 +202,7 @@ async function addNewContact(event) {
     if(name == contacts[k].name){
       openContactCard(k);
     }
-    
+    await setItem('contacts', contacts);
   }
   return false;
 }
