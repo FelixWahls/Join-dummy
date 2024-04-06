@@ -89,6 +89,7 @@ function renderSubtasks() {
 
 function createCardHtml(task, i) {
 	let assignedUsersHtml = createAssignedUsersHtml(task);
+	let subtasksHtml = createSubtasksHtml(task);
 	return /*html*/ `
         <div class="flex-col single-task">
 			<div class="task-type">${task.category}</div>
@@ -96,12 +97,7 @@ function createCardHtml(task, i) {
 				<h3>${task.title}</h3>
 				<p>${task.description}</p>
 			</div>
-			<div class="subtask-content">
-				<span class="subtask-bar-empty">
-					<span class="subtask-bar-progress"></span>
-				</span>
-				<span>0/${task.subtasks.length} Subtasks</span>
-			</div>
+			${subtasksHtml}
 			<div class="bottom-content">
 				<div class="assigned-users">
                     ${assignedUsersHtml}
@@ -121,4 +117,19 @@ function createAssignedUsersHtml(task) {
 		assignedUserCapitals += `<div class="user user-one">${element.userCapitals}</div>`;
 	}
 	return assignedUserCapitals;
+}
+
+function createSubtasksHtml(task) {
+	if (task.subtasks > 0) {
+		return /*html*/ `
+            <div class="subtask-content">
+				<span class="subtask-bar-empty">
+					<span class="subtask-bar-progress"></span>
+				</span>
+				<span>0/${task.subtasks.length} Subtasks</span>
+			</div>
+        `;
+	} else {
+		return '';
+	}
 }
