@@ -35,7 +35,7 @@ function renderSelectedUsers() {
 	if (selectedUsers.length > 0) {
 		for (let i = 0; i < selectedUsers.length; i++) {
 			const element = selectedUsers[i];
-			selectedContainer.innerHTML += capitalsHtml;
+			selectedContainer.innerHTML = capitalsHtml;
 		}
 	} else {
 		selectedContainer = '';
@@ -43,12 +43,14 @@ function renderSelectedUsers() {
 }
 
 function createUserCapitalsHtml() {
+	let capitalsHtml = '';
 	for (let i = 0; i < selectedUsers.length; i++) {
 		const element = selectedUsers[i]['userCapitals'];
-		return /*html*/ `
+		capitalsHtml += `
             <div class="user-icon d-flex">${element}</div>
         `;
 	}
+	return capitalsHtml;
 }
 
 function renderSubtasks() {
@@ -121,10 +123,11 @@ function createAssignedUsersHtml(task) {
 
 function createSubtasksHtml(task) {
 	if (task.subtasks > 0) {
+		let subtaskBarWidth = calcSubtaskProgress(task);
 		return /*html*/ `
             <div class="subtask-content">
 				<span class="subtask-bar-empty">
-					<span class="subtask-bar-progress"></span>
+					<span class="subtask-bar-progress" style="width: ${subtaskBarWidth}px;"></span>
 				</span>
 				<span>0/${task.subtasks.length} Subtasks</span>
 			</div>
@@ -133,3 +136,5 @@ function createSubtasksHtml(task) {
 		return '';
 	}
 }
+
+function calcSubtaskProgress(task) {}
