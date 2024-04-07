@@ -285,62 +285,51 @@ function updateCurrentContactDetails(){
 }
 
 function openAddNewContactRespWindow() {
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.add('addNewContactRespContainerTransition');
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.remove('addNewContactRespContainerTransitionRemove');
+	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransition');
+	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
 }
 
 function closeAddNewContactRespWindow() {
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.add('addNewContactRespContainerTransitionRemove');
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.remove('addNewContactRespContainerTransition');
+	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
+	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 }
 
 async function addNewContactResp(event) {
 	event.preventDefault();
-
 	let name = document.querySelector('.nameInputResp').value;
 	let email = document.querySelector('.emailInputResp').value;
 	let phone = document.querySelector('.phoneInputResp').value;
-
-	let newContact = {
-		name: name,
-		email: email,
-		telefon: phone,
-		color: getRandomColor(),
-		capitals: '',
-	};
-	contacts.push(newContact);
-	setItem('contacts', contacts);
+	createNewContactDesktop(name, email, phone);
 	initContactlist();
 	closeAddNewContactRespWindow();
-	document.querySelector('.nameInputResp').value = '';
-	document.querySelector('.emailInputResp').value = '';
-	document.querySelector('.phoneInputResp').value = '';
+	cancelInputValueResp();
+	animateCloseAddNewContainerMobile();
+	openResponsiveContactCardByName(name);
+	return false;
+}
 
-	document
-		.querySelector('.createResponseContainerResponsiv')
-		.classList.add('createResponseContainerResponsivTransition');
-	setTimeout(() => {
-		document
-			.querySelector('.createResponseContainerResponsiv')
-			.classList.remove('createResponseContainerResponsivTransition');
-	}, 1500);
-	document.querySelector('#initContacts').style.display = 'none';
-	document.querySelector('.contRespWindow').style.display = 'flex';
-	document.querySelector('.addNewContactIconContResp').style.display = 'none';
+function openResponsiveContactCardByName(name){
 	for (let i = 0; i < contacts.length; i++) {
 		if (name == contacts[i].name) {
 			openContactCardResp(i);
 		}
 	}
-	return false;
+}
+
+function animateCloseAddNewContainerMobile(){
+	document.querySelector('.createResponseContainerResponsiv').classList.add('createResponseContainerResponsivTransition');
+	setTimeout(() => {
+		document.querySelector('.createResponseContainerResponsiv').classList.remove('createResponseContainerResponsivTransition');
+	}, 1500);
+	document.querySelector('#initContacts').style.display = 'none';
+	document.querySelector('.contRespWindow').style.display = 'flex';
+	document.querySelector('.addNewContactIconContResp').style.display = 'none';
+}
+
+function cancelInputValueResp(){
+	document.querySelector('.nameInputResp').value = '';
+	document.querySelector('.emailInputResp').value = '';
+	document.querySelector('.phoneInputResp').value = '';
 }
 
 function openContactCardResp(i) {
