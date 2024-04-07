@@ -17,8 +17,6 @@ function extractCapitalLetters(name) {
 			for (let j = 0; j < name.length; j++) {
 				if (name[j] === name[j].toUpperCase() && name[j] !== ' ') {
 					capitals += name[j];
-				}else{
-					capitals = name[0];
 				}
 			}
 			contacts[i].capitals = capitals;
@@ -331,13 +329,9 @@ function cancelInputValueResp(){
 	document.querySelector('.emailInputResp').value = '';
 	document.querySelector('.phoneInputResp').value = '';
 }
-
+/////////
 function openContactCardResp(i) {
-	document.querySelector('.inicialCircleRespLetters').innerHTML = contacts[i].capitals;
-	document.querySelector('.contactNameTextResp').innerHTML = contacts[i].name;
-	document.querySelector('.emailContactResp').innerHTML = contacts[i].email;
-	document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
-	document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
+	contactDetailsInResponsiveView();
 	if (window.innerWidth < 960) {
 		document.querySelector('.editContactIconContResp').style.display = 'flex';
 	}
@@ -351,28 +345,28 @@ function openContactCardResp(i) {
 	currentContact = i;
 }
 
+function contactDetailsInResponsiveView(){
+	document.querySelector('.inicialCircleRespLetters').innerHTML = contacts[i].capitals;
+	document.querySelector('.contactNameTextResp').innerHTML = contacts[i].name;
+	document.querySelector('.emailContactResp').innerHTML = contacts[i].email;
+	document.querySelector('.phoneContactResp').innerHTML = contacts[i].telefon;
+	document.querySelector('.inicialCircleGroundResp').style.backgroundColor = contacts[i].color;
+}
+
 function closeContactDetailsResp() {
 	document.querySelector('#initContacts').style.display = 'block';
 	document.querySelector('.contRespWindow').style.display = 'none';
 	document.querySelector('.addNewContactIconContResp').style.display = 'flex';
 	document.querySelector('.editContactIconContResp').style.display = 'none';
-	document
-		.querySelector('.editContactRespContainer')
-		.classList.add('addNewContactRespContainerTransitionRemove');
-	document
-		.querySelector('.editContactRespContainer')
-		.classList.remove('addNewContactRespContainerTransition');
+	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
+	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 }
 
 function editContactRespWindow() {
 	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
 	document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.remove('editContSmallContRespTransitionRemove');
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.add('editContSmallContRespTransition');
+	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransitionRemove');
+	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransition');
 	setTimeout(() => {
 		document.querySelector('.editContactIconContResp').style.display = 'none';
 	}, 350);
@@ -383,12 +377,8 @@ async function deleteContactResp() {
 	setItem('contacts', contacts);
 	initContactlist();
 	closeContactDetailsResp();
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.add('editContSmallContRespTransitionRemove');
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.remove('editContSmallContRespTransition');
+	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
 	document.querySelector('.editContactIconContResp').style.backgroundColor = '#2a3647';
 	document.querySelector('.editContactIconContResp').style.border = '#2a3647';
 }
@@ -402,12 +392,8 @@ async function editContactResp(event) {
 	initContactlist();
 	closeEditContactRespWindow();
 	openContactCard(currentContact);
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.add('editContSmallContRespTransitionRemove');
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.remove('editContSmallContRespTransition');
+	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
 }
 
 async function deleteContactByEditResp(event) {
@@ -417,21 +403,13 @@ async function deleteContactByEditResp(event) {
 	initContactlist();
 	closeEditContactRespWindow();
 	closeContactDetailsResp();
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.add('editContSmallContRespTransitionRemove');
-	document
-		.querySelector('.editContSmallContResp')
-		.classList.remove('editContSmallContRespTransition');
+	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
 }
 
 function openEditContactRespWindow() {
-	document
-		.querySelector('.editContactRespContainer')
-		.classList.add('addNewContactRespContainerTransition');
-	document
-		.querySelector('.editContactRespContainer')
-		.classList.remove('addNewContactRespContainerTransitionRemove');
+	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransition');
+	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
 	document.querySelector('.contRespWindow').style.display = 'none';
 	document.querySelector('#nameEditResp').value = contacts[currentContact].name;
 	document.querySelector('#emailEditResp').value = contacts[currentContact].email;
@@ -442,12 +420,8 @@ function openEditContactRespWindow() {
 }
 
 function closeEditContactRespWindow() {
-	document
-		.querySelector('.editContactRespContainer')
-		.classList.add('addNewContactRespContainerTransitionRemove');
-	document
-		.querySelector('.editContactRespContainer')
-		.classList.remove('addNewContactRespContainerTransition');
+	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
+	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 	openContactCard(currentContact);
 	document.querySelector('.editContactIconContResp').style.display = 'none';
 }
