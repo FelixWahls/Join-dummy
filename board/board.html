@@ -50,14 +50,13 @@
 						</div>
 					</div>
 					<div
-						class="tasks-container"
+						class="tasks-container drag-area"
 						id="to-do-container"
-						ondrop="moveTo('to-do-container')"
-						ondragover="allowDrop(event)">
+						ondrop="moveTo('to-do-container'); removeHighlight('to-do-container')"
+						ondragover="allowDrop(event); highlight('to-do-container')"
+						ondragleave="removeHighlight('to-do-container')">
 						<!-- start of no-card template -->
-						<div class="no-tasks">
-							<div id="no-task-text">No tasks To do</div>
-						</div>
+
 						<!-- End of no-card template -->
 					</div>
 				</div>
@@ -71,10 +70,11 @@
 						</div>
 					</div>
 					<div
-						class="tasks-container"
+						class="tasks-container drag-area"
 						id="in-progress-container"
-						ondrop="moveTo('in-progress-container')"
-						ondragover="allowDrop(event)"></div>
+						ondrop="moveTo('in-progress-container'); removeHighlight('in-progress-container')"
+						ondragover="allowDrop(event); highlight('in-progress-container')"
+						ondragleave="removeHighlight('in-progress-container')"></div>
 				</div>
 				<div class="flex-col">
 					<div class="col-name">
@@ -86,20 +86,22 @@
 						</div>
 					</div>
 					<div
-						class="tasks-container"
+						class="tasks-container drag-area"
 						id="await-feedback-container"
-						ondrop="moveTo('await-feedback-container')"
-						ondragover="allowDrop(event)"></div>
+						ondrop="moveTo('await-feedback-container'); removeHighlight('await-feedback-container')"
+						ondragover="allowDrop(event); highlight('await-feedback-container')"
+						ondragleave="removeHighlight('await-feedback-container')"></div>
 				</div>
 				<div class="flex-col">
 					<div class="col-name">
 						<h2>Done</h2>
 					</div>
 					<div
-						class="tasks-container"
+						class="tasks-container drag-area"
 						id="done-container"
-						ondrop="moveTo('done-container')"
-						ondragover="allowDrop(event)"></div>
+						ondrop="moveTo('done-container'); removeHighlight('done-container')"
+						ondragover="allowDrop(event); highlight('done-container')"
+						ondragleave="removeHighlight('done-container')"></div>
 				</div>
 			</section>
 		</div>

@@ -138,3 +138,28 @@ function createSubtasksHtml(task) {
 }
 
 function calcSubtaskProgress(task) {}
+
+function createEmptyContainerHtml(containerType) {
+	let emptyText = '';
+	switch (containerType) {
+		case 'to-do-container':
+			emptyText = 'No tasks to do';
+			break;
+		case 'in-progress-container':
+			emptyText = 'No tasks in Progress';
+			break;
+		case 'await-feedback-container':
+			emptyText = 'No tasks await feedback';
+			break;
+		case 'done-container':
+			emptyText = 'No tasks done';
+			break;
+		default:
+			emptyText = 'No tasks';
+	}
+	return /*html*/ `
+        <div class="no-tasks">
+			<div id="no-task-text">${emptyText}</div>
+		</div>
+    `;
+}

@@ -40,10 +40,14 @@ function renderTasksBoard() {
 function renderTasks(tasks, container) {
 	let currentTaskContainer = document.getElementById(container);
 	currentTaskContainer.innerHTML = '';
-	for (let i = 0; i < tasks.length; i++) {
-		const element = tasks[i];
-		console.log(element);
-		currentTaskContainer.innerHTML += createCardHtml(element, i);
+	if (tasks.length === 0) {
+		currentTaskContainer.innerHTML = createEmptyContainerHtml(container);
+	} else {
+		for (let i = 0; i < tasks.length; i++) {
+			const element = tasks[i];
+			console.log(element);
+			currentTaskContainer.innerHTML += createCardHtml(element, i);
+		}
 	}
 }
 
@@ -58,4 +62,12 @@ function allowDrop(ev) {
 function moveTo(container) {
 	tasksData[currentDraggedElement]['cardContainer'] = container;
 	renderTasksBoard();
+}
+
+function highlight(id) {
+	document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+function removeHighlight(id) {
+	document.getElementById(id).classList.remove('drag-area-highlight');
 }
