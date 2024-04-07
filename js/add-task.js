@@ -1,14 +1,15 @@
-let userList = document.querySelector('#user-list');
+let userList;
 
 async function initAddTask() {
 	await includeHTML();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
+	userList = document.querySelector('#user-list');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.body.addEventListener('click', function (event) {
-		let userList = document.getElementById('user-list');
+		userList = document.getElementById('user-list');
 		let inputContainer = document.querySelector('#assigned-to-input');
 		let isClickInsideUserList = userList && userList.contains(event.target);
 		let isClickInsideInputContainer = inputContainer && inputContainer.contains(event.target);
@@ -44,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 function openUserList() {
 	let arrow = document.querySelector('#assigned-arrow');
-
 	if (userList.classList.contains('d-none')) {
 		userList.classList.remove('d-none');
 		arrow.src = '../img/arrow-drop-up.png';
@@ -69,6 +69,7 @@ function renderUsers() {
 		showFilteredUsers(filteredContacts);
 	} else {
 		showAllContacts();
+		console.log(contacts);
 	}
 }
 
@@ -270,6 +271,7 @@ async function pushTask() {
 		category: categoryInput,
 		subtasks: subtasks,
 		cardContainer: toDoContainer,
+		id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0,
 	};
 	allTasks.push(newTask);
 	await setItem('allTasks', allTasks);

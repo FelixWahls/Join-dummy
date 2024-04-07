@@ -1,8 +1,12 @@
+let tasksData;
+let currentDraggedElement;
+
 async function initBoard() {
 	await includeHTML();
-	let tasksData = await getItem('allTasks');
+	tasksData = await getItem('allTasks');
+	contacts = await getItem('contacts');
 	// tasksData = JSON.parse(tasksData);
-	splitTasks(tasksData);
+	renderTasksBoard();
 }
 
 function slideIn() {
@@ -12,6 +16,7 @@ function slideIn() {
 		slideInput.classList.remove('slide-in-transition');
 		slideInputBG.classList.remove('wrapper-transition');
 		slideInputBG.classList.add('d-none');
+		resetForm();
 	} else {
 		slideInput.classList.add('slide-in-transition');
 		slideInputBG.classList.remove('d-none');
@@ -19,18 +24,16 @@ function slideIn() {
 	}
 }
 
-function splitTasks(tasksData) {
-	let toDoTasks = tasksData.filter((tasksData) => tasksData.cardContainer === 'to-do-container');
+function renderTasksBoard() {
+	let toDoTasks = tasksData.filter((t) => t['cardContainer'] == 'to-do-container');
 	renderTasks(toDoTasks, 'to-do-container');
-	let inProgressTasks = tasksData.filter(
-		(tasksData) => tasksData.cardContainer === 'in-progress-container'
-	);
+	let inProgressTasks = tasksData.filter((t) => t['cardContainer'] == 'in-progress-container');
 	renderTasks(inProgressTasks, 'in-progress-container');
 	let awaitFeedbackTasks = tasksData.filter(
-		(tasksData) => tasksData.cardContainer === 'await-feedback-container'
+		(t) => t['cardContainer'] == 'await-feedback-container'
 	);
 	renderTasks(awaitFeedbackTasks, 'await-feedback-container');
-	let doneTasks = tasksData.filter((tasksData) => tasksData.cardContainer === 'done-container');
+	let doneTasks = tasksData.filter((t) => t['cardContainer'] == 'done-container');
 	renderTasks(doneTasks, 'done-container');
 }
 
@@ -42,4 +45,17 @@ function renderTasks(tasks, container) {
 		console.log(element);
 		currentTaskContainer.innerHTML += createCardHtml(element, i);
 	}
+}
+
+function startDragging(id) {
+	currentDraggedElement = id;
+}
+
+function allowDrop(ev) {
+	ev.preventDefault();
+}
+
+function moveTo(container) {
+	tasksData[currentDraggedElement]['cardContainer'] = container;
+	renderTasksBoard();
 }

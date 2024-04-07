@@ -93,7 +93,7 @@ function createCardHtml(task, i) {
 	let assignedUsersHtml = createAssignedUsersHtml(task);
 	let subtasksHtml = createSubtasksHtml(task);
 	return /*html*/ `
-        <div class="flex-col single-task">
+        <div class="flex-col single-task" id="task${task.id}" draggable="true" ondragstart="startDragging(${task.id})">
 			<div class="task-type">${task.category}</div>
 			<div class="task-content">
 				<h3>${task.title}</h3>
