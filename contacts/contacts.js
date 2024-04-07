@@ -263,17 +263,25 @@ async function deleteContactInEditWindow() {
 
 async function editContact(event) {
 	event.preventDefault();
-	contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
-	contacts[currentContact].email = document.querySelector('.emailEditContainer').value;
-	contacts[currentContact].telefon = document.querySelector('.phoneEditContainer').value;
+	updateCurrentContactDetails();
 	setItem('contacts', contacts);
 	initContactlist();
 	closeEditContactWindow();
+	openMatchingContactCard();
+}
+
+function openMatchingContactCard(){
 	for (let k = 0; k < contacts.length; k++) {
 		if (document.querySelector('.nameEditContainer').value == contacts[k].name) {
 			openContactCard(k);
 		}
 	}
+}
+
+function updateCurrentContactDetails(){
+	contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
+	contacts[currentContact].email = document.querySelector('.emailEditContainer').value;
+	contacts[currentContact].telefon = document.querySelector('.phoneEditContainer').value;
 }
 
 function openAddNewContactRespWindow() {
