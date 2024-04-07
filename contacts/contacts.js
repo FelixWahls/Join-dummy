@@ -184,6 +184,29 @@ function addNewContact(event) {
 	let name = document.querySelector('.nameInputContainer').value;
 	let email = document.querySelector('.emailInputContainer').value;
 	let phone = document.querySelector('.phoneInputContainer').value;
+	createNewContactDesktop(name, email, phone);
+	initContactlist();
+	closeAddNewContactWindow();
+	cancelInputValue();
+	animateCloseAddNewContainerDesktop();
+	for (let k = 0; k < contacts.length; k++) {
+		if (name == contacts[k].name) {
+			openContactCard(k);
+		}
+	}
+	return false;
+}
+
+function animateCloseAddNewContainerDesktop(){
+	document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
+	document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
+	setTimeout(() => {
+		document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
+		document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
+	}, 1500);
+}
+
+function createNewContactDesktop(name, email, phone){
 	let newContact = {
 		name: name,
 		email: email,
@@ -194,29 +217,6 @@ function addNewContact(event) {
 	};
 	contacts.push(newContact);
 	setItem('contacts', contacts);
-	initContactlist();
-	closeAddNewContactWindow();
-	cancelInputValue();
-	document
-		.querySelector('#CreateResponseContainer')
-		.classList.remove('CreateResponseContainerTransitionRemove');
-	document
-		.querySelector('#CreateResponseContainer')
-		.classList.add('CreateResponseContainerTransition');
-	setTimeout(() => {
-		document
-			.querySelector('#CreateResponseContainer')
-			.classList.remove('CreateResponseContainerTransition');
-		document
-			.querySelector('#CreateResponseContainer')
-			.classList.add('CreateResponseContainerTransitionRemove');
-	}, 1500);
-	for (let k = 0; k < contacts.length; k++) {
-		if (name == contacts[k].name) {
-			openContactCard(k);
-		}
-	}
-	return false;
 }
 
 async function deleteContact(i) {
