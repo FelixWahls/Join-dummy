@@ -66,84 +66,27 @@ async function initContactlist() {
 	}
 }
 
+/**
+ * @description Generates a random hexadecimal color code.
+ * @returns {string} A string representing a random color in hexadecimal format.
+ */
 function getRandomColor() {
-	// Erzeugt eine zufällige Farbe im Hex-Format
-	
 		const letters = '0123456789ABCDEF';
 		let color = '#';
 		for (let i = 0; i < 6; i++) {
 			color += letters[Math.floor(Math.random() * 16)];
 		}
 		return color;
-	
 }
 
 function openContactCard(i) {
-	let contactOverview = document.querySelector('.contactOverview');
-
-	for (let j = 0; j < contacts.length; j++) {
-		const contact = contacts[j];
-		let contactCard = document.querySelector(`#contactCard${j}`);
-		if (window.innerWidth > 960) {
-			document.querySelector(`#contactName${j}`).style.color = 'black';
-			document.querySelector(`#contactName${i}`).style.color = '#FFFFFF';
-		}
-
-		contactCard.style.backgroundColor = '#FFFFFF';
-	}
-	let contactCard = document.querySelector(`#contactCard${i}`);
-	if (window.innerWidth > 960) {
-		contactCard.style.backgroundColor = '#2A3647';
-	}
-
-	contactOverview.innerHTML = '';
-	contactOverview.innerHTML = `
-            <div class="nameContainer">
-				<div class="inicialeCircle"  style="background-color: ${contacts[i].color}">
-					<span class="inicial">${extractCapitalLetters(contacts[i].name)}</span>
-				</div>
-				<div class="editContactContainer">
-					<div class="name">
-						<span class="fullname">${contacts[i].name}</span>
-					</div>
-					<div class="changeButtonsContainer">
-						<div class="editButtonContainer" onclick="openEditContactWindow(${i})">
-							<img src="../img/edit.png" class="editIcon">
-							<span class="editText">Edit</span>
-						</div>
-						<div class="deleteButtonContainer"  onclick="deleteContact(${i})">
-							<img src="../img/delete.png" class="deleteIcon">
-							<span class="deleteText">Delete</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="contactInformationTitle">
-				<span class="contactInformation">Contact Information</span>
-			</div>
-			<div class="accessibility">
-				<div class="mailDiv">
-					<div>
-						<span class="mailAdressTitel">Email</span>
-					</div>
-					<div>
-						<span class="mailAdress">${contacts[i].email}</span>
-					</div>
-
-				</div>
-				<div class="mailDiv">
-					<div>
-						<span class="mailAdressTitel">Phone</span>
-					</div>
-					<div>
-						<span class="mailAdress">${contacts[i].telefon}</span>
-					</div>
-				</div>
-			</div>
-    `;
-	contactOverview.classList.add('contactOverviewTransition');
-	contactOverview.classList.remove('contactOverviewTransitionRemove');
+	renderContactOverviewWithTransition(i);
+	updateContactCardsStyle(i);
 	openContactCardResp(i);
+	adjustLayoutForMobile();
+}
+
+function adjustLayoutForMobile(){
 	if (window.innerWidth < 960) {
 		document.querySelector('#initContacts').style.display = 'none';
 		document.querySelector('.contRespWindow').style.display = 'flex';
@@ -151,34 +94,96 @@ function openContactCard(i) {
 	}
 }
 
+function renderContactOverviewWithTransition(i){
+	let contactOverview = document.querySelector('.contactOverview');
+	contactOverview.innerHTML = '';
+	contactOverview.innerHTML = contactOverviewTemplate(i);
+	contactOverview.classList.add('contactOverviewTransition');
+	contactOverview.classList.remove('contactOverviewTransitionRemove');
+}
+
+function updateContactCardsStyle(i){
+	let contactCard = document.querySelector(`#contactCard${i}`);
+	for (let j = 0; j < contacts.length; j++) {
+		const contact = contacts[j];
+		let contactCard = document.querySelector(`#contactCard${j}`);
+		updateContactNameColorForDesktop(j,i);
+		contactCard.style.backgroundColor = '#FFFFFF';
+	}
+	if (window.innerWidth > 960) {
+		contactCard.style.backgroundColor = '#2A3647';
+	}
+}
+
+function updateContactNameColorForDesktop(j,i){
+	if (window.innerWidth > 960) {
+		document.querySelector(`#contactName${j}`).style.color = 'black';
+		document.querySelector(`#contactName${i}`).style.color = '#FFFFFF';
+	}
+}
+
+function contactOverviewTemplate(i){
+	return `
+	<div class="nameContainer">
+		<div class="inicialeCircle"  style="background-color: ${contacts[i].color}">
+			<span class="inicial">${extractCapitalLetters(contacts[i].name)}</span>
+		</div>
+		<div class="editContactContainer">
+			<div class="name">
+				<span class="fullname">${contacts[i].name}</span>
+			</div>
+			<div class="changeButtonsContainer">
+				<div class="editButtonContainer" onclick="openEditContactWindow(${i})">
+					<img src="../img/edit.png" class="editIcon">
+					<span class="editText">Edit</span>
+				</div>
+				<div class="deleteButtonContainer"  onclick="deleteContact(${i})">
+					<img src="../img/delete.png" class="deleteIcon">
+					<span class="deleteText">Delete</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="contactInformationTitle">
+		<span class="contactInformation">Contact Information</span>
+	</div>
+	<div class="accessibility">
+		<div class="mailDiv">
+			<div>
+				<span class="mailAdressTitel">Email</span>
+			</div>
+			<div>
+				<span class="mailAdress">${contacts[i].email}</span>
+			</div>
+
+		</div>
+		<div class="mailDiv">
+			<div>
+				<span class="mailAdressTitel">Phone</span>
+			</div>
+			<div>
+				<span class="mailAdress">${contacts[i].telefon}</span>
+			</div>
+		</div>
+	</div>
+	`;
+}
+
 function openAddNewContactWindow() {
-	//document.body.style.filter = "grayscale(40%)";
-	//document.getElementById('addNewContactContainer').style.filter = "grayscale(0%)";
-	document
-		.getElementById('addNewContactContainer')
-		.classList.add('addNewContactContainerTransition');
-	document
-		.getElementById('addNewContactContainer')
-		.classList.remove('addNewContactContainerTransitionRemove');
+	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
+	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 }
 
 function closeAddNewContactWindow() {
-	document
-		.getElementById('addNewContactContainer')
-		.classList.add('addNewContactContainerTransitionRemove');
-	document
-		.getElementById('addNewContactContainer')
-		.classList.remove('addNewContactContainerTransition');
+	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
+	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
 }
 
 function addNewContact(event) {
-	// Verhindern, dass das Formular auf herkömmliche Weise gesendet wird
 	event.preventDefault();
-
 	let name = document.querySelector('.nameInputContainer').value;
 	let email = document.querySelector('.emailInputContainer').value;
 	let phone = document.querySelector('.phoneInputContainer').value;
-
 	let newContact = {
 		name: name,
 		email: email,
