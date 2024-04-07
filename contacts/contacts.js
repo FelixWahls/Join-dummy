@@ -189,12 +189,16 @@ function addNewContact(event) {
 	closeAddNewContactWindow();
 	cancelInputValue();
 	animateCloseAddNewContainerDesktop();
+	findAndOpenContactCardByName(name);
+	return false;
+}
+
+function findAndOpenContactCardByName(name){
 	for (let k = 0; k < contacts.length; k++) {
 		if (name == contacts[k].name) {
 			openContactCard(k);
 		}
 	}
-	return false;
 }
 
 function animateCloseAddNewContainerDesktop(){
@@ -233,12 +237,8 @@ function cancelInputValue() {
 }
 
 function openEditContactWindow(i) {
-	document
-		.getElementById('editContactContainer')
-		.classList.add('addNewContactContainerTransition');
-	document
-		.getElementById('editContactContainer')
-		.classList.remove('addNewContactContainerTransitionRemove');
+	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
+	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
 	document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
 	document.querySelector('.nameEditContainer').value = contacts[i].name;
@@ -248,12 +248,8 @@ function openEditContactWindow(i) {
 }
 
 function closeEditContactWindow() {
-	document
-		.getElementById('editContactContainer')
-		.classList.remove('addNewContactContainerTransition');
-	document
-		.getElementById('editContactContainer')
-		.classList.add('addNewContactContainerTransitionRemove');
+	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
+	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
 	currentContact = 0;
 }
 
