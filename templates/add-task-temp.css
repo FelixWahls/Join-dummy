@@ -46,3 +46,16 @@
 .right-col {
 	margin-right: 0;
 }
+
+.bottom-section {
+	margin-right: 0;
+}
+
+.absolute {
+	position: absolute;
+	top: 90px;
+}
+
+.relative {
+	position: relative;
+}

@@ -21,8 +21,16 @@ h2 {
 }
 
 .main-content {
-	margin: 80px 0 0 64px;
-	padding-right: 64px;
+	margin-top: 0;
+	padding-top: 80px;
+	margin-left: 0;
+	padding-left: 64px;
+	padding-right: 48px;
+}
+
+.main-content::-webkit-scrollbar {
+	display: none;
+	overflow: scroll;
 }
 
 .first-section {
@@ -43,6 +51,7 @@ h2 {
 	border-radius: 10px;
 	border: 1px solid #d1d1d1;
 	position: relative;
+	margin-right: 32px;
 }
 
 .searchbar-container img {
@@ -56,7 +65,8 @@ h2 {
 #search-bar {
 	border: none;
 	font-size: 20px;
-	cursor: pointer;
+	max-height: 46px;
+	padding: 0;
 }
 
 #search-bar:focus {
@@ -100,12 +110,12 @@ h2 {
 }
 
 .tasks {
-	width: 1144px;
+	max-width: 1144px;
 	margin-top: 48px;
+	margin-bottom: 90px;
 	display: flex;
 	justify-content: center;
 	gap: 26px;
-	padding-right: 48px;
 }
 
 .flex-col {
@@ -114,16 +124,11 @@ h2 {
 	width: 100%;
 }
 
-.big-col {
-	align-items: center;
-}
-
 .tasks-container {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	flex: 1;
+	flex-wrap: wrap;
 }
 
 .col-name {
@@ -272,4 +277,54 @@ h3 {
 	background-color: rgba(161, 161, 161, 0.24);
 	border: 3px solid lightgray;
 	border-radius: 10px;
+}
+
+@media (max-width: 1400px) {
+	.tasks {
+		flex-direction: column;
+		max-width: 1144px;
+	}
+
+	.tasks-container {
+		flex-direction: row;
+	}
+
+	.single-task {
+		width: 252px;
+	}
+}
+
+@media (max-width: 1250px) {
+	.main-content {
+		padding-top: 48px;
+		padding-left: auto;
+		padding-right: auto;
+	}
+}
+
+@media (max-width: 900px) {
+	h1 {
+		font-size: 47px;
+	}
+
+	.first-section {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.search-section {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.remove-on-small {
+		display: none;
+	}
+
+	.add-task {
+		width: 40px;
+		height: 40px;
+		padding: 3px;
+	}
 }

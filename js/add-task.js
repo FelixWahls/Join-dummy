@@ -69,7 +69,6 @@ function renderUsers() {
 		showFilteredUsers(filteredContacts);
 	} else {
 		showAllContacts();
-		console.log(contacts);
 	}
 }
 
@@ -228,15 +227,20 @@ function submitChange(i) {
 	renderSubtasks();
 }
 
-function createTask(event) {
-	event.preventDefault(); // Prevent form submission
+async function createTask(event) {
+	event.preventDefault();
 	titleInput = validateField('#title-input', '#error-title');
 	descriptionInput = document.querySelector('#description-input').value;
 	dateInput = validateField('#due-date-input', '#error-due-date');
 	categoryInput = validateField('#category-input', '#error-category');
 
 	if (titleInput && dateInput && categoryInput) {
-		pushTask();
+		await pushTask();
+	}
+	if ((window.location.href = '../board/board.html')) {
+		initBoard();
+	} else {
+		window.location.href = '../board/board.html';
 	}
 }
 
@@ -275,6 +279,7 @@ async function pushTask() {
 	};
 	allTasks.push(newTask);
 	await setItem('allTasks', allTasks);
+	console.log(allTasks);
 	resetForm();
 	showSlider();
 }

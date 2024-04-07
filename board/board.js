@@ -3,6 +3,7 @@ let currentDraggedElement;
 
 async function initBoard() {
 	await includeHTML();
+	await initAddTask();
 	tasksData = await getItem('allTasks');
 	contacts = await getItem('contacts');
 	// tasksData = JSON.parse(tasksData);
@@ -10,17 +11,21 @@ async function initBoard() {
 }
 
 function slideIn() {
-	let slideInput = document.querySelector('#add-task-slider');
-	let slideInputBG = document.querySelector('#slide-transition-wrapper');
-	if (slideInput.classList.contains('slide-in-transition')) {
-		slideInput.classList.remove('slide-in-transition');
-		slideInputBG.classList.remove('wrapper-transition');
-		slideInputBG.classList.add('d-none');
-		resetForm();
+	if (window.innerWidth < 1000) {
+		window.location.href = '../add_task/add_task.html';
 	} else {
-		slideInput.classList.add('slide-in-transition');
-		slideInputBG.classList.remove('d-none');
-		slideInputBG.classList.add('wrapper-transition');
+		let slideInput = document.querySelector('#add-task-slider');
+		let slideInputBG = document.querySelector('#slide-transition-wrapper');
+		if (slideInput.classList.contains('slide-in-transition')) {
+			slideInput.classList.remove('slide-in-transition');
+			slideInputBG.classList.remove('wrapper-transition');
+			slideInputBG.classList.add('d-none');
+			resetForm();
+		} else {
+			slideInput.classList.add('slide-in-transition');
+			slideInputBG.classList.remove('d-none');
+			slideInputBG.classList.add('wrapper-transition');
+		}
 	}
 }
 
@@ -45,7 +50,6 @@ function renderTasks(tasks, container) {
 	} else {
 		for (let i = 0; i < tasks.length; i++) {
 			const element = tasks[i];
-			console.log(element);
 			currentTaskContainer.innerHTML += createCardHtml(element, i);
 		}
 	}

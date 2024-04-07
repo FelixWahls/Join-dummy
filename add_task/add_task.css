@@ -10,6 +10,15 @@
 	display: none;
 }
 
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+	top: 90px;
+}
+
 h1 {
 	font-weight: 700;
 	font-size: 61px;
@@ -330,6 +339,7 @@ button:hover {
 
 #selected-users {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .input-error {
