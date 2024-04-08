@@ -130,9 +130,25 @@ function addUser() {
 
   users.push({user: name, email: email, password: password});
   console.log("User added, redirecting...");
-  redirectToLogin();
+  showPopup();
 }
 
+
+function showPopup() {
+ const popup = document.createElement('div');
+ popup.className = 'popup';
+ popup.textContent = 'You Signed Up successfully';
+ document.body.appendChild(popup);
+ popup.style.display = 'flex';
+
+ setTimeout(() => {
+  popup.style.bottom = '50%';
+ }, 100);
+ setTimeout(() => {
+  redirectToLogin();
+ }, 2000);
+}
+ 
 
 /**
  * Redirects the user to the login page.

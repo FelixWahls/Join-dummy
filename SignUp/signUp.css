@@ -2,8 +2,9 @@ body {
 	font-family: 'Inter';
 	height: 100vh;
 	background-color: rgb(245, 247, 248);
+ margin: 0;
 }
-.computer-Website {
+.Website {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -206,25 +207,78 @@ h1 {
 	flex-grow: 0;
 }
 .footer {
-	display: flex;
-	justify-content: space-between;
-	position: fixed;
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: 10px;
-	width: 246px;
-	height: 35px;
-	color: rgb(168, 168, 168);
+ display: flex;
+ justify-content: space-between;
+ position: fixed;
+ left: 50%;
+ transform: translateX(-50%);
+ bottom: 15px;
+ width: 246px;
+ height: 35px;
+ color: rgb(168, 168, 168);
 }
-#privacyPolicy,
+#privacyPolicy {
+ width: 105px;
+ height: 19px;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 120%;
+ display: flex;
+ align-items: center;
+ color: #A8A8A8;
+ flex: none;
+ order: 0;
+ flex-grow: 0;
+ cursor: pointer;
+}
 #legalNotice {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 120%;
-	width: 109px;
-	cursor: pointer;
+ width: 93px;
+ height: 19px;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 120%;
+ display: flex;
+ align-items: center;
+ color: #A8A8A8;
+ flex: none;
+ order: 0;
+ flex-grow: 0;
+ cursor: pointer;
 }
+#legalNotice:hover {
+ width: 96px;
+ height: 19px;
+ font-weight: 700;
+ font-size: 16px;
+ line-height: 120%;
+ color: #29ABE2;
+}
+#privacyPolicy:hover {
+ width: 110px;
+ height: 19px;
+ font-weight: 700;
+ font-size: 16px;
+ line-height: 120%;
+ color: #29ABE2;
+} 
+a {
+  text-decoration: none;
+}
+.popup {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ padding: 0px;
+ position: fixed; /* Ändern zu fixed, um sicherzustellen, dass es sich relativ zum Viewport positioniert */
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%); /* Zentriert das Popup sowohl horizontal als auch vertikal */
+ width: 312px;
+ height: 74px;
+ background: white; /* Hinzufügen eines Hintergrunds, damit der Text lesbar ist */
+ filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+ z-index: 1000; /* Stellt sicher, dass das Popup über anderen Elementen erscheint */
+}
+
+

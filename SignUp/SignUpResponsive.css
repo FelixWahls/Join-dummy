@@ -1,28 +1,18 @@
 @media (max-width: 425px) {
- .Website {
-  height: 800px !important;
-  width: 100% ;
-  margin: 0;
-  overflow-x: hidden;
-  position: relative;
- }
-.logInField {
+.signUpField {
  width: 92% !important; 
- height: 515px;
+ height: 595px;
  box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
-.input, .password-container, .input-container {
+.input, .password-container, .input-container, .confirmPw-container {
  width: 92% !important;
 }
-.top-right-container {
- position: absolute;  
- width: 262px !important; 
- left: 50%;
- transform: translateX(-50%);
- height: 49px; 
- padding: 0px;
- top: 85%;
- gap: 25px !important;
+.Website {
+ height: 900px !important;
+ width: 100% !important;
+ margin: 0;
+ overflow-x: hidden;
+ position: relative;
 }
 }
 @media (max-width: 1000px) {
@@ -33,24 +23,31 @@
  left: 38px !important;
  position: absolute;
 }
+.arrow-icon {
+	position: absolute;
+	left: 40px;
+	top: 40px;
+	height: 32px;
+	width: 32px;
+	cursor: pointer;
+}
 .Website {
- position: relative;
  width: 100% ;
  margin: 0;
  overflow-x: hidden;
 }
-.logInField {
+.signUpField {
  width: 396px; 
- height: 515px;
+ height: 595px;
  box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
 .headline{
  display: flex;
  align-items: center;
  justify-content: center;
- width: 139px;
+ width: 173px;
  height: 72px;
- margin-top: 0px;
+ margin-top: 32px;
 }
 h1 {
  width: 100%;
@@ -65,7 +62,7 @@ h1 {
  height: 3px;
  background-color: #29ABE2;
 }
-.input, .password-container, .input-container {
+.input, .password-container, .input-container, .confirmPw-container {
  width: 364px;
 }
 .input {
@@ -73,11 +70,6 @@ h1 {
  align-items: center;
  justify-content: center;
  flex-direction: column;
-}
-.checkRemember {
- width: 100%;
- display: flex;
- justify-content: flex-start;
 }
 .input-container:last-child {
  margin-bottom: 0!important;
@@ -100,30 +92,11 @@ h1 {
  width: auto !important;
  padding-right: 21px !important;
 }
-.log-buttons {
- display: flex;
- justify-content: center;
- align-items: center;
- flex-direction: column;
- gap: 21px;
- width: 180px;
- height: 123px;
-}
-.guestlogIn-button, .logIn-button {
+.signUp-button {
  padding: 15px 24px!important;
- width: 100% !important;
+ width: 180px;
  height: 51px;
  font-size: 16px;
-}
-.top-right-container {
- position: absolute;  
- width: 292px; 
- left: 50%;
- transform: translateX(-50%);
- height: 49px; 
- padding: 0px;
- top: 85%;
- gap: 35px;
 }
 #privacyPolicy, #legalNotice {
  width: 121px!important;
