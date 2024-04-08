@@ -1,11 +1,13 @@
 function openAddNewContactRespWindow() {
 	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransition');
 	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
+    document.querySelector('.overlay').style.display = 'flex';
 }
 
 function closeAddNewContactRespWindow() {
 	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
 	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransition');
+    document.querySelector('.overlay').style.display = 'none';
 }
 
 async function addNewContactResp(event) {
@@ -137,6 +139,7 @@ async function deleteContactByEditResp(event) {
 }
 
 function openEditContactRespWindow() {
+    document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransition');
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
 	document.querySelector('.contRespWindow').style.display = 'none';
@@ -152,6 +155,7 @@ function editFContactDetailsResp(){
 }
 
 function closeEditContactRespWindow() {
+    document.querySelector('.overlay').style.display = 'none';
 	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 	document.querySelector('.editContactIconContResp').style.display = 'none';

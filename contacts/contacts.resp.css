@@ -85,6 +85,8 @@ position: relative;
 }
 
 .addNewContactRespContainer{
+position: relative;
+z-index: 100000;
 width: 396px;
 height: 760px;
 position: fixed;
@@ -98,6 +100,8 @@ background: #FFFFFF;
 }
 
 .editContactRespContainer {
+  position: relative;
+  z-index: 100000;
   width: 396px;
   height: 760px;
   bottom: 0px;
@@ -698,15 +702,14 @@ display: none;
 }
 
 .editContSmallContRespTransition {
-  transition: transform 0.35s ease-in-out;
-  transform: translateX(-1500px);
-  }
+transition: transform 0.35s ease-in-out;
+transform: translateX(-1500px);
+}
   
-  .editContSmallContRespTransitionRemove {
-  transition: transform 0.35s ease-in-out;
-  transform: translateX(+1500px);
-  }
-  
+.editContSmallContRespTransitionRemove {
+transition: transform 0.35s ease-in-out;
+transform: translateX(+1500px);
+}  
 
 .editBtnCont {
 width: 96px;
