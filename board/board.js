@@ -75,3 +75,18 @@ function highlight(id) {
 function removeHighlight(id) {
 	document.getElementById(id).classList.remove('drag-area-highlight');
 }
+
+function slideBigCard(i) {
+	let slideBigCard = document.querySelector('#big-card-slider');
+	let slideInputBG = document.querySelector('#slide-transition-wrapper');
+	if (slideBigCard.classList.contains('big-card-slide-transition')) {
+		slideBigCard.classList.remove('big-card-slide-transition');
+		slideInputBG.classList.remove('wrapper-transition');
+		slideInputBG.classList.add('d-none');
+		resetForm();
+	} else {
+		slideBigCard.classList.add('big-card-slide-transition');
+		slideInputBG.classList.remove('d-none');
+		slideInputBG.classList.add('wrapper-transition');
+	}
+}

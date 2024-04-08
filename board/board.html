@@ -20,7 +20,55 @@
 	<body onload="initBoard()" onclick="closeSidemenu()">
 		<div w3-include-html="../templates/sidemenu.html"></div>
 		<div w3-include-html="../templates/add-task-temp.html"></div>
-		<div class="wrapper-add-task d-none" id="slide-transition-wrapper"></div>
+		<!-- big-card-temp start -->
+
+		<!-- big card temp end -->
+		<div class="wrapper-add-task d-none" id="slide-transition-wrapper">
+			<div class="big-card" id="big-card-slider">
+				<div class="header-section">
+					<div class="task-type">User Story</div>
+					<img src="../img/close.png" onclick="slideBigCard()" />
+				</div>
+				<div class="content-section">
+					<h2 class="big-card-title">Kochwelt Page & Recipe Recommender</h2>
+					<p class="task-description">Build start page with recipe recommendation.</p>
+				</div>
+				<div class="task-info-section flex-col">
+					<div class="due-date-content d-flex">
+						<p class="big-card-lable">Due date:</p>
+						<p class="big-card-lable-content">10/05/2023</p>
+					</div>
+					<div class="priority-content d-flex">
+						<p class="big-card-lable">Priority:</p>
+						<p class="big-card-lable-content d-flex align-c">
+							Medium <img src="../img/prio-medium.png" id="big-card-prio-img" />
+						</p>
+					</div>
+					<div class="flex-col assigned-to-content">
+						<p class="big-card-lable">Assigned To:</p>
+						<div class="big-card-assigned-users"></div>
+					</div>
+					<div class="flex-col assigned-to-content">
+						<p class="big-card-lable">Subtasks:</p>
+						<div class="big-card-subtask-list flex-col">
+							<span class="big-single-subtask d-flex align-c"
+								><img src="../img/Checkbox.png" class="subtask-checkbox" />Implement
+								Recipe Recommendation</span
+							>
+						</div>
+					</div>
+				</div>
+				<div class="big-card-bottom">
+					<span class="big-card-buttons d-flex align-c"
+						><img src="../img/delete.png" />Delete</span
+					>
+					<span class="vertical-line-sub"></span>
+					<span class="big-card-buttons d-flex align-c"
+						><img src="../img/edit.png" />Edit</span
+					>
+				</div>
+			</div>
+		</div>
 		<div class="main-content">
 			<section class="top-section">
 				<div class="first-section">

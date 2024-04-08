@@ -279,6 +279,80 @@ h3 {
 	border-radius: 10px;
 }
 
+/* big-card */
+
+.big-card {
+	max-width: 525px;
+	width: 100%;
+	border-radius: 30px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+	padding: 48px 40px;
+	z-index: 9006;
+	background-color: white;
+	position: fixed;
+	right: -1500px;
+	transition: right 0.2s;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	font-size: 20px;
+	margin: 0 16px;
+}
+
+.big-card-slide-transition {
+	right: 50%;
+	transform: translate(50%, 0);
+}
+
+.header-section {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header-section img {
+	cursor: pointer;
+}
+
+.big-card-title {
+	font-size: 61px;
+	margin-bottom: 24px;
+	line-height: 73.2px;
+}
+
+.task-info-section {
+	gap: 24px;
+}
+
+.big-card-lable {
+	margin-right: 25px;
+	color: #2a3647;
+}
+
+#big-card-prio-img {
+	margin-left: 10px;
+}
+
+.big-card-subtask-list {
+	gap: 4px;
+}
+
+.big-single-subtask {
+	padding: 6px 16px;
+}
+
+.subtask-checkbox {
+	width: 24px;
+	margin-right: 16px;
+}
+
+.big-card-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
 @media (max-width: 1400px) {
 	.tasks {
 		flex-direction: column;
