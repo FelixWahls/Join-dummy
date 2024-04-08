@@ -296,7 +296,6 @@ h3 {
 	flex-direction: column;
 	gap: 24px;
 	font-size: 20px;
-	margin: 0 16px;
 }
 
 .big-card-slide-transition {
@@ -400,5 +399,28 @@ h3 {
 		width: 40px;
 		height: 40px;
 		padding: 3px;
+	}
+}
+
+@media (max-width: 650px) {
+	.big-card {
+		font-size: 16px;
+	}
+
+	.big-card-title {
+		font-size: 36px;
+	}
+}
+
+@media (max-width: 550px) {
+	.wrapper-add-task {
+		padding: 0;
+	}
+
+	.big-card {
+		max-width: 100%;
+		top: 0;
+		right: 50%;
+		bottom: 80px;
 	}
 }
