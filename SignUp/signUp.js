@@ -8,12 +8,33 @@ let checkboxState = false;
  * password input fields, and password visibility toggles.
  */
 document.addEventListener('DOMContentLoaded', () => {
+  setLegalNoticeHref();
+  setPrivacyPolicyHref();
   document.getElementById('checkboxImg').onclick = toggleCheckbox;
   document.getElementById('password').oninput = () => handlePasswordInput('password');
   document.getElementById('confirmPw').oninput = () => handlePasswordInput('confirmPw');
   document.getElementById('passwordIcon').onclick = () => togglePasswordVisibility('password', 'passwordIcon');
   document.getElementById('confirmPwIcon').onclick = () => togglePasswordVisibility('confirmPw', 'confirmPwIcon');
 });
+
+
+/**
+ * Setzt das href-Attribut des <a>-Elements mit der ID "legalNotice".
+ */
+function setLegalNoticeHref() {
+ var legalNoticeLink = document.getElementById('legalNotice');
+ if (legalNoticeLink) { // Überprüft, ob das Element existiert, bevor es versucht, darauf zuzugreifen
+   legalNoticeLink.href = 'http://127.0.0.1:5500/legalNotice/legalNotice.html';
+ }
+}
+
+
+function setPrivacyPolicyHref() {
+ var privacyPolicyLink = document.getElementById('privacyPolicy');
+ if (privacyPolicyLink) {
+  privacyPolicyLink.href = 'http://127.0.0.1:5500/privacyPolicy/privacyPolicy.html';
+ }
+}
 
 
 /**
