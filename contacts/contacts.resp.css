@@ -90,12 +90,11 @@ position: relative;
 }
 
 .addNewContactRespContainer{
-position: relative;
 z-index: 100000;
 width: 396px;
 height: 760px;
 position: fixed;
-left: 10;
+left: calc(50% - 198px);
 bottom: 0;
 margin-bottom: -3000px;
 gap: 49px;
@@ -105,11 +104,11 @@ background: #FFFFFF;
 }
 
 .editContactRespContainer {
-  position: relative;
   z-index: 100000;
   width: 396px;
   height: 760px;
   bottom: 0px;
+  left: calc(50% - width/2);
   margin-bottom: -3000px;
   gap: 49px;
   border-radius: 30px;
@@ -882,7 +881,7 @@ align-items: center;
     left: 65%;
   }
   .contactList {
-    width: 100%;
+    width: 100vw;
   }
   .contactOverview {
     display: none;
@@ -939,6 +938,58 @@ align-items: center;
 }
 }
 
+@media(max-width: 400px){
+  .addNewContactRespContainer, .editContactRespContainer {
+    width: 376px;
+    margin-left: 10px;
+  }
+  .addNewContactWindowHeaderContainer {
+    width: 376px;
+  }
+  .addNewContactRespCloseContainer {
+    left: 308px;
+    margin-left: 10px;
+  }
+  .inputResp {
+    width: 344px;
+    background-position: 304px;
+  }
+  .addNewContactRespImageContainer {
+    left: 128px;
+  }
+}
+
+@media(max-width: 380px){
+  .addNewContactRespContainer {
+    width: 356px;
+    margin-left: 20px;
+  }
+  .editContactRespContainer {
+    width: 356px;
+    margin-left: 10px;
+  }
+  .addNewContactWindowHeaderContainer {
+    width: 356px;
+  }
+  .addNewContactRespCloseContainer {
+    left: 288px;
+  }
+  .inputResp {
+    width: 324px;
+    background-position: 284px;
+  }
+  .addNewContactRespImageContainer {
+    left: 118px;
+  }
+  .createButtonContainerAddNewContResp {
+    left: 77px;
+  }
+  .editContactRespButtons {
+    left: 87.5px;
+}
+  
+}
+
 @media (max-width: 375px) {
   .contactCard {
     padding: 15px 14px 15px 14px;
@@ -951,6 +1002,72 @@ align-items: center;
   .firstCharacter {
     margin-left: 28px;
     font-size: 20px;
+  }
+  
+  .createButtonContainerAddNewContResp {
+    left: 77px;
+}
+}
+
+@media(max-width: 360px){
+  .addNewContactRespContainer {
+    width: 336px;
+    margin-left: 30px;
+  }
+  .editContactRespContainer {
+    width: 336px;
+    margin-left: 10px;
+  }
+  .addNewContactWindowHeaderContainer {
+    width: 336px;
+  }
+  .addNewContactRespCloseContainer {
+    left: 248px;
+    margin-left: 30px;
+  }
+  .addNewContactRespImageContainer {
+    left: 113px;
+  }
+  .createButtonContainerAddNewContResp {
+    left: 67px;
+  }
+  .inputResp {
+    width: 294px;
+    background-position: 264px;
+  }
+  .editContactRespButtons {
+    left: 77.5px;
+}
+}
+
+@media(max-width: 340px){
+  .addNewContactRespContainer {
+    width: 316px;
+    margin-left: 40px;
+  }
+  .editContactRespContainer {
+    width: 316px;
+    margin-left: 10px;
+  }
+  .addNewContactWindowHeaderContainer {
+    width: 316px;
+  }
+  .addNewContactRespCloseContainer {
+    left: 228px;
+    margin-left: 30px;
+  }
+  .addNewContactRespImageContainer {
+    left: 103px;
+  }
+  .createButtonContainerAddNewContResp {
+    left: 57px;
+  }
+  .inputResp {
+    width: 274px;
+    background-position: 244px;
+  }
+  .editContactRespButtons {
+    left: 67.5px;
 }
 }
 
