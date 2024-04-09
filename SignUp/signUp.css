@@ -22,30 +22,33 @@ a {
 	left: 77px;
 }
 .signUp-button {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	padding: 10px 24px;
-	gap: 10px;
-	margin-bottom: 48px;
-	margin-top: 32px;
-	width: 126px;
-	height: 55px;
-	background: #2a3647;
-	border-radius: 8px;
-	flex: none;
-	order: 2;
-	flex-grow: 0;
-	color: white;
-	font-size: 16px;
-	cursor: pointer;
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 700;
-	line-height: 120%;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ padding: 10px 24px;
+ gap: 10px;
+ margin-bottom: 48px;
+ margin-top: 32px;
+ width: 126px;
+ height: 55px;
+ background: #2a3647;
+ border-radius: 8px;
+ flex: none;
+ order: 2;
+ flex-grow: 0;
+ color: white;
+ font-size: 16px;
+ cursor: pointer;
+ font-family: 'Inter';
+ font-style: normal;
+ font-weight: 700;
+ line-height: 120%;
 }
-.signUp-button:hover{
+.signUp-button:disabled {
+ cursor: default;
+}
+.signUp-button:not(:disabled):hover {
  background: #29ABE2;
  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
  border: none;
@@ -111,42 +114,31 @@ h1 {
 	height: 326px;
 	margin-bottom: 32px;
 }
-.input-container {
-	display: flex;
-	position: relative;
-	align-items: center;
-	width: 422px;
-	height: 48px;
-	margin-bottom: 24px;
-}
-.password-container {
-	display: flex;
-	position: relative;
-	align-items: center;
-	width: 422px;
-	height: 48px;
-	margin-bottom: 24px;
+.input-container,
+.password-container,
+.confirmPw-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 422px;
+  margin-bottom: 24px;
 }
 .confirmPw-container {
-	display: flex;
-	position: relative;
-	align-items: center;
-	width: 422px;
-	height: 48px;
-	margin-bottom: 5px;
+ margin-bottom: 5px;
 }
 .email,
 .password,
 .name {
-	padding: 12px 21px;
-	border: 1px solid rgb(232, 232, 232);
-	border-radius: 10px;
-	width: 422px;
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 120%;
+  padding: 12px 21px;
+  padding-right: 60px;
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 10px;
+  width: 100%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
 }
 .email::placeholder,
 .password::placeholder,
@@ -265,15 +257,14 @@ a {
   text-decoration: none;
 }
 .popup {
- display: flex;
+ display: none;
+ animation: flyIn 0.5s ease-out forwards;
  flex-direction: column;
  justify-content: center;
  align-items: center;
  padding: 0px;
  position: fixed;
  top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
  width: 312px;
  height: 74px;
  background: #2A3647;
@@ -286,5 +277,16 @@ a {
  font-size: 20px;
  line-height: 120%;
 }
+@keyframes flyIn {
+ from {
+   transform: translateY(100vh);
+   opacity: 0;
+ }
+ to {
+   transform: translateY(0);
+   opacity: 1;
+ }
+}
+
 
 

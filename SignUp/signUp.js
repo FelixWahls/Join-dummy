@@ -1,15 +1,14 @@
 let users = [];
 let checkboxState = false;
 
-
 /**
- * This function is called when the DOM content is fully loaded.
- * It initializes event listeners for UI elements related to the checkbox,
- * password input fields, and password visibility toggles.
+ * Initializes event listeners for UI elements related to the checkbox,
+ * password input fields, and password visibility toggles upon DOM content fully loaded.
  */
 document.addEventListener('DOMContentLoaded', () => {
   setLegalNoticeHref();
   setPrivacyPolicyHref();
+  document.querySelector('.signUp-button').disabled = true;
   document.getElementById('checkboxImg').onclick = toggleCheckbox;
   document.getElementById('password').oninput = () => handlePasswordInput('password');
   document.getElementById('confirmPw').oninput = () => handlePasswordInput('confirmPw');
@@ -19,21 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /**
- * Setzt das href-Attribut des <a>-Elements mit der ID "legalNotice".
+ * Sets the href attribute of the <a> element with the ID "legalNotice".
  */
 function setLegalNoticeHref() {
- var legalNoticeLink = document.getElementById('legalNotice');
- if (legalNoticeLink) { // Überprüft, ob das Element existiert, bevor es versucht, darauf zuzugreifen
-   legalNoticeLink.href = 'http://127.0.0.1:5500/legalNotice/legalNotice.html';
- }
+  var legalNoticeLink = document.getElementById('legalNotice');
+  if (legalNoticeLink) {
+    legalNoticeLink.href = 'http://127.0.0.1:5500/legalNotice/legalNotice.html';
+  }
 }
 
 
+/**
+ * Sets the href attribute of the <a> element with the ID "privacyPolicy".
+ */
 function setPrivacyPolicyHref() {
- var privacyPolicyLink = document.getElementById('privacyPolicy');
- if (privacyPolicyLink) {
-  privacyPolicyLink.href = 'http://127.0.0.1:5500/privacyPolicy/privacyPolicy.html';
- }
+  var privacyPolicyLink = document.getElementById('privacyPolicy');
+  if (privacyPolicyLink) {
+    privacyPolicyLink.href = 'http://127.0.0.1:5500/privacyPolicy/privacyPolicy.html';
+  }
 }
 
 
@@ -45,6 +47,7 @@ function toggleCheckbox() {
   checkboxState = !checkboxState;
   const checkboxImg = document.getElementById('checkboxImg');
   checkboxImg.src = checkboxState ? '../img/CheckboxCheck.png' : '../img/Checkbox.png';
+  document.querySelector('.signUp-button').disabled = !checkboxState;
 }
 
 
@@ -70,15 +73,15 @@ function handlePasswordInput(fieldId) {
  * @param {string} iconId - The ID of the icon indicating visibility state.
  */
 function togglePasswordVisibility(fieldId, iconId) {
- const field = document.getElementById(fieldId);
- const icon = document.getElementById(iconId);
+  const field = document.getElementById(fieldId);
+  const icon = document.getElementById(iconId);
 
- if (!field.value) {
-   return;
- }
+  if (!field.value) {
+    return;
+  }
 
- field.type = field.type === "password" ? "text" : "password";
- icon.src = field.type === "password" ? '../img/HidePassword.png' : '../img/ShowPassword.png';
+  field.type = field.type === "password" ? "text" : "password";
+  icon.src = field.type === "password" ? '../img/HidePassword.png' : '../img/ShowPassword.png';
 }
 
 
@@ -155,21 +158,27 @@ function addUser() {
 }
 
 
+/**
+ * Displays a popup message indicating successful sign-up.
+ */
 function showPopup() {
- const popup = document.createElement('div');
- popup.className = 'popup';
- popup.textContent = 'You Signed Up successfully';
- document.body.appendChild(popup);
- popup.style.display = 'flex';
+  const popup = document.createElement('div');
+  popup.className = 'popup';
+  popup.textContent = 'You Signed Up successfully';
+  
+  const signUpField = document.querySelector('.signUpField');
+  if (signUpField) {
+    signUpField.appendChild(popup);
+    popup.style.position = 'absolute';
+    popup.style.display = 'flex';
+  }
 
- setTimeout(() => {
-  popup.style.bottom = '50%';
- }, 100);
- setTimeout(() => {
-  redirectToLogin();
- }, 2000);
+  setTimeout(() => {
+    popup.style.display = 'none';
+    redirectToLogin();
+  }, 1000);
 }
- 
+
 
 /**
  * Redirects the user to the login page.
@@ -177,3 +186,4 @@ function showPopup() {
 function redirectToLogin() {
   window.location.href = 'http://127.0.0.1:5500/LogIn/logIn.html';
 }
+

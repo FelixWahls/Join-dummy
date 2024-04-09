@@ -10,12 +10,21 @@
 	.confirmPw-container {
 		width: 92% !important;
 	}
+
 	.Website {
 		height: 900px !important;
 		width: 100% !important;
 		margin: 0;
 		overflow-x: hidden;
 		position: relative;
+	}
+ .arrow-icon {
+		position: absolute;
+		left: 20px !important;
+		top: 20px;
+		height: 32px;
+		width: 32px;
+		cursor: pointer;
 	}
 }
 @media (max-width: 1000px) {

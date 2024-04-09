@@ -1,16 +1,15 @@
-// Waits for the DOM to be fully loaded before initializing animations and form functionality.
+// Waits for the DOM to be fully loaded before initializing link references and animations.
 document.addEventListener('DOMContentLoaded', () => {
  setGuestLogInHref();
  initAnimations();
  setLegalNoticeHref();
  setPrivacyPolicyHref();
-
 });
 
 
 /**
- * Setzt das href-Attribut des <a>-Elements mit der ID "legalNotice".
- */
+* Sets the href attribute of the <a> element with the ID "legalNotice".
+*/
 function setLegalNoticeHref() {
  var legalNoticeLink = document.getElementById('legalNotice');
  if (legalNoticeLink) {
@@ -19,34 +18,37 @@ function setLegalNoticeHref() {
 }
 
 
+/**
+* Sets the href attribute of the <a> element with the ID "privacyPolicy".
+*/
 function setPrivacyPolicyHref() {
  var privacyPolicyLink = document.getElementById('privacyPolicy');
  if (privacyPolicyLink) {
-  privacyPolicyLink.href = 'http://127.0.0.1:5500/privacyPolicy/privacyPolicy.html';
+   privacyPolicyLink.href = 'http://127.0.0.1:5500/privacyPolicy/privacyPolicy.html';
  }
 }
 
 
+/**
+* Attaches a click event listener to the "guestLogIn" button to redirect users.
+*/
 function setGuestLogInHref() {
- console.log("setGuestLogInHref called"); // Überprüfen, ob die Funktion aufgerufen wird
+ console.log("setGuestLogInHref called");
  var guestLogInButton = document.getElementById('guestLogIn');
  if (guestLogInButton) {
-   console.log("Button found"); // Überprüfen, ob der Button gefunden wurde
+   console.log("Button found");
    guestLogInButton.addEventListener('click', function() {
-     console.log("Redirecting to summary page"); // Überprüfen, ob der Redirect funktioniert
+     console.log("Redirecting to summary page");
      window.location.href = 'http://127.0.0.1:5500/summary/summary.html';
    });
  } else {
-   console.log("Button not found"); // Warnung, wenn der Button nicht gefunden wurde
+   console.log("Button not found");
  }
 }
-
-
 
 
 /**
 * Initializes animations for the website's logo and content visibility.
-*
 */
 function initAnimations() {
  const logo = document.querySelector('.logo-icon');
@@ -62,7 +64,7 @@ function initAnimations() {
 
 /**
 * Animates the logo by setting its position, size, and transformation.
-*
+* 
 * @param {HTMLElement} logo - The logo element to be animated.
 */
 function animateLogo(logo) {
@@ -76,7 +78,7 @@ function animateLogo(logo) {
 
 /**
 * Handles input in the password field and updates the icon based on field content.
-*
+* 
 * @param {string} fieldId - The ID of the password input field.
 */
 function handlePasswordInput(fieldId) {
@@ -88,6 +90,7 @@ function handlePasswordInput(fieldId) {
 
 /**
 * Toggles the visibility of the password and updates the icon accordingly.
+* 
 * @param {string} fieldId - The ID of the password input field.
 * @param {string} iconId - The ID of the icon indicating visibility state.
 */
@@ -106,8 +109,6 @@ function togglePasswordVisibility(fieldId, iconId) {
 
 /**
 * Validates the login attempt by checking the email and password against hardcoded values.
-*
-*
 */
 function validateLogin() {
  const emailInput = document.getElementById('email');
@@ -125,8 +126,6 @@ function validateLogin() {
 
 /**
 * Applies visual feedback for a wrong password attempt.
-*
-*
 */
 function setWrongPasswordStyles() {
  const wrongPwElement = document.querySelector('.wrongPw');
@@ -138,8 +137,6 @@ function setWrongPasswordStyles() {
 
 /**
 * Toggles the checkbox image between checked and unchecked states.
-*
-*
 */
 function toggleCheckbox() {
  const checkboxImg = document.querySelector('.checkbox');
@@ -153,9 +150,10 @@ function toggleCheckbox() {
 
 /**
 * Removes the box shadow style from the email input field upon user input.
-*
+* 
 * @param {HTMLElement} element - The email input field element.
 */
 function removeEmailBoxShadow(element) {
  element.style.boxShadow = 'none';
 }
+
