@@ -108,6 +108,7 @@ let descriptionInput;
 let selectedUsers = [];
 let dateInput;
 let activePrio = '../img/prio-medium.png';
+let prioName;
 let categoryInput;
 let subtasks = [];
 let toDoContainer = 'to-do-container';

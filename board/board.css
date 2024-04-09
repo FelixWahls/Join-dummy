@@ -20,6 +20,10 @@ h2 {
 	display: none;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 .main-content {
 	margin-top: 0;
 	padding-top: 80px;
@@ -259,6 +263,7 @@ h3 {
 	border: 1px solid white;
 	background-color: #ff7a00;
 	margin-left: -6px;
+	color: white;
 }
 
 .user:first-child {
@@ -296,6 +301,13 @@ h3 {
 	flex-direction: column;
 	gap: 24px;
 	font-size: 20px;
+	max-height: 850px;
+	overflow-y: scroll;
+}
+
+.big-card::-webkit-scrollbar {
+	display: none;
+	overflow: scroll;
 }
 
 .big-card-slide-transition {
@@ -314,9 +326,8 @@ h3 {
 }
 
 .big-card-title {
-	font-size: 61px;
+	font-size: 54px;
 	margin-bottom: 24px;
-	line-height: 73.2px;
 }
 
 .task-info-section {
@@ -330,6 +341,11 @@ h3 {
 
 #big-card-prio-img {
 	margin-left: 10px;
+}
+
+.single-big-card-user {
+	padding: 7px 16px;
+	margin-bottom: 4px;
 }
 
 .big-card-subtask-list {
@@ -419,8 +435,5 @@ h3 {
 
 	.big-card {
 		max-width: 100%;
-		top: 0;
-		right: 50%;
-		bottom: 80px;
 	}
 }

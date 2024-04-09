@@ -8,7 +8,7 @@ function createUnselectedUserHtml(contact, i) {
 	return /*html*/ `
         <div class="single-user d-flex align-c" onclick="selectedUser(${i})" id="user${i}">
 			<div class="user-info d-flex align-c">
-				<div class="user-icon d-flex" id="user-capitals-${i}">${contact.capitals}</div>
+				<div class="user-icon d-flex" id="user-capitals-${i}" style="background-color:${contact.color}">${contact.capitals}</div>
 				<div class="user-name" id="full-user-name-${i}">${contact.name}</div>
 			</div>
 			<img src="../img/Checkbox.png" />
@@ -20,7 +20,7 @@ function createSelectedUserHtml(contact, i) {
 	return /*html*/ `
         <div class="single-user d-flex align-c active-user" onclick="selectedUser(${i})" id="user${i}">
 			<div class="user-info d-flex align-c">
-				<div class="user-icon d-flex" id="user-capitals-${i}">${contact.capitals}</div>
+				<div class="user-icon d-flex" id="user-capitals-${i}" style="background-color:${contact.color}">${contact.capitals}</div>
 				<div class="user-name" id="full-user-name-${i}">${contact.name}</div>
 			</div>
 			<img src="../img/checkbox-check-white.png" />
@@ -47,7 +47,7 @@ function createUserCapitalsHtml() {
 	for (let i = 0; i < selectedUsers.length; i++) {
 		const element = selectedUsers[i]['userCapitals'];
 		capitalsHtml += `
-            <div class="user-icon d-flex">${element}</div>
+            <div class="user-icon d-flex" style="background-color:${selectedUsers[i].circleColor}">${element}</div>
         `;
 	}
 	return capitalsHtml;
@@ -57,7 +57,7 @@ function renderSubtasks() {
 	let subtaskList = document.querySelector('#subtask-container');
 	subtaskList.innerHTML = '';
 	for (let i = 0; i < subtasks.length; i++) {
-		const element = subtasks[i];
+		const element = subtasks[i].subtaskName;
 		subtaskList.innerHTML += /*html*/ `
             <li
 				id="todo-id-${i}"
@@ -91,10 +91,11 @@ function renderSubtasks() {
 
 function createCardHtml(task, i) {
 	let assignedUsersHtml = createAssignedUsersHtml(task);
+	let categoryColor = setCategoryColor(task);
 	let subtasksHtml = createSubtasksHtml(task);
 	return /*html*/ `
         <div class="flex-col single-task" id="task${task.id}" onclick="slideBigCard(${i})" draggable="true" ondragstart="startDragging(${task.id})">
-			<div class="task-type">${task.category}</div>
+			<div class="task-type" style="background-color:${categoryColor}">${task.category}</div>
 			<div class="task-content">
 				<h3>${task.title}</h3>
 				<p>${task.description}</p>
@@ -114,15 +115,16 @@ function createCardHtml(task, i) {
 
 function createAssignedUsersHtml(task) {
 	let assignedUserCapitals = '';
+	console.log(task);
 	for (let i = 0; i < task.users.length; i++) {
 		const element = task.users[i];
-		assignedUserCapitals += `<div class="user user-one">${element.userCapitals}</div>`;
+		assignedUserCapitals += `<div class="user" style="background-color:${element.circleColor}">${element.userCapitals}</div>`;
 	}
 	return assignedUserCapitals;
 }
 
 function createSubtasksHtml(task) {
-	if (task.subtasks > 0) {
+	if (task.subtasks.length > 0) {
 		let subtaskBarWidth = calcSubtaskProgress(task);
 		return /*html*/ `
             <div class="subtask-content">
@@ -162,4 +164,88 @@ function createEmptyContainerHtml(containerType) {
 			<div id="no-task-text">${emptyText}</div>
 		</div>
     `;
+}
+
+function createBigCard(i) {
+	let currentTask = allTasks[i];
+	let correctDate = transformDate(i);
+	let priorityName = currentTask.prioName;
+	let newPrioName = priorityName.charAt(0).toUpperCase() + priorityName.slice(1);
+	let bigCardUsers = createBigCardUsers(currentTask);
+	let cardSubtasks = createCardSubtasksHtml(currentTask);
+	let categoryColor = setCategoryColor(currentTask);
+	console.log(currentTask);
+	let bigCardContainer = document.querySelector('#big-card-slider');
+	bigCardContainer.innerHTML = /*html*/ `
+        <div class="header-section">
+			<div class="task-type" style="background-color: ${categoryColor}">${currentTask.category}</div>
+			<img src="../img/close.png" onclick="slideBigCard()" />
+		</div>
+		<div class="content-section">
+			<h2 class="big-card-title">${currentTask.title}</h2>
+			<p class="task-description">${currentTask.description}</p>
+		</div>
+		<div class="task-info-section flex-col">
+			<div class="due-date-content d-flex">
+				<p class="big-card-lable">Due date:</p>
+				<p class="big-card-lable-content">${correctDate}</p>
+			</div>
+			<div class="priority-content d-flex">
+				<p class="big-card-lable">Priority:</p>
+				<p class="big-card-lable-content d-flex align-c">
+                ${newPrioName} <img src="${currentTask.priority}" id="big-card-prio-img" />
+				</p>
+			</div>
+			<div class="flex-col assigned-to-content">
+				<p class="big-card-lable">Assigned To:</p>
+				<div class="big-card-assigned-users">
+                    ${bigCardUsers}
+                </div>
+			</div>
+			<div class="flex-col assigned-to-content">
+				<p class="big-card-lable">Subtasks:</p>
+				<div class="big-card-subtask-list flex-col">
+					${cardSubtasks}
+				</div>
+			</div>
+		</div>
+		<div class="big-card-bottom">
+			<span class="big-card-buttons d-flex align-c pointer" onclick="deleteTask(${i})"
+				><img src="../img/delete.png" />Delete</span
+			>
+			<span class="vertical-line-sub"></span>
+			<span class="big-card-buttons d-flex align-c pointer" onclick="editTask(${i})"
+				><img src="../img/edit.png" />Edit</span
+			>
+		</div>
+    `;
+}
+
+function createBigCardUsers(currentTask) {
+	let bigCardUsersHtml = '';
+	let allAssignedUsers = currentTask.users;
+	for (let i = 0; i < allAssignedUsers.length; i++) {
+		const element = allAssignedUsers[i];
+		bigCardUsersHtml += /*html*/ `
+            <div class="single-big-card-user d-flex align-c">
+                <div class="user-icon d-flex" style="background-color:${element.circleColor}">${element.userCapitals}</div>
+		        <div class="user-name" style="font-size: 19px">${element.fullUserNames}</div>
+            </div> 
+        `;
+	}
+	return bigCardUsersHtml;
+}
+
+function createCardSubtasksHtml(currentTask) {
+	let cardSubtaskHtml = '';
+	let currentSubtasks = currentTask.subtasks;
+	for (let i = 0; i < currentSubtasks.length; i++) {
+		const element = currentSubtasks[i];
+		cardSubtaskHtml += /*html*/ `
+            <span class="big-single-subtask d-flex align-c"
+				><img src="../img/Checkbox.png" class="subtask-checkbox" />${element.subtaskName}</span
+			>
+        `;
+	}
+	return cardSubtaskHtml;
 }

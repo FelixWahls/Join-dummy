@@ -88,5 +88,34 @@ function slideBigCard(i) {
 		slideBigCard.classList.add('big-card-slide-transition');
 		slideInputBG.classList.remove('d-none');
 		slideInputBG.classList.add('wrapper-transition');
+		createBigCard(i);
 	}
+}
+
+function transformDate(i) {
+	let currentDate = allTasks[i].date;
+	let parts = currentDate.split('-');
+	let year = parts[0];
+	let month = parts[1];
+	let day = parts[2];
+	let date = new Date(year, month - 1, day);
+	let formattedDate =
+		('0' + date.getDate()).slice(-2) +
+		'/' +
+		('0' + (date.getMonth() + 1)).slice(-2) +
+		'/' +
+		date.getFullYear();
+	return formattedDate;
+}
+
+async function deleteTask(id) {
+	for (let i = 0; i < allTasks.length; i++) {
+		if (allTasks[i].id === id) {
+			allTasks.splice(i, 1);
+			break;
+		}
+	}
+	slideBigCard();
+	await setItem('allTasks', allTasks);
+	await initBoard();
 }

@@ -114,11 +114,13 @@ function selectedUser(i) {
 
 function setActiveUser(currentUser, userCapitals, image, i) {
 	let selectedUserName = document.querySelector(`#full-user-name-${i}`).textContent;
+	let userColor = contacts[i].color;
 	currentUser.classList.add('active-user');
 	image.src = '../img/checkbox-check-white.png';
 	let selectedUserList = {
 		userCapitals: userCapitals,
 		fullUserNames: selectedUserName,
+		circleColor: userColor,
 	};
 	selectedUsers.push(selectedUserList);
 	renderSelectedUsers();
@@ -128,7 +130,8 @@ function deactivateUser(currentUser, i, image) {
 	currentUser.classList.remove('active-user');
 	image.src = '../img/Checkbox.png';
 	const index = selectedUsers.findIndex(
-		(user) => user.fullUserNames === document.querySelector(`#full-user-name-${i}`).textContent
+		(currentUser) =>
+			currentUser.fullUserNames === document.querySelector(`#full-user-name-${i}`).textContent
 	);
 	if (index !== -1) {
 		selectedUsers.splice(index, 1);
@@ -155,6 +158,7 @@ function setPrioColor(allBtns, priority) {
 	}
 	let prioBtn = document.getElementById(priority);
 	prioBtn.classList.add('active-' + priority);
+	prioName = priority;
 }
 
 /**
@@ -199,7 +203,11 @@ function submitSubtask() {
 	if (subtaskContent == '') {
 		deactivateInput();
 	} else {
-		subtasks.push(subtaskContent);
+		let newSubtask = {
+			subtaskName: subtaskContent,
+			subtaskDone: false,
+		};
+		subtasks.push(newSubtask);
 		document.querySelector('#subtask-input').value = '';
 		renderSubtasks();
 		deactivateInput();
@@ -218,12 +226,12 @@ function editSubtask(i) {
 	subtaskContent.classList.add('d-none');
 	editContainer.classList.remove('d-none');
 	document.getElementById(`edit-subtask-${i}`).focus();
-	subtaskEditInput.value = subtasks[i];
+	subtaskEditInput.value = subtasks[i].subtaskName;
 }
 
 function submitChange(i) {
 	let newSubtaskContent = document.querySelector(`#edit-subtask-${i}`).value;
-	subtasks[i] = newSubtaskContent;
+	subtasks[i].subtaskName = newSubtaskContent;
 	renderSubtasks();
 }
 
@@ -262,7 +270,16 @@ function validateField(fieldId, errorId) {
 function getCategory() {
 	selectElement = document.querySelector('#category-input');
 	output = selectElement.value;
+	console.log(output);
 	return output;
+}
+
+function setCategoryColor(task) {
+	if (task.category === 'User Story') {
+		return '#0038FF';
+	} else {
+		return '#1FD7C1';
+	}
 }
 
 async function pushTask() {
@@ -272,6 +289,7 @@ async function pushTask() {
 		users: selectedUsers,
 		date: dateInput,
 		priority: activePrio,
+		prioName: prioName,
 		category: categoryInput,
 		subtasks: subtasks,
 		cardContainer: toDoContainer,
@@ -303,6 +321,7 @@ function resetForm() {
 	selectedUsers = [];
 	renderSelectedUsers();
 	setPrio('medium');
+	prioName = '';
 	subtasks = [];
 	renderSubtasks();
 	myForm.reset();
