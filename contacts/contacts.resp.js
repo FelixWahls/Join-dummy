@@ -58,8 +58,8 @@ function highlightEditIconInResponsiveMode(){
 	if (window.innerWidth < 960) {
 		document.querySelector('.editContactIconContResp').style.display = 'flex';
 	}
-	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
-	document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
+	//document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
+	//document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
 	setTimeout(() => {
 		document.querySelector('.editContactIconContResp').style.backgroundColor = '#2a3647';
 		document.querySelector('.editContactIconContResp').style.border = '#2a3647';
@@ -160,4 +160,10 @@ function closeEditContactRespWindow() {
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 	document.querySelector('.editContactIconContResp').style.display = 'none';
 	openContactCard(currentContact);
+}
+
+async function closeSidemenu(){
+    if (document.querySelector('.editContSmallContResp').classList.contains('editContSmallContRespTransition')){
+        //document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove')
+    }
 }

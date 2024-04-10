@@ -1,5 +1,6 @@
 const STORAGE_TOKEN = 'BG6WOK154AJ68UO0AQPTHWG0N5RXRC9BZCQ9TZVT';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
+let users = [];
 let contacts = [
 	// {
 	// 	'name': 'Max Meyer',

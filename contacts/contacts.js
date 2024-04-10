@@ -3,6 +3,7 @@ let currentContact = 0;
 async function initContacts() {
 	await includeHTML();
 	contacts = await getItem('contacts');
+	users = await getItem('users');
 	initContactlist();
 }
 /**
@@ -27,6 +28,21 @@ function extractCapitalLetters(name) {
 }
 
 async function initContactlist() {
+	for (let i = 0; i < users.length; i++) {
+		let newUser = {
+			name: users[i]['user'],
+			email: users[i]['email'],
+			telefon: '',
+			color: getRandomColor(),
+			capitals: extractCapitalLetters(users[0]['user']),
+			addTask: false,
+		}
+		contacts.push(newUser);
+	
+		
+	}
+	
+
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;

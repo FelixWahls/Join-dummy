@@ -1,4 +1,4 @@
-let users = [];
+
 let checkboxState = false;
 
 /**
@@ -152,8 +152,11 @@ function addUser() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  users.push({user: name, email: email, password: password});
-  console.log("User added, redirecting...");
+  let newUser = {user: name,
+                 email: email, 
+                 password: password}
+  users.push(newUser);
+  setItem('users', users);
   showPopup();
 }
 
