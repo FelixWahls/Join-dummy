@@ -6,10 +6,6 @@
 	align-items: center;
 }
 
-.d-none {
-	display: none;
-}
-
 .relative {
 	position: relative;
 }
@@ -466,4 +462,8 @@ li p {
 body::-webkit-scrollbar {
 	display: none;
 	overflow: scroll;
+}
+
+.d-none {
+	display: none;
 }

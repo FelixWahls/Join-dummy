@@ -1,10 +1,12 @@
 let userList;
+const searchUserInput = document.querySelector('#assigned-to-input');
 
 async function initAddTask() {
 	await includeHTML();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
 	userList = document.querySelector('#user-list');
+	renderUsers();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -48,7 +50,6 @@ function openUserList() {
 	if (userList.classList.contains('d-none')) {
 		userList.classList.remove('d-none');
 		arrow.src = '../img/arrow-drop-up.png';
-		renderUsers();
 	} else {
 		userList.classList.add('d-none');
 		arrow.src = '../img/arrow-drop-down.png';
@@ -61,29 +62,6 @@ function openUserList() {
  */
 function renderUsers() {
 	userList.innerHTML = '';
-	let userSearchInput = document.querySelector('#assigned-to-input').value;
-	let filteredContacts = contacts.filter((contact) =>
-		contact.name.toLowerCase().includes(userSearchInput)
-	);
-	if (userSearchInput !== '') {
-		showFilteredUsers(filteredContacts);
-	} else {
-		showAllContacts();
-	}
-}
-
-function showFilteredUsers(filteredContacts) {
-	for (let i = 0; i < filteredContacts.length; i++) {
-		const contact = filteredContacts[i];
-		if (contact.addTask == false) {
-			userList.innerHTML += createUnselectedUserHtml(contact, i);
-		} else {
-			userList.innerHTML += createSelectedUserHtml(contact, i);
-		}
-	}
-}
-
-function showAllContacts() {
 	for (let i = 0; i < contacts.length; i++) {
 		const contact = contacts[i];
 		if (contact.addTask == false) {
@@ -93,6 +71,24 @@ function showAllContacts() {
 		}
 	}
 }
+
+searchUserInput.addEventListener('input', (e) => {
+	const value = e.target.value.trim().toLowerCase();
+
+	for (let i = 0; i < contacts.length; i++) {
+		let currentUserName = document
+			.getElementById(`full-user-name-${i}`)
+			.textContent.toLowerCase()
+			.trim();
+		let currentUserCard = document.getElementById(`user${i}`);
+
+		if (!currentUserName.includes(value)) {
+			currentUserCard.classList.add('d-none');
+		} else {
+			currentUserCard.classList.remove('d-none');
+		}
+	}
+});
 
 /**
  * checks if a user is already assigned and adjustes the design accordingly
@@ -323,6 +319,7 @@ function resetForm() {
 	setPrio('medium');
 	prioName = '';
 	subtasks = [];
+	toDoContainer = 'to-do-container';
 	renderSubtasks();
 	myForm.reset();
 }

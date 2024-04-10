@@ -119,3 +119,7 @@ async function deleteTask(id) {
 	await setItem('allTasks', allTasks);
 	await initBoard();
 }
+
+function setInputContainer(container) {
+	toDoContainer = container;
+}
