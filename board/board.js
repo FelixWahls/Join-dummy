@@ -123,3 +123,9 @@ async function deleteTask(id) {
 function setInputContainer(container) {
 	toDoContainer = container;
 }
+
+function editTask(i) {
+	let currentTask = allTasks[i];
+	createEditTaskHtml(currentTask);
+	createEditSubtaskList = createEditSubtaskHtml(currentTask);
+}

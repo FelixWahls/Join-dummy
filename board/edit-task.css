@@ -1,0 +1,10 @@
+.edit-task-container {
+	gap: 16px;
+}
+
+#edit-assigned-arrow {
+	position: absolute;
+	right: 16px;
+	top: calc(50% - 12px);
+	cursor: pointer;
+}

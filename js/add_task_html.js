@@ -249,3 +249,130 @@ function createCardSubtasksHtml(currentTask) {
 	}
 	return cardSubtaskHtml;
 }
+
+function createEditTaskHtml(currentTask) {
+	console.log(currentTask);
+	let bigCardContainer = document.querySelector('#big-card-slider');
+	bigCardContainer.innerHTML = /*html*/ `
+        <div class="edit-task-container flex-col">
+            <div class="edit-task-wrapper">
+				<div class="edit-task-element flex-col">
+					<span>Title</span>
+					<input type="text" id="edit-task-title" class="title-input" value="${currentTask.title}" />
+				</div>
+				<div class="edit task-element flex-col">
+					<span>Description</span>
+					<textarea
+						name="edit-task-description"
+						id="edit-task-description"
+						cols="30"
+						rows="10"
+						maxlength="250">${currentTask.description}</textarea>
+				</div>
+				<div class="edit-task-container flex-col">
+					<span>Assigned to</span>
+                    <div class="relative input-container">
+					    <input type="text" class="title-input assigned-to-input" placeholder="Select contacts to assign"/>
+					    <img
+						    src="../img/arrow-drop-down.png"
+						    id="edit-assigned-arrow"
+						    autocomplete="off"
+						    onclick="event.stopPropagation(); openEditUserList()" />
+                    </div>
+				</div>
+				<div class="edit-task-element flex-col">
+					<span>Due date</span>
+					<input type="date" class="due-date-input" value="${currentTask.date}" />
+				</div>
+				<div class="edit-task-element flex-col">
+					<span>Prio</span>
+					<div id="" class="prio-container d-flex">
+						<div class="prio d-flex" id="edit-urgent" onclick="setPrio('urgent')">
+							<p>Urgent</p>
+							<img src="../img/prio-urgent.png" class="prio-image" />
+						</div>
+						<div class="prio d-flex active-medium" id="edit-medium" onclick="setPrio('medium')">
+							<p>Medium</p>
+							<img src="../img/active-medium.png" class="prio-image" />
+						</div>
+						<div class="prio d-flex" id="edit-low" onclick="setPrio('low')">
+							<p>Low</p>
+							<img src="../img/prio-low.png" class="prio-image" />
+						</div>
+					</div>
+				</div>
+				<div class="edit-task-element flex-col">
+					<span>Category</span>
+					<select name="category-input" id="category-input" class="category-input">
+						<option value="" disabled selected hidden>Select task category</option>
+						<option value="User Story">User Story</option>
+						<option value="Technical Task">Technical Task</option>
+					</select>
+				</div>
+				<div class="edit-task-element flex-col">
+                    <span>Subtasks</span>
+                    <div class="input-container">
+                        <input
+                            type="text"
+                            id=""
+                            class="subtask-input"
+                            autocomplete="off"
+                            placeholder="Add new subtask"
+                            onclick="" />
+                        <img
+                            src="../img/add-subtask.png"
+                            onclick="event.stopPropagation();"
+                            id=""
+                            class="add-subtasks-btn" />
+                        <div id="" class="d-flex align-c add-subtasks-btn d-none">
+                            <img
+                                src="../img/check-blue.png"
+                                class="subtask-actions submit-input"
+                                onclick="" />
+                            <span class="vertical-line-sub"></span>
+                            <img src="../img/close.png" class="subtask-actions" onclick="" />
+                        </div>
+                    </div>
+                    <ul id="edit-subtask-container"></ul>
+				</div>
+                <button type="submit" onclick="event.preventDefault() editTask()">OK</button>
+            </div>
+		</div>
+    `;
+}
+
+function createEditSubtaskHtml(currentTask) {
+	let subtaskList = document.querySelector('#edit-subtask-container');
+	subtaskList.innerHTML = '';
+	for (let i = 0; i < currentTask.subtasks.length; i++) {
+		const element = currentTask.subtasks[i].subtaskName;
+		subtaskList.innerHTML += /*html*/ `
+            <li
+                id="todo-id-${i}"
+                class="todo-subtask d-flex"
+                ondblclick="editSubtask(${i})">
+                <div class="d-flex align-c todo-subtask-container" id="subtask-element${i}">
+                    <p>${element}</p>
+                    <div class="subtask-imgs d-flex align-c">
+                        <img
+                            src="../img/edit.png"
+                            class="subtask-actions"
+                            onclick="event.stopPropagation();"/>
+                        <span class="vertical-line-sub"></span>
+                        <img src="../img/delete.png" onclick="" class="subtask-actions" />
+                    </div>
+                </div>
+                <div class="d-flex align-c todo-subtask-container set-edit d-none" id="edit-subtask-container">
+                    <input type="text" id="edit-subtask-${i}" class="subtask-edit">
+                    <div class="subtask-imgs d-flex align-c">
+                        <img
+                            src="../img/check-blue.png"
+                            class="subtask-actions" onclick=""/>
+                        <span class="vertical-line-sub"></span>
+                        <img src="../img/delete.png" onclick="" class="subtask-actions" />
+                    </div>
+                </div>
+            </li>
+        `;
+	}
+}
