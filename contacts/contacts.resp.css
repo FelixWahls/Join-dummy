@@ -880,6 +880,9 @@ align-items: center;
     position: fixed;
     left: 80%;
   }
+  .editContSmallContResp {
+    left: 75%;
+  }
   .contactList {
     width: 100vw;
   }
@@ -918,6 +921,9 @@ align-items: center;
     width: 70px;
     height: 70px;    
   }
+  .editContSmallContResp {
+    
+  }
   .blueArrowLeftContainer {
     left: 75%;
     }
@@ -928,6 +934,9 @@ align-items: center;
   .editContactIconContResp {
     position: fixed;
     left: 75%;
+  }
+  .editContSmallContResp {
+    left: 65%;
   }
   .contactList {
     width: 464px;
