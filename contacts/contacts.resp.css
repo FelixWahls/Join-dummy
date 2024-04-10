@@ -871,14 +871,14 @@ align-items: center;
 
 @media (max-width: 960px) {
   .blueArrowLeftContainer {
-    left: 65%;
+    left: 80%;
     }
   .addNewContactIconContResp {
-    left : 65%;
+    left : 80%;
   }
   .editContactIconContResp {
     position: fixed;
-    left: 65%;
+    left: 80%;
   }
   .contactList {
     width: 100vw;
@@ -957,6 +957,17 @@ align-items: center;
   .addNewContactRespImageContainer {
     left: 128px;
   }
+  .contactDetailsRespHeader {
+    flex-direction: column;
+  }
+  .contInfTitleCont {
+    margin-top: 80px;
+    text-align: center;
+}
+.detailsFieldContactResp {
+  margin-top: 160px;
+  align-items: center; 
+}
 }
 
 @media(max-width: 380px){
