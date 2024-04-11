@@ -201,7 +201,7 @@ function submitSubtask() {
 	} else {
 		let newSubtask = {
 			subtaskName: subtaskContent,
-			subtaskDone: false,
+			subtaskCounter: 0,
 		};
 		subtasks.push(newSubtask);
 		document.querySelector('#subtask-input').value = '';

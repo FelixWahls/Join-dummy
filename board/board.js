@@ -1,5 +1,6 @@
 let tasksData;
 let currentDraggedElement;
+let subtaskCheckboxState = false;
 
 async function initBoard() {
 	await includeHTML();
@@ -128,4 +129,10 @@ function editTask(i) {
 	let currentTask = allTasks[i];
 	createEditTaskHtml(currentTask);
 	createEditSubtaskList = createEditSubtaskHtml(currentTask);
+}
+
+function toggleSubtaskCheckbox(i) {
+	subtaskCheckboxState = !subtaskCheckboxState;
+	let checkboxImg = document.getElementById(`cardSubtask${i}`);
+	checkboxImg.src = subtaskCheckboxState ? '../img/CheckboxCheck.png' : '../img/Checkbox.png';
 }
