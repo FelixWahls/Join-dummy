@@ -241,9 +241,9 @@ function createCardSubtasksHtml(currentTask) {
 	let currentSubtasks = currentTask.subtasks;
 	for (let i = 0; i < currentSubtasks.length; i++) {
 		const element = currentSubtasks[i];
-		cardSubtaskHtml += /*html*/ `
+		cardSubtaskHtml += /*html*/ `   
             <span class="big-single-subtask d-flex align-c"
-				><img src="../img/Checkbox.png" id="cardSubtask${i}" onclick="toggleSubtaskCheckbox(${i})" class="subtask-checkbox pointer" />${element.subtaskName}</span
+				><img src="../img/Checkbox.png" id="cardSubtask${i}" onclick="toggleSubtaskCheckbox(${i}, ${currentTask.subtaskCounter})" class="subtask-checkbox pointer" />${element.subtaskName}</span
 			>
         `;
 	}
@@ -251,7 +251,6 @@ function createCardSubtasksHtml(currentTask) {
 }
 
 function createEditTaskHtml(currentTask) {
-	console.log(currentTask);
 	let bigCardContainer = document.querySelector('#big-card-slider');
 	bigCardContainer.innerHTML = /*html*/ `
         <div class="edit-task-container flex-col">

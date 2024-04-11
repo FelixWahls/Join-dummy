@@ -21,7 +21,7 @@ function extractCapitalLetters(name) {
 				}
 			}
 			contacts[i].capitals = capitals;
-			break; 
+			break;
 		}
 	}
 	return capitals;
@@ -36,12 +36,9 @@ async function initContactlist() {
 			color: getRandomColor(),
 			capitals: extractCapitalLetters(users[0]['user']),
 			addTask: false,
-		}
+		};
 		contacts.push(newUser);
-	
-		
 	}
-	
 
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
@@ -50,20 +47,20 @@ async function initContactlist() {
 	displaySortedContactsByInitial(initContacts, lastInitial);
 }
 
-function displaySortedContactsByInitial(initContacts, lastInitial){
+function displaySortedContactsByInitial(initContacts, lastInitial) {
 	for (let i = 0; i < contacts.length; i++) {
 		const contact = contacts[i];
 		const currentInitial = contact.name[0].toUpperCase();
 		if (currentInitial !== lastInitial) {
 			initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
-		lastInitial = currentInitial; 
+			lastInitial = currentInitial;
 		}
 		initContacts.innerHTML += appendContactCardToDisplay(contact, i);
 	}
 }
 
-function appendInitialSectionHeader(currentInitial){
-	return  `
+function appendInitialSectionHeader(currentInitial) {
+	return `
           <div class="listInitiale">
             <span class="firstCharacter">${currentInitial}</span>
           </div>
@@ -74,7 +71,7 @@ function appendInitialSectionHeader(currentInitial){
         `;
 }
 
-function appendContactCardToDisplay(contact, i){
+function appendContactCardToDisplay(contact, i) {
 	return `
         <div class="contactCard" id='contactCard${i}' onclick='openContactCard(${i})'>
           <div class="monogramCircle" style="background-color: ${contact.color}">
@@ -97,12 +94,12 @@ function appendContactCardToDisplay(contact, i){
  * @returns {string} A string representing a random color in hexadecimal format.
  */
 function getRandomColor() {
-		const letters = '0123456789ABCDEF';
-		let color = '#';
-		for (let i = 0; i < 6; i++) {
-			color += letters[Math.floor(Math.random() * 16)];
-		}
-		return color;
+	const letters = '0123456789ABCDEF';
+	let color = '#';
+	for (let i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
 }
 
 function openContactCard(i) {
@@ -112,7 +109,7 @@ function openContactCard(i) {
 	adjustLayoutForMobile();
 }
 
-function adjustLayoutForMobile(){
+function adjustLayoutForMobile() {
 	if (window.innerWidth < 960) {
 		document.querySelector('#initContacts').style.display = 'none';
 		document.querySelector('.contRespWindow').style.display = 'flex';
@@ -120,7 +117,7 @@ function adjustLayoutForMobile(){
 	}
 }
 
-function renderContactOverviewWithTransition(i){
+function renderContactOverviewWithTransition(i) {
 	let contactOverview = document.querySelector('.contactOverview');
 	contactOverview.innerHTML = '';
 	contactOverview.innerHTML = contactOverviewTemplate(i);
@@ -128,12 +125,12 @@ function renderContactOverviewWithTransition(i){
 	contactOverview.classList.remove('contactOverviewTransitionRemove');
 }
 
-function updateContactCardsStyle(i){
+function updateContactCardsStyle(i) {
 	let contactCard = document.querySelector(`#contactCard${i}`);
 	for (let j = 0; j < contacts.length; j++) {
 		const contact = contacts[j];
 		let contactCard = document.querySelector(`#contactCard${j}`);
-		updateContactNameColorForDesktop(j,i);
+		updateContactNameColorForDesktop(j, i);
 		contactCard.style.backgroundColor = '#FFFFFF';
 	}
 	if (window.innerWidth > 960) {
@@ -141,14 +138,14 @@ function updateContactCardsStyle(i){
 	}
 }
 
-function updateContactNameColorForDesktop(j,i){
+function updateContactNameColorForDesktop(j, i) {
 	if (window.innerWidth > 960) {
 		document.querySelector(`#contactName${j}`).style.color = 'black';
 		document.querySelector(`#contactName${i}`).style.color = '#FFFFFF';
 	}
 }
 
-function contactOverviewTemplate(i){
+function contactOverviewTemplate(i) {
 	return `
 	<div class="nameContainer">
 		<div class="inicialeCircle"  style="background-color: ${contacts[i].color}">
@@ -196,14 +193,22 @@ function contactOverviewTemplate(i){
 }
 
 function openAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
 function closeAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransition');
 	document.querySelector('.overlay').style.display = 'none';
 }
 
@@ -221,7 +226,7 @@ function addNewContact(event) {
 	return false;
 }
 
-function findAndOpenContactCardByName(name){
+function findAndOpenContactCardByName(name) {
 	for (let k = 0; k < contacts.length; k++) {
 		if (name == contacts[k].name) {
 			openContactCard(k);
@@ -229,16 +234,24 @@ function findAndOpenContactCardByName(name){
 	}
 }
 
-function animateCloseAddNewContainerDesktop(){
-	document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
-	document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
+function animateCloseAddNewContainerDesktop() {
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.remove('CreateResponseContainerTransitionRemove');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.add('CreateResponseContainerTransition');
 	setTimeout(() => {
-		document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
-		document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.remove('CreateResponseContainerTransition');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.add('CreateResponseContainerTransitionRemove');
 	}, 1500);
 }
 
-function createNewContactDesktop(name, email, phone){
+function createNewContactDesktop(name, email, phone) {
 	let newContact = {
 		name: name,
 		email: email,
@@ -265,8 +278,12 @@ function cancelInputValue() {
 }
 
 function openEditContactWindow(i) {
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
 	document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
@@ -277,8 +294,12 @@ function openEditContactWindow(i) {
 }
 
 function closeEditContactWindow() {
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'none';
 	currentContact = 0;
 }
@@ -300,7 +321,7 @@ async function editContact(event) {
 	openMatchingContactCard();
 }
 
-function openMatchingContactCard(){
+function openMatchingContactCard() {
 	for (let k = 0; k < contacts.length; k++) {
 		if (document.querySelector('.nameEditContainer').value == contacts[k].name) {
 			openContactCard(k);
@@ -308,7 +329,7 @@ function openMatchingContactCard(){
 	}
 }
 
-function updateCurrentContactDetails(){
+function updateCurrentContactDetails() {
 	contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
 	contacts[currentContact].email = document.querySelector('.emailEditContainer').value;
 	contacts[currentContact].telefon = document.querySelector('.phoneEditContainer').value;
