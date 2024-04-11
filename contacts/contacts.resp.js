@@ -83,7 +83,7 @@ function closeContactDetailsResp() {
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 }
 
-function editContactRespWindow() {
+function editContactRespWindow() { //
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('.overlay').style.opacity = 0;
 	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
@@ -144,6 +144,8 @@ function openEditContactRespWindow() {
     document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransition');
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
+	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
 	document.querySelector('.contRespWindow').style.display = 'none';
 	editFContactDetailsResp();
 }
@@ -164,9 +166,10 @@ function closeEditContactRespWindow() {
 	openContactCard(currentContact);
 }
 
-async function closeSidemenu(){
-    if (document.querySelector('.editContSmallContResp').classList.contains('editContSmallContRespTransition')){
-        //document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove')
-
-    }
+function closeSmallEditField(){
+	document.querySelector('.overlay').style.display = 'none';
+	document.querySelector('.overlay').style.opacity = 0.3;
+	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
+	document.querySelector('.editContactIconContResp').style.display = 'flex';
 }
