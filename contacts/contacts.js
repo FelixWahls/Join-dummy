@@ -27,22 +27,22 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
-async function initContactlist() {
+function initRegisteredUser(){
 	for (let i = 0; i < users.length; i++) {
 		let newUser = {
 			name: users[i]['user'],
 			email: users[i]['email'],
 			telefon: '',
 			color: getRandomColor(),
-			capitals: extractCapitalLetters(users[0]['user']),
+			capitals: extractCapitalLetters(users[i]['user']),
 			addTask: false,
 		}
 		contacts.push(newUser);
-	
-		
 	}
-	
+}
 
+async function initContactlist() {
+	initRegisteredUser();
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;

@@ -84,6 +84,8 @@ function closeContactDetailsResp() {
 }
 
 function editContactRespWindow() {
+	document.querySelector('.overlay').style.display = 'flex';
+	document.querySelector('.overlay').style.opacity = 0;
 	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
 	document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
 	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransitionRemove');
@@ -165,5 +167,6 @@ function closeEditContactRespWindow() {
 async function closeSidemenu(){
     if (document.querySelector('.editContSmallContResp').classList.contains('editContSmallContRespTransition')){
         //document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove')
+
     }
 }

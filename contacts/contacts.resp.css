@@ -767,6 +767,11 @@ display: flex;
 align-items: center;
 }
 
+.editContSmallContResp {
+  position: fixed;
+  z-index: 60000;
+}
+
 /*Responsiv*/
 
 @media (max-width: 1350px) {
@@ -920,9 +925,6 @@ align-items: center;
   .inicialCircleGroundResp {
     width: 70px;
     height: 70px;    
-  }
-  .editContSmallContResp {
-    
   }
   .blueArrowLeftContainer {
     left: 75%;
