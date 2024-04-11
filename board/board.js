@@ -129,3 +129,15 @@ function editTask(i) {
 	createEditTaskHtml(currentTask);
 	createEditSubtaskList = createEditSubtaskHtml(currentTask);
 }
+
+function toggleSubtaskCheckbox(i, subtaskCounter) {
+	let currentCheckbox = document.getElementById(`cardSubtask${i}`);
+	console.log(currentCheckbox);
+	if (currentCheckbox.src === '../img/Checkbox.png') {
+		currentCheckbox.src = '../img/CheckboxCheck.png';
+		subtaskCounter++;
+	} else {
+		currentCheckbox.src = '../img/Checkbox.png';
+		subtaskCounter--;
+	}
+}

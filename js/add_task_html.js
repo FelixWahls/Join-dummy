@@ -210,7 +210,7 @@ function createBigCard(i) {
 			</div>
 		</div>
 		<div class="big-card-bottom">
-			<span class="big-card-buttons d-flex align-c pointer" onclick="deleteTask(${i})"
+			<span class="big-card-buttons d-flex align-c pointer" onclick="deleteTask(${currentTask.id})"
 				><img src="../img/delete.png" />Delete</span
 			>
 			<span class="vertical-line-sub"></span>
@@ -241,9 +241,9 @@ function createCardSubtasksHtml(currentTask) {
 	let currentSubtasks = currentTask.subtasks;
 	for (let i = 0; i < currentSubtasks.length; i++) {
 		const element = currentSubtasks[i];
-		cardSubtaskHtml += /*html*/ `
+		cardSubtaskHtml += /*html*/ `   
             <span class="big-single-subtask d-flex align-c"
-				><img src="../img/Checkbox.png" class="subtask-checkbox" />${element.subtaskName}</span
+				><img src="../img/Checkbox.png" id="cardSubtask${i}" onclick="toggleSubtaskCheckbox(${i}, ${currentTask.subtaskCounter})" class="subtask-checkbox pointer" />${element.subtaskName}</span
 			>
         `;
 	}
@@ -251,7 +251,6 @@ function createCardSubtasksHtml(currentTask) {
 }
 
 function createEditTaskHtml(currentTask) {
-	console.log(currentTask);
 	let bigCardContainer = document.querySelector('#big-card-slider');
 	bigCardContainer.innerHTML = /*html*/ `
         <div class="edit-task-container flex-col">

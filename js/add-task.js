@@ -1,11 +1,11 @@
-let userList;
+let userList = document.querySelector('#user-list');
+let arrow = document.querySelector('#assigned-arrow');
 const searchUserInput = document.querySelector('#assigned-to-input');
 
 async function initAddTask() {
 	await includeHTML();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
-	userList = document.querySelector('#user-list');
 	renderUsers();
 }
 
@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
  * checks if user List is already opened and either closes or opens it
  */
 function openUserList() {
-	let arrow = document.querySelector('#assigned-arrow');
 	if (userList.classList.contains('d-none')) {
 		userList.classList.remove('d-none');
 		arrow.src = '../img/arrow-drop-up.png';
@@ -177,8 +176,8 @@ function setPrioImage(priority) {
 	}
 }
 
-function activateInput() {
-	let addSubtask = document.querySelector('#add-subtask');
+function activateInput(img) {
+	let addSubtask = document.querySelector(`#${img}`);
 	let subtasksInputActions = document.querySelector('#subtask-input-actions');
 
 	addSubtask.classList.add('d-none');
@@ -201,7 +200,6 @@ function submitSubtask() {
 	} else {
 		let newSubtask = {
 			subtaskName: subtaskContent,
-			subtaskDone: false,
 		};
 		subtasks.push(newSubtask);
 		document.querySelector('#subtask-input').value = '';
@@ -288,6 +286,7 @@ async function pushTask() {
 		prioName: prioName,
 		category: categoryInput,
 		subtasks: subtasks,
+		subtaskCounter: 0,
 		cardContainer: toDoContainer,
 		id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0,
 	};
