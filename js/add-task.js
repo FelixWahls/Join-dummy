@@ -1,12 +1,10 @@
 let userList = document.querySelector('#user-list');
-let arrow = document.querySelector('#assigned-arrow');
 const searchUserInput = document.querySelector('#assigned-to-input');
 
 async function initAddTask() {
 	await includeHTML();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
-	renderUsers();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -29,6 +27,7 @@ function closeUserList(userList) {
 	}
 }
 
+/*
 document.addEventListener('DOMContentLoaded', function () {
 	document.body.addEventListener('click', function (event) {
 		let subtaskInput = document.getElementById('subtask-input');
@@ -42,13 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 });
+*/
 /**
  * checks if user List is already opened and either closes or opens it
  */
 function openUserList() {
+	let arrow = document.querySelector('#assigned-arrow');
 	if (userList.classList.contains('d-none')) {
 		userList.classList.remove('d-none');
 		arrow.src = '../img/arrow-drop-up.png';
+		renderUsers();
 	} else {
 		userList.classList.add('d-none');
 		arrow.src = '../img/arrow-drop-down.png';
@@ -71,6 +73,7 @@ function renderUsers() {
 	}
 }
 
+/*
 searchUserInput.addEventListener('input', (e) => {
 	const value = e.target.value.trim().toLowerCase();
 
@@ -88,6 +91,7 @@ searchUserInput.addEventListener('input', (e) => {
 		}
 	}
 });
+*/
 
 /**
  * checks if a user is already assigned and adjustes the design accordingly
@@ -176,9 +180,9 @@ function setPrioImage(priority) {
 	}
 }
 
-function activateInput(img, actions) {
-	let addSubtask = document.getElementById(`${img}`);
-	let subtasksInputActions = document.getElementById(`${actions}`);
+function activateInput() {
+	let addSubtask = document.getElementById('add-subtask');
+	let subtasksInputActions = document.getElementById('subtask-input-actions');
 
 	addSubtask.classList.add('d-none');
 	subtasksInputActions.classList.remove('d-none');
@@ -224,7 +228,7 @@ function editSubtask(i, container) {
 	subtaskEditInput.value = subtasks[i].subtaskName;
 }
 
-function submitChange(i) {
+function submitChange(i, edit) {
 	let newSubtaskContent = document.querySelector(`#edit-subtask-${i}`).value;
 	subtasks[i].subtaskName = newSubtaskContent;
 }

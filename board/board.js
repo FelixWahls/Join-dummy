@@ -1,14 +1,11 @@
-let tasksData;
 let currentDraggedElement;
 
 async function initBoard() {
 	await includeHTML();
 	await initAddTask();
-	tasksData = await getItem('allTasks');
+	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
-	// tasksData = JSON.parse(tasksData);
 	renderTasksBoard();
-	console.log(userList);
 }
 
 function slideIn() {
@@ -26,20 +23,21 @@ function slideIn() {
 			slideInput.classList.add('slide-in-transition');
 			slideInputBG.classList.remove('d-none');
 			slideInputBG.classList.add('wrapper-transition');
+			renderAddTaskHtml();
 		}
 	}
 }
 
 function renderTasksBoard() {
-	let toDoTasks = tasksData.filter((t) => t['cardContainer'] == 'to-do-container');
+	let toDoTasks = allTasks.filter((t) => t['cardContainer'] == 'to-do-container');
 	renderTasks(toDoTasks, 'to-do-container');
-	let inProgressTasks = tasksData.filter((t) => t['cardContainer'] == 'in-progress-container');
+	let inProgressTasks = allTasks.filter((t) => t['cardContainer'] == 'in-progress-container');
 	renderTasks(inProgressTasks, 'in-progress-container');
-	let awaitFeedbackTasks = tasksData.filter(
+	let awaitFeedbackTasks = allTasks.filter(
 		(t) => t['cardContainer'] == 'await-feedback-container'
 	);
 	renderTasks(awaitFeedbackTasks, 'await-feedback-container');
-	let doneTasks = tasksData.filter((t) => t['cardContainer'] == 'done-container');
+	let doneTasks = allTasks.filter((t) => t['cardContainer'] == 'done-container');
 	renderTasks(doneTasks, 'done-container');
 }
 
@@ -67,9 +65,8 @@ function allowDrop(ev) {
 }
 
 async function moveTo(container) {
-	tasksData[currentDraggedElement]['cardContainer'] = container;
-	console.log(tasksData[currentDraggedElement]);
-	await setItem('allTasks', tasksData);
+	allTasks[currentDraggedElement]['cardContainer'] = container;
+	await setItem('allTasks', allTasks);
 	renderTasksBoard();
 }
 
@@ -95,7 +92,6 @@ function hideBigCard(slideInputBG, slideBigCard) {
 	slideBigCard.classList.remove('big-card-slide-transition');
 	slideInputBG.classList.remove('wrapper-transition');
 	slideInputBG.classList.add('d-none');
-	resetForm();
 }
 
 function initShowBigCard(slideInputBG, slideBigCard, i) {
@@ -167,20 +163,4 @@ function editTask(i) {
 	let currentTask = allTasks[i];
 	createEditTaskHtml(currentTask);
 	createEditSubtaskList = createEditSubtaskHtml(currentTask);
-}
-
-function submitEditSubtask() {
-	let subtaskContent = document.querySelector('#subtask-input-card').value;
-	if (subtaskContent == '') {
-		deactivateEditInput();
-	} else {
-		let newSubtask = {
-			subtaskName: subtaskContent,
-			done: false,
-		};
-		subtasks.push(newSubtask);
-		document.querySelector('#subtask-input-card').value = '';
-		createEditSubtaskHtml();
-		deactivateInput();
-	}
 }
