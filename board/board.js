@@ -69,7 +69,7 @@ function allowDrop(ev) {
 async function moveTo(container) {
 	tasksData[currentDraggedElement]['cardContainer'] = container;
 	console.log(tasksData[currentDraggedElement]);
-	await setItem('allTasks', allTasks);
+	await setItem('allTasks', tasksData);
 	renderTasksBoard();
 }
 
@@ -169,12 +169,18 @@ function editTask(i) {
 	createEditSubtaskList = createEditSubtaskHtml(currentTask);
 }
 
-function editSubtaskCard(i, container) {
-	let subtaskContent = document.querySelector(`#subtask-element${i}`);
-	let editContainer = document.getElementById(`${container}`);
-	let subtaskEditInput = document.querySelector(`#edit-subtask-${i}`);
-	subtaskContent.classList.add('d-none');
-	editContainer.classList.remove('d-none');
-	document.getElementById(`edit-subtask-${i}`).focus();
-	subtaskEditInput.value = subtasks[i].subtaskName;
+function submitEditSubtask() {
+	let subtaskContent = document.querySelector('#subtask-input-card').value;
+	if (subtaskContent == '') {
+		deactivateEditInput();
+	} else {
+		let newSubtask = {
+			subtaskName: subtaskContent,
+			done: false,
+		};
+		subtasks.push(newSubtask);
+		document.querySelector('#subtask-input-card').value = '';
+		createEditSubtaskHtml();
+		deactivateInput();
+	}
 }

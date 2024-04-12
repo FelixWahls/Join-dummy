@@ -363,7 +363,7 @@ function createEditSubtaskHtml(currentTask) {
                         <img
                             src="../img/edit.png"
                             class="subtask-actions"
-                            onclick="event.stopPropagation(); editSubtask(${i}, 'edit-subtask-container-card', ${element}) "/>
+                            onclick="event.stopPropagation(); editSubtask(${i}, 'edit-subtask-container-card') "/>
                         <span class="vertical-line-sub"></span>
                         <img src="../img/delete.png" onclick="deleteSubtask(${i})" class="subtask-actions" />
                     </div>
