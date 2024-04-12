@@ -116,10 +116,10 @@
 									class="subtask-input"
 									autocomplete="off"
 									placeholder="Add new subtask"
-									onclick="activateInput()" />
+									onclick="activateInput('add-subtask', 'subtask-input-actions')" />
 								<img
 									src="../img/add-subtask.png"
-									onclick="event.stopPropagation(); activateInput('add-subtask')"
+									onclick="event.stopPropagation(); activateInput('add-subtask', 'subtask-input-actions')"
 									id="add-subtask"
 									class="add-subtasks-btn" />
 								<div
@@ -128,12 +128,12 @@
 									<img
 										src="../img/check-blue.png"
 										class="subtask-actions submit-input"
-										onclick="submitSubtask()" />
+										onclick="submitSubtask('subtask-input')" />
 									<span class="vertical-line-sub"></span>
 									<img
 										src="../img/close.png"
 										class="subtask-actions"
-										onclick="deactivateInput()" />
+										onclick="deactivateInput('add-subtask', 'subtask-input-actions')" />
 								</div>
 							</div>
 							<ul id="subtask-container"></ul>

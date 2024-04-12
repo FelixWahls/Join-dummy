@@ -176,9 +176,9 @@ function setPrioImage(priority) {
 	}
 }
 
-function activateInput(img) {
-	let addSubtask = document.querySelector(`#${img}`);
-	let subtasksInputActions = document.querySelector('#subtask-input-actions');
+function activateInput(img, actions) {
+	let addSubtask = document.getElementById(`${img}`);
+	let subtasksInputActions = document.getElementById(`${actions}`);
 
 	addSubtask.classList.add('d-none');
 	subtasksInputActions.classList.remove('d-none');
@@ -200,6 +200,7 @@ function submitSubtask() {
 	} else {
 		let newSubtask = {
 			subtaskName: subtaskContent,
+			done: false,
 		};
 		subtasks.push(newSubtask);
 		document.querySelector('#subtask-input').value = '';
@@ -213,9 +214,9 @@ function deleteSubtask(i) {
 	renderSubtasks();
 }
 
-function editSubtask(i) {
+function editSubtask(i, container) {
 	let subtaskContent = document.querySelector(`#subtask-element${i}`);
-	let editContainer = document.querySelector('#edit-subtask-container');
+	let editContainer = document.getElementById(`${container}`);
 	let subtaskEditInput = document.querySelector(`#edit-subtask-${i}`);
 	subtaskContent.classList.add('d-none');
 	editContainer.classList.remove('d-none');

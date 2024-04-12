@@ -69,7 +69,7 @@ function renderSubtasks() {
 					    <img
 						    src="../img/edit.png"
 						    class="subtask-actions"
-                            onclick="event.stopPropagation(); editSubtask(${i})"/>
+                            onclick="event.stopPropagation(); editSubtask(${i}, 'edit-subtask-container') "/>
 					    <span class="vertical-line-sub"></span>
 					    <img src="../img/delete.png" onclick="deleteSubtask(${i})" class="subtask-actions" />
 				    </div>
@@ -90,9 +90,7 @@ function renderSubtasks() {
 }
 
 function createCardHtml(task, i) {
-	let assignedUsersHtml = createAssignedUsersHtml(task);
 	let categoryColor = setCategoryColor(task);
-	let subtasksHtml = createSubtasksHtml(task);
 	return /*html*/ `
         <div class="flex-col single-task" id="task${task.id}" onclick="slideBigCard(${i})" draggable="true" ondragstart="startDragging(${task.id})">
 			<div class="task-type" style="background-color:${categoryColor}">${task.category}</div>
@@ -100,10 +98,9 @@ function createCardHtml(task, i) {
 				<h3>${task.title}</h3>
 				<p>${task.description}</p>
 			</div>
-			${subtasksHtml}
+			<div id="subtask-content${i}" class="subtask-content"></div>
 			<div class="bottom-content">
-				<div class="assigned-users">
-                    ${assignedUsersHtml}
+				<div class="assigned-users" id="small-card-users${i}">
 				</div>
 				<div class="priority">
 					<img src="${task.priority}" alt="" />
@@ -113,33 +110,36 @@ function createCardHtml(task, i) {
     `;
 }
 
-function createAssignedUsersHtml(task) {
-	let assignedUserCapitals = '';
-	console.log(task);
+function createAssignedUsersHtml(task, i) {
+	let container = document.getElementById(`small-card-users${i}`);
+	container.innerHTML = '';
 	for (let i = 0; i < task.users.length; i++) {
 		const element = task.users[i];
-		assignedUserCapitals += `<div class="user" style="background-color:${element.circleColor}">${element.userCapitals}</div>`;
+		container.innerHTML += `<div class="user" style="background-color:${element.circleColor}">${element.userCapitals}</div>`;
 	}
-	return assignedUserCapitals;
 }
 
-function createSubtasksHtml(task) {
+function createSubtasksHtml(task, i) {
+	let container = document.getElementById(`subtask-content${i}`);
+	container.innerHTML = '';
 	if (task.subtasks.length > 0) {
 		let subtaskBarWidth = calcSubtaskProgress(task);
-		return /*html*/ `
-            <div class="subtask-content">
+		container.innerHTML += /*html*/ `
 				<span class="subtask-bar-empty">
 					<span class="subtask-bar-progress" style="width: ${subtaskBarWidth}px;"></span>
 				</span>
-				<span>0/${task.subtasks.length} Subtasks</span>
-			</div>
+				<span>${task.subtaskCounter}/${task.subtasks.length} Subtasks</span>
         `;
 	} else {
 		return '';
 	}
 }
 
-function calcSubtaskProgress(task) {}
+function calcSubtaskProgress(task) {
+	console.log(task.subtaskCounter);
+	let singleProgress = 125 / task.subtasks.length;
+	return singleProgress * task.subtaskCounter;
+}
 
 function createEmptyContainerHtml(containerType) {
 	let emptyText = '';
@@ -171,10 +171,7 @@ function createBigCard(i) {
 	let correctDate = transformDate(i);
 	let priorityName = currentTask.prioName;
 	let newPrioName = priorityName.charAt(0).toUpperCase() + priorityName.slice(1);
-	let bigCardUsers = createBigCardUsers(currentTask);
-	let cardSubtasks = createCardSubtasksHtml(currentTask);
 	let categoryColor = setCategoryColor(currentTask);
-	console.log(currentTask);
 	let bigCardContainer = document.querySelector('#big-card-slider');
 	bigCardContainer.innerHTML = /*html*/ `
         <div class="header-section">
@@ -198,14 +195,12 @@ function createBigCard(i) {
 			</div>
 			<div class="flex-col assigned-to-content">
 				<p class="big-card-lable">Assigned To:</p>
-				<div class="big-card-assigned-users">
-                    ${bigCardUsers}
+				<div class="big-card-assigned-users" id="big-card-users">
                 </div>
 			</div>
 			<div class="flex-col assigned-to-content">
 				<p class="big-card-lable">Subtasks:</p>
-				<div class="big-card-subtask-list flex-col">
-					${cardSubtasks}
+				<div class="big-card-subtask-list flex-col" id="subtask-container">
 				</div>
 			</div>
 		</div>
@@ -222,32 +217,44 @@ function createBigCard(i) {
 }
 
 function createBigCardUsers(currentTask) {
-	let bigCardUsersHtml = '';
+	let bigCardUsersHtml = document.getElementById('big-card-users');
+	bigCardUsersHtml.innerHTML = '';
 	let allAssignedUsers = currentTask.users;
 	for (let i = 0; i < allAssignedUsers.length; i++) {
 		const element = allAssignedUsers[i];
-		bigCardUsersHtml += /*html*/ `
+		bigCardUsersHtml.innerHTML += /*html*/ `
             <div class="single-big-card-user d-flex align-c">
                 <div class="user-icon d-flex" style="background-color:${element.circleColor}">${element.userCapitals}</div>
 		        <div class="user-name" style="font-size: 19px">${element.fullUserNames}</div>
             </div> 
         `;
 	}
-	return bigCardUsersHtml;
 }
 
-function createCardSubtasksHtml(currentTask) {
-	let cardSubtaskHtml = '';
-	let currentSubtasks = currentTask.subtasks;
-	for (let i = 0; i < currentSubtasks.length; i++) {
-		const element = currentSubtasks[i];
-		cardSubtaskHtml += /*html*/ `   
-            <span class="big-single-subtask d-flex align-c"
-				><img src="../img/Checkbox.png" id="cardSubtask${i}" onclick="toggleSubtaskCheckbox(${i}, ${currentTask.subtaskCounter})" class="subtask-checkbox pointer" />${element.subtaskName}</span
+function createBigTaskSubtasks(index) {
+	let subtaskContainer = document.getElementById('subtask-container');
+	subtaskContainer.innerHTML = '';
+	let allSubs = allTasks[index].subtasks;
+	for (let i = 0; i < allSubs.length; i++) {
+		const currSubtask = allSubs[i];
+		subtaskContainer.innerHTML += /*html*/ `
+            <span class="big-single-subtask d-flex align-c" onclick="toggleSubtaskCheckbox(${index}, ${i})"
+				><img src="${getSubtaskImg(
+					currSubtask
+				)}" id="cardSubtask${i}" onclick="" class="subtask-checkbox pointer" />${
+			currSubtask.subtaskName
+		}</span
 			>
         `;
 	}
-	return cardSubtaskHtml;
+}
+
+function getSubtaskImg(currSubtask) {
+	if (currSubtask.done === true) {
+		return '../img/CheckboxCheck.png';
+	} else {
+		return '../img/Checkbox.png';
+	}
 }
 
 function createEditTaskHtml(currentTask) {
@@ -313,23 +320,23 @@ function createEditTaskHtml(currentTask) {
                     <div class="input-container">
                         <input
                             type="text"
-                            id=""
+                            id="subtask-input-card"
                             class="subtask-input"
                             autocomplete="off"
                             placeholder="Add new subtask"
-                            onclick="" />
+                            onclick="activateInput('add-subtask-card', 'sub-input-action-card')" />
                         <img
                             src="../img/add-subtask.png"
-                            onclick="event.stopPropagation();"
-                            id=""
+                            onclick="event.stopPropagation(); activateInput('add-subtask-card', 'sub-input-action-card')"
+                            id="add-subtask-card"
                             class="add-subtasks-btn" />
-                        <div id="" class="d-flex align-c add-subtasks-btn d-none">
+                        <div id="sub-input-action-card" class="d-flex align-c add-subtasks-btn d-none">
                             <img
                                 src="../img/check-blue.png"
                                 class="subtask-actions submit-input"
-                                onclick="" />
+                                onclick="submitSubtask('subtask-input-card')" />
                             <span class="vertical-line-sub"></span>
-                            <img src="../img/close.png" class="subtask-actions" onclick="" />
+                            <img src="../img/close.png" class="subtask-actions" onclick="deactivateInput('add-subtask-card', 'sub-input-action-card')" />
                         </div>
                     </div>
                     <ul id="edit-subtask-container"></ul>
@@ -356,12 +363,12 @@ function createEditSubtaskHtml(currentTask) {
                         <img
                             src="../img/edit.png"
                             class="subtask-actions"
-                            onclick="event.stopPropagation();"/>
+                            onclick="event.stopPropagation(); editSubtask(${i}, 'edit-subtask-container-card', ${element}) "/>
                         <span class="vertical-line-sub"></span>
-                        <img src="../img/delete.png" onclick="" class="subtask-actions" />
+                        <img src="../img/delete.png" onclick="deleteSubtask(${i})" class="subtask-actions" />
                     </div>
                 </div>
-                <div class="d-flex align-c todo-subtask-container set-edit d-none" id="edit-subtask-container">
+                <div class="d-flex align-c todo-subtask-container set-edit d-none" id="edit-subtask-container-card">
                     <input type="text" id="edit-subtask-${i}" class="subtask-edit">
                     <div class="subtask-imgs d-flex align-c">
                         <img

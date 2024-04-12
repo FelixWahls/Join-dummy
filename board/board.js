@@ -8,6 +8,7 @@ async function initBoard() {
 	contacts = await getItem('contacts');
 	// tasksData = JSON.parse(tasksData);
 	renderTasksBoard();
+	console.log(userList);
 }
 
 function slideIn() {
@@ -51,6 +52,8 @@ function renderTasks(tasks, container) {
 		for (let i = 0; i < tasks.length; i++) {
 			const element = tasks[i];
 			currentTaskContainer.innerHTML += createCardHtml(element, i);
+			createAssignedUsersHtml(element, i);
+			createSubtasksHtml(element, i);
 		}
 	}
 }
@@ -80,16 +83,28 @@ function slideBigCard(i) {
 	let slideBigCard = document.querySelector('#big-card-slider');
 	let slideInputBG = document.querySelector('#slide-transition-wrapper');
 	if (slideBigCard.classList.contains('big-card-slide-transition')) {
-		slideBigCard.classList.remove('big-card-slide-transition');
-		slideInputBG.classList.remove('wrapper-transition');
-		slideInputBG.classList.add('d-none');
-		resetForm();
+		hideBigCard(slideInputBG, slideBigCard);
 	} else {
-		slideBigCard.classList.add('big-card-slide-transition');
-		slideInputBG.classList.remove('d-none');
-		slideInputBG.classList.add('wrapper-transition');
-		createBigCard(i);
+		initShowBigCard(slideInputBG, slideBigCard, i);
 	}
+}
+
+function hideBigCard(slideInputBG, slideBigCard) {
+	slideBigCard.classList.remove('big-card-slide-transition');
+	slideInputBG.classList.remove('wrapper-transition');
+	slideInputBG.classList.add('d-none');
+	resetForm();
+}
+
+function initShowBigCard(slideInputBG, slideBigCard, i) {
+	let activeTask = allTasks[i];
+	slideBigCard.classList.add('big-card-slide-transition');
+	slideInputBG.classList.remove('d-none');
+	slideInputBG.classList.add('wrapper-transition');
+	createBigCard(i);
+	createBigCardUsers(activeTask);
+	createBigTaskSubtasks(i);
+	subtasks = activeTask.subtasks;
 }
 
 function transformDate(i) {
@@ -106,6 +121,28 @@ function transformDate(i) {
 		'/' +
 		date.getFullYear();
 	return formattedDate;
+}
+
+async function toggleSubtaskCheckbox(taskIndex, subIndex) {
+	let currSubtask = allTasks[taskIndex].subtasks[subIndex];
+	currSubtask.done = !currSubtask.done;
+	updateSubCounter(taskIndex, currSubtask);
+	createBigTaskSubtasks(taskIndex);
+	await setItem('allTasks', allTasks);
+	await initBoard();
+}
+
+function updateSubCounter(taskIndex) {
+	let currTask = allTasks[taskIndex];
+	let currSubtaskCounter = 0;
+
+	for (let i = 0; i < currTask.subtasks.length; i++) {
+		if (currTask.subtasks[i].done === true) {
+			currSubtaskCounter += 1;
+		}
+	}
+	currTask.subtaskCounter = currSubtaskCounter;
+	return currSubtaskCounter;
 }
 
 async function deleteTask(id) {
@@ -130,14 +167,12 @@ function editTask(i) {
 	createEditSubtaskList = createEditSubtaskHtml(currentTask);
 }
 
-function toggleSubtaskCheckbox(i, subtaskCounter) {
-	let currentCheckbox = document.getElementById(`cardSubtask${i}`);
-	console.log(currentCheckbox);
-	if (currentCheckbox.src === '../img/Checkbox.png') {
-		currentCheckbox.src = '../img/CheckboxCheck.png';
-		subtaskCounter++;
-	} else {
-		currentCheckbox.src = '../img/Checkbox.png';
-		subtaskCounter--;
-	}
+function editSubtaskCard(i, container) {
+	let subtaskContent = document.querySelector(`#subtask-element${i}`);
+	let editContainer = document.getElementById(`${container}`);
+	let subtaskEditInput = document.querySelector(`#edit-subtask-${i}`);
+	subtaskContent.classList.add('d-none');
+	editContainer.classList.remove('d-none');
+	document.getElementById(`edit-subtask-${i}`).focus();
+	subtaskEditInput.value = subtasks[i].subtaskName;
 }
