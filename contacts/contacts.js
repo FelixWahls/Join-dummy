@@ -27,8 +27,8 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
-/*function initRegisteredUser(){
-	for (let i = 0; i < users.length; i++) {
+function initRegisteredUser(){
+	/*for (let i = 0; i < users.length; i++) {
 		let newUser = {
 			name: users[i]['user'],
 			email: users[i]['email'],
@@ -38,17 +38,17 @@ function extractCapitalLetters(name) {
 			addTask: false,
 		};
 		contacts.push(newUser);
-	}
+	}*/
 
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;
 	contacts.sort((a, b) => a.name.localeCompare(b.name));
 	displaySortedContactsByInitial(initContacts, lastInitial);
-}*/
+}
 
 async function initContactlist() {
-	//initRegisteredUser();
+	initRegisteredUser();
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;
