@@ -1,3 +1,5 @@
+let overlayCanBeHidden = false;
+
 function openAddNewContactRespWindow() {
 	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransition');
 	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
@@ -83,9 +85,10 @@ function closeContactDetailsResp() {
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 }
 
-function editContactRespWindow() { //
+function editContactRespWindow() { 
+	overlayCanBeHidden = true;
 	document.querySelector('.overlay').style.display = 'flex';
-	document.querySelector('.overlay').style.opacity = 0;
+	document.querySelector('.overlay').style.opacity = 0.3;
 	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
 	document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
 	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransitionRemove');
@@ -93,6 +96,7 @@ function editContactRespWindow() { //
 	setTimeout(() => {
 		document.querySelector('.editContactIconContResp').style.display = 'none';
 	}, 350);
+	overlayCanBeHidden = false;
 }
 
 async function deleteContactResp() {
@@ -167,9 +171,12 @@ function closeEditContactRespWindow() {
 }
 
 function closeSmallEditField(){
-	document.querySelector('.overlay').style.display = 'none';
-	document.querySelector('.overlay').style.opacity = 0.3;
-	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
-	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
-	document.querySelector('.editContactIconContResp').style.display = 'flex';
+	if(window.innerWidth < 960 && overlayCanBeHidden){
+		document.querySelector('.overlay').style.display = 'none';
+		document.querySelector('.overlay').style.opacity = 0.3;
+		document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
+		document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
+		document.querySelector('.editContactIconContResp').style.display = 'flex';
+	}
+	
 }
