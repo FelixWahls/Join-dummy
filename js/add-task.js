@@ -224,10 +224,9 @@ function editSubtask(i, container) {
 	subtaskEditInput.value = subtasks[i].subtaskName;
 }
 
-function submitChange(i) {
+function submitChange(i, edit) {
 	let newSubtaskContent = document.querySelector(`#edit-subtask-${i}`).value;
 	subtasks[i].subtaskName = newSubtaskContent;
-	renderSubtasks();
 }
 
 async function createTask(event) {

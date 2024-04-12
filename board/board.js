@@ -66,8 +66,10 @@ function allowDrop(ev) {
 	ev.preventDefault();
 }
 
-function moveTo(container) {
+async function moveTo(container) {
 	tasksData[currentDraggedElement]['cardContainer'] = container;
+	console.log(tasksData[currentDraggedElement]);
+	await setItem('allTasks', allTasks);
 	renderTasksBoard();
 }
 

@@ -69,7 +69,7 @@ function renderSubtasks() {
 					    <img
 						    src="../img/edit.png"
 						    class="subtask-actions"
-                            onclick="event.stopPropagation(); editSubtask(${i}, 'edit-subtask-container') "/>
+                            onclick="event.stopPropagation(); editSubtask(${i}, 'edit-subtask-container', ${element}) "/>
 					    <span class="vertical-line-sub"></span>
 					    <img src="../img/delete.png" onclick="deleteSubtask(${i})" class="subtask-actions" />
 				    </div>
