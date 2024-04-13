@@ -116,10 +116,10 @@
 									class="subtask-input"
 									autocomplete="off"
 									placeholder="Add new subtask"
-									onclick="activateInput('add-subtask', 'subtask-input-actions')" />
+									onclick="activateInput()" />
 								<img
 									src="../img/add-subtask.png"
-									onclick="event.stopPropagation(); activateInput('add-subtask', 'subtask-input-actions')"
+									onclick="event.stopPropagation(); activateInput(); setFocus()"
 									id="add-subtask"
 									class="add-subtasks-btn" />
 								<div
@@ -133,7 +133,7 @@
 									<img
 										src="../img/close.png"
 										class="subtask-actions"
-										onclick="deactivateInput('add-subtask', 'subtask-input-actions')" />
+										onclick="deactivateInput()" />
 								</div>
 							</div>
 							<ul id="subtask-container"></ul>

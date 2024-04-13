@@ -1,4 +1,3 @@
-let userList = document.querySelector('#user-list');
 const searchUserInput = document.querySelector('#assigned-to-input');
 
 async function initAddTask() {
@@ -26,26 +25,11 @@ function closeUserList(userList) {
 		document.querySelector('#assigned-arrow').src = '../img/arrow-drop-down.png';
 	}
 }
-
-/*
-document.addEventListener('DOMContentLoaded', function () {
-	document.body.addEventListener('click', function (event) {
-		let subtaskInput = document.getElementById('subtask-input');
-		let subtaskInputActions = document.getElementById('subtask-input-actions');
-		let isClickInsideSubtaskInput = subtaskInput && subtaskInput.contains(event.target);
-		let isClickInsideSubtaskInputActions =
-			subtaskInputActions && subtaskInputActions.contains(event.target);
-
-		if (!isClickInsideSubtaskInput && !isClickInsideSubtaskInputActions) {
-			deactivateInput();
-		}
-	});
-});
-*/
 /**
  * checks if user List is already opened and either closes or opens it
  */
 function openUserList() {
+	let userList = document.querySelector('#user-list');
 	let arrow = document.querySelector('#assigned-arrow');
 	if (userList.classList.contains('d-none')) {
 		userList.classList.remove('d-none');
@@ -62,6 +46,7 @@ function openUserList() {
  * @param {HTMLElement} userList
  */
 function renderUsers() {
+	let userList = document.querySelector('#user-list');
 	userList.innerHTML = '';
 	for (let i = 0; i < contacts.length; i++) {
 		const contact = contacts[i];
@@ -72,26 +57,6 @@ function renderUsers() {
 		}
 	}
 }
-
-/*
-searchUserInput.addEventListener('input', (e) => {
-	const value = e.target.value.trim().toLowerCase();
-
-	for (let i = 0; i < contacts.length; i++) {
-		let currentUserName = document
-			.getElementById(`full-user-name-${i}`)
-			.textContent.toLowerCase()
-			.trim();
-		let currentUserCard = document.getElementById(`user${i}`);
-
-		if (!currentUserName.includes(value)) {
-			currentUserCard.classList.add('d-none');
-		} else {
-			currentUserCard.classList.remove('d-none');
-		}
-	}
-});
-*/
 
 /**
  * checks if a user is already assigned and adjustes the design accordingly
@@ -188,6 +153,10 @@ function activateInput() {
 	subtasksInputActions.classList.remove('d-none');
 }
 
+function setFocus() {
+	document.getElementById('subtask-input').focus();
+}
+
 function deactivateInput() {
 	let addSubtask = document.querySelector('#add-subtask');
 	let subtasksInputActions = document.querySelector('#subtask-input-actions');
@@ -218,9 +187,9 @@ function deleteSubtask(i) {
 	renderSubtasks();
 }
 
-function editSubtask(i, container) {
+function editSubtask(i) {
 	let subtaskContent = document.querySelector(`#subtask-element${i}`);
-	let editContainer = document.getElementById(`${container}`);
+	let editContainer = document.getElementById('edit-subtask-container');
 	let subtaskEditInput = document.querySelector(`#edit-subtask-${i}`);
 	subtaskContent.classList.add('d-none');
 	editContainer.classList.remove('d-none');
@@ -228,9 +197,10 @@ function editSubtask(i, container) {
 	subtaskEditInput.value = subtasks[i].subtaskName;
 }
 
-function submitChange(i, edit) {
+function submitChange(i) {
 	let newSubtaskContent = document.querySelector(`#edit-subtask-${i}`).value;
 	subtasks[i].subtaskName = newSubtaskContent;
+	renderSubtasks();
 }
 
 async function createTask(event) {
@@ -242,11 +212,11 @@ async function createTask(event) {
 
 	if (titleInput && dateInput && categoryInput) {
 		await pushTask();
-	}
-	if ((window.location.href = '../board/board.html')) {
-		initBoard();
-	} else {
-		window.location.href = '../board/board.html';
+		if ((window.location.href = '../board/board.html')) {
+			await initBoard();
+		} else {
+			window.location.href = '../board/board.html';
+		}
 	}
 }
 
@@ -268,11 +238,11 @@ function validateField(fieldId, errorId) {
 function getCategory() {
 	selectElement = document.querySelector('#category-input');
 	output = selectElement.value;
-	console.log(output);
 	return output;
 }
 
-function setCategoryColor(task) {
+function setCategoryColor(taskIndex) {
+	let task = allTasks[taskIndex];
 	if (task.category === 'User Story') {
 		return '#0038FF';
 	} else {
@@ -296,7 +266,6 @@ async function pushTask() {
 	};
 	allTasks.push(newTask);
 	await setItem('allTasks', allTasks);
-	console.log(allTasks);
 	resetForm();
 	showSlider();
 }
@@ -311,7 +280,6 @@ function showSlider() {
 }
 
 function resetForm() {
-	let myForm = document.querySelector('#add-task-form');
 	resetAssignedUsers();
 	titleInput = '';
 	descriptionInput = '';
@@ -324,7 +292,6 @@ function resetForm() {
 	subtasks = [];
 	toDoContainer = 'to-do-container';
 	renderSubtasks();
-	myForm.reset();
 }
 
 function resetAssignedUsers() {

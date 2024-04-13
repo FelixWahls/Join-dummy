@@ -133,6 +133,7 @@ h2 {
 	flex-direction: column;
 	gap: 16px;
 	flex-wrap: wrap;
+	min-height: 50px;
 }
 
 .col-name {
@@ -366,6 +367,19 @@ h3 {
 	align-items: center;
 	justify-content: flex-end;
 	gap: 8px;
+}
+
+#close-edit-task-window {
+	position: absolute;
+	top: 32px;
+	right: 32px;
+	width: 24px;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+#close-edit-task-window:hover {
+	background-color: #a8a8a8;
 }
 
 @media (max-width: 1400px) {
