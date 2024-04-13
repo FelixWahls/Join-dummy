@@ -69,7 +69,7 @@ function renderSubtasks() {
 					    <img
 						    src="../img/edit.png"
 						    class="subtask-actions"
-                            onclick="event.stopPropagation(); editSubtask(${i}, 'edit-subtask-container', ${element}) "/>
+                            onclick="event.stopPropagation(); editSubtask(${i})"/>
 					    <span class="vertical-line-sub"></span>
 					    <img src="../img/delete.png" onclick="deleteSubtask(${i})" class="subtask-actions" />
 				    </div>
@@ -202,7 +202,7 @@ function renderAddTaskHtml() {
 										onclick="activateInput()" />
 									<img
 										src="../img/add-subtask.png"
-										onclick="event.stopPropagation(); activateInput('add-subtask')"
+										onclick="event.stopPropagation(); activateInput(); setFocus()"
 										id="add-subtask"
 										class="add-subtasks-btn" />
 									<div
@@ -245,18 +245,19 @@ function renderAddTaskHtml() {
     `;
 }
 
-function createCardHtml(task, i) {
-	let categoryColor = setCategoryColor(task);
+function createCardHtml(taskId, taskIndex) {
+	let task = allTasks[taskIndex];
+	let categoryColor = setCategoryColor(taskIndex);
 	return /*html*/ `
-        <div class="flex-col single-task" id="task${task.id}" onclick="slideBigCard(${i})" draggable="true" ondragstart="startDragging(${task.id})">
+        <div class="flex-col single-task" id="task${taskId}" onclick="slideBigCard(${taskId})" draggable="true" ondragstart="startDragging(${taskId})">
 			<div class="task-type" style="background-color:${categoryColor}">${task.category}</div>
 			<div class="task-content">
 				<h3>${task.title}</h3>
 				<p>${task.description}</p>
 			</div>
-			<div id="subtask-content${i}" class="subtask-content"></div>
+			<div id="subtask-content${taskId}" class="subtask-content"></div>
 			<div class="bottom-content">
-				<div class="assigned-users" id="small-card-users${i}">
+				<div class="assigned-users" id="small-card-users${taskId}">
 				</div>
 				<div class="priority">
 					<img src="${task.priority}" alt="" />
@@ -266,8 +267,9 @@ function createCardHtml(task, i) {
     `;
 }
 
-function createAssignedUsersHtml(task, i) {
-	let container = document.getElementById(`small-card-users${i}`);
+function createAssignedUsersHtml(taskIndex) {
+	let task = allTasks[taskIndex];
+	let container = document.getElementById(`small-card-users${task.id}`);
 	container.innerHTML = '';
 	for (let i = 0; i < task.users.length; i++) {
 		const element = task.users[i];
@@ -275,11 +277,12 @@ function createAssignedUsersHtml(task, i) {
 	}
 }
 
-function createSubtasksHtml(task, i) {
-	let container = document.getElementById(`subtask-content${i}`);
+function createSubtasksHtml(taskIndex) {
+	let task = allTasks[taskIndex];
+	let container = document.getElementById(`subtask-content${task.id}`);
 	container.innerHTML = '';
 	if (task.subtasks.length > 0) {
-		let subtaskBarWidth = calcSubtaskProgress(task);
+		let subtaskBarWidth = calcSubtaskProgress(taskIndex);
 		container.innerHTML += /*html*/ `
 				<span class="subtask-bar-empty">
 					<span class="subtask-bar-progress" style="width: ${subtaskBarWidth}px;"></span>
@@ -291,8 +294,8 @@ function createSubtasksHtml(task, i) {
 	}
 }
 
-function calcSubtaskProgress(task) {
-	console.log(task.subtaskCounter);
+function calcSubtaskProgress(taskIndex) {
+	let task = allTasks[taskIndex];
 	let singleProgress = 125 / task.subtasks.length;
 	return singleProgress * task.subtaskCounter;
 }
@@ -322,21 +325,21 @@ function createEmptyContainerHtml(containerType) {
     `;
 }
 
-function createBigCard(i) {
-	let currentTask = allTasks[i];
-	let correctDate = transformDate(i);
-	let priorityName = currentTask.prioName;
+function createBigCard(taskIndex) {
+	let task = allTasks[taskIndex];
+	let correctDate = transformDate(task);
+	let priorityName = openedTask.prioName;
 	let newPrioName = priorityName.charAt(0).toUpperCase() + priorityName.slice(1);
-	let categoryColor = setCategoryColor(currentTask);
+	let categoryColor = setCategoryColor(taskIndex);
 	let bigCardContainer = document.querySelector('#big-card-slider');
 	bigCardContainer.innerHTML = /*html*/ `
         <div class="header-section">
-			<div class="task-type" style="background-color: ${categoryColor}">${currentTask.category}</div>
+			<div class="task-type" style="background-color: ${categoryColor}">${task.category}</div>
 			<img src="../img/close.png" onclick="slideBigCard()" />
 		</div>
 		<div class="content-section">
-			<h2 class="big-card-title">${currentTask.title}</h2>
-			<p class="task-description">${currentTask.description}</p>
+			<h2 class="big-card-title">${task.title}</h2>
+			<p class="task-description">${task.description}</p>
 		</div>
 		<div class="task-info-section flex-col">
 			<div class="due-date-content d-flex">
@@ -346,7 +349,7 @@ function createBigCard(i) {
 			<div class="priority-content d-flex">
 				<p class="big-card-lable">Priority:</p>
 				<p class="big-card-lable-content d-flex align-c">
-                ${newPrioName} <img src="${currentTask.priority}" id="big-card-prio-img" />
+                ${newPrioName} <img src="${task.priority}" id="big-card-prio-img" />
 				</p>
 			</div>
 			<div class="flex-col assigned-to-content">
@@ -361,21 +364,21 @@ function createBigCard(i) {
 			</div>
 		</div>
 		<div class="big-card-bottom">
-			<span class="big-card-buttons d-flex align-c pointer" onclick="deleteTask(${currentTask.id})"
+			<span class="big-card-buttons d-flex align-c pointer" onclick="deleteTask(${task.id})"
 				><img src="../img/delete.png" />Delete</span
 			>
 			<span class="vertical-line-sub"></span>
-			<span class="big-card-buttons d-flex align-c pointer" onclick="editTask(${i})"
+			<span class="big-card-buttons d-flex align-c pointer" onclick="editTask(${taskIndex})"
 				><img src="../img/edit.png" />Edit</span
 			>
 		</div>
     `;
 }
 
-function createBigCardUsers(currentTask) {
+function createBigCardUsers() {
 	let bigCardUsersHtml = document.getElementById('big-card-users');
 	bigCardUsersHtml.innerHTML = '';
-	let allAssignedUsers = currentTask.users;
+	let allAssignedUsers = openedTask.users;
 	for (let i = 0; i < allAssignedUsers.length; i++) {
 		const element = allAssignedUsers[i];
 		bigCardUsersHtml.innerHTML += /*html*/ `
@@ -387,14 +390,15 @@ function createBigCardUsers(currentTask) {
 	}
 }
 
-function createBigTaskSubtasks(index) {
+function createBigTaskSubtasks(taskIndex) {
+	let task = allTasks[taskIndex];
 	let subtaskContainer = document.getElementById('subtask-container');
 	subtaskContainer.innerHTML = '';
-	let allSubs = allTasks[index].subtasks;
+	let allSubs = task.subtasks;
 	for (let i = 0; i < allSubs.length; i++) {
 		const currSubtask = allSubs[i];
 		subtaskContainer.innerHTML += /*html*/ `
-            <span class="big-single-subtask d-flex align-c" onclick="toggleSubtaskCheckbox(${index}, ${i})"
+            <span class="big-single-subtask d-flex align-c" onclick="toggleSubtaskCheckbox(${taskIndex}, ${i})"
 				><img src="${getSubtaskImg(
 					currSubtask
 				)}" id="cardSubtask${i}" onclick="" class="subtask-checkbox pointer" />${
@@ -413,137 +417,143 @@ function getSubtaskImg(currSubtask) {
 	}
 }
 
-function createEditTaskHtml(currentTask) {
+function createEditTaskHtml(taskIndex) {
+	let task = allTasks[taskIndex];
+	selectedUsers = task.users;
 	let bigCardContainer = document.querySelector('#big-card-slider');
 	bigCardContainer.innerHTML = /*html*/ `
+        <img src="../img/close.png" id="close-edit-task-window" onclick="slideBigCard(); resetForm()" />
         <div class="d-flex-col">
-								<label for="title-input" class="req-label">Title</label>
-								<input
-									type="text"
-									id="title-input"
-									class="title-input"
-									autocomplete="off"
-									placeholder="Enter a title" />
-								<div class="error d-none" id="error-title">
-									This field is required
-								</div>
-							</div>
-							<div class="d-flex-col">
-								<label for="description-input">Description</label>
-								<textarea
-									name="description-input"
-									id="description-input"
-									class="description-input"
-									placeholder="Enter a Description"
-									cols="30"
-									rows="10"
-									maxlength="250"></textarea>
-							</div>
-							<div class="d-flex-col m-0 relative">
-								<label for="assigned-to-input">Assigned to</label>
-								<div class="input-container" onclick="openUserList()">
-									<input
-										type="text"
-										id="assigned-to-input"
-										autocomplete="off"
-										class="assigned-to-input"
-										placeholder="Select contacts to assign" />
-									<img
-										src="../img/arrow-drop-down.png"
-										id="assigned-arrow"
-										onclick="event.stopPropagation(); openUserList()" />
-								</div>
-								<div id="user-list" class="d-none absolute"></div>
-								<div id="selected-users"></div>
-							</div>
-						</div>
-						<span class="mid-line"></span>
-						<div class="right-col task-col d-flex">
-							<div class="d-flex-col">
-								<label for="due-date-input" class="req-label">Due date</label>
-								<input
-									type="date"
-									id="due-date-input"
-									class="due-date-input"
-									placeholder="dd/mm/yyyy" />
-								<div class="error d-none" id="error-due-date">
-									This field is required
-								</div>
-							</div>
-							<div class="d-flex-col m-0">
-								<label for="prio-container">Prio</label>
-								<div id="prio-container" class="prio-container d-flex">
-									<div
-										class="prio d-flex"
-										id="urgent"
-										onclick="setPrio('urgent')">
-										<p>Urgent</p>
-										<img src="../img/prio-urgent.png" class="prio-image" />
-									</div>
-									<div
-										class="prio d-flex active-medium"
-										id="medium"
-										onclick="setPrio('medium')">
-										<p>Medium</p>
-										<img src="../img/active-medium.png" class="prio-image" />
-									</div>
-									<div class="prio d-flex" id="low" onclick="setPrio('low')">
-										<p>Low</p>
-										<img src="../img/prio-low.png" class="prio-image" />
-									</div>
-								</div>
-							</div>
-							<div class="d-flex-col m-0">
-								<label for="category-input" class="req-label">Category</label>
-								<select
-									name="category-input"
-									id="category-input"
-									class="category-input">
-									<option value="" disabled selected hidden>
-										Select task category
-									</option>
-									<option value="user-story">User Story</option>
-									<option value="technical-task">Technical Task</option>
-								</select>
-								<div class="error d-none" id="error-category">
-									This field is required
-								</div>
-							</div>
-							<div class="d-flex-col m-0">
-								<label for="subtask-input" class="">Subtasks</label>
-								<div class="input-container">
-									<input
-										type="text"
-										id="subtask-input"
-										class="subtask-input"
-										autocomplete="off"
-										placeholder="Add new subtask"
-										onclick="activateInput()" />
-									<img
-										src="../img/add-subtask.png"
-										onclick="event.stopPropagation(); activateInput('add-subtask')"
-										id="add-subtask"
-										class="add-subtasks-btn" />
-									<div
-										id="subtask-input-actions"
-										class="d-flex align-c add-subtasks-btn d-none">
-										<img
-											src="../img/check-blue.png"
-											class="subtask-actions submit-input"
-											onclick="submitSubtask()" />
-										<span class="vertical-line-sub"></span>
-										<img
-											src="../img/close.png"
-											class="subtask-actions"
-											onclick="deactivateInput()" />
-									</div>
-								</div>
-								<ul id="subtask-container"></ul>
-							</div>
+            <label for="title-input" class="req-label">Title</label>
+            <input
+                type="text"
+                id="title-input"
+                class="title-input"
+                autocomplete="off"
+                placeholder="Enter a title"
+                value="${task.title}" />
+            <div class="error d-none" id="error-title">
+                This field is required
+            </div>
+        </div>
+        <div class="d-flex-col">
+            <label for="description-input">Description</label>
+            <textarea
+                name="description-input"
+                id="description-input"
+                class="description-input"
+                placeholder="Enter a Description"
+                cols="30"
+                rows="10"
+                maxlength="250">${task.description}</textarea>
+        </div>
+        <div class="d-flex-col m-0 relative">
+            <label for="assigned-to-input">Assigned to</label>
+            <div class="input-container" onclick="openUserList()">
+                <input
+                    type="text"
+                    id="assigned-to-input"
+                    autocomplete="off"
+                    class="assigned-to-input"
+                    placeholder="Select contacts to assign" />
+                <img
+                    src="../img/arrow-drop-down.png"
+                    id="assigned-arrow"
+                    onclick="event.stopPropagation(); openUserList()" />
+            </div>
+            <div id="user-list" class="d-none absolute"></div>
+            <div id="selected-users"></div>
+        </div>
+    </div>
+    <span class="mid-line"></span>
+    <div class="right-col task-col d-flex">
+        <div class="d-flex-col">
+            <label for="due-date-input" class="req-label">Due date</label>
+            <input
+                type="date"
+                id="due-date-input"
+                class="due-date-input"
+                placeholder="dd/mm/yyyy" 
+                value="${task.date}" />
+            <div class="error d-none" id="error-due-date">
+                This field is required
+            </div>
+        </div>
+        <div class="d-flex-col m-0">
+            <label for="prio-container">Prio</label>
+            <div id="prio-container" class="prio-container d-flex">
+                <div
+                    class="prio d-flex"
+                    id="urgent"
+                    onclick="setPrio('urgent')">
+                    <p>Urgent</p>
+                    <img src="../img/prio-urgent.png" class="prio-image" />
+                </div>
+                <div
+                    class="prio d-flex active-medium"
+                    id="medium"
+                    onclick="setPrio('medium')">
+                    <p>Medium</p>
+                    <img src="../img/active-medium.png" class="prio-image" />
+                </div>
+                <div class="prio d-flex" id="low" onclick="setPrio('low')">
+                    <p>Low</p>
+                    <img src="../img/prio-low.png" class="prio-image" />
+                </div>
+            </div>
+        </div>
+        <div class="d-flex-col m-0">
+            <label for="category-input" class="req-label">Category</label>
+            <select
+                name="category-input"
+                id="category-input"
+                class="category-input">
+                <option value="" disabled selected hidden>
+                    Select task category
+                </option>
+                <option value="user-story">User Story</option>
+                <option value="technical-task">Technical Task</option>
+            </select>
+            <div class="error d-none" id="error-category">
+                This field is required
+            </div>
+        </div>
+        <div class="d-flex-col m-0">
+            <label for="subtask-input" class="">Subtasks</label>
+            <div class="input-container">
+                <input
+                    type="text"
+                    id="subtask-input"
+                    class="subtask-input"
+                    autocomplete="off"
+                    placeholder="Add new subtask"
+                    onclick="activateInput()" />
+                <img
+                    src="../img/add-subtask.png"
+                    onclick="event.stopPropagation(); activateInput(); setFocus()"
+                    id="add-subtask"
+                    class="add-subtasks-btn" />
+                <div
+                    id="subtask-input-actions"
+                    class="d-flex align-c add-subtasks-btn d-none">
+                    <img
+                        src="../img/check-blue.png"
+                        class="subtask-actions submit-input"
+                        onclick="submitSubtask()" />
+                    <span class="vertical-line-sub"></span>
+                    <img
+                        src="../img/close.png"
+                        class="subtask-actions"
+                        onclick="deactivateInput()" />
+                </div>
+            </div>
+            <ul id="subtask-container"></ul>
+        </div>
+        <button onclick="submitTaskChanges(${taskIndex})">OK</button>
     `;
 }
 
-function createEditSubtaskHtml(currentTask) {
+function createEditSubtaskHtml() {
 	let subtaskList = document.querySelector('#subtask-container');
 	subtaskList.innerHTML = '';
 	for (let i = 0; i < currentTask.subtasks.length; i++) {
