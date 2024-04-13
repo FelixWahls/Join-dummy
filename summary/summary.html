@@ -13,7 +13,7 @@
 		<script src="../board/board.js"></script>
 		<title>Summary</title>
 	</head>
-	<body onload="includeHTML()" onclick="closeSidemenu()">
+	<body onload="includeHTML(), render()" onclick="closeSidemenu()">
 		<div w3-include-html="../templates/sidemenu.html"></div>
 		<div class="main-content">
 			<div class="summary-header">
@@ -28,14 +28,14 @@
 						<a href="../board/board.html" class="to-do-btn summary-btn summary-btn-top">
 							<div class="top-row-img-l"></div>
 							<div class="counter">
-								<div class="amount">1</div>
+								<div class="amount summaryToDo">1</div>
 								<p>To-do</p>
 							</div>
 						</a>
 						<a href="../board/board.html" class="done-btn summary-btn summary-btn-top">
 							<div class="top-row-img-r"></div>
 							<div class="counter">
-								<div class="amount">1</div>
+								<div class="amount summaryDone">1</div>
 								<p>Done</p>
 							</div>
 						</a>
@@ -45,28 +45,28 @@
 							<div class="urgent-task-left">
 								<img src="../img/urgent.png" alt="" />
 								<div class="counter">
-									<div class="amount">1</div>
+									<div class="amount summaryUrgent">1</div>
 									<p>Urgent</p>
 								</div>
 							</div>
 							<span class="vertical-line-urgent"></span>
 							<div class="urgent-task-right">
-								<p class="deadline-date">October 16, 2022</p>
+								<p class="deadline-date summaryDate">October 16, 2022</p>
 								<p class="deadline-text">Upcoming Deadline</p>
 							</div>
 						</a>
 					</div>
 					<div class="bottom-row">
 						<a href="../board/board.html" class="summary-btn summary-btn-bottom">
-							<div class="amount">5</div>
+							<div class="amount summaryAllTasks">5</div>
 							<p>Tasks on Board</p>
 						</a>
 						<a href="../board/board.html" class="summary-btn summary-btn-bottom">
-							<div class="amount">2</div>
+							<div class="amount summaryProgress">2</div>
 							<p>Tasks in Progress</p>
 						</a>
 						<a href="../board/board.html" class="summary-btn summary-btn-bottom">
-							<div class="amount">2</div>
+							<div class="amount summaryFeedback">2</div>
 							<p>Awaiting Feedback</p>
 						</a>
 					</div>
