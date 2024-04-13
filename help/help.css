@@ -7,7 +7,6 @@ body {
 
 .title {
 max-width: 138px;
-height: 73px;
 top: 206px;
 left: 328px;
 gap: 30px;
@@ -23,8 +22,7 @@ text-align: left;
 }
 
 .helpDescription {
-max-width: 1014px;
-height: 1024px;
+max-width: 95%;
 top: 311px;
 left: 328px;
 gap: 24px;
@@ -55,7 +53,6 @@ margin-top: -4px;
 
 .greeting {
 max-width: 1014px;
-height: 38px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -67,7 +64,6 @@ text-align: left;
 
 .aboutJoin {
 max-width: 1014px;
-height: 238px;
 gap: 16px;
 opacity: 0px;
 margin-top: 24px;
@@ -75,7 +71,6 @@ margin-top: 24px;
 
 .aboutJoinTitle {
 width: 346px;
-height: 32px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -87,7 +82,6 @@ text-align: left;
 
 .aboutJoinDescription {
 max-width: 1014px;
-height: 190px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -99,7 +93,6 @@ text-align: left;
 
 .howToUse {
 max-width: 346px;
-height: 32px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -111,14 +104,12 @@ text-align: left;
 
 .howToDescription {
 max-width: 1014px;
-height: 556px;
 gap: 16px;
 opacity: 0px;
 }
 
 .joinInstructions {
 max-width: 1014px;
-height: 19px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -130,14 +121,12 @@ text-align: left;
 
 .stepByStepGuide {
 max-width: 1014px;
-height: 521px;
 gap: 16px;
 opacity: 0px;
 }
 
 .exploringContainer {
 max-width: 1014px;
-height: 61px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -146,7 +135,6 @@ justify-content: flex-start;
 
 .stepOne {
 width: 21px;
-height: 32px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -158,7 +146,6 @@ text-align: left;
 
 .exploring {
 width: 958px;
-height: 61px;
 gap: 0px;
 opacity: 0px;
 }
@@ -181,7 +168,6 @@ text-align: left;
 
 .creatingContainer {
 max-width: 1014px;
-height: 80px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -191,7 +177,6 @@ margin-top: 16px;
 
 .stepTwo {
 width: 26px;
-height: 32px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -203,7 +188,6 @@ text-align: left;
 
 .creating {
 width: 953px;
-height: 80px;
 gap: 0px;
 opacity: 0px;
 }
@@ -226,7 +210,6 @@ text-align: left;
 
 .addingContainer {
 max-width: 1014px;
-height: 80px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -236,7 +219,6 @@ margin-top: 16px;
 
 .stepThree {
 width: 26px;
-height: 32px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -248,7 +230,6 @@ text-align: left;
 
 .adding {
 width: 953px;
-height: 80px;
 gap: 0px;
 opacity: 0px;
 }
@@ -271,7 +252,6 @@ text-align: left;
 
 .movingContainer {
 max-width: 1014px;
-height: 61px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -281,7 +261,6 @@ margin-top: 16px;
 
 .stepFour {
 width: 26px;
-height: 32px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -293,7 +272,6 @@ text-align: left;
 
 .moving {
 width: 953px;
-height: 61px;
 gap: 0px;
 opacity: 0px;
 display: flex;
@@ -319,7 +297,6 @@ text-align: left;
 
 .deletingContainer {
 max-width: 1014px;
-height: 175px;
 gap: 35px;
 opacity: 0px;
 display: flex;
@@ -329,7 +306,6 @@ margin-top: 16px;
 
 .stepFive {
 width: 25px;
-height: 32px;
 gap: 0px;
 opacity: 0px;
 font-family: Inter;
@@ -341,7 +317,6 @@ text-align: left;
 
 .deleting {
 width: 954px;
-height: 175px;
 gap: 0px;
 opacity: 0px;
 display: flex;
@@ -366,7 +341,6 @@ text-align: left;
 
 .enjoy {
 width: 346px;
-height: 64px;
 margin-top: 32px;
 }
 
@@ -376,4 +350,22 @@ font-size: 27px;
 font-weight: 700;
 line-height: 32.4px;
 text-align: left;
+}
+
+@media(max-width:500px) {
+    .title {
+        max-width: 95%;
+        top: 206px;
+        left: 50px;
+        gap: 30px;
+        opacity: 0px;
+        }
+        
+        .helpDescription {
+        max-width: 95%;
+        top: 311px;
+        left: 50px;
+        gap: 24px;
+        opacity: 0px;
+        }
 }
