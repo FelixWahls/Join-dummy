@@ -96,8 +96,8 @@ function initShowBigCard(slideInputBG, slideBigCard, taskIndex) {
 	subtasks = openedTask.subtasks;
 }
 
-function transformDate(i) {
-	let currentDate = allTasks[i].date;
+function transformDate() {
+	let currentDate = openedTask.date;
 	let parts = currentDate.split('-');
 	let year = parts[0];
 	let month = parts[1];
@@ -110,6 +110,30 @@ function transformDate(i) {
 		'/' +
 		date.getFullYear();
 	return formattedDate;
+	/*
+	let currentDate = allTasks[i].date;
+	let parts = currentDate.split('-');
+	let year = parts[0];
+	let month = parseInt(parts[1], 10) - 1;
+	let day = parseInt(parts[2], 10);
+	let date = new Date(year, month, day);
+	const monthNames = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	];
+	let formattedDate = monthNames[date.getMonth()] + ' ' + day + ', ' + date.getFullYear();
+	return formattedDate;
+    */
 }
 
 async function toggleSubtaskCheckbox(taskIndex, subIndex) {
