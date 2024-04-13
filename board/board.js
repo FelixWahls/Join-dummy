@@ -222,5 +222,6 @@ async function changeTask(taskIndex) {
 	task.id = task.id;
 
 	await setItem('allTasks', allTasks);
-	// resetForm();
+	resetForm();
+	initBoard();
 }
