@@ -629,6 +629,11 @@ body {
 	background-repeat: no-repeat;
 }
 
+.nameInputContainer:focus {
+	outline: none;
+	border-color: #29abe2;
+}
+
 .emailInputContainer {
 	width: 422px;
 	height: 50px;
@@ -642,6 +647,11 @@ body {
 	background-position: 380px;
 	background-size: 22px;
 	background-repeat: no-repeat;
+}
+
+.emailInputContainer:focus {
+	outline: none;
+	border-color: #29abe2;
 }
 
 .phoneInputContainer {
@@ -659,6 +669,11 @@ body {
 	background-repeat: no-repeat;
 }
 
+.phoneInputContainer:focus {
+	outline: none;
+	border-color: #29abe2;
+}
+
 .nameEditContainer {
 	width: 422px;
 	height: 50px;
@@ -672,6 +687,11 @@ body {
 	background-position: 380px;
 	background-size: 24px;
 	background-repeat: no-repeat;
+}
+
+.nameEditContainer:focus {
+	outline: none;
+	border-color: #29abe2;
 }
 
 .emailEditContainer {
@@ -689,6 +709,11 @@ body {
 	background-repeat: no-repeat;
 }
 
+.emailEditContainer:focus {
+	outline: none;
+	border-color: #29abe2;
+}
+
 .phoneEditContainer {
 	width: 422px;
 	height: 50px;
@@ -704,8 +729,13 @@ body {
 	background-repeat: no-repeat;
 }
 
+.phoneEditContainer:focus {
+	outline: none;
+	border-color: #29abe2;
+}
+
 input::placeholder {
-	width: 56px;
+	width: 64px;
 	height: 24px;
 	font-family: Inter;
 	font-size: 20px;

@@ -27,7 +27,12 @@ async function render() {
       if ((u = 1)) {
         date = changeDateFormat(i);
       }
+	  if(u > 1){
+		alert(u);
+	  }
     }
+
+	
 
     document.querySelector(".summaryToDo").innerHTML = a;
     document.querySelector(".summaryDone").innerHTML = d;

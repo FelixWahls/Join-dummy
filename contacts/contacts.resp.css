@@ -312,6 +312,36 @@ background-image: url('../img/Mail.png');
 background-size: 22px;
 }
 
+.nameEditResp:focus {
+  outline: none;
+	border-color: #29abe2;
+}
+
+.emailEditResp:focus {
+  outline: none;
+	border-color: #29abe2;
+}
+
+.phoneEditResp:focus {
+  outline: none;
+	border-color: #29abe2;
+}
+
+.nameInputResp:focus {
+	outline: none;
+	border-color: #29abe2;
+}
+
+.emailInputResp:focus {
+	outline: none;
+	border-color: #29abe2;
+}
+
+.phoneInputResp:focus {
+	outline: none;
+	border-color: #29abe2;
+}
+
 .phoneInputResp {
 background-image: url('../img/call.png');
 background-size: 18px;
@@ -905,6 +935,7 @@ align-items: center;
   }
   .editContSmallContResp {
     display: block;
+    position: fixed;
   }
 }
 
