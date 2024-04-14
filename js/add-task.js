@@ -1,23 +1,24 @@
-const searchUserInput = document.querySelector('#assigned-to-input');
+const searchUserInput = document.querySelector("#assigned-to-input");
 
 /**
  * initialises the addTask site
  */
 async function initAddTask() {
 	await includeHTML();
-	allTasks = await getItem('allTasks');
-	contacts = await getItem('contacts');
+	allTasks = await getItem("allTasks");
+	contacts = await getItem("contacts");
 }
 
 /**
  * checks if a user clicks inside of the input field or not and closes the userList dropdown accordingly
  */
-document.addEventListener('DOMContentLoaded', function () {
-	document.body.addEventListener('click', function (event) {
-		userList = document.getElementById('user-list');
-		let inputContainer = document.querySelector('#assigned-to-input');
+document.addEventListener("DOMContentLoaded", function () {
+	document.body.addEventListener("click", function (event) {
+		userList = document.getElementById("user-list");
+		let inputContainer = document.querySelector("#assigned-to-input");
 		let isClickInsideUserList = userList && userList.contains(event.target);
-		let isClickInsideInputContainer = inputContainer && inputContainer.contains(event.target);
+		let isClickInsideInputContainer =
+			inputContainer && inputContainer.contains(event.target);
 
 		if (!isClickInsideUserList && !isClickInsideInputContainer) {
 			closeUserList(userList);
@@ -31,23 +32,24 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 function closeUserList(userList) {
 	if (userList) {
-		userList.classList.add('d-none');
-		document.querySelector('#assigned-arrow').src = '../img/arrow-drop-down.png';
+		userList.classList.add("d-none");
+		document.querySelector("#assigned-arrow").src =
+			"../img/arrow-drop-down.png";
 	}
 }
 /**
  * checks if user List is already opened and either closes or opens it
  */
 function openUserList() {
-	let userList = document.querySelector('#user-list');
-	let arrow = document.querySelector('#assigned-arrow');
-	if (userList.classList.contains('d-none')) {
-		userList.classList.remove('d-none');
-		arrow.src = '../img/arrow-drop-up.png';
+	let userList = document.querySelector("#user-list");
+	let arrow = document.querySelector("#assigned-arrow");
+	if (userList.classList.contains("d-none")) {
+		userList.classList.remove("d-none");
+		arrow.src = "../img/arrow-drop-up.png";
 		renderUsers();
 	} else {
-		userList.classList.add('d-none');
-		arrow.src = '../img/arrow-drop-down.png';
+		userList.classList.add("d-none");
+		arrow.src = "../img/arrow-drop-down.png";
 	}
 }
 
@@ -56,8 +58,8 @@ function openUserList() {
  * @param {HTMLElement} userList
  */
 function renderUsers() {
-	let userList = document.querySelector('#user-list');
-	userList.innerHTML = '';
+	let userList = document.querySelector("#user-list");
+	userList.innerHTML = "";
 	for (let i = 0; i < contacts.length; i++) {
 		const contact = contacts[i];
 		if (contact.addTask == false) {
@@ -74,8 +76,14 @@ function renderUsers() {
  * if not it calls the updateAssignedUserList function
  */
 function filterUsers() {
-	let searchUserInput = document.getElementById('assigned-to-input').value.toLowerCase();
-	if (searchUserInput == null || searchUserInput == '' || searchUserInput < 1) {
+	let searchUserInput = document
+		.getElementById("assigned-to-input")
+		.value.toLowerCase();
+	if (
+		searchUserInput == null ||
+		searchUserInput == "" ||
+		searchUserInput < 1
+	) {
 		renderUsers();
 	} else {
 		updateAssignedUserList(searchUserInput);
@@ -91,9 +99,9 @@ function updateAssignedUserList(searchUserInput) {
 		const contactName = contacts[i].name.toLowerCase();
 		let currentContainer = document.getElementById(`user${i}`);
 		if (!contactName.includes(searchUserInput)) {
-			currentContainer.classList.add('d-none');
+			currentContainer.classList.add("d-none");
 		} else {
-			currentContainer.classList.remove('d-none');
+			currentContainer.classList.remove("d-none");
 		}
 	}
 }
@@ -105,14 +113,14 @@ function updateAssignedUserList(searchUserInput) {
 function selectedUser(i) {
 	let currentUser = document.querySelector(`#user${i}`);
 	let userCapitals = document.querySelector(`#user-capitals-${i}`).textContent;
-	let image = currentUser.querySelector('img');
+	let image = currentUser.querySelector("img");
 
-	if (!currentUser.classList.contains('active-user')) {
+	if (!currentUser.classList.contains("active-user")) {
 		setActiveUser(currentUser, userCapitals, image, i);
-		contacts[i]['addTask'] = true;
+		contacts[i]["addTask"] = true;
 	} else {
 		deactivateUser(currentUser, i, image);
-		contacts[i]['addTask'] = false;
+		contacts[i]["addTask"] = false;
 	}
 }
 
@@ -124,10 +132,12 @@ function selectedUser(i) {
  * @param {number} i
  */
 function setActiveUser(currentUser, userCapitals, image, i) {
-	let selectedUserName = document.querySelector(`#full-user-name-${i}`).textContent;
+	let selectedUserName = document.querySelector(
+		`#full-user-name-${i}`
+	).textContent;
 	let userColor = contacts[i].color;
-	currentUser.classList.add('active-user');
-	image.src = '../img/checkbox-check-white.png';
+	currentUser.classList.add("active-user");
+	image.src = "../img/checkbox-check-white.png";
 	let selectedUserList = {
 		userCapitals: userCapitals,
 		fullUserNames: selectedUserName,
@@ -144,11 +154,12 @@ function setActiveUser(currentUser, userCapitals, image, i) {
  * @param {HTMLElement} image
  */
 function deactivateUser(currentUser, i, image) {
-	currentUser.classList.remove('active-user');
-	image.src = '../img/Checkbox.png';
+	currentUser.classList.remove("active-user");
+	image.src = "../img/Checkbox.png";
 	const index = selectedUsers.findIndex(
 		(currentUser) =>
-			currentUser.fullUserNames === document.querySelector(`#full-user-name-${i}`).textContent
+			currentUser.fullUserNames ===
+			document.querySelector(`#full-user-name-${i}`).textContent
 	);
 	if (index !== -1) {
 		selectedUsers.splice(index, 1);
@@ -161,7 +172,7 @@ function deactivateUser(currentUser, i, image) {
  * @param {string} priority
  */
 function setPrio(priority) {
-	let allBtns = document.getElementsByClassName('prio');
+	let allBtns = document.getElementsByClassName("prio");
 	setPrioColor(allBtns, priority);
 	setPrioImage(priority);
 }
@@ -173,12 +184,12 @@ function setPrio(priority) {
  */
 function setPrioColor(allBtns, priority) {
 	for (let i = 0; i < allBtns.length; i++) {
-		allBtns[i].classList.remove('active-urgent');
-		allBtns[i].classList.remove('active-medium');
-		allBtns[i].classList.remove('active-low');
+		allBtns[i].classList.remove("active-urgent");
+		allBtns[i].classList.remove("active-medium");
+		allBtns[i].classList.remove("active-low");
 	}
 	let prioBtn = document.getElementById(priority);
-	prioBtn.classList.add('active-' + priority);
+	prioBtn.classList.add("active-" + priority);
 	prioName = priority;
 }
 
@@ -190,14 +201,14 @@ function setPrioColor(allBtns, priority) {
  * @param {string} priority
  */
 function setPrioImage(priority) {
-	let prioImages = document.getElementsByClassName('prio-image');
+	let prioImages = document.getElementsByClassName("prio-image");
 	for (let i = 0; i < prioButtons.length; i++) {
 		const element = prioButtons[i];
-		if (element['priority'] === priority) {
-			prioImages[i].src = prioButtons[i]['activePrioImg'];
-			activePrio = prioButtons[i]['inactivePrioImg'];
+		if (element["priority"] === priority) {
+			prioImages[i].src = prioButtons[i]["activePrioImg"];
+			activePrio = prioButtons[i]["inactivePrioImg"];
 		} else {
-			prioImages[i].src = prioButtons[i]['inactivePrioImg'];
+			prioImages[i].src = prioButtons[i]["inactivePrioImg"];
 		}
 	}
 }
@@ -206,38 +217,51 @@ function setPrioImage(priority) {
  * adjusts the subtask input icons when input is active
  */
 function activateInput() {
-	let addSubtask = document.getElementById('add-subtask');
-	let subtasksInputActions = document.getElementById('subtask-input-actions');
+	let addSubtask = document.getElementById("add-subtask");
+	let subtasksInputActions = document.getElementById("subtask-input-actions");
 
-	addSubtask.classList.add('d-none');
-	subtasksInputActions.classList.remove('d-none');
+	addSubtask.classList.add("d-none");
+	subtasksInputActions.classList.remove("d-none");
 }
 
 /**
  * sets the focus to the subtask input if the user clicks the plus icon
  */
 function setFocus() {
-	document.getElementById('subtask-input').focus();
+	document.getElementById("subtask-input").focus();
 }
 
 /**
  * deactivates the subtask input if the user clicks the cross icon
  */
 function deactivateInput() {
-	let addSubtask = document.querySelector('#add-subtask');
-	let subtasksInputActions = document.querySelector('#subtask-input-actions');
+	let addSubtask = document.querySelector("#add-subtask");
+	let subtasksInputActions = document.querySelector("#subtask-input-actions");
 
-	addSubtask.classList.remove('d-none');
-	subtasksInputActions.classList.add('d-none');
-	document.querySelector('#subtask-input').value = '';
+	addSubtask.classList.remove("d-none");
+	subtasksInputActions.classList.add("d-none");
+	document.querySelector("#subtask-input").value = "";
+}
+
+/**
+ * checks if the user pressed enter
+ * prevents form submit and submits new subtask instead
+ * @param {event} event
+ */
+
+function checkSubmit(event) {
+	if (event.key === "Enter") {
+		event.preventDefault();
+		submitSubtask();
+	}
 }
 
 /**
  * gets the value of the subtask input and creates a new object if the input is not empty
  */
 function submitSubtask() {
-	let subtaskContent = document.querySelector('#subtask-input').value;
-	if (subtaskContent == '') {
+	let subtaskContent = document.querySelector("#subtask-input").value;
+	if (subtaskContent == "") {
 		deactivateInput();
 	} else {
 		let newSubtask = {
@@ -245,7 +269,7 @@ function submitSubtask() {
 			done: false,
 		};
 		subtasks.push(newSubtask);
-		document.querySelector('#subtask-input').value = '';
+		document.querySelector("#subtask-input").value = "";
 		renderSubtasks();
 		deactivateInput();
 	}
@@ -266,12 +290,25 @@ function deleteSubtask(i) {
  */
 function editSubtask(i) {
 	let subtaskContent = document.querySelector(`#subtask-element${i}`);
-	let editContainer = document.getElementById('edit-subtask-container');
+	let editContainer = document.getElementById("edit-subtask-container");
 	let subtaskEditInput = document.querySelector(`#edit-subtask-${i}`);
-	subtaskContent.classList.add('d-none');
-	editContainer.classList.remove('d-none');
+	subtaskContent.classList.add("d-none");
+	editContainer.classList.remove("d-none");
 	document.getElementById(`edit-subtask-${i}`).focus();
 	subtaskEditInput.value = subtasks[i].subtaskName;
+}
+
+/**
+ * checks if the user pressed enter on editing a subtask
+ * prevents form submit and submits subtask change instead
+ * @param {number} i
+ * @param {event} event
+ */
+function checkEditSubmit(i, event) {
+	if (event.key === "Enter") {
+		event.preventDefault();
+		submitChange(i);
+	}
 }
 
 /**
@@ -291,17 +328,17 @@ function submitChange(i) {
  */
 async function createTask(event) {
 	event.preventDefault();
-	titleInput = validateField('#title-input', '#error-title');
-	descriptionInput = document.querySelector('#description-input').value;
-	dateInput = validateField('#due-date-input', '#error-due-date');
-	categoryInput = validateField('#category-input', '#error-category');
+	titleInput = validateField("#title-input", "#error-title");
+	descriptionInput = document.querySelector("#description-input").value;
+	dateInput = validateField("#due-date-input", "#error-due-date");
+	categoryInput = validateField("#category-input", "#error-category");
 
 	if (titleInput && dateInput && categoryInput) {
 		await pushTask();
-		if ((window.location.href = '../html/board.html')) {
+		if ((window.location.href = "../html/board.html")) {
 			await initBoard();
 		} else {
-			window.location.href = '../html/board.html';
+			window.location.href = "../html/board.html";
 		}
 	}
 }
@@ -317,13 +354,13 @@ function validateField(fieldId, errorId) {
 	let field = document.querySelector(fieldId);
 	let errorContainer = document.querySelector(errorId);
 
-	if (field.value.trim() !== '') {
-		field.classList.remove('input-error');
-		errorContainer.classList.add('d-none');
+	if (field.value.trim() !== "") {
+		field.classList.remove("input-error");
+		errorContainer.classList.add("d-none");
 		return field.value.trim();
 	} else {
-		field.classList.add('input-error');
-		errorContainer.classList.remove('d-none');
+		field.classList.add("input-error");
+		errorContainer.classList.remove("d-none");
 		return null;
 	}
 }
@@ -333,7 +370,7 @@ function validateField(fieldId, errorId) {
  * @returns value of the selected option
  */
 function getCategory() {
-	selectElement = document.querySelector('#category-input');
+	selectElement = document.querySelector("#category-input");
 	output = selectElement.value;
 	return output;
 }
@@ -345,10 +382,10 @@ function getCategory() {
  */
 function setCategoryColor(taskIndex) {
 	let task = allTasks[taskIndex];
-	if (task.category === 'User Story') {
-		return '#0038FF';
+	if (task.category === "User Story") {
+		return "#0038FF";
 	} else {
-		return '#1FD7C1';
+		return "#1FD7C1";
 	}
 }
 
@@ -370,7 +407,7 @@ async function pushTask() {
 		id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0,
 	};
 	allTasks.push(newTask);
-	await setItem('allTasks', allTasks);
+	await setItem("allTasks", allTasks);
 	resetForm();
 	showSlider();
 }
@@ -379,11 +416,19 @@ async function pushTask() {
  * shows success slider if a new task was pushed successfully
  */
 function showSlider() {
-	document.querySelector('.task-added-slider').classList.remove('task-added-transition-remove');
-	document.querySelector('.task-added-slider').classList.add('task-added-transition');
+	document
+		.querySelector(".task-added-slider")
+		.classList.remove("task-added-transition-remove");
+	document
+		.querySelector(".task-added-slider")
+		.classList.add("task-added-transition");
 	setTimeout(() => {
-		document.querySelector('.task-added-slider').classList.remove('task-added-transition');
-		document.querySelector('.task-added-slider').classList.add('task-added-transition-remove');
+		document
+			.querySelector(".task-added-slider")
+			.classList.remove("task-added-transition");
+		document
+			.querySelector(".task-added-slider")
+			.classList.add("task-added-transition-remove");
 	}, 900);
 }
 
@@ -392,16 +437,16 @@ function showSlider() {
  */
 function resetForm() {
 	resetAssignedUsers();
-	titleInput = '';
-	descriptionInput = '';
-	dateInput = '';
-	categoryInput = '';
+	titleInput = "";
+	descriptionInput = "";
+	dateInput = "";
+	categoryInput = "";
 	selectedUsers = [];
 	renderSelectedUsers();
-	setPrio('medium');
-	prioName = '';
+	setPrio("medium");
+	prioName = "";
 	subtasks = [];
-	toDoContainer = 'to-do-container';
+	toDoContainer = "to-do-container";
 	renderSubtasks();
 }
 
