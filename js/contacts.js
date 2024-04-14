@@ -33,6 +33,11 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
+/**
+ * This function registers a new user from the latest entry in the users array, 
+ * adds them to contacts, sorts the list, and updates the UI to display all contacts grouped by initial letters.
+ */
+
 async function initRegisteredUser() {
 		let newUser = {
 			name: users[users.length - 1]['user'],
@@ -422,6 +427,9 @@ function openMatchingContactCard() {
 	}
 }
 
+/**
+ * Updates the details of the currently selected contact in the contacts array.
+ */
 function updateCurrentContactDetails() {
 	contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
 	contacts[currentContact].email = document.querySelector('.emailEditContainer').value;
