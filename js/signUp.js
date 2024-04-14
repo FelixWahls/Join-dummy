@@ -5,8 +5,6 @@ let checkboxState = false;
  * password input fields, and password visibility toggles upon DOM content fully loaded.
  */
 document.addEventListener('DOMContentLoaded', () => {
-	setLegalNoticeHref();
-	setPrivacyPolicyHref();
 	document.querySelector('.signUp-button').disabled = true;
 	document.getElementById('checkboxImg').onclick = toggleCheckbox;
 	document.getElementById('password').oninput = () => handlePasswordInput('password');
@@ -17,25 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		togglePasswordVisibility('confirmPw', 'confirmPwIcon');
 });
 
-/**
- * Sets the href attribute of the <a> element with the ID "legalNotice".
- */
-function setLegalNoticeHref() {
-	var legalNoticeLink = document.getElementById('legalNotice');
-	if (legalNoticeLink) {
-		legalNoticeLink.href = 'http://127.0.0.1:5501/legalNotice/legalNotice.html';
-	}
-}
-
-/**
- * Sets the href attribute of the <a> element with the ID "privacyPolicy".
- */
-function setPrivacyPolicyHref() {
-	var privacyPolicyLink = document.getElementById('privacyPolicy');
-	if (privacyPolicyLink) {
-		privacyPolicyLink.href = 'http://127.0.0.1:5501/privacyPolicy/privacyPolicy.html';
-	}
-}
 
 /**
  * Toggles the state of the checkbox and updates the checkbox image
