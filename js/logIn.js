@@ -1,52 +1,8 @@
 // Waits for the DOM to be fully loaded before initializing link references and animations.
 document.addEventListener('DOMContentLoaded', () => {
- setGuestLogInHref();
  initAnimations();
- setLegalNoticeHref();
- setPrivacyPolicyHref();
  document.querySelector('.logIn-button').addEventListener('click', validateLogin);
 });
-
-
-/**
-* Sets the href attribute of the <a> element with the ID "legalNotice".
-*/
-function setLegalNoticeHref() {
- var legalNoticeLink = document.getElementById('legalNotice');
- if (legalNoticeLink) {
-   legalNoticeLink.href = 'http://127.0.0.1:5501/legalNotice/legalNotice.html';
- }
-}
-
-
-/**
-* Sets the href attribute of the <a> element with the ID "privacyPolicy".
-*/
-function setPrivacyPolicyHref() {
- var privacyPolicyLink = document.getElementById('privacyPolicy');
- if (privacyPolicyLink) {
-   privacyPolicyLink.href = 'http://127.0.0.1:5501/privacyPolicy/privacyPolicy.html';
- }
-}
-
-
-/**
-* Attaches a click event listener to the "guestLogIn" button to redirect users.
-*/
-function setGuestLogInHref() {
- console.log("setGuestLogInHref called");
- var guestLogInButton = document.getElementById('guestLogIn');
- if (guestLogInButton) {
-   console.log("Button found");
-   guestLogInButton.addEventListener('click', function() {
-     console.log("Redirecting to summary page");
-     window.location.href = 'http://127.0.0.1:5501/html/summary.html';
-   });
- } else {
-   console.log("Button not found");
- }
-}
-
 
 /**
 * Initializes animations for the website's logo and content visibility.
