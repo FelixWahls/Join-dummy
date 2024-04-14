@@ -58,10 +58,6 @@ h1 {
 	gap: 32px;
 }
 
-.mid-row {
-	padding: 28px 0;
-}
-
 .summary-btn {
 	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 	display: flex;
@@ -353,10 +349,6 @@ h1 {
 }
 
 @media (max-width: 550px) {
-	.summary-btn {
-		gap: 8px;
-	}
-
 	.summary-btn-bottom {
 		gap: 0;
 	}
@@ -370,7 +362,17 @@ h1 {
 		font-size: 14px;
 	}
 
+	.main-tasks-container {
+		gap: 16px;
+	}
+
 	.main-tasks-container p {
 		font-size: 12px;
+	}
+}
+
+@media (max-width: 400px) {
+	.summary-btn {
+		gap: 8px;
 	}
 }

@@ -407,6 +407,10 @@ h3 {
 		padding-left: auto;
 		padding-right: auto;
 	}
+
+	.tasks {
+		padding-bottom: 86px;
+	}
 }
 
 @media (max-width: 900px) {
