@@ -1,12 +1,12 @@
 let overlayCanBeHidden = false;
 
+/**
+ * @description This function opens the responsive modal window for adding a new contact by applying transition effects 
+ * and displaying the overlay.
+ */
 function openAddNewContactRespWindow() {
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.add('addNewContactRespContainerTransition');
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.remove('addNewContactRespContainerTransitionRemove');
+	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransition');
+	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
