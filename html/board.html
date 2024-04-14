@@ -27,7 +27,9 @@
 				<div class="first-section">
 					<div class="d-flex align-c header-section">
 						<h1>Board</h1>
-						<button class="add-task header-btn" onclick="slideIn();">
+						<button
+							class="add-task header-btn"
+							onclick="slideIn(), setPrio('medium')">
 							<img src="../img/add-task-board.png" alt="" />
 						</button>
 					</div>
@@ -46,7 +48,9 @@
 								alt=""
 								class="d-none" />
 						</div>
-						<button class="add-task main-task-btn" onclick="slideIn();">
+						<button
+							class="add-task main-task-btn"
+							onclick="slideIn(), setPrio('medium')">
 							<p class="remove-on-small">Add Task</p>
 							<img src="../img/add-task-board.png" alt="" />
 						</button>
@@ -59,7 +63,7 @@
 						<h2>To do</h2>
 						<div
 							class="plus-btns"
-							onclick="slideIn(), setTaskContainer('to-do-container'), renderUsers();">
+							onclick="slideIn(), setPrio('medium'), setTaskContainer('to-do-container'), renderUsers();">
 							<img src="../img/plus-btn.png" alt="" />
 							<img
 								src="../img/plus-btn-hover.png"
@@ -83,7 +87,7 @@
 						<h2>In progress</h2>
 						<div
 							class="plus-btns"
-							onclick="slideIn(), setTaskContainer('in-progress-container'), renderUsers();">
+							onclick="slideIn(), setPrio('medium'), setTaskContainer('in-progress-container'), renderUsers();">
 							<img src="../img/plus-btn.png" alt="" />
 							<img
 								src="../img/plus-btn-hover.png"
@@ -107,7 +111,7 @@
 						<h2>Await feedback</h2>
 						<div
 							class="plus-btns"
-							onclick="slideIn(), setTaskContainer('await-feedback-container'), renderUsers();">
+							onclick="slideIn(), setPrio('medium'), setTaskContainer('await-feedback-container'), renderUsers();">
 							<img src="../img/plus-btn.png" alt="" />
 							<img
 								src="../img/plus-btn-hover.png"

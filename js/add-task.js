@@ -450,7 +450,7 @@ function resetForm() {
 	selectedUsers = [];
 	renderSelectedUsers();
 	setPrio("medium");
-	prioName = "";
+	prioName = "medium";
 	subtasks = [];
 	toDoContainer = "to-do-container";
 	renderSubtasks();
