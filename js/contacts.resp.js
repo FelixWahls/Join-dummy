@@ -72,8 +72,6 @@ function highlightEditIconInResponsiveMode() {
 	if (window.innerWidth < 960) {
 		document.querySelector('.editContactIconContResp').style.display = 'flex';
 	}
-	//document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
-	//document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
 	setTimeout(() => {
 		document.querySelector('.editContactIconContResp').style.backgroundColor = '#2a3647';
 		document.querySelector('.editContactIconContResp').style.border = '#2a3647';
@@ -124,6 +122,10 @@ async function deleteContactResp() {
 	initContactlist();
 	closeContactDetailsResp();
 	resetEditContactStyleResponsive();
+	document.querySelector('.overlay').style.display = 'none';
+	setTimeout(() => {
+		document.querySelector('.editContactIconContResp').style.display = 'none';
+	}, 350);
 }
 
 function resetEditContactStyleResponsive() {
