@@ -59,6 +59,8 @@ function renderTask(task, taskIndex) {
 	container.innerHTML += createCardHtml(task.id, taskIndex);
 	createAssignedUsersHtml(taskIndex);
 	createSubtasksHtml(taskIndex);
+	calcSubtaskProgress(taskIndex);
+	console.log(allTasks[taskIndex]);
 }
 
 /**
@@ -259,10 +261,10 @@ async function submitTaskChanges(taskIndex) {
 	categoryInput = validateField('#category-input', '#error-category');
 	if (titleInput && dateInput && categoryInput) {
 		await changeTask(taskIndex);
-		if ((window.location.href = '../board/board.html')) {
+		if ((window.location.href = '../html/board.html')) {
 			await initBoard();
 		} else {
-			window.location.href = '../board/board.html';
+			window.location.href = '../html/board.html';
 		}
 	}
 }
@@ -281,10 +283,9 @@ async function changeTask(taskIndex) {
 	task.prioName = prioName;
 	task.category = categoryInput;
 	task.subtasks = subtasks;
-	task.subtaskCounter = 0;
+	task.subtaskCounter = task.subtaskCounter;
 	task.cardContainer = toDoContainer;
 	task.id = task.id;
-
 	await setItem('allTasks', allTasks);
 	resetForm();
 	initBoard();
@@ -310,15 +311,16 @@ function filterTasks() {
  * @param {string} searchTaskInput
  */
 function renderFilteredTasks(searchTaskInput) {
+	console.log(searchTaskInput);
 	for (let i = 0; i < allTasks.length; i++) {
-		const currTitle = allTasks[i].title.toLowerCase();
-		const currDesc = allTasks[i].description.toLowerCase();
+		let currTitle = allTasks[i].title.toLowerCase();
+		let currDesc = allTasks[i].description.toLowerCase();
 		let currCard = document.getElementById(`task${allTasks[i].id}`);
 
-		if (!currTitle.includes(searchTaskInput) || !currDesc.includes(searchTaskInput)) {
-			currCard.classList.add('d-none');
-		} else {
+		if (currTitle.includes(searchTaskInput) || currDesc.includes(searchTaskInput)) {
 			currCard.classList.remove('d-none');
+		} else {
+			currCard.classList.add('d-none');
 		}
 	}
 }

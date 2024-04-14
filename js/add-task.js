@@ -298,10 +298,10 @@ async function createTask(event) {
 
 	if (titleInput && dateInput && categoryInput) {
 		await pushTask();
-		if ((window.location.href = '../board/board.html')) {
+		if ((window.location.href = '../html/board.html')) {
 			await initBoard();
 		} else {
-			window.location.href = '../board/board.html';
+			window.location.href = '../html/board.html';
 		}
 	}
 }
