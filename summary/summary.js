@@ -6,6 +6,7 @@ let allTasksAmount = document.querySelector('.summaryAllTasks');
 let formattedDate;
 let urgentCounter = 0;
 
+/** calls several functions and sets the counter for Tasks on Board */
 async function render() {
 	allTasks = await getItem('allTasks');
 	getAllCounters();
@@ -15,6 +16,9 @@ async function render() {
 	allTasksAmount.innerHTML = allTasks.length;
 }
 
+/**
+ * iterates over every Task to find the Task with the deadline closest to the current date
+ */
 function findNearestDateObject() {
 	const currentDate = new Date();
 	let nearestDateObject;
@@ -31,6 +35,10 @@ function findNearestDateObject() {
 	formatDate(nearestDateObject.date);
 }
 
+/**
+ * formats the date to the en-US design
+ * @param {string} dateString
+ */
 function formatDate(dateString) {
 	const date = new Date(dateString);
 	const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -38,6 +46,10 @@ function formatDate(dateString) {
 	document.getElementById('mid-row-date').innerHTML = formattedDate;
 }
 
+/**
+ * iterates over all Tasks and updates counters according to their container
+ * displays the numbers to the according containers
+ */
 function getAllCounters() {
 	const taskCounts = {
 		'to-do-container': 0,
@@ -46,9 +58,7 @@ function getAllCounters() {
 		'done-container': 0,
 	};
 	for (const key in allTasks) {
-		// Überprüfe, ob das Objekt den Key "cardContainer" hat
 		if (allTasks.hasOwnProperty(key) && allTasks[key].hasOwnProperty('cardContainer')) {
-			// Inkrementiere den Zähler für den entsprechenden Container
 			taskCounts[allTasks[key].cardContainer]++;
 		}
 	}
@@ -58,6 +68,9 @@ function getAllCounters() {
 	doneAmount.innerHTML = taskCounts['done-container'];
 }
 
+/**
+ * gets the number of all urgent tasks in board and displays them
+ */
 function getUrgentTasks() {
 	allTasks.forEach((task) => {
 		if (task.prioName === 'urgent') {
