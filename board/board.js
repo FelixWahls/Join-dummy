@@ -225,3 +225,26 @@ async function changeTask(taskIndex) {
 	resetForm();
 	initBoard();
 }
+
+function filterTasks() {
+	let searchTaskInput = document.getElementById('search-bar').value.toLowerCase();
+	if (searchTaskInput == null || searchTaskInput == '' || searchTaskInput < 1) {
+		renderTasksBoard();
+	} else {
+		renderFilteredTasks(searchTaskInput);
+	}
+}
+
+function renderFilteredTasks(searchTaskInput) {
+	for (let i = 0; i < allTasks.length; i++) {
+		const currTitle = allTasks[i].title.toLowerCase();
+		const currDesc = allTasks[i].description.toLowerCase();
+		let currCard = document.getElementById(`task${allTasks[i].id}`);
+
+		if (!currTitle.includes(searchTaskInput) || !currDesc.includes(searchTaskInput)) {
+			currCard.classList.add('d-none');
+		} else {
+			currCard.classList.remove('d-none');
+		}
+	}
+}

@@ -16,10 +16,6 @@ h2 {
 	display: flex;
 }
 
-.d-none {
-	display: none;
-}
-
 .pointer {
 	cursor: pointer;
 }
@@ -450,4 +446,8 @@ h3 {
 	.big-card {
 		max-width: 100%;
 	}
+}
+
+.d-none {
+	display: none;
 }

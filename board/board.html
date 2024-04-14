@@ -25,7 +25,12 @@
 					<h1>Board</h1>
 					<div class="d-flex search-section">
 						<div class="searchbar-container">
-							<input type="text" id="search-bar" placeholder="Find Task" />
+							<input
+								type="text"
+								id="search-bar"
+								onkeyup="filterTasks()"
+								autocomplete="off"
+								placeholder="Find Task" />
 							<span class="vertical-line"></span>
 							<img src="../img/search.png" alt="" />
 							<img src="../img/search-active.png" alt="" class="d-none" />
