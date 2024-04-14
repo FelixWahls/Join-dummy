@@ -33,8 +33,8 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
-function initRegisteredUser() {
-	/*for (let i = 0; i < users.length; i++) {
+async function initRegisteredUser() {
+	for (let i = 0; i < users.length; i++) {
 		let newUser = {
 			name: users[i]['user'],
 			email: users[i]['email'],
@@ -44,7 +44,8 @@ function initRegisteredUser() {
 			addTask: false,
 		};
 		contacts.push(newUser);
-	}*/
+		setItem('contacts', contacts);
+	}
 
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
@@ -411,6 +412,11 @@ async function editContact(event) {
 	openMatchingContactCard();
 }
 
+
+/**
+ * Searches for a contact whose name matches the value entered in the edit contact form and opens
+ * that contact's card.
+ */
 function openMatchingContactCard() {
 	for (let k = 0; k < contacts.length; k++) {
 		if (document.querySelector('.nameEditContainer').value == contacts[k].name) {
