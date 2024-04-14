@@ -315,10 +315,11 @@ function renderFilteredTasks(searchTaskInput) {
 		const currDesc = allTasks[i].description.toLowerCase();
 		let currCard = document.getElementById(`task${allTasks[i].id}`);
 
-		if (!currTitle.includes(searchTaskInput) || !currDesc.includes(searchTaskInput)) {
-			currCard.classList.add('d-none');
-		} else {
+		if (currTitle.includes(searchTaskInput) || currDesc.includes(searchTaskInput)) {
 			currCard.classList.remove('d-none');
+		} else {
+			currCard.classList.add('d-none');
 		}
 	}
 }
+
