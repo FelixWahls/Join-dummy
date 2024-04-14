@@ -212,8 +212,11 @@ h3 {
 	margin-bottom: 8px;
 }
 
-.task-content p {
+.single-card-description {
 	color: #a8a8a8;
+	height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .subtask-content {
