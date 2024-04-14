@@ -8,24 +8,25 @@ body {
 	width: 37px;
 	height: 37px;
 	padding: 2.5px 0px 0px 0px;
+	cursor: pointer;
 }
 
 .title {
-	max-width: 1014px;
+	width: 95%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
 .titleText {
-	width: 371px;
+	width: 95%;
 	font-size: 61px;
 	font-weight: 700;
 	text-align: left;
 }
 
 .legalNoticeDescription {
-	width: 95;
+	width: 95%;
 	gap: 24px;
 }
 
@@ -35,7 +36,7 @@ body {
 }
 
 .imprintTitle {
-	width: 346px;
+	width: 95%;
 	padding-top: 32px;
 	gap: 0px;
 	opacity: 0px;
@@ -66,16 +67,27 @@ body {
 }
 
 @media(max-width: 1000px) {
+	.marginLeft {
+		margin-left: -3%;
+	}
 	.date {
 		padding-bottom: 80px;
 	}
-	
+	.titleText {
+		font-size: 41px;
+	}
 }
 
 @media(max-width: 500px) {
+	.marginLeft {
+		margin-left: -100px;
+	}
 	.arrow {
 		position: fixed;
-		right: 10%;
+		right: 5%;
+	}
+	.titleText {
+		font-size: 45px;
 	}
 	
 }
