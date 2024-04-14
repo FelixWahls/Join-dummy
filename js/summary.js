@@ -1,18 +1,17 @@
-let toDoAmount = document.getElementById('toDoAmount');
-let inProgressAmount = document.querySelector('.summaryProgress');
-let awaitFeedbackAmount = document.querySelector('.summaryFeedback');
-let doneAmount = document.querySelector('.summaryDone');
-let allTasksAmount = document.querySelector('.summaryAllTasks');
+let toDoAmount = document.getElementById("toDoAmount");
+let inProgressAmount = document.querySelector(".summaryProgress");
+let awaitFeedbackAmount = document.querySelector(".summaryFeedback");
+let doneAmount = document.querySelector(".summaryDone");
+let allTasksAmount = document.querySelector(".summaryAllTasks");
 let formattedDate;
 let urgentCounter = 0;
 
 /** calls several functions and sets the counter for Tasks on Board */
-async function render() {
-	allTasks = await getItem('allTasks');
+async function initSummary() {
+	allTasks = await getItem("allTasks");
 	getAllCounters();
 	getUrgentTasks();
 	findNearestDateObject();
-	// changeDateFormat();
 	allTasksAmount.innerHTML = allTasks.length;
 }
 
@@ -41,9 +40,9 @@ function findNearestDateObject() {
  */
 function formatDate(dateString) {
 	const date = new Date(dateString);
-	const options = { year: 'numeric', month: 'long', day: 'numeric' };
-	formattedDate = date.toLocaleDateString('en-US', options);
-	document.getElementById('mid-row-date').innerHTML = formattedDate;
+	const options = { year: "numeric", month: "long", day: "numeric" };
+	formattedDate = date.toLocaleDateString("en-US", options);
+	document.getElementById("mid-row-date").innerHTML = formattedDate;
 }
 
 /**
@@ -51,21 +50,24 @@ function formatDate(dateString) {
  * displays the numbers to the according containers
  */
 function getAllCounters() {
-	const taskCounts = {
-		'to-do-container': 0,
-		'in-progress-container': 0,
-		'await-feedback-container': 0,
-		'done-container': 0,
+	let taskCounts = {
+		"to-do-container": 0,
+		"in-progress-container": 0,
+		"await-feedback-container": 0,
+		"done-container": 0,
 	};
 	for (const key in allTasks) {
-		if (allTasks.hasOwnProperty(key) && allTasks[key].hasOwnProperty('cardContainer')) {
+		if (
+			allTasks.hasOwnProperty(key) &&
+			allTasks[key].hasOwnProperty("cardContainer")
+		) {
 			taskCounts[allTasks[key].cardContainer]++;
 		}
 	}
-	toDoAmount.innerHTML = taskCounts['to-do-container'];
-	inProgressAmount.innerHTML = taskCounts['in-progress-container'];
-	awaitFeedbackAmount.innerHTML = taskCounts['await-feedback-container'];
-	doneAmount.innerHTML = taskCounts['done-container'];
+	toDoAmount.innerHTML = taskCounts["to-do-container"];
+	inProgressAmount.innerHTML = taskCounts["in-progress-container"];
+	awaitFeedbackAmount.innerHTML = taskCounts["await-feedback-container"];
+	doneAmount.innerHTML = taskCounts["done-container"];
 }
 
 /**
@@ -73,9 +75,9 @@ function getAllCounters() {
  */
 function getUrgentTasks() {
 	allTasks.forEach((task) => {
-		if (task.prioName === 'urgent') {
+		if (task.prioName === "urgent") {
 			urgentCounter++;
 		}
 	});
-	document.getElementById('urgent-counter').innerHTML = urgentCounter;
+	document.getElementById("urgent-counter").innerHTML = urgentCounter;
 }
