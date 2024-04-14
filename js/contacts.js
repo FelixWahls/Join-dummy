@@ -43,7 +43,6 @@ async function initRegisteredUser() {
 			addTask: false,
 		};
 		contacts.push(newUser);
-		setItem('contacts', contacts);
 
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
