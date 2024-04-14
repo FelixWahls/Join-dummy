@@ -1,64 +1,68 @@
+let toDoAmount = document.getElementById('toDoAmount');
+let inProgressAmount = document.querySelector('.summaryProgress');
+let awaitFeedbackAmount = document.querySelector('.summaryFeedback');
+let doneAmount = document.querySelector('.summaryDone');
+let allTasksAmount = document.querySelector('.summaryAllTasks');
+let formattedDate;
+let urgentCounter = 0;
+
 async function render() {
-  allTasks = await getItem("allTasks");
-  let a = 0;
-  let b = 0;
-  let c = 0;
-  let d = 0;
-  let u = 0;
-  let date;
-  let firstUrgentTask;
+	allTasks = await getItem('allTasks');
+	getAllCounters();
+	getUrgentTasks();
+	findNearestDateObject();
+	// changeDateFormat();
+	allTasksAmount.innerHTML = allTasks.length;
+}
 
-  for (let i = 0; i < allTasks.length; i++) {
-    const task = allTasks[i];
+function findNearestDateObject() {
+	const currentDate = new Date();
+	let nearestDateObject;
+	let nearestDateDiff = Infinity;
 
-    if (task["cardContainer"] == "to-do-container") {
-      a++;
-    }
-    if (task["cardContainer"] == "in-progress-container") {
-      b++;
-    }
-    if (task["cardContainer"] == "await-feedback-container") {
-      c++;
-    }
-    if (task["cardContainer"] == "done-container") {
-      d++;
-    }
-    if (task["prioName"] == "urgent") {
-      date = task['date'];
-      /*u++;
-      
-      if ((u == 1)) {
-        firstUrgentTask = task;
-        date = firstUrgentTask['date'];
-      }
-	    if(u > 1 && task['date'] < firstUrgentTask['date']){
-		  firstUrgentTask['date'] = task;
-      date = firstUrgentTask['date'];
-	    }*/
-    }
+	allTasks.forEach((task) => {
+		const taskDate = new Date(task.date);
+		const diff = Math.abs(taskDate - currentDate);
+		if (diff < nearestDateDiff) {
+			nearestDateDiff = diff;
+			nearestDateObject = task;
+		}
+	});
+	formatDate(nearestDateObject.date);
+}
 
-	
+function formatDate(dateString) {
+	const date = new Date(dateString);
+	const options = { year: 'numeric', month: 'long', day: 'numeric' };
+	formattedDate = date.toLocaleDateString('en-US', options);
+	document.getElementById('mid-row-date').innerHTML = formattedDate;
+}
 
-    document.querySelector(".summaryToDo").innerHTML = a;
-    document.querySelector(".summaryDone").innerHTML = d;
-    document.querySelector(".summaryUrgent").innerHTML = u;
-    document.querySelector(".summaryDate").innerHTML = changeDateFormat(i);
-    document.querySelector(".summaryAllTasks").innerHTML = i + 1;
-    document.querySelector(".summaryProgress").innerHTML = b;
-    document.querySelector(".summaryFeedback").innerHTML = c;
-    document.querySelector("#greeting-name").innerHTML = "AAA BBB";
-  }
+function getAllCounters() {
+	const taskCounts = {
+		'to-do-container': 0,
+		'in-progress-container': 0,
+		'await-feedback-container': 0,
+		'done-container': 0,
+	};
+	for (const key in allTasks) {
+		// Überprüfe, ob das Objekt den Key "cardContainer" hat
+		if (allTasks.hasOwnProperty(key) && allTasks[key].hasOwnProperty('cardContainer')) {
+			// Inkrementiere den Zähler für den entsprechenden Container
+			taskCounts[allTasks[key].cardContainer]++;
+		}
+	}
+	toDoAmount.innerHTML = taskCounts['to-do-container'];
+	inProgressAmount.innerHTML = taskCounts['in-progress-container'];
+	awaitFeedbackAmount.innerHTML = taskCounts['await-feedback-container'];
+	doneAmount.innerHTML = taskCounts['done-container'];
+}
 
-  function changeDateFormat(i) {
-    let currentDate = allTasks[i].date;
-    let parts = currentDate.split('-');
-    let year = parts[0];
-    let month = parseInt(parts[1], 10) - 1;
-    let day = parseInt(parts[2], 10);
-    let date = new Date(year, month, day);
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"];
-    let formattedDate = monthNames[date.getMonth()] + ' ' + day + ', ' + date.getFullYear();
-    return formattedDate;
-  }
+function getUrgentTasks() {
+	allTasks.forEach((task) => {
+		if (task.prioName === 'urgent') {
+			urgentCounter++;
+		}
+	});
+	document.getElementById('urgent-counter').innerHTML = urgentCounter;
 }

@@ -7,10 +7,6 @@
 		<link rel="stylesheet" href="../fonts.css" />
 		<link rel="stylesheet" href="../sidemenu.css" />
 		<link rel="stylesheet" href="summary.css" />
-		<script src="../templates/sidemenu.js"></script>
-		<script src="../script.js"></script>
-		<script src="../summary/summary.js"></script>
-		<script src="../board/board.js"></script>
 		<title>Summary</title>
 	</head>
 	<body onload="includeHTML(), render()" onclick="closeSidemenu()">
@@ -28,7 +24,7 @@
 						<a href="../board/board.html" class="to-do-btn summary-btn summary-btn-top">
 							<div class="top-row-img-l"></div>
 							<div class="counter">
-								<div class="amount summaryToDo">1</div>
+								<div class="amount summaryToDo" id="toDoAmount">1</div>
 								<p>To-do</p>
 							</div>
 						</a>
@@ -45,13 +41,15 @@
 							<div class="urgent-task-left">
 								<img src="../img/urgent.png" alt="" />
 								<div class="counter">
-									<div class="amount summaryUrgent">1</div>
+									<div class="amount summaryUrgent" id="urgent-counter">1</div>
 									<p>Urgent</p>
 								</div>
 							</div>
 							<span class="vertical-line-urgent"></span>
 							<div class="urgent-task-right">
-								<p class="deadline-date summaryDate">October 16, 2022</p>
+								<p class="deadline-date summaryDate" id="mid-row-date">
+									October 16, 2022
+								</p>
 								<p class="deadline-text">Upcoming Deadline</p>
 							</div>
 						</a>
@@ -77,5 +75,9 @@
 				</div>
 			</div>
 		</div>
+		<script src="../templates/sidemenu.js"></script>
+		<script src="../script.js"></script>
+		<script src="../summary/summary.js"></script>
+		<script src="../board/board.js"></script>
 	</body>
 </html>
