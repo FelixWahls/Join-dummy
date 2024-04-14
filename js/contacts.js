@@ -34,18 +34,16 @@ function extractCapitalLetters(name) {
 }
 
 async function initRegisteredUser() {
-	for (let i = 0; i < users.length; i++) {
 		let newUser = {
-			name: users[i]['user'],
-			email: users[i]['email'],
+			name: users[users.length - 1]['user'],
+			email: users[users.length - 1]['email'],
 			telefon: '',
 			color: getRandomColor(),
-			capitals: extractCapitalLetters(users[i]['user']),
+			capitals: extractCapitalLetters(users[users.length - 1]['user']),
 			addTask: false,
 		};
 		contacts.push(newUser);
 		setItem('contacts', contacts);
-	}
 
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
