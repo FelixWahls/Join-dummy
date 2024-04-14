@@ -3,10 +3,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="../templates/sidemenu.js"></script>
-		<script src="../js/script.js"></script>
-		<script src="../js/contacts.resp.js"></script>
-		<script src="../js/contacts.resp.js"></script>
 		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
 		<link rel="stylesheet" href="../css/style.css" />
 		<link rel="stylesheet" href="../css/fonts.css" />
@@ -16,13 +12,11 @@
 		<title>Add Task</title>
 	</head>
 
-	<body onload="initContacts()" >
-		<div class="overlay" onclick="closeSmallEditField()">
-			
-		</div>
+	<body onload="initContacts()">
+		<div class="overlay" onclick="closeSmallEditField()"></div>
 		<div w3-include-html="../templates/sidemenu.html"></div>
 		<div class="main-content">
-			<div class="contactList"onclick="closeSidemenu()">
+			<div class="contactList" onclick="closeSidemenu()">
 				<div>
 					<div class="contacts">
 						<div
@@ -368,5 +362,9 @@
 				</div>
 			</div>
 		</div>
+		<script src="../js/script.js"></script>
+		<script src="../templates/sidemenu.js"></script>
+		<script src="../js/contacts.js"></script>
+		<script src="../js/contacts.resp.js"></script>
 	</body>
 </html>

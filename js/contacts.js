@@ -27,7 +27,7 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
-function initRegisteredUser(){
+function initRegisteredUser() {
 	/*for (let i = 0; i < users.length; i++) {
 		let newUser = {
 			name: users[i]['user'],
