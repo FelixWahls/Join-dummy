@@ -112,26 +112,26 @@ function togglePasswordVisibility(fieldId, iconId) {
 * Validates the login attempt by checking the email and password against hardcoded values.
 */
 async function validateLogin(event) {
- event.preventDefault();
- const emailInput = document.getElementById('email');
- const passwordInput = document.getElementById('password');
+ event.preventDefault();  // Verhindert, dass das Formular normal gesendet wird
+ const emailInput = document.getElementById('email');  // Zugriff auf das E-Mail-Eingabefeld
+ const passwordInput = document.getElementById('password');  // Zugriff auf das Passwort-Eingabefeld
  
  try {
-     const userData = await getItem('user-' + emailInput.value);
-     const user = JSON.parse(userData);
+     const userData = await getItem('user-' + emailInput.value);  // Abrufen der Benutzerdaten vom Server
+     const user = JSON.parse(userData);  // Parsen der gespeicherten JSON-Daten zu einem JavaScript-Objekt
      
-     if (user && user.password === passwordInput.value) {
-         console.log('Login successful');
-         // Hier können Sie umleiten oder andere Aktionen ausführen
+     if (user && user.password === passwordInput.value) {  // Überprüfen, ob Benutzer existiert und das Passwort übereinstimmt
+         console.log('Login successful');  // Konsolenausgabe, wenn Login erfolgreich
      } else {
-         console.log('Login failed: Incorrect email or password');
-         setWrongPasswordStyles();
+         console.log('Login failed: Incorrect email or password');  // Konsolenausgabe bei falschem Passwort
+         setWrongPasswordStyles();  // Anwendung visueller Feedback-Stile für falsches Passwort
      }
  } catch (error) {
-     console.log('Login failed:', error);
-     setWrongPasswordStyles();
+     console.log('Login failed:', error);  // Konsolenausgabe bei einem Fehler beim Abruf oder Verarbeiten der Daten
+     setWrongPasswordStyles();  // Anwendung visueller Feedback-Stile für Fehler
  }
 }
+
 
 
 /**
@@ -166,4 +166,3 @@ function toggleCheckbox() {
 function removeEmailBoxShadow(element) {
  element.style.boxShadow = 'none';
 }
-
