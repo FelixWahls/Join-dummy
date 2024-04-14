@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
  initAnimations();
  setLegalNoticeHref();
  setPrivacyPolicyHref();
+ document.querySelector('.logIn-button').addEventListener('click', validateLogin);
 });
 
 
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setLegalNoticeHref() {
  var legalNoticeLink = document.getElementById('legalNotice');
  if (legalNoticeLink) {
-   legalNoticeLink.href = 'http://127.0.0.1:5500/legalNotice/legalNotice.html';
+   legalNoticeLink.href = 'http://127.0.0.1:5501/legalNotice/legalNotice.html';
  }
 }
 
@@ -24,7 +25,7 @@ function setLegalNoticeHref() {
 function setPrivacyPolicyHref() {
  var privacyPolicyLink = document.getElementById('privacyPolicy');
  if (privacyPolicyLink) {
-   privacyPolicyLink.href = 'http://127.0.0.1:5500/privacyPolicy/privacyPolicy.html';
+   privacyPolicyLink.href = 'http://127.0.0.1:5501/privacyPolicy/privacyPolicy.html';
  }
 }
 
@@ -39,7 +40,7 @@ function setGuestLogInHref() {
    console.log("Button found");
    guestLogInButton.addEventListener('click', function() {
      console.log("Redirecting to summary page");
-     window.location.href = 'http://127.0.0.1:5500/summary/summary.html';
+     window.location.href = 'http://127.0.0.1:5501/summary/summary.html';
    });
  } else {
    console.log("Button not found");
@@ -110,16 +111,25 @@ function togglePasswordVisibility(fieldId, iconId) {
 /**
 * Validates the login attempt by checking the email and password against hardcoded values.
 */
-function validateLogin() {
+async function validateLogin(event) {
+ event.preventDefault();
  const emailInput = document.getElementById('email');
  const passwordInput = document.getElementById('password');
- const isValidUser = emailInput.value === 'user@example.com' && passwordInput.value === 'correctPassword';
-
- if (!isValidUser) {
-   setWrongPasswordStyles();
-   passwordInput.value = '';
- } else {
-   console.log('Login successful');
+ 
+ try {
+     const userData = await getItem('user-' + emailInput.value);
+     const user = JSON.parse(userData);
+     
+     if (user && user.password === passwordInput.value) {
+         console.log('Login successful');
+         // Hier können Sie umleiten oder andere Aktionen ausführen
+     } else {
+         console.log('Login failed: Incorrect email or password');
+         setWrongPasswordStyles();
+     }
+ } catch (error) {
+     console.log('Login failed:', error);
+     setWrongPasswordStyles();
  }
 }
 

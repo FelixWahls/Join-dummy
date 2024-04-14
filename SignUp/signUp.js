@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setLegalNoticeHref() {
 	var legalNoticeLink = document.getElementById('legalNotice');
 	if (legalNoticeLink) {
-		legalNoticeLink.href = 'http://127.0.0.1:5500/legalNotice/legalNotice.html';
+		legalNoticeLink.href = 'http://127.0.0.1:5501/legalNotice/legalNotice.html';
 	}
 }
 
@@ -33,7 +33,7 @@ function setLegalNoticeHref() {
 function setPrivacyPolicyHref() {
 	var privacyPolicyLink = document.getElementById('privacyPolicy');
 	if (privacyPolicyLink) {
-		privacyPolicyLink.href = 'http://127.0.0.1:5500/privacyPolicy/privacyPolicy.html';
+		privacyPolicyLink.href = 'http://127.0.0.1:5501/privacyPolicy/privacyPolicy.html';
 	}
 }
 
@@ -139,16 +139,35 @@ function comparePasswords(password, confirmPw) {
  * Adds a new user to the users array and logs a message.
  * Redirects to the login page after adding the user.
  */
-function addUser() {
-	const name = document.getElementById('name').value;
-	const email = document.getElementById('email').value;
-	const password = document.getElementById('password').value;
+async function addUser() {
+ const name = document.getElementById('name').value;
+ const email = document.getElementById('email').value;
+ const password = document.getElementById('password').value;
 
-	let newUser = { user: name, email: email, password: password };
-	users.push(newUser);
-	setItem('users', users);
-	showPopup();
+ // Erstellen des Benutzerobjekts, das gespeichert werden soll
+ let newUser = {
+     name: name,
+     email: email,
+     password: password
+ };
+
+ // Konvertierung des Benutzerobjekts in einen String für die Speicherung
+ let userString = JSON.stringify(newUser);
+
+ try {
+     // Speichern des Benutzerobjekts auf dem Server
+     const response = await setItem('user-' + email, userString);
+     if (response.status === 'success') {
+         showPopup(); // Zeige Bestätigungspopup, wenn das Speichern erfolgreich war
+     } else {
+         console.error('Failed to save user:', response);
+     }
+ } catch (error) {
+     console.error('Error saving user:', error);
+ }
 }
+
+
 
 /**
  * Displays a popup message indicating successful sign-up.
@@ -175,5 +194,5 @@ function showPopup() {
  * Redirects the user to the login page.
  */
 function redirectToLogin() {
-	window.location.href = 'http://127.0.0.1:5500/LogIn/logIn.html';
+	window.location.href = 'http://127.0.0.1:5501/LogIn/logIn.html';
 }
