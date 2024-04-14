@@ -40,7 +40,7 @@ function setGuestLogInHref() {
    console.log("Button found");
    guestLogInButton.addEventListener('click', function() {
      console.log("Redirecting to summary page");
-     window.location.href = 'http://127.0.0.1:5501/summary/summary.html';
+     window.location.href = 'http://127.0.0.1:5501/html/summary.html';
    });
  } else {
    console.log("Button not found");
