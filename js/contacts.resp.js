@@ -10,16 +10,22 @@ function openAddNewContactRespWindow() {
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
+/**
+ * @description This function closes the responsive modal window for adding a new contact by reversing the transition effects
+ *  and hiding the overlay.
+ */
 function closeAddNewContactRespWindow() {
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.add('addNewContactRespContainerTransitionRemove');
-	document
-		.getElementById('addNewContactRespContainer')
-		.classList.remove('addNewContactRespContainerTransition');
+	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
+	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 	document.querySelector('.overlay').style.display = 'none';
 }
 
+/**
+ * @description This asynchronous function handles form submission to add a new contact in responsive mode, 
+ * validating and collecting input data, creating the contact, refreshing the contact list, closing the modal, 
+ * resetting the form values, animating the confirmation, and opening the contact card for the newly added contact.
+ * @param {Event} event - The event object provided by the form submission.
+*/
 async function addNewContactResp(event) {
 	event.preventDefault();
 	let name = document.querySelector('.nameInputResp').value;
@@ -34,6 +40,10 @@ async function addNewContactResp(event) {
 	return false;
 }
 
+/**
+ * @description Opens the responsive contact card for a specific contact.
+ * @param {string} name - The name of the contact to find and open in the responsive contact card view.
+ */
 function openResponsiveContactCardByName(name) {
 	for (let i = 0; i < contacts.length; i++) {
 		if (name == contacts[i].name) {
@@ -42,20 +52,24 @@ function openResponsiveContactCardByName(name) {
 	}
 }
 
+/**
+ * @description Triggers a closing animation for the new contact container in a mobile view.
+ * @description Applies a CSS transition class to initiate an animation, removes it after 1.5 seconds,
+ * and updates the display properties of related DOM elements to reflect the change in view.
+ */
 function animateCloseAddNewContainerMobile() {
-	document
-		.querySelector('.createResponseContainerResponsiv')
-		.classList.add('createResponseContainerResponsivTransition');
+	document.querySelector('.createResponseContainerResponsiv').classList.add('createResponseContainerResponsivTransition');
 	setTimeout(() => {
-		document
-			.querySelector('.createResponseContainerResponsiv')
-			.classList.remove('createResponseContainerResponsivTransition');
+		document.querySelector('.createResponseContainerResponsiv').classList.remove('createResponseContainerResponsivTransition');
 	}, 1500);
 	document.querySelector('#initContacts').style.display = 'none';
 	document.querySelector('.contRespWindow').style.display = 'flex';
 	document.querySelector('.addNewContactIconContResp').style.display = 'none';
 }
 
+/**
+ * @description Clears the input fields for adding a new contact in the responsive/mobile version of the interface.
+ */
 function cancelInputValueResp() {
 	document.querySelector('.nameInputResp').value = '';
 	document.querySelector('.emailInputResp').value = '';
