@@ -33,12 +33,20 @@ h2 {
 	overflow: scroll;
 }
 
+.header-section {
+	width: 100%;
+}
+
 .first-section {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	max-width: 1056px;
+}
+
+.header-btn {
+	display: none;
 }
 
 .searchbar-container {
@@ -418,6 +426,7 @@ h3 {
 	.search-section {
 		width: 100%;
 		justify-content: space-between;
+		align-items: center;
 	}
 
 	.remove-on-small {
@@ -446,8 +455,23 @@ h3 {
 		padding: 0;
 	}
 
+	.header-btn {
+		display: inline-block;
+	}
+
+	.main-task-btn {
+		display: none;
+	}
+
 	.big-card {
 		max-width: 100%;
+	}
+}
+
+@media (max-width: 450px) {
+	.main-content {
+		padding-left: 16px;
+		padding-right: 16px;
 	}
 }
 
