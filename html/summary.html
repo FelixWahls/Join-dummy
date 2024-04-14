@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../style.css" />
-		<link rel="stylesheet" href="../fonts.css" />
-		<link rel="stylesheet" href="../sidemenu.css" />
-		<link rel="stylesheet" href="summary.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/fonts.css" />
+		<link rel="stylesheet" href="../css/sidemenu.css" />
+		<link rel="stylesheet" href="../css/summary.css" />
 		<title>Summary</title>
 	</head>
 	<body onload="includeHTML(), render()" onclick="closeSidemenu()">
@@ -21,14 +21,14 @@
 			<div class="flex">
 				<div class="main-tasks-container">
 					<div class="top-row">
-						<a href="../board/board.html" class="to-do-btn summary-btn summary-btn-top">
+						<a href="../html/board.html" class="to-do-btn summary-btn summary-btn-top">
 							<div class="top-row-img-l"></div>
 							<div class="counter">
 								<div class="amount summaryToDo" id="toDoAmount">1</div>
 								<p>To-do</p>
 							</div>
 						</a>
-						<a href="../board/board.html" class="done-btn summary-btn summary-btn-top">
+						<a href="../html/board.html" class="done-btn summary-btn summary-btn-top">
 							<div class="top-row-img-r"></div>
 							<div class="counter">
 								<div class="amount summaryDone">1</div>
@@ -37,7 +37,7 @@
 						</a>
 					</div>
 					<div class="mid-row">
-						<a href="../board/board.html" class="urgent-task summary-btn">
+						<a href="../html/board.html" class="urgent-task summary-btn">
 							<div class="urgent-task-left">
 								<img src="../img/urgent.png" alt="" />
 								<div class="counter">
@@ -55,15 +55,15 @@
 						</a>
 					</div>
 					<div class="bottom-row">
-						<a href="../board/board.html" class="summary-btn summary-btn-bottom">
+						<a href="../html/board.html" class="summary-btn summary-btn-bottom">
 							<div class="amount summaryAllTasks">5</div>
 							<p>Tasks on Board</p>
 						</a>
-						<a href="../board/board.html" class="summary-btn summary-btn-bottom">
+						<a href="../html/board.html" class="summary-btn summary-btn-bottom">
 							<div class="amount summaryProgress">2</div>
 							<p>Tasks in Progress</p>
 						</a>
-						<a href="../board/board.html" class="summary-btn summary-btn-bottom">
+						<a href="../html/board.html" class="summary-btn summary-btn-bottom">
 							<div class="amount summaryFeedback">2</div>
 							<p>Awaiting Feedback</p>
 						</a>
@@ -76,8 +76,8 @@
 			</div>
 		</div>
 		<script src="../templates/sidemenu.js"></script>
-		<script src="../script.js"></script>
-		<script src="../summary/summary.js"></script>
-		<script src="../board/board.js"></script>
+		<script src="../js/script.js"></script>
+		<script src="../js/summary.js"></script>
+		<script src="../js/board.js"></script>
 	</body>
 </html>

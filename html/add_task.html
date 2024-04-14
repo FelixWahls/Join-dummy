@@ -4,15 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="../templates/sidemenu.js"></script>
-		<link
-			rel="shortcut icon"
-			href="../img/Join-Logo.png"
-			type="image/x-icon" />
-		<link rel="stylesheet" href="../style.css" />
-		<link rel="stylesheet" href="../fonts.css" />
-		<link rel="stylesheet" href="../sidemenu.css" />
-		<link rel="stylesheet" href="add_task.css" />
-		<link rel="stylesheet" href="add_task_resp.css" />
+		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/fonts.css" />
+		<link rel="stylesheet" href="../css/sidemenu.css" />
+		<link rel="stylesheet" href="../css/add_task.css" />
+		<link rel="stylesheet" href="../css/add_task_resp.css" />
 		<title>Add Task</title>
 	</head>
 	<body onload="initAddTask()" onclick="closeSidemenu()">
@@ -30,9 +27,7 @@
 								class="title-input"
 								autocomplete="off"
 								placeholder="Enter a title" />
-							<div class="error d-none" id="error-title">
-								This field is required
-							</div>
+							<div class="error d-none" id="error-title">This field is required</div>
 						</div>
 						<div class="d-flex-col">
 							<label for="description-input">Description</label>
@@ -67,9 +62,7 @@
 					<span class="mid-line"></span>
 					<div class="right-col task-col d-flex">
 						<div class="d-flex-col">
-							<label for="due-date-input" class="req-label"
-								>Due date</label
-							>
+							<label for="due-date-input" class="req-label">Due date</label>
 							<input
 								type="date"
 								id="due-date-input"
@@ -82,37 +75,25 @@
 						<div class="d-flex-col m-0">
 							<label for="prio-container">Prio</label>
 							<div id="prio-container" class="prio-container d-flex">
-								<div
-									class="prio d-flex"
-									id="urgent"
-									onclick="setPrio('urgent')">
+								<div class="prio d-flex" id="urgent" onclick="setPrio('urgent')">
 									<p>Urgent</p>
-									<img
-										src="../img/prio-urgent.png"
-										class="prio-image" />
+									<img src="../img/prio-urgent.png" class="prio-image" />
 								</div>
 								<div
 									class="prio d-flex active-medium"
 									id="medium"
 									onclick="setPrio('medium')">
 									<p>Medium</p>
-									<img
-										src="../img/active-medium.png"
-										class="prio-image" />
+									<img src="../img/active-medium.png" class="prio-image" />
 								</div>
-								<div
-									class="prio d-flex"
-									id="low"
-									onclick="setPrio('low')">
+								<div class="prio d-flex" id="low" onclick="setPrio('low')">
 									<p>Low</p>
 									<img src="../img/prio-low.png" class="prio-image" />
 								</div>
 							</div>
 						</div>
 						<div class="d-flex-col m-0">
-							<label for="category-input" class="req-label"
-								>Category</label
-							>
+							<label for="category-input" class="req-label">Category</label>
 							<select
 								name="category-input"
 								id="category-input"
@@ -163,10 +144,7 @@
 				<div class="bottom-section d-flex">
 					<div class="required-info">This field is required</div>
 					<div class="add-task-btns d-flex">
-						<button
-							class="clear-field"
-							type="reset"
-							onclick="resetForm()">
+						<button class="clear-field" type="reset" onclick="resetForm()">
 							<p>Clear</p>
 							<img src="../img/close.png" alt="" />
 							<img src="../img/close-hover.png" class="d-none" />
@@ -183,7 +161,7 @@
 				<img src="../img/tasks.png" alt="" />
 			</div>
 		</div>
-		<script src="../script.js"></script>
+		<script src="../js/script.js"></script>
 		<script src="../js/add-task.js"></script>
 		<script src="../js/add_task_html.js"></script>
 	</body>
