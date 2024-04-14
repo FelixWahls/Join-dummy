@@ -1,5 +1,4 @@
 let currentDraggedElement;
-let openedTask = [];
 
 async function initBoard() {
 	await includeHTML();
@@ -75,7 +74,6 @@ function slideBigCard(taskIndex) {
 	if (slideBigCard.classList.contains('big-card-slide-transition')) {
 		hideBigCard(slideInputBG, slideBigCard);
 	} else {
-		openedTask = allTasks.find((task) => task.id === taskIndex);
 		initShowBigCard(slideInputBG, slideBigCard, taskIndex);
 	}
 }
@@ -87,17 +85,19 @@ function hideBigCard(slideInputBG, slideBigCard) {
 }
 
 function initShowBigCard(slideInputBG, slideBigCard, taskIndex) {
+	let task = allTasks[taskIndex];
 	slideBigCard.classList.add('big-card-slide-transition');
 	slideInputBG.classList.remove('d-none');
 	slideInputBG.classList.add('wrapper-transition');
 	createBigCard(taskIndex);
-	createBigCardUsers();
+	createBigCardUsers(taskIndex);
 	createBigTaskSubtasks(taskIndex);
-	subtasks = openedTask.subtasks;
+	subtasks = task.subtasks;
 }
 
-function transformDate() {
-	let currentDate = openedTask.date;
+function transformDate(taskIndex) {
+	let task = allTasks[taskIndex];
+	let currentDate = task.date;
 	let parts = currentDate.split('-');
 	let year = parts[0];
 	let month = parts[1];

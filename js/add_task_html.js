@@ -184,8 +184,8 @@ function renderAddTaskHtml() {
 									<option value="" disabled selected hidden>
 										Select task category
 									</option>
-									<option value="user-story">User Story</option>
-									<option value="technical-task">Technical Task</option>
+									<option value="User Story">User Story</option>
+									<option value="Technical Task">Technical Task</option>
 								</select>
 								<div class="error d-none" id="error-category">
 									This field is required
@@ -328,8 +328,8 @@ function createEmptyContainerHtml(containerType) {
 
 function createBigCard(taskIndex) {
 	let task = allTasks[taskIndex];
-	let correctDate = transformDate(task);
-	let priorityName = openedTask.prioName;
+	let correctDate = transformDate(taskIndex);
+	let priorityName = task.prioName;
 	let newPrioName = priorityName.charAt(0).toUpperCase() + priorityName.slice(1);
 	let categoryColor = setCategoryColor(taskIndex);
 	let bigCardContainer = document.querySelector('#big-card-slider');
@@ -376,10 +376,11 @@ function createBigCard(taskIndex) {
     `;
 }
 
-function createBigCardUsers() {
+function createBigCardUsers(taskIndex) {
+	let task = allTasks[taskIndex];
 	let bigCardUsersHtml = document.getElementById('big-card-users');
 	bigCardUsersHtml.innerHTML = '';
-	let allAssignedUsers = openedTask.users;
+	let allAssignedUsers = task.users;
 	for (let i = 0; i < allAssignedUsers.length; i++) {
 		const element = allAssignedUsers[i];
 		bigCardUsersHtml.innerHTML += /*html*/ `
