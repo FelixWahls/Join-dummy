@@ -40,7 +40,6 @@ body::-webkit-scrollbar {
 	height: 24px;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	color: #ffffff;
 }
 
@@ -186,7 +185,6 @@ body::-webkit-scrollbar {
 	height: 56px;
 	font-size: 47px;
 	font-weight: 700;
-	line-height: 56.4px;
 	text-align: left;
 	color: #ffffff;
 }
@@ -196,7 +194,6 @@ body::-webkit-scrollbar {
 	height: 56px;
 	font-size: 47px;
 	font-weight: 700;
-	line-height: 56.4px;
 	text-align: left;
 	color: #ffffff;
 	display: inline-block;
@@ -209,7 +206,6 @@ body::-webkit-scrollbar {
 	height: 24px;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	color: #ffffff;
 	margin-top: 10px;
@@ -262,7 +258,6 @@ body::-webkit-scrollbar {
 .editContactRespLetters {
 	font-size: 31px;
 	font-weight: 500;
-	line-height: 32.4px;
 	text-align: center;
 	position: fixed;
 	color: #ffffff;
@@ -369,7 +364,6 @@ body::-webkit-scrollbar {
 	height: 25px;
 	font-size: 21px;
 	font-weight: 700;
-	line-height: 25.2px;
 	text-align: left;
 	color: #ffffff;
 }
@@ -408,7 +402,6 @@ body::-webkit-scrollbar {
 	height: 24px;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	color: #ffffff;
 }
@@ -437,7 +430,6 @@ body::-webkit-scrollbar {
 	height: 56px;
 	font-size: 47px;
 	font-weight: 700;
-	line-height: 56.4px;
 	text-align: left;
 	color: #000000;
 	display: inline-block;
@@ -449,7 +441,6 @@ body::-webkit-scrollbar {
 	height: 24px;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	color: #2a3647;
 	display: inline-block;
@@ -519,7 +510,6 @@ body::-webkit-scrollbar {
 .inicialCircleRespLetters {
 	font-size: 27px;
 	font-weight: 400;
-	line-height: 32.4px;
 	text-align: center;
 	position: fixed;
 	color: #ffffff;
@@ -552,7 +542,6 @@ body::-webkit-scrollbar {
 	height: 43px;
 	font-size: 36px;
 	font-weight: 700;
-	line-height: 43.2px;
 	text-align: left;
 	color: #000000;
 	white-space: nowrap;
@@ -571,7 +560,6 @@ body::-webkit-scrollbar {
 	height: 24px;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 }
 
@@ -593,7 +581,6 @@ body::-webkit-scrollbar {
 	height: 19px;
 	font-size: 16px;
 	font-weight: 700;
-	line-height: 19.2px;
 	text-align: left;
 }
 
@@ -602,7 +589,6 @@ body::-webkit-scrollbar {
 	height: 19px;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 19.2px;
 	text-align: left;
 	color: #007cee;
 	display: inline-block;
@@ -614,7 +600,6 @@ body::-webkit-scrollbar {
 	height: 19px;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 19.2px;
 	text-align: left;
 	display: inline-block;
 	margin-top: 13px;
@@ -681,7 +666,6 @@ body::-webkit-scrollbar {
 	height: 24px;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	color: #2a3647;
 }
@@ -704,7 +688,6 @@ body::-webkit-scrollbar {
 	height: 25px;
 	font-size: 21px;
 	font-weight: 700;
-	line-height: 25.2px;
 	text-align: left;
 	color: #ffffff;
 }
@@ -774,7 +757,6 @@ body::-webkit-scrollbar {
 	height: 19px;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 19.2px;
 	text-align: left;
 	color: #2a3647;
 }
@@ -982,7 +964,6 @@ body::-webkit-scrollbar {
 	}
 	.contactNameTextResp {
 		font-size: 30px;
-		line-height: 35px;
 	}
 }
 
@@ -1056,7 +1037,6 @@ body::-webkit-scrollbar {
 	}
 	.contactName {
 		font-size: 16px;
-		line-height: 20px;
 	}
 	.firstCharacter {
 		margin-left: 28px;

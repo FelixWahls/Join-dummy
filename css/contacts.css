@@ -41,8 +41,8 @@ body {
 	gap: 10px;
 	margin-top: 24px;
 	position: sticky;
-    top: 0;
-	background-color: #FFFFFF;
+	top: 0;
+	background-color: #ffffff;
 }
 
 .addContactBtn {
@@ -71,7 +71,6 @@ body {
 	font-family: Inter;
 	font-size: 21px;
 	font-weight: 700;
-	line-height: 25.2px;
 	text-align: left;
 	color: #ffffff;
 }
@@ -97,7 +96,6 @@ body {
 	font-family: Inter;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	color: #000000;
 }
@@ -163,7 +161,6 @@ body {
 	font-family: Inter;
 	font-size: 12px;
 	font-weight: 400;
-	line-height: 14.4px;
 	text-align: center;
 	color: white;
 }
@@ -183,7 +180,6 @@ body {
 	font-family: Inter;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 }
 
@@ -194,7 +190,6 @@ body {
 	font-family: Inter;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 19.2px;
 	text-align: left;
 	color: #007cee;
 }
@@ -224,7 +219,6 @@ body {
 	font-family: Inter;
 	font-size: 61px;
 	font-weight: 700;
-	line-height: 73.2px;
 	text-align: left;
 }
 
@@ -243,7 +237,6 @@ body {
 	font-family: Inter;
 	font-size: 27px;
 	font-weight: 400;
-	line-height: 32.4px;
 	text-align: left;
 	white-space: nowrap;
 }
@@ -291,7 +284,6 @@ body {
 	font-family: Inter;
 	font-size: 47px;
 	font-weight: 500;
-	line-height: 56.4px;
 	text-align: center;
 	color: #ffffff;
 }
@@ -316,7 +308,6 @@ body {
 	font-family: Inter;
 	font-size: 47px;
 	font-weight: 500;
-	line-height: 56.4px;
 	text-align: left;
 	white-space: nowrap;
 }
@@ -394,7 +385,6 @@ body {
 	font-family: Inter;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 19.2px;
 	text-align: left;
 	color: #2a3647;
 }
@@ -414,7 +404,6 @@ body {
 	font-family: Inter;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	padding-top: 23px;
 	color: #2a3647;
@@ -446,7 +435,6 @@ body {
 	font-family: Inter;
 	font-size: 16px;
 	font-weight: 700;
-	line-height: 19.2px;
 	text-align: left;
 }
 
@@ -456,7 +444,6 @@ body {
 	font-family: Inter;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 19.2px;
 	text-align: left;
 	color: #007cee;
 }
@@ -531,7 +518,6 @@ body {
 	font-family: Inter;
 	font-size: 61px;
 	font-weight: 700;
-	line-height: 73.2px;
 	text-align: left;
 	color: white;
 	display: inline-block;
@@ -544,7 +530,6 @@ body {
 	font-family: Inter;
 	font-size: 27px;
 	font-weight: 400;
-	line-height: 32.4px;
 	text-align: left;
 	color: white;
 }
@@ -735,12 +720,9 @@ body {
 }
 
 input::placeholder {
-	width: 64px;
-	height: 24px;
 	font-family: Inter;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	margin-top: 5px;
 	color: #d1d1d1;
@@ -783,7 +765,7 @@ input::placeholder {
 	align-items: center;
 	border: 1px solid #2a3647;
 	cursor: pointer;
-    filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
+	filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
 		brightness(97%) contrast(88%);
 }
 
@@ -813,7 +795,7 @@ input::placeholder {
 	align-items: center;
 	border: 1px solid #007cee;
 	cursor: pointer;
-    filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
+	filter: brightness(10%) saturate(220%) invert(51%) sepia(61%) saturate(7400%) hue-rotate(201deg)
 		brightness(97%) contrast(88%);
 }
 
@@ -823,7 +805,6 @@ input::placeholder {
 	font-family: Inter;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 24px;
 	text-align: left;
 	color: #2a3647;
 }
@@ -850,7 +831,7 @@ input::placeholder {
 	gap: 4px;
 	border-radius: 10px;
 	background: #007cee;
-    border: none;
+	border: none;
 	cursor: pointer;
 }
 
@@ -861,7 +842,7 @@ input::placeholder {
 	gap: 4px;
 	border-radius: 10px;
 	background: #2a3647;
-    border: none;
+	border: none;
 	cursor: pointer;
 }
 
@@ -871,7 +852,7 @@ input::placeholder {
 	padding: 16px;
 	gap: 4px;
 	border-radius: 10px;
-    border: none;
+	border: none;
 	background: #007cee;
 	cursor: pointer;
 }
@@ -882,7 +863,6 @@ input::placeholder {
 	font-family: Inter;
 	font-size: 21px;
 	font-weight: 700;
-	line-height: 25.2px;
 	text-align: left;
 	color: #ffffff;
 }
@@ -894,4 +874,3 @@ input::placeholder {
 	left: 178.26px;
 	color: #ffffff;
 }
-
