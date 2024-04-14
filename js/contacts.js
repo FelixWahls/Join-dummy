@@ -1,16 +1,22 @@
 let currentContact = 0;
 
+/**
+ * @description Initializes contact management by dynamically loading HTML content and fetching contact and user data.
+ */
 async function initContacts() {
 	await includeHTML();
 	contacts = await getItem('contacts');
 	users = await getItem('users');
 	initContactlist();
 }
+
 /**
- *
- * @param {string} name
- * @returns
+ * @description Extracts and returns all capital letters from the name of a specific contact.
+ * @function extractCapitalLetters
+ * @param {string} name - The name of the contact whose capital letters are to be extracted.
+ * @returns {string} A string containing all the capital letters from the contact's name.
  */
+
 function extractCapitalLetters(name) {
 	let capitals = '';
 	for (let i = 0; i < contacts.length; i++) {
@@ -47,6 +53,10 @@ function initRegisteredUser() {
 	displaySortedContactsByInitial(initContacts, lastInitial);
 }
 
+/**
+ * @description Initializes the contact list by clearing previous entries and displaying sorted contacts.
+ */
+
 async function initContactlist() {
 	initRegisteredUser();
 	let initContacts = document.querySelector('#initContacts');
@@ -54,6 +64,12 @@ async function initContactlist() {
 	let lastInitial = null;
 	displaySortedContactsByInitial(initContacts, lastInitial);
 }
+
+/**
+ * @description Displays contacts in a specified container, sorted by the initial letter of each contact's name.
+ *  @param {HTMLElement} initContacts - The HTML container where contacts will be displayed.
+ * @param {string} lastInitial - The last initial letter used to create a section header. Updated dynamically as contacts are processed.
+ */
 
 function displaySortedContactsByInitial(initContacts, lastInitial) {
 	for (let i = 0; i < contacts.length; i++) {
@@ -67,6 +83,13 @@ function displaySortedContactsByInitial(initContacts, lastInitial) {
 	}
 }
 
+/**
+ * @description Generates HTML markup for a section header based on the initial letter of a contact's name.
+ * @function appendInitialSectionHeader
+ * @param {string} currentInitial - The initial letter to be displayed in the section header.
+ * @returns {string} HTML string representing the section header for the given initial letter.
+ */
+
 function appendInitialSectionHeader(currentInitial) {
 	return `
           <div class="listInitiale">
@@ -78,6 +101,13 @@ function appendInitialSectionHeader(currentInitial) {
           </div>
         `;
 }
+
+/**
+ * Generates HTML markup for a contact card that includes clickable behavior and some display details.
+ * @param {Object} contact - An object containing the contact's details such as name, email, and color.
+ * @param {number} i - The index of the contact in the list, used to uniquely identify elements within the card.
+ * @returns {string} HTML string representing a single contact card, ready to be inserted into the DOM.
+ */
 
 function appendContactCardToDisplay(contact, i) {
 	return `
@@ -110,12 +140,20 @@ function getRandomColor() {
 	return color;
 }
 
+/**
+ * Handles the process of opening a contact card with transitions.
+ * @param {number} i - The index of the selected contact in the list, used to identify and manipulate specific elements.
+ */
 function openContactCard(i) {
 	renderContactOverviewWithTransition(i);
 	updateContactCardsStyle(i);
 	openContactCardResp(i);
 	adjustLayoutForMobile();
 }
+
+/**
+ * Adjusts the layout of the webpage to better suit mobile devices based on screen size.
+ */
 
 function adjustLayoutForMobile() {
 	if (window.innerWidth < 960) {
@@ -125,6 +163,11 @@ function adjustLayoutForMobile() {
 	}
 }
 
+/**
+ * Renders a detailed view of a contact with a transition effect to enhance user interaction.
+ * @param {number} i - The index of the contact in the list, used to fetch and display the detailed contact information.
+ */
+
 function renderContactOverviewWithTransition(i) {
 	let contactOverview = document.querySelector('.contactOverview');
 	contactOverview.innerHTML = '';
@@ -133,6 +176,10 @@ function renderContactOverviewWithTransition(i) {
 	contactOverview.classList.remove('contactOverviewTransitionRemove');
 }
 
+/**
+ * Updates the visual styles of contact cards based on a selected index, with specific styles for desktop screens.
+ * @param {number} i - The index of the currently selected contact, which is used to apply specific styles.
+ */
 function updateContactCardsStyle(i) {
 	let contactCard = document.querySelector(`#contactCard${i}`);
 	for (let j = 0; j < contacts.length; j++) {
