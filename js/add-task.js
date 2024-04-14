@@ -1,11 +1,17 @@
 const searchUserInput = document.querySelector('#assigned-to-input');
 
+/**
+ * initialises the addTask site
+ */
 async function initAddTask() {
 	await includeHTML();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
 }
 
+/**
+ * checks if a user clicks inside of the input field or not and closes the userList dropdown accordingly
+ */
 document.addEventListener('DOMContentLoaded', function () {
 	document.body.addEventListener('click', function (event) {
 		userList = document.getElementById('user-list');
@@ -19,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 });
 
+/**
+ * hides the userList dropdown
+ * @param {HTMLElement} userList
+ */
 function closeUserList(userList) {
 	if (userList) {
 		userList.classList.add('d-none');
@@ -58,6 +68,11 @@ function renderUsers() {
 	}
 }
 
+/**
+ * checks if the assigned users input is empty or not
+ * if it is empty it renders all users
+ * if not it calls the updateAssignedUserList function
+ */
 function filterUsers() {
 	let searchUserInput = document.getElementById('assigned-to-input').value.toLowerCase();
 	if (searchUserInput == null || searchUserInput == '' || searchUserInput < 1) {
@@ -67,6 +82,10 @@ function filterUsers() {
 	}
 }
 
+/**
+ * hides all users that do not contain the search input in their name
+ * @param {string} searchUserInput
+ */
 function updateAssignedUserList(searchUserInput) {
 	for (let i = 0; i < contacts.length; i++) {
 		const contactName = contacts[i].name.toLowerCase();
@@ -97,6 +116,13 @@ function selectedUser(i) {
 	}
 }
 
+/**
+ * creates an object for every selected users
+ * @param {HTMLElement} currentUser
+ * @param {string} userCapitals
+ * @param {HTMLElement} image
+ * @param {number} i
+ */
 function setActiveUser(currentUser, userCapitals, image, i) {
 	let selectedUserName = document.querySelector(`#full-user-name-${i}`).textContent;
 	let userColor = contacts[i].color;
@@ -111,6 +137,12 @@ function setActiveUser(currentUser, userCapitals, image, i) {
 	renderSelectedUsers();
 }
 
+/**
+ * removes a user from the selected Users JSON if a user is beeing unselected
+ * @param {HTMLElement} currentUser
+ * @param {number} i
+ * @param {HTMLElement} image
+ */
 function deactivateUser(currentUser, i, image) {
 	currentUser.classList.remove('active-user');
 	image.src = '../img/Checkbox.png';
@@ -124,6 +156,10 @@ function deactivateUser(currentUser, i, image) {
 	}
 }
 
+/**
+ * calls all priority buttons and calls functions to set the design and values accordingly
+ * @param {string} priority
+ */
 function setPrio(priority) {
 	let allBtns = document.getElementsByClassName('prio');
 	setPrioColor(allBtns, priority);
@@ -166,6 +202,9 @@ function setPrioImage(priority) {
 	}
 }
 
+/**
+ * adjusts the subtask input icons when input is active
+ */
 function activateInput() {
 	let addSubtask = document.getElementById('add-subtask');
 	let subtasksInputActions = document.getElementById('subtask-input-actions');
@@ -174,10 +213,16 @@ function activateInput() {
 	subtasksInputActions.classList.remove('d-none');
 }
 
+/**
+ * sets the focus to the subtask input if the user clicks the plus icon
+ */
 function setFocus() {
 	document.getElementById('subtask-input').focus();
 }
 
+/**
+ * deactivates the subtask input if the user clicks the cross icon
+ */
 function deactivateInput() {
 	let addSubtask = document.querySelector('#add-subtask');
 	let subtasksInputActions = document.querySelector('#subtask-input-actions');
@@ -187,6 +232,9 @@ function deactivateInput() {
 	document.querySelector('#subtask-input').value = '';
 }
 
+/**
+ * gets the value of the subtask input and creates a new object if the input is not empty
+ */
 function submitSubtask() {
 	let subtaskContent = document.querySelector('#subtask-input').value;
 	if (subtaskContent == '') {
@@ -203,11 +251,19 @@ function submitSubtask() {
 	}
 }
 
+/**
+ * deletes the currently selected subtask
+ * @param {number} i
+ */
 function deleteSubtask(i) {
 	subtasks.splice(i, 1);
 	renderSubtasks();
 }
 
+/**
+ * opens the edit subtask window and displays the current value in the input field
+ * @param {number} i
+ */
 function editSubtask(i) {
 	let subtaskContent = document.querySelector(`#subtask-element${i}`);
 	let editContainer = document.getElementById('edit-subtask-container');
@@ -218,12 +274,21 @@ function editSubtask(i) {
 	subtaskEditInput.value = subtasks[i].subtaskName;
 }
 
+/**
+ * updates the current subtask to it's new value
+ * @param {number} i
+ */
 function submitChange(i) {
 	let newSubtaskContent = document.querySelector(`#edit-subtask-${i}`).value;
 	subtasks[i].subtaskName = newSubtaskContent;
 	renderSubtasks();
 }
 
+/**
+ * calls validation function for all required input fields
+ * redirectes the user to the board site if he is currently on add Task site
+ * @param {event} event
+ */
 async function createTask(event) {
 	event.preventDefault();
 	titleInput = validateField('#title-input', '#error-title');
@@ -241,6 +306,13 @@ async function createTask(event) {
 	}
 }
 
+/**
+ * checks if the input field is empty
+ * if it is empty, the required design is beeing enabled
+ * @param {string} fieldId
+ * @param {string} errorId
+ * @returns
+ */
 function validateField(fieldId, errorId) {
 	let field = document.querySelector(fieldId);
 	let errorContainer = document.querySelector(errorId);
@@ -256,12 +328,21 @@ function validateField(fieldId, errorId) {
 	}
 }
 
+/**
+ * gets the value of the category selection
+ * @returns value of the selected option
+ */
 function getCategory() {
 	selectElement = document.querySelector('#category-input');
 	output = selectElement.value;
 	return output;
 }
 
+/**
+ * sets the background color for the specified category on cards
+ * @param {number} taskIndex
+ * @returns
+ */
 function setCategoryColor(taskIndex) {
 	let task = allTasks[taskIndex];
 	if (task.category === 'User Story') {
@@ -271,6 +352,9 @@ function setCategoryColor(taskIndex) {
 	}
 }
 
+/**
+ * gets all input values and updates the allTasks JSON on the server
+ */
 async function pushTask() {
 	let newTask = {
 		title: titleInput,
@@ -291,6 +375,9 @@ async function pushTask() {
 	showSlider();
 }
 
+/**
+ * shows success slider if a new task was pushed successfully
+ */
 function showSlider() {
 	document.querySelector('.task-added-slider').classList.remove('task-added-transition-remove');
 	document.querySelector('.task-added-slider').classList.add('task-added-transition');
@@ -300,6 +387,9 @@ function showSlider() {
 	}, 900);
 }
 
+/**
+ * resets the value of every input field and emptys arrays
+ */
 function resetForm() {
 	resetAssignedUsers();
 	titleInput = '';
@@ -315,6 +405,9 @@ function resetForm() {
 	renderSubtasks();
 }
 
+/**
+ * resets the addTask value for every contact in the contacts JSON
+ */
 function resetAssignedUsers() {
 	contacts.forEach((contact) => {
 		contact.addTask = false;

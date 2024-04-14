@@ -16,6 +16,12 @@ function createUnselectedUserHtml(contact, i) {
     `;
 }
 
+/**
+ * creates the design for already selected users
+ * @param {object} contact
+ * @param {number} i
+ * @returns
+ */
 function createSelectedUserHtml(contact, i) {
 	return /*html*/ `
         <div class="single-user d-flex align-c active-user" onclick="selectedUser(${i})" id="user${i}">
@@ -28,6 +34,9 @@ function createSelectedUserHtml(contact, i) {
     `;
 }
 
+/**
+ * gets every selected user and calls the html for the capitals
+ */
 function renderSelectedUsers() {
 	let selectedContainer = document.querySelector('#selected-users');
 	selectedContainer.innerHTML = '';
@@ -42,6 +51,10 @@ function renderSelectedUsers() {
 	}
 }
 
+/**
+ * creates the html for a capitals circle
+ * @returns html for capitals circles
+ */
 function createUserCapitalsHtml() {
 	let capitalsHtml = '';
 	for (let i = 0; i < selectedUsers.length; i++) {
@@ -53,6 +66,9 @@ function createUserCapitalsHtml() {
 	return capitalsHtml;
 }
 
+/**
+ * creates the list elements for every subtask that has been created for the current task
+ */
 function renderSubtasks() {
 	let subtaskList = document.querySelector('#subtask-container');
 	subtaskList.innerHTML = '';
@@ -89,6 +105,9 @@ function renderSubtasks() {
 	}
 }
 
+/**
+ * renders the add Task form on the board site
+ */
 function renderAddTaskHtml() {
 	let container = document.getElementById('add-task-slider');
 	container.innerHTML = /*html*/ `
@@ -246,6 +265,12 @@ function renderAddTaskHtml() {
     `;
 }
 
+/**
+ * creates the basic html element for a small card
+ * @param {number} taskId
+ * @param {numer} taskIndex
+ * @returns
+ */
 function createCardHtml(taskId, taskIndex) {
 	let task = allTasks[taskIndex];
 	let categoryColor = setCategoryColor(taskIndex);
@@ -268,6 +293,10 @@ function createCardHtml(taskId, taskIndex) {
     `;
 }
 
+/**
+ * creates the user-capitals circles for all selected users of the task
+ * @param {number} taskIndex
+ */
 function createAssignedUsersHtml(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`small-card-users${task.id}`);
@@ -278,6 +307,11 @@ function createAssignedUsersHtml(taskIndex) {
 	}
 }
 
+/**
+ * returns the html template for subtask bars on small cards
+ * @param {number} taskIndex
+ * @returns html template for subtask bars
+ */
 function createSubtasksHtml(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`subtask-content${task.id}`);
@@ -295,12 +329,22 @@ function createSubtasksHtml(taskIndex) {
 	}
 }
 
+/**
+ * calculates the width of the progress bar
+ * @param {number} taskIndex
+ * @returns the pixels the progress bar has to be wide
+ */
 function calcSubtaskProgress(taskIndex) {
 	let task = allTasks[taskIndex];
 	let singleProgress = 125 / task.subtasks.length;
 	return singleProgress * task.subtaskCounter;
 }
 
+/**
+ * creates the html for an empty card container
+ * @param {string} containerType
+ * @returns html template for no tasks in container
+ */
 function createEmptyContainerHtml(containerType) {
 	let emptyText = '';
 	switch (containerType) {
@@ -326,6 +370,10 @@ function createEmptyContainerHtml(containerType) {
     `;
 }
 
+/**
+ * creates the html for a big card with every information of the given task
+ * @param {number} taskIndex
+ */
 function createBigCard(taskIndex) {
 	let task = allTasks[taskIndex];
 	let correctDate = transformDate(taskIndex);
@@ -376,6 +424,10 @@ function createBigCard(taskIndex) {
     `;
 }
 
+/**
+ * creates the html for every currently assigned user of the given task
+ * @param {number} taskIndex
+ */
 function createBigCardUsers(taskIndex) {
 	let task = allTasks[taskIndex];
 	let bigCardUsersHtml = document.getElementById('big-card-users');
@@ -392,6 +444,10 @@ function createBigCardUsers(taskIndex) {
 	}
 }
 
+/**
+ * creates the html to display every subtask of the current task with checkboxes
+ * @param {number} taskIndex
+ */
 function createBigTaskSubtasks(taskIndex) {
 	let task = allTasks[taskIndex];
 	let subtaskContainer = document.getElementById('subtask-container');
@@ -411,6 +467,11 @@ function createBigTaskSubtasks(taskIndex) {
 	}
 }
 
+/**
+ * returns the img sourcecode for the current subtask checkbox
+ * @param {object} currSubtask
+ * @returns img.src for the checkbox of a subtask
+ */
 function getSubtaskImg(currSubtask) {
 	if (currSubtask.done === true) {
 		return '../img/CheckboxCheck.png';
@@ -419,6 +480,10 @@ function getSubtaskImg(currSubtask) {
 	}
 }
 
+/**
+ * creates the edit task HTML
+ * @param {number} taskIndex
+ */
 function createEditTaskHtml(taskIndex) {
 	let task = allTasks[taskIndex];
 	selectedUsers = task.users;
@@ -556,6 +621,9 @@ function createEditTaskHtml(taskIndex) {
     `;
 }
 
+/**
+ * creates the edit subtask html inside of the edit window
+ */
 function createEditSubtaskHtml() {
 	let subtaskList = document.querySelector('#subtask-container');
 	subtaskList.innerHTML = '';
