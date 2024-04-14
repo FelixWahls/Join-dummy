@@ -193,6 +193,11 @@ function updateContactCardsStyle(i) {
 	}
 }
 
+/**
+ * Adjusts the text color of contact names in a list, highlighting the selected contact by changing its color.
+ * @param {number} j - The index of the contact whose color should be reset to black.
+ * @param {number} i - The index of the selected contact whose color will be set to white.
+ */
 function updateContactNameColorForDesktop(j, i) {
 	if (window.innerWidth > 960) {
 		document.querySelector(`#contactName${j}`).style.color = 'black';
@@ -200,6 +205,11 @@ function updateContactNameColorForDesktop(j, i) {
 	}
 }
 
+/**
+ * Generates HTML content for displaying an overview of a contact, including interactive edit and delete buttons.
+ * @param {number} i - Index of the contact in the contacts array to generate the HTML content for.
+ * @returns {string} A string of HTML content that can be directly inserted into a webpage to display the contact's overview.
+ */
 function contactOverviewTemplate(i) {
 	return `
 	<div class="nameContainer">
@@ -247,25 +257,30 @@ function contactOverviewTemplate(i) {
 	`;
 }
 
+/**
+ * Opens the modal window for adding a new contact by applying CSS transitions and displaying the overlay.
+ */
 function openAddNewContactWindow() {
-	document
-		.getElementById('addNewContactContainer')
-		.classList.add('addNewContactContainerTransition');
-	document
-		.getElementById('addNewContactContainer')
-		.classList.remove('addNewContactContainerTransitionRemove');
+	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
+	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
+/**
+ * Closes the modal window for adding a new contact by applying CSS transitions and hiding the overlay.
+ */
 function closeAddNewContactWindow() {
-	document
-		.getElementById('addNewContactContainer')
-		.classList.add('addNewContactContainerTransitionRemove');
-	document
-		.getElementById('addNewContactContainer')
-		.classList.remove('addNewContactContainerTransition');
+	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
+	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
 	document.querySelector('.overlay').style.display = 'none';
 }
+
+/**
+ * Handles the event to add a new contact from form input fields, prevents default form submission,
+ * gathers data, and manages subsequent actions to update UI components and close the modal window.
+ * @param {Event} event - The event object provided by the form submission.
+ * @returns {boolean} Always returns false to ensure no further form submission occurs.
+ */
 
 function addNewContact(event) {
 	event.preventDefault();
@@ -281,6 +296,11 @@ function addNewContact(event) {
 	return false;
 }
 
+/**
+ * Searches through the `contacts` array for a contact with a matching name and opens the contact card if found.
+ * @param {string} name - The name of the contact to search for.
+ */
+
 function findAndOpenContactCardByName(name) {
 	for (let k = 0; k < contacts.length; k++) {
 		if (name == contacts[k].name) {
@@ -289,23 +309,24 @@ function findAndOpenContactCardByName(name) {
 	}
 }
 
+/**
+ * Triggers a closing animation sequence on the 'CreateResponseContainer' element.
+ */
 function animateCloseAddNewContainerDesktop() {
-	document
-		.querySelector('#CreateResponseContainer')
-		.classList.remove('CreateResponseContainerTransitionRemove');
-	document
-		.querySelector('#CreateResponseContainer')
-		.classList.add('CreateResponseContainerTransition');
+	document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
+	document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
 	setTimeout(() => {
-		document
-			.querySelector('#CreateResponseContainer')
-			.classList.remove('CreateResponseContainerTransition');
-		document
-			.querySelector('#CreateResponseContainer')
-			.classList.add('CreateResponseContainerTransitionRemove');
+		document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
+		document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
 	}, 1500);
 }
 
+/**
+ * Creates a new contact object and adds it to the 'contacts' array. It also updates the 'contacts' storage.
+ * @param {string} name - The name of the new contact.
+ * @param {string} email - The email address of the new contact.
+ * @param {string} phone - The phone number of the new contact.
+ */
 function createNewContactDesktop(name, email, phone) {
 	let newContact = {
 		name: name,
@@ -319,6 +340,10 @@ function createNewContactDesktop(name, email, phone) {
 	setItem('contacts', contacts);
 }
 
+/**
+ * Deletes a contact from the 'contacts' array and updates the display.
+ * @param {number} i - The index of the contact to delete from the 'contacts' array.
+ */
 async function deleteContact(i) {
 	contacts.splice(i, 1);
 	setItem('contacts', contacts);
@@ -326,19 +351,22 @@ async function deleteContact(i) {
 	document.querySelector('.contactOverview').innerHTML = '';
 }
 
+/**
+ * Clears the input fields for creating a new contact.
+ */
 function cancelInputValue() {
 	document.querySelector('.nameInputContainer').value = '';
 	document.querySelector('.emailInputContainer').value = '';
 	document.querySelector('.phoneInputContainer').value = '';
 }
 
+/**
+ * Opens the edit contact window for a specific contact.
+ * @param {number} i - The index of the contact in the global `contacts` array.
+ */
 function openEditContactWindow(i) {
-	document
-		.getElementById('editContactContainer')
-		.classList.add('addNewContactContainerTransition');
-	document
-		.getElementById('editContactContainer')
-		.classList.remove('addNewContactContainerTransitionRemove');
+	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
+	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
 	document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
@@ -348,17 +376,19 @@ function openEditContactWindow(i) {
 	currentContact = i;
 }
 
+/**
+ * Closes the edit contact window and clears related visual effects.
+ */
 function closeEditContactWindow() {
-	document
-		.getElementById('editContactContainer')
-		.classList.remove('addNewContactContainerTransition');
-	document
-		.getElementById('editContactContainer')
-		.classList.add('addNewContactContainerTransitionRemove');
+	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
+	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'none';
 	currentContact = 0;
 }
 
+/**
+ * Deletes the currently selected contact from the list and updates the storage and UI.
+ */
 async function deleteContactInEditWindow() {
 	contacts.splice(currentContact, 1);
 	setItem('contacts', contacts);
@@ -367,6 +397,11 @@ async function deleteContactInEditWindow() {
 	closeEditContactWindow();
 }
 
+/**
+ * Handles the submission of the edit contact form, updating the contact's details in the global list,
+ * persisting these changes, and updating the user interface.
+ * @param {Event} event - The event object associated with the form submission.
+ */
 async function editContact(event) {
 	event.preventDefault();
 	updateCurrentContactDetails();
