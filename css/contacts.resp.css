@@ -5,8 +5,6 @@ body::-webkit-scrollbar {
 
 .CreateResponseContainer {
 	position: fixed;
-	width: 326px;
-	height: 74px;
 	top: 660px;
 	left: 740px;
 	box-shadow: 0px 0px 4px 0px #0000001a;
@@ -26,7 +24,6 @@ body::-webkit-scrollbar {
 .CreateResponse {
 	width: 326px;
 	height: 74px;
-	gap: 0px;
 	border-radius: 20px;
 	background: #2a3647;
 	box-shadow: 0px 0px 4px 0px #00000026;
@@ -39,7 +36,6 @@ body::-webkit-scrollbar {
 	width: 265px;
 	height: 24px;
 	font-size: 20px;
-	font-weight: 400;
 	color: #ffffff;
 }
 
@@ -205,7 +201,6 @@ body::-webkit-scrollbar {
 	width: 275px;
 	height: 24px;
 	font-size: 20px;
-	font-weight: 400;
 	text-align: left;
 	color: #ffffff;
 	margin-top: 10px;
@@ -215,7 +210,6 @@ body::-webkit-scrollbar {
 
 .blueLineAddNewContResp {
 	width: 90px;
-	height: 0px;
 	border: 3px 0px 0px 0px;
 	border: 3px solid #29abe2;
 }
@@ -286,7 +280,6 @@ body::-webkit-scrollbar {
 	padding: 13px 21px 13px 21px;
 	gap: 10px;
 	border-radius: 10px;
-	border: 1px;
 	border: 1px solid #d1d1d1;
 	background-position: 324px;
 	background-repeat: no-repeat;
@@ -306,31 +299,11 @@ body::-webkit-scrollbar {
 	background-size: 22px;
 }
 
-.nameEditResp:focus {
-	outline: none;
-	border-color: #29abe2;
-}
-
-.emailEditResp:focus {
-	outline: none;
-	border-color: #29abe2;
-}
-
-.phoneEditResp:focus {
-	outline: none;
-	border-color: #29abe2;
-}
-
-.nameInputResp:focus {
-	outline: none;
-	border-color: #29abe2;
-}
-
-.emailInputResp:focus {
-	outline: none;
-	border-color: #29abe2;
-}
-
+.nameEditResp:focus,
+.emailEditResp:focus,
+.phoneEditResp:focus,
+.nameInputResp:focus,
+.emailInputResp:focus,
 .phoneInputResp:focus {
 	outline: none;
 	border-color: #29abe2;
@@ -343,7 +316,6 @@ body::-webkit-scrollbar {
 
 .createButtonContainerAddNewContResp {
 	width: 202px;
-	height: 51px;
 	top: 629px;
 	left: 97px;
 	padding: 18px 10px 18px 10px;
@@ -401,7 +373,6 @@ body::-webkit-scrollbar {
 	width: 276px;
 	height: 24px;
 	font-size: 20px;
-	font-weight: 400;
 	text-align: left;
 	color: #ffffff;
 }
@@ -440,7 +411,6 @@ body::-webkit-scrollbar {
 	width: 175px;
 	height: 24px;
 	font-size: 20px;
-	font-weight: 400;
 	text-align: left;
 	color: #2a3647;
 	display: inline-block;
@@ -449,7 +419,6 @@ body::-webkit-scrollbar {
 
 .contactsRespHeaderBlueLine {
 	width: 90px;
-	height: 0px;
 	border: 3px;
 	border: 3px solid #29abe2;
 }
@@ -496,7 +465,6 @@ body::-webkit-scrollbar {
 	height: 80px;
 	gap: 10px;
 	border-radius: 70px;
-	border: 3px;
 	background: #ffffff;
 	border: 3px solid #ffffff;
 	box-shadow: 0px 0px 4px 0px #0000001a;
@@ -509,7 +477,6 @@ body::-webkit-scrollbar {
 
 .inicialCircleRespLetters {
 	font-size: 27px;
-	font-weight: 400;
 	text-align: center;
 	position: fixed;
 	color: #ffffff;
@@ -559,7 +526,6 @@ body::-webkit-scrollbar {
 	width: 207px;
 	height: 24px;
 	font-size: 20px;
-	font-weight: 400;
 	text-align: left;
 }
 
@@ -581,15 +547,12 @@ body::-webkit-scrollbar {
 	height: 19px;
 	font-size: 16px;
 	font-weight: 700;
-	text-align: left;
 }
 
 .emailContactResp {
 	width: 150px;
 	height: 19px;
 	font-size: 16px;
-	font-weight: 400;
-	text-align: left;
 	color: #007cee;
 	display: inline-block;
 	margin-top: 13px;
@@ -599,8 +562,6 @@ body::-webkit-scrollbar {
 	width: 150px;
 	height: 19px;
 	font-size: 16px;
-	font-weight: 400;
-	text-align: left;
 	display: inline-block;
 	margin-top: 13px;
 }
@@ -619,9 +580,9 @@ body::-webkit-scrollbar {
 	padding: 12px 0px 0px 0px;
 	gap: 10px;
 	border-radius: 46px;
-	border: 1px 0px 0px 0px;
 	box-shadow: 0px 4px 4px 0px #00000040;
 	border: 1px solid #2a3647;
+	border: 1px 0px 0px 0px;
 	background: #2a3647;
 	display: none;
 	justify-content: center;
@@ -665,8 +626,6 @@ body::-webkit-scrollbar {
 	width: 62px;
 	height: 24px;
 	font-size: 20px;
-	font-weight: 400;
-	text-align: left;
 	color: #2a3647;
 }
 
@@ -688,7 +647,6 @@ body::-webkit-scrollbar {
 	height: 25px;
 	font-size: 21px;
 	font-weight: 700;
-	text-align: left;
 	color: #ffffff;
 }
 
@@ -756,8 +714,6 @@ body::-webkit-scrollbar {
 	width: 30px;
 	height: 19px;
 	font-size: 16px;
-	font-weight: 400;
-	text-align: left;
 	color: #2a3647;
 }
 
@@ -892,16 +848,16 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 960px) {
-	.blueArrowLeftContainer {
+	.blueArrowLeftContainer,
+	.addNewContactIconContResp,
+	.editContactIconContResp {
 		left: 80%;
 	}
-	.addNewContactIconContResp {
-		left: 80%;
-	}
+
 	.editContactIconContResp {
 		position: fixed;
-		left: 80%;
 	}
+
 	.editContSmallContResp {
 		left: 75%;
 		background-color: white;
@@ -909,15 +865,12 @@ body::-webkit-scrollbar {
 	.contactList {
 		width: 100vw;
 	}
-	.contactOverview {
-		display: none;
-	}
-	.contactsTitle {
-		display: none;
-	}
+	.contactOverview,
+	.contactsTitle,
 	.addContactsBtnDiv {
 		display: none;
 	}
+
 	.addNewContactIconContResp {
 		display: flex;
 	}
@@ -948,10 +901,7 @@ body::-webkit-scrollbar {
 	.blueArrowLeftContainer {
 		left: 75%;
 	}
-	.addNewContactIconContResp {
-		position: fixed;
-		left: 75%;
-	}
+	.addNewContactIconContResp,
 	.editContactIconContResp {
 		position: fixed;
 		left: 75%;
