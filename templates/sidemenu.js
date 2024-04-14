@@ -30,18 +30,22 @@
                             <span class="submenuText">Help</span>
                     </div>
                 </a>
-                <a href="../legalNotice/legalNotice.html"  target="_blank">
+                <a href="..html//legalNotice/legalNotice.html"  target="_blank">
                     <div class="submenuItem">
                         <span class="submenuText">Legal Notice</span>
                     </div>
                 </a>    
-                        <div class="submenuItem">
+                <a href="../html/privacyPolicy.html"  target="_blank">
+                    <div class="submenuItem">
                             <span class="submenuText">Privacy Policy</span>
                         </div>
-                        <div class="submenuItem">
+                </a>  
+                <a href=""  target="_blank">
+                    <div class="submenuItem">
                             <span class="submenuText">Log out</span>
                         </div>
-                    </div>
+                </a>          
+            </div>
         `;
         }
         document.getElementById('submenu').classList.add('submenuTransition');
@@ -50,18 +54,22 @@
             submenu.innerHTML = '';
         submenu.innerHTML = `
             <div class="submenu">
-                <a href="../legalNotice/legalNotice.html"  target="_blank">
+                <a href="..html//legalNotice/legalNotice.html"  target="_blank">
                     <div class="submenuItem">
                         <span class="submenuText">Legal Notice</span>
                     </div>
-                </a>    
-                        <div class="submenuItem">
+                </a>  
+                <a href="../html/privacyPolicy.html"  target="_blank">
+                    <div class="submenuItem">
                             <span class="submenuText">Privacy Policy</span>
                         </div>
-                        <div class="submenuItem">
+                </a>  
+                <a href=""  target="_blank">
+                    <div class="submenuItem">
                             <span class="submenuText">Log out</span>
                         </div>
-                    </div>
+                </a>    
+            </div>
         `;
         }
         document.getElementById('submenu').classList.add('submenuTransition');
@@ -69,23 +77,3 @@
         
         
     }
-
-
-
-/*
-                <div class="submenu">
-					<div class="submenuItem">
-						<span class="submenuText">Help</span>
-					</div>
-					<div class="submenuItem">
-						<span class="submenuText">Legal Notice</span>
-					</div>
-					<div class="submenuItem">
-						<span class="submenuText">Privacy Policy</span>
-					</div>
-					<div class="submenuItem">
-						<span class="submenuText">Log out</span>
-					</div>
-				</div>
-
-*/
