@@ -61,7 +61,7 @@ async function initRegisteredUser() {
  */
 
 async function initContactlist() {
-	initRegisteredUser();
+	//initRegisteredUser();
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;

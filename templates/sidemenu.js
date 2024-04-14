@@ -46,7 +46,26 @@
         }
         document.getElementById('submenu').classList.add('submenuTransition');
         document.getElementById('submenu').classList.remove('submenuTransitionRemove');
-
+        if(window.innerWidth > 1100){
+            submenu.innerHTML = '';
+        submenu.innerHTML = `
+            <div class="submenu">
+                <a href="../legalNotice/legalNotice.html"  target="_blank">
+                    <div class="submenuItem">
+                        <span class="submenuText">Legal Notice</span>
+                    </div>
+                </a>    
+                        <div class="submenuItem">
+                            <span class="submenuText">Privacy Policy</span>
+                        </div>
+                        <div class="submenuItem">
+                            <span class="submenuText">Log out</span>
+                        </div>
+                    </div>
+        `;
+        }
+        document.getElementById('submenu').classList.add('submenuTransition');
+        document.getElementById('submenu').classList.remove('submenuTransitionRemove');
         
         
     }
