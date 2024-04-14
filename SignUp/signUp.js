@@ -144,28 +144,51 @@ async function addUser() {
  const email = document.getElementById('email').value;
  const password = document.getElementById('password').value;
 
- // Erstellen des Benutzerobjekts, das gespeichert werden soll
  let newUser = {
      name: name,
      email: email,
      password: password
  };
 
- // Konvertierung des Benutzerobjekts in einen String für die Speicherung
- let userString = JSON.stringify(newUser);
+ // Benutzer zum lokalen Array hinzufügen
+ users.push(newUser);
+ console.log("Added to local array:", newUser);
 
+ // Benutzerdaten als String für die Speicherung aufbereiten
+ let userString = JSON.stringify(newUser);
+ 
  try {
-     // Speichern des Benutzerobjekts auf dem Server
+     // Versuch, den Benutzer auf dem Server zu speichern
      const response = await setItem('user-' + email, userString);
+     console.log("Response from server:", response);
      if (response.status === 'success') {
-         showPopup(); // Zeige Bestätigungspopup, wenn das Speichern erfolgreich war
+         showPopup();
+         displayUsers();  // Zeige Popup bei Erfolg
      } else {
          console.error('Failed to save user:', response);
+         // Optional: Entfernen des Benutzers aus dem lokalen Array, falls das Speichern fehlschlägt
+         users.pop();
      }
  } catch (error) {
      console.error('Error saving user:', error);
+     // Optional: Entfernen des Benutzers aus dem lokalen Array, falls das Speichern fehlschlägt
+     users.pop();
  }
 }
+
+
+
+async function retrieveUser(email) {
+ try {
+     const userData = await getItem('user-' + email);
+     const user = JSON.parse(userData);
+     console.log("Retrieved user data:", user);
+     return user;
+ } catch (error) {
+     console.error('Error retrieving user:', error);
+ }
+}
+
 
 
 
@@ -195,4 +218,10 @@ function showPopup() {
  */
 function redirectToLogin() {
 	window.location.href = 'http://127.0.0.1:5501/LogIn/logIn.html';
+}
+function displayUsers() {
+ console.log("Current users in the array:");
+ users.forEach((user, index) => {
+     console.log(`User ${index + 1}: Name - ${user.name}, Email - ${user.email}`);
+ });
 }
