@@ -19,14 +19,13 @@ body {
 
 .titleText {
 	width: 371px;
-	height: 73px;
 	font-size: 61px;
 	font-weight: 700;
 	text-align: left;
 }
 
 .legalNoticeDescription {
-	max-width: 1014px;
+	width: 95;
 	gap: 24px;
 }
 
@@ -37,7 +36,6 @@ body {
 
 .imprintTitle {
 	width: 346px;
-	height: 32px;
 	padding-top: 32px;
 	gap: 0px;
 	opacity: 0px;
@@ -70,6 +68,14 @@ body {
 @media(max-width: 1000px) {
 	.date {
 		padding-bottom: 80px;
+	}
+	
+}
+
+@media(max-width: 500px) {
+	.arrow {
+		position: fixed;
+		right: 10%;
 	}
 	
 }

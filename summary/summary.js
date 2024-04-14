@@ -5,7 +5,7 @@ async function render() {
   let c = 0;
   let d = 0;
   let u = 0;
-  let date = 0;
+  let date;
   let firstUrgentTask;
 
   for (let i = 0; i < allTasks.length; i++) {
@@ -24,16 +24,17 @@ async function render() {
       d++;
     }
     if (task["prioName"] == "urgent") {
-      u++;
+      date = task['date'];
+      /*u++;
       
       if ((u == 1)) {
         firstUrgentTask = task;
         date = firstUrgentTask['date'];
       }
 	    if(u > 1 && task['date'] < firstUrgentTask['date']){
-		  firstUrgentTask['date'] = task['date'];
+		  firstUrgentTask['date'] = task;
       date = firstUrgentTask['date'];
-	    }
+	    }*/
     }
 
 	
