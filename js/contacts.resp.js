@@ -129,7 +129,7 @@ function closeContactDetailsResp() {
  * @description Displays the responsive edit contact window with visual transitions and temporary changes to overlay styles.
  */
 function editContactRespWindow() {
-	overlayCanBeHidden = true;
+	overlayCanBeHidden = false;
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('.overlay').style.opacity = 0.3;
 	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
