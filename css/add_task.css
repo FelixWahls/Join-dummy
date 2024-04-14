@@ -204,6 +204,7 @@ textarea:focus-visible {
 	margin-top: 64px;
 	margin-right: 96px;
 	margin-bottom: 16px;
+	max-width: 978px;
 }
 
 .add-task-btns {
