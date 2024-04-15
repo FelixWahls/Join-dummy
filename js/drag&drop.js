@@ -1,9 +1,5 @@
 let currentDraggedElement;
-let arrayPosition;
-let currentStatus;
-let offsetX;
-let offsetY;
-let touchedElement;
+let currCard;
 
 /**
  * sets the value to the id of the dragged element
@@ -11,6 +7,8 @@ let touchedElement;
  */
 function startDragging(id) {
 	currentDraggedElement = id;
+	currCard = document.getElementById(`task${id}`);
+	currCard.classList.add('card-drag');
 }
 
 /**
@@ -28,6 +26,7 @@ function allowDrop(ev) {
  */
 async function moveTo(container) {
 	allTasks[currentDraggedElement]['cardContainer'] = container;
+	currCard.classList.remove('card-drag');
 	await setItem('allTasks', allTasks);
 	renderTasksBoard();
 }
@@ -46,4 +45,16 @@ function highlight(id) {
  */
 function removeHighlight(id) {
 	document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
+function showMoveToMenu(taskId) {
+	currentDraggedElement = taskId;
+	let currCardMenu = document.getElementById(`card-menu${taskId}`);
+	currCardMenu.classList.toggle('d-none');
+}
+
+async function clickMoveTo(container) {
+	allTasks[currentDraggedElement]['cardContainer'] = container;
+	await setItem('allTasks', allTasks);
+	renderTasksBoard();
 }

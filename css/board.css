@@ -201,6 +201,7 @@ h2 {
 	font-size: 16px;
 	gap: 24px;
 	box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+	position: relative;
 }
 
 .task-type {
@@ -386,104 +387,19 @@ h3 {
 	background-color: #a8a8a8;
 }
 
-@media (max-width: 1400px) {
-	.tasks {
-		flex-direction: column;
-		max-width: 1144px;
-	}
-
-	.tasks-container {
-		flex-direction: row;
-	}
-
-	.single-task {
-		width: 252px;
-	}
+.card-drag {
+	transform: rotate(10deg);
 }
 
-@media (max-width: 1250px) {
-	.main-content {
-		padding-top: 48px;
-		padding-left: auto;
-		padding-right: auto;
-	}
-
-	.tasks {
-		padding-bottom: 86px;
-	}
+.small-card-menu {
+	position: absolute;
+	z-index: 9008;
+	top: 16px;
+	right: 16px;
+	width: 24px;
+	height: 24px;
 }
 
-@media (max-width: 900px) {
-	h1 {
-		font-size: 47px;
-	}
-
-	.first-section {
-		align-items: flex-start;
-		flex-direction: column;
-		gap: 40px;
-	}
-
-	.search-section {
-		width: 100%;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.remove-on-small {
-		display: none;
-	}
-
-	.add-task {
-		width: 40px;
-		height: 40px;
-		padding: 3px;
-	}
-}
-
-@media (max-width: 650px) {
-	.big-card {
-		font-size: 16px;
-	}
-
-	.big-card-title {
-		font-size: 36px;
-	}
-}
-
-@media (max-width: 550px) {
-	.wrapper-add-task {
-		padding: 0;
-	}
-
-	.header-section {
-		width: 100%;
-	}
-
-	.header-btn {
-		display: inline-block;
-	}
-
-	.searchbar-container {
-		margin-right: 0;
-	}
-
-	.main-task-btn {
-		display: none;
-	}
-
-	.big-card {
-		max-width: 100%;
-	}
-}
-
-@media (max-width: 450px) {
-	.main-content {
-		padding-left: 16px;
-		padding-right: 16px;
-	}
-}
-
-.d-none {
-	display: none;
+.small-card-menu:hover {
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
 }

@@ -29,7 +29,6 @@ function slideIn() {
 	} else {
 		let slideInput = document.querySelector('#add-task-slider');
 		let slideInputBG = document.querySelector('#slide-transition-wrapper');
-		console.log(slideInput);
 		if (!slideInput.classList.contains('slide-in-transition')) {
 			displaySlider(slideInput, slideInputBG);
 		} else {
@@ -131,7 +130,6 @@ function renderEmptyContainers() {
  * @param {number} taskIndex
  */
 function slideBigCard(taskIndex) {
-	console.log(allTasks[taskIndex]);
 	let slideBigCard = document.querySelector('#big-card-slider');
 	let slideInputBG = document.querySelector('#slide-transition-wrapper');
 	if (slideBigCard.classList.contains('big-card-slide-transition')) {

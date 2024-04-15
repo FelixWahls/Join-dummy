@@ -277,6 +277,16 @@ function createCardHtml(taskId, taskIndex) {
 	let categoryColor = setCategoryColor(taskIndex);
 	return /*html*/ `
         <div class="flex-col single-task" id="task${taskId}" onclick="slideBigCard(${taskId})" draggable="true" ondragstart="startDragging(${taskId})" ontouchstart="onTouchStart(event, ${taskId})">
+            <img src="../img/card-menu.png" alt="" class="small-card-menu" onclick="showMoveToMenu(${taskId}); event.stopPropagation()"/>
+            <div class="card-menu d-none" id="card-menu${taskId}" onclick="event.stopPropagation()">
+                <div class="card-menu-item" onclick="clickMoveTo('to-do-container')">add to "To-do"</div>
+                <span class="card-menu-line"></span>
+                <div class="card-menu-item" onclick="clickMoveTo('in-progress-container')">add to "in Progress"</div>
+                <span class="card-menu-line"></span>
+                <div class="card-menu-item" onclick="clickMoveTo('await-feedback-container')">add to "Await Feedback"</div>
+                <span class="card-menu-line"></span>
+                <div class="card-menu-item" onclick="clickMoveTo('done-container')">add to "Done"</div>
+		    </div>
 			<div class="task-type" style="background-color:${categoryColor}">${task.category}</div>
 			<div class="task-content">
 				<h3>${task.title}</h3>
@@ -302,10 +312,27 @@ function createAssignedUsersHtml(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`small-card-users${task.id}`);
 	container.innerHTML = '';
-	for (let i = 0; i < task.users.length; i++) {
+	if (task.users.length <= 5) {
+		for (let i = 0; i < task.users.length; i++) {
+			const element = task.users[i];
+			container.innerHTML += `<div class="user" style="background-color:${element.circleColor}">${element.userCapitals}</div>`;
+		}
+	} else {
+		createExceedingUsers(taskIndex);
+	}
+}
+
+function createExceedingUsers(taskIndex) {
+	let task = allTasks[taskIndex];
+	let container = document.getElementById(`small-card-users${task.id}`);
+	let excUsers = task.users.length - 4;
+	console.log(typeof excUsers);
+	container.innerHTML = '';
+	for (let i = 0; i < 4; i++) {
 		const element = task.users[i];
 		container.innerHTML += `<div class="user" style="background-color:${element.circleColor}">${element.userCapitals}</div>`;
 	}
+	container.innerHTML += `<div class="user" style="background-color: #d1d1d1; color: black">+${excUsers}</div>`;
 }
 
 /**

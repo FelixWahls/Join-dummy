@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="../templates/add-task-temp.css" />
 		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
 		<link rel="stylesheet" href="../css/board.css" />
+		<link rel="stylesheet" href="../css/boardResp.css" />
 		<link rel="stylesheet" href="../css/edit-task.css" />
 		<title>Board</title>
 	</head>
@@ -66,9 +67,7 @@
 						id="to-do-container"
 						ondrop="moveTo('to-do-container'); removeHighlight('to-do-container')"
 						ondragover="allowDrop(event); highlight('to-do-container')"
-						ondragleave="removeHighlight('to-do-container')"
-						ontouchend="onTouchEnd(event, 'to-do-container')"
-						ontouchmove="onTouchMove(event)"></div>
+						ondragleave="removeHighlight('to-do-container')"></div>
 				</div>
 				<div class="flex-col">
 					<div class="col-name">
