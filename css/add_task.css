@@ -67,7 +67,7 @@ textarea {
 }
 
 .req-label::after {
-	content: '*';
+	content: "*";
 	color: red;
 }
 
@@ -281,7 +281,7 @@ button:hover {
 }
 
 .required-info::before {
-	content: '*';
+	content: "*";
 	color: red;
 }
 
@@ -380,7 +380,7 @@ button:hover {
 }
 
 .todo-subtask::before {
-	content: '•';
+	content: "•";
 	position: absolute;
 	top: calc(50% - 11px);
 }
@@ -451,12 +451,12 @@ li p {
 }
 
 .task-added-transition {
-	transition: transform 0.1s ease-in-out;
+	transition: transform 0.2s ease-in-out;
 	transform: translateY(-3000px);
 }
 
 .task-added-transition-remove {
-	transition: transform 0.1s ease-in;
+	transition: transform 0.2s ease-in;
 	transform: translateY(3000px);
 }
 

@@ -1,5 +1,10 @@
 let currentDraggedElement;
-
+let taskCounts = {
+	"to-do-container": 0,
+	"in-progress-container": 0,
+	"await-feedback-container": 0,
+	"done-container": 0,
+};
 /**
  * calls starting functions and loads necessary JSON's
  */
@@ -8,7 +13,11 @@ async function initBoard() {
 	await initAddTask();
 	allTasks = await getItem("allTasks");
 	contacts = await getItem("contacts");
-	renderTasksBoard();
+	if (allTasks.length < 1) {
+		renderEmptyContainers();
+	} else {
+		renderTasksBoard();
+	}
 }
 
 /**
@@ -16,14 +25,15 @@ async function initBoard() {
  */
 function slideIn() {
 	if (window.innerWidth < 1000) {
-		window.location.href = "../add_task/add_task.html";
+		window.location.href = "../html/add_task.html";
 	} else {
 		let slideInput = document.querySelector("#add-task-slider");
 		let slideInputBG = document.querySelector("#slide-transition-wrapper");
-		if (slideInput.classList.contains("slide-in-transition")) {
-			hideSlider(slideInput, slideInputBG);
+		console.log(slideInput);
+		if (!slideInput.classList.contains("slide-in-transition")) {
+			displaySlider(slideInput, slideInputBG);
 		} else {
-			displaySlider(slideInput, slideInput);
+			hideSlider(slideInput, slideInputBG);
 		}
 	}
 }
@@ -82,7 +92,7 @@ function renderTask(task, taskIndex) {
 }
 
 function getEmptyContainers() {
-	let taskCounts = {
+	taskCounts = {
 		"to-do-container": 0,
 		"in-progress-container": 0,
 		"await-feedback-container": 0,
@@ -96,10 +106,10 @@ function getEmptyContainers() {
 			taskCounts[allTasks[key].cardContainer]++;
 		}
 	}
-	renderEmptyContainers(taskCounts);
+	renderEmptyContainers();
 }
 
-function renderEmptyContainers(taskCounts) {
+function renderEmptyContainers() {
 	for (let containerType in taskCounts) {
 		if (taskCounts[containerType] === 0) {
 			let container = document.getElementById(`${containerType}`);
@@ -157,6 +167,7 @@ function removeHighlight(id) {
  * @param {number} taskIndex
  */
 function slideBigCard(taskIndex) {
+	console.log(allTasks[taskIndex]);
 	let slideBigCard = document.querySelector("#big-card-slider");
 	let slideInputBG = document.querySelector("#slide-transition-wrapper");
 	if (slideBigCard.classList.contains("big-card-slide-transition")) {

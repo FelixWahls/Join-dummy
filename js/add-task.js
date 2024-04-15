@@ -335,11 +335,6 @@ async function createTask(event) {
 
 	if (titleInput && dateInput && categoryInput) {
 		await pushTask();
-		if ((window.location.href = "../html/board.html")) {
-			await initBoard();
-		} else {
-			window.location.href = "../html/board.html";
-		}
 	}
 }
 
@@ -429,7 +424,18 @@ function showSlider() {
 		document
 			.querySelector(".task-added-slider")
 			.classList.add("task-added-transition-remove");
+		setTimeout(() => {
+			redirectToBoard();
+		}, 900);
 	}, 900);
+}
+
+async function redirectToBoard() {
+	if ((window.location.href = "../html/board.html")) {
+		await initBoard();
+	} else {
+		window.location.href = "../html/board.html";
+	}
 }
 
 /**
@@ -444,7 +450,7 @@ function resetForm() {
 	selectedUsers = [];
 	renderSelectedUsers();
 	setPrio("medium");
-	prioName = "";
+	prioName = "medium";
 	subtasks = [];
 	toDoContainer = "to-do-container";
 	renderSubtasks();
