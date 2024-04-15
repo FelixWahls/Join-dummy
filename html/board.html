@@ -16,9 +16,15 @@
 	</head>
 	<body onload="initBoard()" onclick="closeSidemenu()">
 		<div w3-include-html="../templates/sidemenu.html"></div>
-		<div class="wrapper-add-task d-none" id="slide-transition-wrapper">
-			<div class="big-card" id="big-card-slider"></div>
-			<div class="main-container" id="add-task-slider"></div>
+		<div
+			class="wrapper-add-task d-none"
+			id="slide-transition-wrapper"
+			onclick="hideSlider(), hideBigCard()">
+			<div class="big-card" id="big-card-slider" onclick="event.stopPropagation()"></div>
+			<div
+				class="main-container"
+				id="add-task-slider"
+				onclick="event.stopPropagation()"></div>
 		</div>
 		<div class="main-content">
 			<section class="top-section">

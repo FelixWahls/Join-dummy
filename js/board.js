@@ -42,7 +42,9 @@ function slideIn() {
  * @param {HTMLElement} slideInput
  * @param {HTMLElement} slideInputBG
  */
-function hideSlider(slideInput, slideInputBG) {
+function hideSlider() {
+	let slideInput = document.querySelector('#add-task-slider');
+	let slideInputBG = document.querySelector('#slide-transition-wrapper');
 	slideInput.classList.remove('slide-in-transition');
 	slideInputBG.classList.remove('wrapper-transition');
 	slideInputBG.classList.add('d-none');
@@ -133,7 +135,7 @@ function slideBigCard(taskIndex) {
 	let slideBigCard = document.querySelector('#big-card-slider');
 	let slideInputBG = document.querySelector('#slide-transition-wrapper');
 	if (slideBigCard.classList.contains('big-card-slide-transition')) {
-		hideBigCard(slideInputBG, slideBigCard);
+		hideBigCard();
 	} else {
 		initShowBigCard(slideInputBG, slideBigCard, taskIndex);
 	}
@@ -144,7 +146,9 @@ function slideBigCard(taskIndex) {
  * @param {HTMLElement} slideInputBG
  * @param {HTMLElement} slideBigCard
  */
-function hideBigCard(slideInputBG, slideBigCard) {
+function hideBigCard() {
+	let slideBigCard = document.querySelector('#big-card-slider');
+	let slideInputBG = document.querySelector('#slide-transition-wrapper');
 	slideBigCard.classList.remove('big-card-slide-transition');
 	slideInputBG.classList.remove('wrapper-transition');
 	slideInputBG.classList.add('d-none');

@@ -326,7 +326,6 @@ function createExceedingUsers(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`small-card-users${task.id}`);
 	let excUsers = task.users.length - 4;
-	console.log(typeof excUsers);
 	container.innerHTML = '';
 	for (let i = 0; i < 4; i++) {
 		const element = task.users[i];
