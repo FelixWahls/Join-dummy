@@ -244,21 +244,21 @@ function renderAddTaskHtml() {
 							</div>
 						</div>
 					</div>
-					<div class="bottom-section d-flex">
-						<div class="required-info">This field is required</div>
-						<div class="add-task-btns d-flex">
-							<button class="clear-field" type="reset" onclick="resetForm()">
-								<p>Clear</p>
-								<img src="../img/close.png" alt="" />
-								<img src="../img/close-hover.png" class="d-none" />
-							</button>
-							<button class="create-task" type="submit">
-								<p>Create Task</p>
-								<img src="../img/create-task.png" alt="" />
-							</button>
-						</div>
-					</div>
 				</form>
+                <div class="bottom-section d-flex">
+                    <div class="required-info">This field is required</div>
+                    <div class="add-task-btns d-flex">
+                        <button class="clear-field" type="reset" onclick="resetForm()">
+                            <p>Clear</p>
+                            <img src="../img/close.png" alt="" />
+                            <img src="../img/close-hover.png" class="d-none" />
+                        </button>
+                        <button class="create-task" onclick="createTask()" type="button" id="add-task-button">
+                            <p>Create Task</p>
+                            <img src="../img/create-task.png" alt="" />
+                        </button>
+                    </div>
+                </div>
 				<div class="task-added-slider">
 					<p>Task added to board</p>
 					<img src="../img/tasks.png" alt="" />
