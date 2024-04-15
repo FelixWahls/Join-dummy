@@ -71,31 +71,30 @@ function togglePasswordVisibility(fieldId, iconId) {
 * Validates the login attempt by checking the email and password against hardcoded values.
 */
 async function validateLogin() {
- const email = document.getElementById('email').value;
- const password = document.getElementById('password').value;
+ const emailInput = document.getElementById('email').value;
+ const passwordInput = document.getElementById('password').value;
 
  try {
-     const response = await fetch('http://example.com/login', {
-         method: 'POST',
-         headers: {
-             'Content-Type': 'application/json'
-         },
-         body: JSON.stringify({ email, password })
-     });
+     // Abrufen der aktuellen Benutzerliste vom Server
+     let users = await getItem('users');
+     if (!users) {
+         throw new Error("Keine Benutzerdaten gefunden.");
+     }
 
-     if (response.ok) {
-         const data = await response.json();
-         // Handle successful login, e.g., redirect to another page
+     // Überprüfen der Benutzerdaten
+     const user = users.find(user => user.email === emailInput && user.password === passwordInput);
+     if (user) {
+         // Erfolgreiche Anmeldung: Weiterleitung
          window.location.href = '../html/summary.html';
      } else {
-         // Handle incorrect credentials
-         setWrongPasswordStyles();
-         console.error('Login failed');
+         // Fehler bei der Anmeldung: Anzeige einer Fehlermeldung
+         alert("E-Mail oder Passwort falsch. Bitte versuchen Sie es erneut!");
      }
  } catch (error) {
-     console.error('Error during login:', error);
+     console.error('Fehler bei der Anmeldung:', error);
  }
 }
+
 
 
 
