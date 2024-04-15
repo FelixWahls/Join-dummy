@@ -1,8 +1,11 @@
-// Waits for the DOM to be fully loaded before initializing link references and animations.
 document.addEventListener('DOMContentLoaded', () => {
  initAnimations();
- document.querySelector('.logIn-button').addEventListener('click', validateLogin);
+ const loginButton = document.querySelector('.logIn-button');
+ if (loginButton) {
+     loginButton.addEventListener('click', validateLogin);
+ }
 });
+
 
 /**
 * Initializes animations for the website's logo and content visibility.
@@ -11,10 +14,10 @@ function initAnimations() {
  const logo = document.querySelector('.logo-icon');
  const websiteContent = document.querySelector('.Website');
  setTimeout(() => {
-   websiteContent.style.display = 'flex';
+     websiteContent.style.display = 'flex';
  }, 500);
  setTimeout(() => {
-   animateLogo(logo);
+     animateLogo(logo);
  }, 3500);
 }
 
@@ -56,7 +59,7 @@ function togglePasswordVisibility(fieldId, iconId) {
  const icon = document.getElementById(iconId);
 
  if (!field.value) {
-   return;
+     return;
  }
 
  field.type = field.type === 'password' ? 'text' : 'password';
@@ -67,24 +70,30 @@ function togglePasswordVisibility(fieldId, iconId) {
 /**
 * Validates the login attempt by checking the email and password against hardcoded values.
 */
-async function validateLogin(event) {
- event.preventDefault();  // Verhindert, dass das Formular normal gesendet wird
- const emailInput = document.getElementById('email');  // Zugriff auf das E-Mail-Eingabefeld
- const passwordInput = document.getElementById('password');  // Zugriff auf das Passwort-Eingabefeld
- 
+async function validateLogin() {
+ const email = document.getElementById('email').value;
+ const password = document.getElementById('password').value;
+
  try {
-     const userData = await getItem('user-' + emailInput.value);  // Abrufen der Benutzerdaten vom Server
-     const user = JSON.parse(userData);  // Parsen der gespeicherten JSON-Daten zu einem JavaScript-Objekt
-     
-     if (user && user.password === passwordInput.value) {  // Überprüfen, ob Benutzer existiert und das Passwort übereinstimmt
-         console.log('Login successful');  // Konsolenausgabe, wenn Login erfolgreich
+     const response = await fetch('http://example.com/login', {
+         method: 'POST',
+         headers: {
+             'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ email, password })
+     });
+
+     if (response.ok) {
+         const data = await response.json();
+         // Handle successful login, e.g., redirect to another page
+         window.location.href = '../html/summary.html';
      } else {
-         console.log('Login failed: Incorrect email or password');  // Konsolenausgabe bei falschem Passwort
-         setWrongPasswordStyles();  // Anwendung visueller Feedback-Stile für falsches Passwort
+         // Handle incorrect credentials
+         setWrongPasswordStyles();
+         console.error('Login failed');
      }
  } catch (error) {
-     console.log('Login failed:', error);  // Konsolenausgabe bei einem Fehler beim Abruf oder Verarbeiten der Daten
-     setWrongPasswordStyles();  // Anwendung visueller Feedback-Stile für Fehler
+     console.error('Error during login:', error);
  }
 }
 
@@ -107,9 +116,9 @@ function setWrongPasswordStyles() {
 function toggleCheckbox() {
  const checkboxImg = document.querySelector('.checkbox');
  if (checkboxImg.src.includes('Checkbox.png')) {
-   checkboxImg.src = '../img/CheckboxCheck.png';
+     checkboxImg.src = '../img/CheckboxCheck.png';
  } else {
-   checkboxImg.src = '../img/Checkbox.png';
+     checkboxImg.src = '../img/Checkbox.png';
  }
 }
 
@@ -122,3 +131,4 @@ function toggleCheckbox() {
 function removeEmailBoxShadow(element) {
  element.style.boxShadow = 'none';
 }
+

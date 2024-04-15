@@ -11,24 +11,25 @@
   <link rel="stylesheet" href="../css/logInResponsive.css" />
 		<script src="../js/logIn.js"></script>
   <script src="../js/script.js"></script>
- <script src="../js/storage.js"></script>
+ <link rel="stylesheet" href="../css/sidemenu.css" />
 	</head>
 	<body>
 		<img src="../img/Join-Logo.png" alt="Join Logo" class="logo-icon" />
 		<div class="Website">
 			<div class="top-right-container">
 				<a class="noUser">Not a Join user?</a>
-				<a href="../SignUp/signUp.html">
+				<a href="../html/signUp.html">
 					<button class="signUp-button">Sign up</button>
 				</a>
 			</div>
-			<form class="logInField">
+			<form class="logInField" onsubmit="validateLogin(); return false;">
 				<div class="headline">
 					<h1>Log in</h1>
 				</div>
 				<div class="input">
 					<div class="input-container">
 						<input
+       id="email"
 							class="email"
 							type="email"
 							placeholder="Email"

@@ -118,55 +118,37 @@ function comparePasswords(password, confirmPw) {
  * Adds a new user to the users array and logs a message.
  * Redirects to the login page after adding the user.
  */
-async function addUser() {
- const name = document.getElementById('name').value;
- const email = document.getElementById('email').value;
- const password = document.getElementById('password').value;
+async function addUser(){
+ let email = document.getElementById('email').value;
+ let password = document.getElementById('password').value;
+ let name = document.getElementById('name').value;
 
- let newUser = {
-     name: name,
-     email: email,
-     password: password
- };
+ // Zuerst holen wir die aktuelle Benutzerliste vom Server, falls vorhanden
+ let currentUsers = await getItem('users');
+ if (!currentUsers) {
+     currentUsers = [];
+ }
 
- // Benutzer zum lokalen Array hinzufügen
- users.push(newUser);
- console.log("Added to local array:", newUser);
+ // Fügen den neuen Benutzer zur Liste hinzu
+ currentUsers.push({name, email, password});
 
- // Benutzerdaten als String für die Speicherung aufbereiten
- let userString = JSON.stringify(newUser);
- 
+ // Aktualisieren der Benutzerliste auf dem Server
+ await setItem('users', JSON.stringify(currentUsers));
+
+ // Optional: Bestätigung, dass der Benutzer hinzugefügt wurde
+ console.log('Benutzer hinzugefügt: ', {name, email, password});
+ logUsersFromServer()
+ showPopup();
+}
+async function logUsersFromServer() {
  try {
-     // Versuch, den Benutzer auf dem Server zu speichern
-     const response = await setItem('user-' + email, userString);
-     console.log("Response from server:", response);
-     if (response.status === 'success') {
-         showPopup();
-         displayUsers();  // Zeige Popup bei Erfolg
-     } else {
-         console.error('Failed to save user:', response);
-         // Optional: Entfernen des Benutzers aus dem lokalen Array, falls das Speichern fehlschlägt
-         users.pop();
-     }
+     let usersFromServer = await getItem('users');
+     console.log('Aktuell gespeicherte Benutzer:', usersFromServer);
  } catch (error) {
-     console.error('Error saving user:', error);
-     // Optional: Entfernen des Benutzers aus dem lokalen Array, falls das Speichern fehlschlägt
-     users.pop();
+     console.error('Fehler beim Abrufen der Benutzerdaten:', error);
  }
 }
 
-
-
-async function retrieveUser(email) {
- try {
-     const userData = await getItem('user-' + email);
-     const user = JSON.parse(userData);
-     console.log("Retrieved user data:", user);
-     return user;
- } catch (error) {
-     console.error('Error retrieving user:', error);
- }
-}
 
 
 
@@ -196,7 +178,7 @@ function showPopup() {
  * Redirects the user to the login page.
  */
 function redirectToLogin() {
-	window.location.href = 'http://127.0.0.1:5501/LogIn/logIn.html';
+	window.location.href = 'http://127.0.0.1:5501/html/logIn.html';
 }
 function displayUsers() {
  console.log("Current users in the array:");
