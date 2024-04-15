@@ -54,7 +54,7 @@ async function initRegisteredUser() {
 		newRegUser['telefon'] = '',
 		newRegUser['color'] = '',
 		newRegUser['capitals'] = '',
-		newRegUser['addTask'] = false;
+		newUser['addTask'] = false;
 
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
