@@ -7,10 +7,7 @@
 		<link rel="stylesheet" href="../css/fonts.css" />
 		<link rel="stylesheet" href="../css/sidemenu.css" />
 		<link rel="stylesheet" href="../css/summary.css" />
-		<link
-			rel="shortcut icon"
-			href="../img/Join-Logo.png"
-			type="image/x-icon" />
+		<link rel="shortcut icon" href="../img/Join-Logo.png" type="image/x-icon" />
 		<title>Summary</title>
 	</head>
 	<body onload="includeHTML(), initSummary()" onclick="closeSidemenu()">
@@ -25,18 +22,14 @@
 			<div class="flex">
 				<div class="main-tasks-container">
 					<div class="top-row">
-						<a
-							href="../html/board.html"
-							class="to-do-btn summary-btn summary-btn-top">
+						<a href="../html/board.html" class="to-do-btn summary-btn summary-btn-top">
 							<div class="top-row-img-l"></div>
 							<div class="counter">
 								<div class="amount summaryToDo" id="toDoAmount">1</div>
 								<p>To-do</p>
 							</div>
 						</a>
-						<a
-							href="../html/board.html"
-							class="done-btn summary-btn summary-btn-top">
+						<a href="../html/board.html" class="done-btn summary-btn summary-btn-top">
 							<div class="top-row-img-r"></div>
 							<div class="counter">
 								<div class="amount summaryDone">1</div>
@@ -49,11 +42,7 @@
 							<div class="urgent-task-left">
 								<img src="../img/urgent.png" alt="" />
 								<div class="counter">
-									<div
-										class="amount summaryUrgent"
-										id="urgent-counter">
-										1
-									</div>
+									<div class="amount summaryUrgent" id="urgent-counter">1</div>
 									<p>Urgent</p>
 								</div>
 							</div>
@@ -67,30 +56,22 @@
 						</a>
 					</div>
 					<div class="bottom-row">
-						<a
-							href="../html/board.html"
-							class="summary-btn summary-btn-bottom">
+						<a href="../html/board.html" class="summary-btn summary-btn-bottom">
 							<div class="amount summaryAllTasks">5</div>
 							<p>Tasks on Board</p>
 						</a>
-						<a
-							href="../html/board.html"
-							class="summary-btn summary-btn-bottom">
+						<a href="../html/board.html" class="summary-btn summary-btn-bottom">
 							<div class="amount summaryProgress">2</div>
 							<p>Tasks in Progress</p>
 						</a>
-						<a
-							href="../html/board.html"
-							class="summary-btn summary-btn-bottom">
+						<a href="../html/board.html" class="summary-btn summary-btn-bottom">
 							<div class="amount summaryFeedback">2</div>
 							<p>Awaiting Feedback</p>
 						</a>
 					</div>
 				</div>
 				<div class="wrapper">
-					<div class="greeting">
-						Good Morning<span class="d-none">,</span>
-					</div>
+					<div class="greeting" id="greeting-text"></div>
 					<div id="greeting-name">Sofia Müller</div>
 				</div>
 			</div>
