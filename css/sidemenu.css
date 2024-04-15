@@ -224,6 +224,7 @@ a {
 
 .submenuItem:hover {
 	background-color: #091931;
+	border-radius: 8px;
 }
 
 .submenuText {

@@ -25,22 +25,22 @@
             submenu.innerHTML = '';
         submenu.innerHTML = `
             <div class="submenu">
-                <a href="../help/help.html">
+                <a href="../html/help.html">
                     <div class="submenuItem">
                             <span class="submenuText">Help</span>
                     </div>
                 </a>
-                <a href="..html//legalNotice/legalNotice.html"  target="_blank">
+                <a href="../html/legalNotice.html">
                     <div class="submenuItem">
                         <span class="submenuText">Legal Notice</span>
                     </div>
                 </a>    
-                <a href="../html/privacyPolicy.html"  target="_blank">
+                <a href="../html/privacyPolicy.html">
                     <div class="submenuItem">
                             <span class="submenuText">Privacy Policy</span>
                         </div>
                 </a>  
-                <a href=""  target="_blank">
+                <a href="">
                     <div class="submenuItem">
                             <span class="submenuText">Log out</span>
                         </div>
@@ -54,17 +54,17 @@
             submenu.innerHTML = '';
         submenu.innerHTML = `
             <div class="submenu">
-                <a href="..html//legalNotice/legalNotice.html"  target="_blank">
+                <a href="../html/legalNotice.html">
                     <div class="submenuItem">
                         <span class="submenuText">Legal Notice</span>
                     </div>
                 </a>  
-                <a href="../html/privacyPolicy.html"  target="_blank">
+                <a href="../html/privacyPolicy.html">
                     <div class="submenuItem">
                             <span class="submenuText">Privacy Policy</span>
                         </div>
                 </a>  
-                <a href=""  target="_blank">
+                <a href="">
                     <div class="submenuItem">
                             <span class="submenuText">Log out</span>
                         </div>
