@@ -1,18 +1,21 @@
-let toDoAmount = document.getElementById("toDoAmount");
-let inProgressAmount = document.querySelector(".summaryProgress");
-let awaitFeedbackAmount = document.querySelector(".summaryFeedback");
-let doneAmount = document.querySelector(".summaryDone");
-let allTasksAmount = document.querySelector(".summaryAllTasks");
+let toDoAmount = document.getElementById('toDoAmount');
+let inProgressAmount = document.querySelector('.summaryProgress');
+let awaitFeedbackAmount = document.querySelector('.summaryFeedback');
+let doneAmount = document.querySelector('.summaryDone');
+let allTasksAmount = document.querySelector('.summaryAllTasks');
 let formattedDate;
 let urgentCounter = 0;
 
 /** calls several functions and sets the counter for Tasks on Board */
 async function initSummary() {
-	allTasks = await getItem("allTasks");
+	allTasks = await getItem('allTasks');
 	getAllCounters();
 	getUrgentTasks();
-	findNearestDateObject();
+	greet();
 	allTasksAmount.innerHTML = allTasks.length;
+	if (allTasks.length > 0) {
+		findNearestDateObject();
+	}
 }
 
 /**
@@ -40,9 +43,9 @@ function findNearestDateObject() {
  */
 function formatDate(dateString) {
 	const date = new Date(dateString);
-	const options = { year: "numeric", month: "long", day: "numeric" };
-	formattedDate = date.toLocaleDateString("en-US", options);
-	document.getElementById("mid-row-date").innerHTML = formattedDate;
+	const options = { year: 'numeric', month: 'long', day: 'numeric' };
+	formattedDate = date.toLocaleDateString('en-US', options);
+	document.getElementById('mid-row-date').innerHTML = formattedDate;
 }
 
 /**
@@ -51,23 +54,20 @@ function formatDate(dateString) {
  */
 function getAllCounters() {
 	let taskCounts = {
-		"to-do-container": 0,
-		"in-progress-container": 0,
-		"await-feedback-container": 0,
-		"done-container": 0,
+		'to-do-container': 0,
+		'in-progress-container': 0,
+		'await-feedback-container': 0,
+		'done-container': 0,
 	};
 	for (const key in allTasks) {
-		if (
-			allTasks.hasOwnProperty(key) &&
-			allTasks[key].hasOwnProperty("cardContainer")
-		) {
+		if (allTasks.hasOwnProperty(key) && allTasks[key].hasOwnProperty('cardContainer')) {
 			taskCounts[allTasks[key].cardContainer]++;
 		}
 	}
-	toDoAmount.innerHTML = taskCounts["to-do-container"];
-	inProgressAmount.innerHTML = taskCounts["in-progress-container"];
-	awaitFeedbackAmount.innerHTML = taskCounts["await-feedback-container"];
-	doneAmount.innerHTML = taskCounts["done-container"];
+	toDoAmount.innerHTML = taskCounts['to-do-container'];
+	inProgressAmount.innerHTML = taskCounts['in-progress-container'];
+	awaitFeedbackAmount.innerHTML = taskCounts['await-feedback-container'];
+	doneAmount.innerHTML = taskCounts['done-container'];
 }
 
 /**
@@ -75,9 +75,28 @@ function getAllCounters() {
  */
 function getUrgentTasks() {
 	allTasks.forEach((task) => {
-		if (task.prioName === "urgent") {
+		if (task.prioName === 'urgent') {
 			urgentCounter++;
 		}
 	});
-	document.getElementById("urgent-counter").innerHTML = urgentCounter;
+	document.getElementById('urgent-counter').innerHTML = urgentCounter;
+}
+
+function greet() {
+	const currentTime = new Date();
+	const currentHour = currentTime.getHours();
+	let container = document.getElementById('greeting-text');
+	let greeting;
+
+	if (currentHour >= 3 && currentHour <= 10) {
+		greeting = 'Good Morning';
+	} else if (currentHour >= 11 && currentHour <= 12) {
+		greeting = 'Good Day';
+	} else if (currentHour >= 13 && currentHour <= 17) {
+		greeting = 'Good Afternoon';
+	} else {
+		greeting = 'Good Evening';
+	}
+	container.innerHTML = greeting;
+	console.log(greeting);
 }
