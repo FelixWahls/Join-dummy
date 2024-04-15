@@ -312,7 +312,7 @@ function createAssignedUsersHtml(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`small-card-users${task.id}`);
 	container.innerHTML = '';
-	if (task.users.length <= 5) {
+	if (task.users.length <= 4) {
 		for (let i = 0; i < task.users.length; i++) {
 			const element = task.users[i];
 			container.innerHTML += `<div class="user" style="background-color:${element.circleColor}">${element.userCapitals}</div>`;
