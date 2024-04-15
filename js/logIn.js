@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
  }
 });
 
-
 /**
 * Initializes animations for the website's logo and content visibility.
 */
@@ -21,7 +20,6 @@ function initAnimations() {
  }, 3500);
 }
 
-
 /**
 * Animates the logo by setting its position, size, and transformation.
 * 
@@ -35,7 +33,6 @@ function animateLogo(logo) {
  logo.style.transform = 'translate(0, 0)';
 }
 
-
 /**
 * Handles input in the password field and updates the icon based on field content.
 * 
@@ -46,7 +43,6 @@ function handlePasswordInput(fieldId) {
  const icon = document.getElementById(fieldId + 'Icon');
  icon.src = field.value ? '../img/HidePassword.png' : '../img/Lock.png';
 }
-
 
 /**
 * Toggles the visibility of the password and updates the icon accordingly.
@@ -66,37 +62,32 @@ function togglePasswordVisibility(fieldId, iconId) {
  icon.src = field.type === 'password' ? '../img/HidePassword.png' : '../img/ShowPassword.png';
 }
 
-
 /**
-* Validates the login attempt by checking the email and password against hardcoded values.
+* Validates the login attempt by checking the email and password against stored values.
 */
 async function validateLogin() {
  const emailInput = document.getElementById('email').value;
  const passwordInput = document.getElementById('password').value;
 
  try {
-     // Abrufen der aktuellen Benutzerliste vom Server
      let users = await getItem('users');
      if (!users) {
          throw new Error("Keine Benutzerdaten gefunden.");
      }
 
-     // Überprüfen der Benutzerdaten
      const user = users.find(user => user.email === emailInput && user.password === passwordInput);
      if (user) {
-         // Erfolgreiche Anmeldung: Weiterleitung
          window.location.href = '../html/summary.html';
      } else {
-         // Fehler bei der Anmeldung: Anzeige einer Fehlermeldung
-         alert("E-Mail oder Passwort falsch. Bitte versuchen Sie es erneut!");
+         setWrongPasswordStyles();
+         const wrongPwElement = document.querySelector('.wrongPw');
+         wrongPwElement.textContent = "E-Mail oder Passwort falsch. Bitte versuchen Sie es erneut!";
      }
  } catch (error) {
      console.error('Fehler bei der Anmeldung:', error);
+     setWrongPasswordStyles();
  }
 }
-
-
-
 
 /**
 * Applies visual feedback for a wrong password attempt.
@@ -107,7 +98,6 @@ function setWrongPasswordStyles() {
  wrongPwElement.style.color = '#FF8190';
  passwordInput.style.border = '1px solid rgb(252, 57, 73)';
 }
-
 
 /**
 * Toggles the checkbox image between checked and unchecked states.
@@ -121,7 +111,6 @@ function toggleCheckbox() {
  }
 }
 
-
 /**
 * Removes the box shadow style from the email input field upon user input.
 * 
@@ -130,4 +119,3 @@ function toggleCheckbox() {
 function removeEmailBoxShadow(element) {
  element.style.boxShadow = 'none';
 }
-
