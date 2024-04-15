@@ -4,17 +4,20 @@ let checkboxState = false;
  * Initializes event listeners for UI elements related to the checkbox,
  * password input fields, and password visibility toggles upon DOM content fully loaded.
  */
-document.addEventListener('DOMContentLoaded', () => {
-	document.querySelector('.signUp-button').disabled = true;
-	document.getElementById('checkboxImg').onclick = toggleCheckbox;
-	document.getElementById('password').oninput = () => handlePasswordInput('password');
-	document.getElementById('confirmPw').oninput = () => handlePasswordInput('confirmPw');
-	document.getElementById('passwordIcon').onclick = () =>
-		togglePasswordVisibility('password', 'passwordIcon');
-	document.getElementById('confirmPwIcon').onclick = () =>
-		togglePasswordVisibility('confirmPw', 'confirmPwIcon');
-});
-
+if (window.location.href === "../html.signUp.html") {
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelector(".signUp-button").disabled = true;
+		document.getElementById("checkboxImg").onclick = toggleCheckbox;
+		document.getElementById("password").oninput = () =>
+			handlePasswordInput("password");
+		document.getElementById("confirmPw").oninput = () =>
+			handlePasswordInput("confirmPw");
+		document.getElementById("passwordIcon").onclick = () =>
+			togglePasswordVisibility("password", "passwordIcon");
+		document.getElementById("confirmPwIcon").onclick = () =>
+			togglePasswordVisibility("confirmPw", "confirmPwIcon");
+	});
+}
 
 /**
  * Toggles the state of the checkbox and updates the checkbox image
@@ -22,9 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function toggleCheckbox() {
 	checkboxState = !checkboxState;
-	const checkboxImg = document.getElementById('checkboxImg');
-	checkboxImg.src = checkboxState ? '../img/CheckboxCheck.png' : '../img/Checkbox.png';
-	document.querySelector('.signUp-button').disabled = !checkboxState;
+	const checkboxImg = document.getElementById("checkboxImg");
+	checkboxImg.src = checkboxState
+		? "../img/CheckboxCheck.png"
+		: "../img/Checkbox.png";
+	document.querySelector(".signUp-button").disabled = !checkboxState;
 }
 
 /**
@@ -35,9 +40,9 @@ function toggleCheckbox() {
  */
 function handlePasswordInput(fieldId) {
 	const field = document.getElementById(fieldId);
-	const iconId = fieldId + 'Icon';
+	const iconId = fieldId + "Icon";
 	const icon = document.getElementById(iconId);
-	icon.src = field.value ? '../img/HidePassword.png' : '../img/Lock.png';
+	icon.src = field.value ? "../img/HidePassword.png" : "../img/Lock.png";
 }
 
 /**
@@ -55,8 +60,11 @@ function togglePasswordVisibility(fieldId, iconId) {
 		return;
 	}
 
-	field.type = field.type === 'password' ? 'text' : 'password';
-	icon.src = field.type === 'password' ? '../img/HidePassword.png' : '../img/ShowPassword.png';
+	field.type = field.type === "password" ? "text" : "password";
+	icon.src =
+		field.type === "password"
+			? "../img/HidePassword.png"
+			: "../img/ShowPassword.png";
 }
 
 /**
@@ -68,8 +76,8 @@ function togglePasswordVisibility(fieldId, iconId) {
  */
 function validateForm(event) {
 	event.preventDefault();
-	const password = document.getElementById('password').value;
-	const confirmPw = document.getElementById('confirmPw').value;
+	const password = document.getElementById("password").value;
+	const confirmPw = document.getElementById("confirmPw").value;
 
 	if (!validateCheckbox() || !comparePasswords(password, confirmPw)) {
 		return false;
@@ -84,7 +92,7 @@ function validateForm(event) {
  */
 function validateCheckbox() {
 	if (!checkboxState) {
-		alert('Please accept the privacy policy by clicking the checkbox.');
+		alert("Please accept the privacy policy by clicking the checkbox.");
 		return false;
 	}
 	return true;
@@ -100,13 +108,13 @@ function validateCheckbox() {
  */
 function comparePasswords(password, confirmPw) {
 	if (password !== confirmPw) {
-		document.getElementById('password').value = '';
-		document.getElementById('confirmPw').value = '';
-		const wrongPwElement = document.querySelector('.wrongPw');
-		wrongPwElement.style.color = '#FF8190';
+		document.getElementById("password").value = "";
+		document.getElementById("confirmPw").value = "";
+		const wrongPwElement = document.querySelector(".wrongPw");
+		wrongPwElement.style.color = "#FF8190";
 
 		setTimeout(() => {
-			wrongPwElement.style.color = 'white';
+			wrongPwElement.style.color = "white";
 		}, 3000);
 
 		return false;
@@ -118,57 +126,61 @@ function comparePasswords(password, confirmPw) {
  * Adds a new user to the users array and logs a message.
  * Redirects to the login page after adding the user.
  */
-async function addUser(){
- let email = document.getElementById('email').value;
- let password = document.getElementById('password').value;
- let name = document.getElementById('name').value;
- createNewContactDesktop(name, email, '');
- let currentUsers = await getItem('users');
- if (!currentUsers) {
-     currentUsers = [];
- }
+async function addUser() {
+	let email = document.getElementById("email").value;
+	let password = document.getElementById("password").value;
+	let name = document.getElementById("name").value;
+	createNewContactDesktop(name, email, "");
+	let currentUsers = await getItem("users");
+	if (!currentUsers) {
+		currentUsers = [];
+	}
 
- currentUsers.push({name, email, password});
- await setItem('users', JSON.stringify(currentUsers));
- console.log('Benutzer hinzugefügt: ', {name, email, password});
- logUsersFromServer()
- showPopup();
+	currentUsers.push({ name, email, password });
+	await setItem("users", JSON.stringify(currentUsers));
+	console.log("Benutzer hinzugefügt: ", { name, email, password });
+	logUsersFromServer();
+	showPopup();
 }
 async function logUsersFromServer() {
- try {
-     let usersFromServer = await getItem('users');
-     // Sicherstellen, dass das Ergebnis nicht leer oder ungültig ist
-     if (!usersFromServer || usersFromServer.length === 0) {
-         console.log('Keine Benutzerdaten gefunden.');
-         return;
-     }
-     console.log('Aktuell gespeicherte Benutzer:', usersFromServer);
-     // Detaillierte Ausgabe jedes Benutzers in einem lesbareren Format
-     usersFromServer.forEach((user, index) => {
-         console.log(`User ${index + 1}: Name - ${user.name}, Email - ${user.email}, Password - ${user.password}`);
-     });
- } catch (error) {
-     console.error('Fehler beim Abrufen der Benutzerdaten:', error);
- }
+	try {
+		let usersFromServer = await getItem("users");
+		// Sicherstellen, dass das Ergebnis nicht leer oder ungültig ist
+		if (!usersFromServer || usersFromServer.length === 0) {
+			console.log("Keine Benutzerdaten gefunden.");
+			return;
+		}
+		console.log("Aktuell gespeicherte Benutzer:", usersFromServer);
+		// Detaillierte Ausgabe jedes Benutzers in einem lesbareren Format
+		usersFromServer.forEach((user, index) => {
+			console.log(
+				`User ${index + 1}: Name - ${user.name}, Email - ${
+					user.email
+				}, Password - ${user.password}`
+			);
+		});
+	} catch (error) {
+		console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+	}
 }
 
 /**
  * Displays a popup message indicating successful sign-up.
  */
 function showPopup() {
-	const popup = document.createElement('div');
-	popup.className = 'popup';
-	popup.textContent = 'You Signed Up successfully';
+	const popup = document.createElement("div");
+	popup.className = "popup";
+	popup.textContent = "You Signed Up successfully";
 
-	const signUpField = document.querySelector('.signUpField');
+	const signUpField = document.querySelector(".signUpField");
 	if (signUpField) {
 		signUpField.appendChild(popup);
-		popup.style.position = 'absolute';
-		popup.style.display = 'flex';
+		popup.style.position = "absolute";
+		popup.style.display = "flex";
 	}
 
 	setTimeout(() => {
-		popup.style.display = 'none';
+		popup.style.display = "none";
 		redirectToLogin();
 	}, 1000);
 }
@@ -177,11 +189,13 @@ function showPopup() {
  * Redirects the user to the login page.
  */
 function redirectToLogin() {
-	window.location.href = 'http://127.0.0.1:5501/html/logIn.html';
+	window.location.href = "http://127.0.0.1:5501/html/logIn.html";
 }
 function displayUsers() {
- console.log("Current users in the array:");
- users.forEach((user, index) => {
-     console.log(`User ${index + 1}: Name - ${user.name}, Email - ${user.email}`);
- });
+	console.log("Current users in the array:");
+	users.forEach((user, index) => {
+		console.log(
+			`User ${index + 1}: Name - ${user.name}, Email - ${user.email}`
+		);
+	});
 }
