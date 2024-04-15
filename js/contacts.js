@@ -6,7 +6,6 @@ let currentContact = 0;
 async function initContacts() {
 	await includeHTML();
 	contacts = await getItem('contacts');
-	users = await getItem('users');
 	initContactlist();
 }
 
@@ -33,32 +32,14 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
-function initRegisteredUser() {
-	/*for (let i = 0; i < users.length; i++) {
-		let newUser = {
-			name: users[i]['user'],
-			email: users[i]['email'],
-			telefon: '',
-			color: getRandomColor(),
-			capitals: extractCapitalLetters(users[i]['user']),
-			addTask: false,
-		};
-		contacts.push(newUser);
-	}*/
 
-	let initContacts = document.querySelector('#initContacts');
-	initContacts.innerHTML = '';
-	let lastInitial = null;
-	contacts.sort((a, b) => a.name.localeCompare(b.name));
-	displaySortedContactsByInitial(initContacts, lastInitial);
-}
 
 /**
  * @description Initializes the contact list by clearing previous entries and displaying sorted contacts.
  */
 
 async function initContactlist() {
-	//initRegisteredUser();
+	
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;

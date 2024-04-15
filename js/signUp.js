@@ -122,7 +122,7 @@ async function addUser(){
  let email = document.getElementById('email').value;
  let password = document.getElementById('password').value;
  let name = document.getElementById('name').value;
-
+ createNewContactDesktop(name, email, '');
  let currentUsers = await getItem('users');
  if (!currentUsers) {
      currentUsers = [];
