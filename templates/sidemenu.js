@@ -40,7 +40,7 @@
                             <span class="submenuText">Privacy Policy</span>
                         </div>
                 </a>  
-                <a href="">
+                <a href="../html/logIn.html">
                     <div class="submenuItem">
                             <span class="submenuText">Log out</span>
                         </div>
@@ -64,7 +64,7 @@
                             <span class="submenuText">Privacy Policy</span>
                         </div>
                 </a>  
-                <a href="">
+                <a href="../html/logIn.html">
                     <div class="submenuItem">
                             <span class="submenuText">Log out</span>
                         </div>

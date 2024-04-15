@@ -39,7 +39,7 @@ function extractCapitalLetters(name) {
  */
 
 async function initRegisteredUser() {
-		let newUser = {
+		let newRegUser = {
 			name: users[users.length - 1]['user'],
 			email: users[users.length - 1]['email'],
 			telefon: '',
@@ -47,7 +47,14 @@ async function initRegisteredUser() {
 			capitals: extractCapitalLetters(users[users.length - 1]['user']),
 			addTask: false,
 		};
-		contacts.push(newUser);
+
+		contacts.push(newRegUser);
+		newRegUser['name'] = '',
+		newRegUser['email'] = '',
+		newRegUser['telefon'] = '',
+		newRegUser['color'] = '',
+		newRegUser['capitals'] = '',
+		newRegUser['addTask'] = false;
 
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
@@ -61,7 +68,7 @@ async function initRegisteredUser() {
  */
 
 async function initContactlist() {
-	//initRegisteredUser();
+	initRegisteredUser();
 	let initContacts = document.querySelector('#initContacts');
 	initContacts.innerHTML = '';
 	let lastInitial = null;
