@@ -8,3 +8,7 @@
 	top: calc(50% - 12px);
 	cursor: pointer;
 }
+
+.big-card-bottom img {
+	margin-right: 8px;
+}

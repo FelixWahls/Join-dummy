@@ -1,9 +1,8 @@
-let currentDraggedElement;
 let taskCounts = {
-	"to-do-container": 0,
-	"in-progress-container": 0,
-	"await-feedback-container": 0,
-	"done-container": 0,
+	'to-do-container': 0,
+	'in-progress-container': 0,
+	'await-feedback-container': 0,
+	'done-container': 0,
 };
 /**
  * calls starting functions and loads necessary JSON's
@@ -11,9 +10,10 @@ let taskCounts = {
 async function initBoard() {
 	await includeHTML();
 	await initAddTask();
-	allTasks = await getItem("allTasks");
-	contacts = await getItem("contacts");
+	allTasks = await getItem('allTasks');
+	contacts = await getItem('contacts');
 	if (allTasks.length < 1) {
+		renderTasksBoard();
 		renderEmptyContainers();
 	} else {
 		renderTasksBoard();
@@ -25,12 +25,12 @@ async function initBoard() {
  */
 function slideIn() {
 	if (window.innerWidth < 1000) {
-		window.location.href = "../html/add_task.html";
+		window.location.href = '../html/add_task.html';
 	} else {
-		let slideInput = document.querySelector("#add-task-slider");
-		let slideInputBG = document.querySelector("#slide-transition-wrapper");
+		let slideInput = document.querySelector('#add-task-slider');
+		let slideInputBG = document.querySelector('#slide-transition-wrapper');
 		console.log(slideInput);
-		if (!slideInput.classList.contains("slide-in-transition")) {
+		if (!slideInput.classList.contains('slide-in-transition')) {
 			displaySlider(slideInput, slideInputBG);
 		} else {
 			hideSlider(slideInput, slideInputBG);
@@ -44,10 +44,16 @@ function slideIn() {
  * @param {HTMLElement} slideInputBG
  */
 function hideSlider(slideInput, slideInputBG) {
-	slideInput.classList.remove("slide-in-transition");
-	slideInputBG.classList.remove("wrapper-transition");
-	slideInputBG.classList.add("d-none");
+	slideInput.classList.remove('slide-in-transition');
+	slideInputBG.classList.remove('wrapper-transition');
+	slideInputBG.classList.add('d-none');
+	removeHtml();
 	resetForm();
+}
+
+function removeHtml() {
+	let bigCardContainer = document.querySelector('#big-card-slider');
+	bigCardContainer.innerHTML = '';
 }
 
 /**
@@ -56,9 +62,9 @@ function hideSlider(slideInput, slideInputBG) {
  * @param {HTMLElement} slideInputBG
  */
 function displaySlider(slideInput, slideInputBG) {
-	slideInput.classList.add("slide-in-transition");
-	slideInputBG.classList.remove("d-none");
-	slideInputBG.classList.add("wrapper-transition");
+	slideInput.classList.add('slide-in-transition');
+	slideInputBG.classList.remove('d-none');
+	slideInputBG.classList.add('wrapper-transition');
 	renderAddTaskHtml();
 }
 
@@ -66,13 +72,17 @@ function displaySlider(slideInput, slideInputBG) {
  * gets all possible task containers and calls the renderTask function for every Object in AllTasks
  */
 function renderTasksBoard() {
-	document.getElementById("to-do-container").innerHTML = "";
-	document.getElementById("in-progress-container").innerHTML = "";
-	document.getElementById("await-feedback-container").innerHTML = "";
-	document.getElementById("done-container").innerHTML = "";
-	for (let i = 0; i < allTasks.length; i++) {
-		const element = allTasks[i];
-		renderTask(element, i);
+	document.getElementById('to-do-container').innerHTML = '';
+	document.getElementById('in-progress-container').innerHTML = '';
+	document.getElementById('await-feedback-container').innerHTML = '';
+	document.getElementById('done-container').innerHTML = '';
+	if (allTasks.length > 0) {
+		for (let i = 0; i < allTasks.length; i++) {
+			const element = allTasks[i];
+			renderTask(element, i);
+		}
+	} else {
+		getEmptyContainers();
 	}
 }
 
@@ -93,16 +103,13 @@ function renderTask(task, taskIndex) {
 
 function getEmptyContainers() {
 	taskCounts = {
-		"to-do-container": 0,
-		"in-progress-container": 0,
-		"await-feedback-container": 0,
-		"done-container": 0,
+		'to-do-container': 0,
+		'in-progress-container': 0,
+		'await-feedback-container': 0,
+		'done-container': 0,
 	};
 	for (const key in allTasks) {
-		if (
-			allTasks.hasOwnProperty(key) &&
-			allTasks[key].hasOwnProperty("cardContainer")
-		) {
+		if (allTasks.hasOwnProperty(key) && allTasks[key].hasOwnProperty('cardContainer')) {
 			taskCounts[allTasks[key].cardContainer]++;
 		}
 	}
@@ -120,57 +127,14 @@ function renderEmptyContainers() {
 }
 
 /**
- * sets the value to the id of the dragged element
- * @param {number} id
- */
-function startDragging(id) {
-	currentDraggedElement = id;
-}
-
-/**
- * enables the functionality to drop elements inside the according container
- * @param {Event} ev
- */
-function allowDrop(ev) {
-	ev.preventDefault();
-}
-
-/**
- * sets the cardContainer of the dragged Task to the new value of the container it has been dropped inside
- * saves the changes on server
- * @param {HTMLElement} container
- */
-async function moveTo(container) {
-	allTasks[currentDraggedElement]["cardContainer"] = container;
-	await setItem("allTasks", allTasks);
-	renderTasksBoard();
-}
-
-/**
- * implements hover effects when an element is dragged over
- * @param {number} id
- */
-function highlight(id) {
-	document.getElementById(id).classList.add("drag-area-highlight");
-}
-
-/**
- * removes the highlighting when dragged element is not over the container anymore
- * @param {number} id
- */
-function removeHighlight(id) {
-	document.getElementById(id).classList.remove("drag-area-highlight");
-}
-
-/**
  * starts the animation for opening a task in the bigger few
  * @param {number} taskIndex
  */
 function slideBigCard(taskIndex) {
 	console.log(allTasks[taskIndex]);
-	let slideBigCard = document.querySelector("#big-card-slider");
-	let slideInputBG = document.querySelector("#slide-transition-wrapper");
-	if (slideBigCard.classList.contains("big-card-slide-transition")) {
+	let slideBigCard = document.querySelector('#big-card-slider');
+	let slideInputBG = document.querySelector('#slide-transition-wrapper');
+	if (slideBigCard.classList.contains('big-card-slide-transition')) {
 		hideBigCard(slideInputBG, slideBigCard);
 	} else {
 		initShowBigCard(slideInputBG, slideBigCard, taskIndex);
@@ -183,9 +147,9 @@ function slideBigCard(taskIndex) {
  * @param {HTMLElement} slideBigCard
  */
 function hideBigCard(slideInputBG, slideBigCard) {
-	slideBigCard.classList.remove("big-card-slide-transition");
-	slideInputBG.classList.remove("wrapper-transition");
-	slideInputBG.classList.add("d-none");
+	slideBigCard.classList.remove('big-card-slide-transition');
+	slideInputBG.classList.remove('wrapper-transition');
+	slideInputBG.classList.add('d-none');
 }
 
 /**
@@ -197,9 +161,9 @@ function hideBigCard(slideInputBG, slideBigCard) {
  */
 function initShowBigCard(slideInputBG, slideBigCard, taskIndex) {
 	let task = allTasks[taskIndex];
-	slideBigCard.classList.add("big-card-slide-transition");
-	slideInputBG.classList.remove("d-none");
-	slideInputBG.classList.add("wrapper-transition");
+	slideBigCard.classList.add('big-card-slide-transition');
+	slideInputBG.classList.remove('d-none');
+	slideInputBG.classList.add('wrapper-transition');
 	createBigCard(taskIndex);
 	createBigCardUsers(taskIndex);
 	createBigTaskSubtasks(taskIndex);
@@ -214,16 +178,16 @@ function initShowBigCard(slideInputBG, slideBigCard, taskIndex) {
 function transformDate(taskIndex) {
 	let task = allTasks[taskIndex];
 	let currentDate = task.date;
-	let parts = currentDate.split("-");
+	let parts = currentDate.split('-');
 	let year = parts[0];
 	let month = parts[1];
 	let day = parts[2];
 	let date = new Date(year, month - 1, day);
 	let formattedDate =
-		("0" + date.getDate()).slice(-2) +
-		"/" +
-		("0" + (date.getMonth() + 1)).slice(-2) +
-		"/" +
+		('0' + date.getDate()).slice(-2) +
+		'/' +
+		('0' + (date.getMonth() + 1)).slice(-2) +
+		'/' +
 		date.getFullYear();
 	return formattedDate;
 }
@@ -239,7 +203,7 @@ async function toggleSubtaskCheckbox(taskIndex, subIndex) {
 	currSubtask.done = !currSubtask.done;
 	task.subtaskCounter = updateSubtaskCounter(task);
 	createBigTaskSubtasks(taskIndex);
-	await setItem("allTasks", allTasks);
+	await setItem('allTasks', allTasks);
 	await initBoard();
 }
 
@@ -270,7 +234,7 @@ async function deleteTask(id) {
 		}
 	}
 	slideBigCard();
-	await setItem("allTasks", allTasks);
+	await setItem('allTasks', allTasks);
 	await initBoard();
 }
 
@@ -312,16 +276,15 @@ function setSelectedUsers(taskIndex) {
  * @param {number} taskIndex
  */
 async function submitTaskChanges(taskIndex) {
-	titleInput = validateField("#title-input", "#error-title");
-	descriptionInput = document.querySelector("#description-input").value;
-	dateInput = validateField("#due-date-input", "#error-due-date");
-	categoryInput = validateField("#category-input", "#error-category");
-	if (titleInput && dateInput && categoryInput) {
+	titleInput = validateField('#title-input', '#error-title');
+	descriptionInput = document.querySelector('#description-input').value;
+	dateInput = validateField('#due-date-input', '#error-due-date');
+	if (titleInput && dateInput) {
 		await changeTask(taskIndex);
-		if ((window.location.href = "../html/board.html")) {
+		if ((window.location.href = '../html/board.html')) {
 			await initBoard();
 		} else {
-			window.location.href = "../html/board.html";
+			window.location.href = '../html/board.html';
 		}
 	}
 }
@@ -338,12 +301,12 @@ async function changeTask(taskIndex) {
 	task.date = dateInput;
 	task.priority = activePrio;
 	task.prioName = prioName;
-	task.category = categoryInput;
+	task.category = task.category;
 	task.subtasks = subtasks;
 	task.subtaskCounter = task.subtaskCounter;
 	task.cardContainer = task.cardContainer;
 	task.id = task.id;
-	await setItem("allTasks", allTasks);
+	await setItem('allTasks', allTasks);
 	resetForm();
 	initBoard();
 }
@@ -354,14 +317,8 @@ async function changeTask(taskIndex) {
  * if it is not empty, the renderFilteredTasks function is called
  */
 function filterTasks() {
-	let searchTaskInput = document
-		.getElementById("search-bar")
-		.value.toLowerCase();
-	if (
-		searchTaskInput == null ||
-		searchTaskInput == "" ||
-		searchTaskInput < 1
-	) {
+	let searchTaskInput = document.getElementById('search-bar').value.toLowerCase();
+	if (searchTaskInput == null || searchTaskInput == '' || searchTaskInput < 1) {
 		renderTasksBoard();
 	} else {
 		renderFilteredTasks(searchTaskInput);
@@ -379,13 +336,10 @@ function renderFilteredTasks(searchTaskInput) {
 		let currDesc = allTasks[i].description.toLowerCase();
 		let currCard = document.getElementById(`task${allTasks[i].id}`);
 
-		if (
-			currTitle.includes(searchTaskInput) ||
-			currDesc.includes(searchTaskInput)
-		) {
-			currCard.classList.remove("d-none");
+		if (currTitle.includes(searchTaskInput) || currDesc.includes(searchTaskInput)) {
+			currCard.classList.remove('d-none');
 		} else {
-			currCard.classList.add("d-none");
+			currCard.classList.add('d-none');
 		}
 	}
 }
