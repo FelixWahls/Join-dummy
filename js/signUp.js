@@ -123,19 +123,13 @@ async function addUser(){
  let password = document.getElementById('password').value;
  let name = document.getElementById('name').value;
 
- // Zuerst holen wir die aktuelle Benutzerliste vom Server, falls vorhanden
  let currentUsers = await getItem('users');
  if (!currentUsers) {
      currentUsers = [];
  }
 
- // Fügen den neuen Benutzer zur Liste hinzu
  currentUsers.push({name, email, password});
-
- // Aktualisieren der Benutzerliste auf dem Server
  await setItem('users', JSON.stringify(currentUsers));
-
- // Optional: Bestätigung, dass der Benutzer hinzugefügt wurde
  console.log('Benutzer hinzugefügt: ', {name, email, password});
  logUsersFromServer()
  showPopup();
@@ -143,15 +137,20 @@ async function addUser(){
 async function logUsersFromServer() {
  try {
      let usersFromServer = await getItem('users');
+     // Sicherstellen, dass das Ergebnis nicht leer oder ungültig ist
+     if (!usersFromServer || usersFromServer.length === 0) {
+         console.log('Keine Benutzerdaten gefunden.');
+         return;
+     }
      console.log('Aktuell gespeicherte Benutzer:', usersFromServer);
+     // Detaillierte Ausgabe jedes Benutzers in einem lesbareren Format
+     usersFromServer.forEach((user, index) => {
+         console.log(`User ${index + 1}: Name - ${user.name}, Email - ${user.email}, Password - ${user.password}`);
+     });
  } catch (error) {
      console.error('Fehler beim Abrufen der Benutzerdaten:', error);
  }
 }
-
-
-
-
 
 /**
  * Displays a popup message indicating successful sign-up.

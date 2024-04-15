@@ -81,7 +81,7 @@ async function validateLogin() {
      } else {
          setWrongPasswordStyles();
          const wrongPwElement = document.querySelector('.wrongPw');
-         wrongPwElement.textContent = "E-Mail oder Passwort falsch. Bitte versuchen Sie es erneut!";
+         wrongPwElement.textContent = "Wrong password Ups! Try again";
      }
  } catch (error) {
      console.error('Fehler bei der Anmeldung:', error);
