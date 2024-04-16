@@ -20,6 +20,15 @@ async function initBoard() {
 	}
 }
 
+function checkHide() {
+	let addTaskContent = document.getElementById('add-task-form');
+	if (addTaskContent) {
+		hideSlider();
+	} else {
+		hideBigCard();
+	}
+}
+
 /**
  * checks window width and either changes the Page to add-Task or initialises the slide Animation on the Board
  */

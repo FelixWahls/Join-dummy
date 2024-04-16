@@ -18,10 +18,7 @@
 	<body onload="initBoard()" onclick="closeSidemenu()">
 		<div id="slider-bg" class="d-none"></div>
 		<div w3-include-html="../templates/sidemenu.html"></div>
-		<div
-			class="wrapper-add-task d-none"
-			id="slide-transition-wrapper"
-			onclick="hideSlider(), hideBigCard()">
+		<div class="wrapper-add-task d-none" id="slide-transition-wrapper" onclick="checkHide()">
 			<div class="big-card" id="big-card-slider" onclick="event.stopPropagation()"></div>
 			<div
 				class="main-container"
