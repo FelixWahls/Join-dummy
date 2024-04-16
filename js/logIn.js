@@ -1,37 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
- initAnimations();
+ handleRememberMe();
+
  const loginButton = document.querySelector('.logIn-button');
  if (loginButton) {
      loginButton.addEventListener('click', validateLogin);
  }
+
+ const guestLoginButton = document.getElementById('guestLogIn');
+ if (guestLoginButton) {
+     guestLoginButton.addEventListener('click', function() {
+         window.location.href = '../html/summary.html'; // Pfad zur Ziel-Seite
+     });
+ }
 });
 
-/**
-* Initializes animations for the website's logo and content visibility.
-*/
-function initAnimations() {
- const logo = document.querySelector('.logo-icon');
- const websiteContent = document.querySelector('.Website');
- setTimeout(() => {
-     websiteContent.style.display = 'flex';
- }, 500);
- setTimeout(() => {
-     animateLogo(logo);
- }, 3500);
-}
-
-/**
-* Animates the logo by setting its position, size, and transformation.
-* 
-* @param {HTMLElement} logo - The logo element to be animated.
-*/
-function animateLogo(logo) {
- logo.style.top = '80px';
- logo.style.left = '77px';
- logo.style.width = '100.03px';
- logo.style.height = '121.97px';
- logo.style.transform = 'translate(0, 0)';
-}
 
 /**
 * Handles input in the password field and updates the icon based on field content.
@@ -63,31 +45,120 @@ function togglePasswordVisibility(fieldId, iconId) {
 }
 
 /**
-* Validates the login attempt by checking the email and password against stored values.
-*/
+ * Initiates the validation of the login attempt by retrieving input and checking credentials.
+ */
 async function validateLogin() {
- const emailInput = document.getElementById('email').value;
- const passwordInput = document.getElementById('password').value;
+ const email = getEmailInput();
+ const password = getPasswordInput();
+ const rememberCheckbox = document.getElementById('rememberMeCheckbox');
 
- try {
-     let users = await getItem('users');
-     if (!users) {
-         throw new Error("Keine Benutzerdaten gefunden.");
-     }
-
-     const user = users.find(user => user.email === emailInput && user.password === passwordInput);
-     if (user) {
-         window.location.href = '../html/summary.html';
-     } else {
-         setWrongPasswordStyles();
-         const wrongPwElement = document.querySelector('.wrongPw');
-         wrongPwElement.textContent = "Wrong password Ups! Try again";
-     }
- } catch (error) {
-     console.error('Fehler bei der Anmeldung:', error);
+ if (!email || !password) {
      setWrongPasswordStyles();
+     return;
+ }
+
+ handleLoginAttempt(email, password, rememberCheckbox);
+}
+
+/**
+* Handles the login attempt by validating user credentials and processing the result.
+* @param {string} email - User's email.
+* @param {string} password - User's password.
+* @param {HTMLElement} rememberCheckbox - The checkbox element.
+*/
+async function handleLoginAttempt(email, password, rememberCheckbox) {
+ try {
+     const user = await validateUserCredentials(email, password);
+     processLoginResult(user, email, password, rememberCheckbox);
+ } catch (error) {
+     handleLoginError(error);
  }
 }
+
+
+/**
+* Retrieves and trims the email input value.
+* @returns {string} The trimmed email value.
+*/
+function getEmailInput() {
+ return document.getElementById('email').value.trim();
+}
+
+/**
+* Retrieves and trims the password input value.
+* @returns {string} The trimmed password value.
+*/
+function getPasswordInput() {
+ return document.getElementById('password').value.trim();
+}
+
+/**
+* Validates user credentials against stored values.
+* @param {string} email - User's email.
+* @param {string} password - User's password.
+* @returns {Promise<Object|null>} A user object if credentials are valid, otherwise null.
+*/
+async function validateUserCredentials(email, password) {
+ let users = await getItem('users');
+ if (!users) {
+     throw new Error("Keine Benutzerdaten gefunden.");
+ }
+ return users.find(user => user.email === email && user.password === password);
+}
+
+/**
+* Processes the result of a login attempt.
+* @param {Object|null} user - The user object returned from credentials validation.
+* @param {string} email - User's email.
+* @param {string} password - User's password.
+* @param {HTMLElement} rememberCheckbox - The remember me checkbox element.
+*/
+function processLoginResult(user, email, password, rememberCheckbox) {
+ if (user) {
+     handleSuccessfulLogin(user, email, password, rememberCheckbox);
+     window.location.href = '../html/summary.html';
+ } else {
+     displayWrongPasswordMessage();
+ }
+}
+
+/**
+* Handles successful login by managing local storage based on remember me checkbox.
+* @param {Object} user - The user object.
+* @param {string} email - User's email.
+* @param {string} password - User's password.
+* @param {HTMLElement} rememberCheckbox - The remember me checkbox element.
+*/
+function handleSuccessfulLogin(user, email, password, rememberCheckbox) {
+ if (rememberCheckbox.checked) {
+     localStorage.setItem('email', email);
+     localStorage.setItem('password', password);
+     localStorage.setItem('rememberMe', 'true');
+ } else {
+     localStorage.removeItem('email');
+     localStorage.removeItem('password');
+     localStorage.removeItem('rememberMe');
+ }
+}
+
+/**
+* Handles login errors by logging the error and applying wrong password styles.
+* @param {Error} error - The caught error object.
+*/
+function handleLoginError(error) {
+ console.error('Fehler bei der Anmeldung:', error);
+ setWrongPasswordStyles();
+}
+
+/**
+* Displays a wrong password message and applies wrong password styles.
+*/
+function displayWrongPasswordMessage() {
+ setWrongPasswordStyles();
+ const wrongPwElement = document.querySelector('.wrongPw');
+ wrongPwElement.textContent = "Wrong password! Try again";
+}
+
 
 /**
 * Applies visual feedback for a wrong password attempt.
@@ -103,13 +174,14 @@ function setWrongPasswordStyles() {
 * Toggles the checkbox image between checked and unchecked states.
 */
 function toggleCheckbox() {
- const checkboxImg = document.querySelector('.checkbox');
+ const checkboxImg = document.getElementById('rememberMeCheckbox');
  if (checkboxImg.src.includes('Checkbox.png')) {
      checkboxImg.src = '../img/CheckboxCheck.png';
  } else {
      checkboxImg.src = '../img/Checkbox.png';
  }
 }
+
 
 /**
 * Removes the box shadow style from the email input field upon user input.
@@ -119,3 +191,58 @@ function toggleCheckbox() {
 function removeEmailBoxShadow(element) {
  element.style.boxShadow = 'none';
 }
+
+/**
+ * Handle Remember Me functionality by setting event listeners and prefilling data.
+ */
+function handleRememberMe() {
+ const rememberCheckbox = document.getElementById('rememberMeCheckbox');
+ if (!rememberCheckbox) return;
+
+ setupCheckboxListener(rememberCheckbox);
+ prefillLoginDataFromStorage(rememberCheckbox);
+}
+
+/**
+* Set up event listener for Remember Me checkbox changes.
+* @param {HTMLElement} checkbox - The remember me checkbox element.
+*/
+function setupCheckboxListener(checkbox) {
+ checkbox.addEventListener('change', function() {
+     toggleLocalStorage(this.checked);
+ });
+}
+
+/**
+* Toggle the state of local storage based on checkbox state.
+* @param {boolean} isChecked - State of the checkbox.
+*/
+function toggleLocalStorage(isChecked) {
+ const emailInput = document.getElementById('email').value;
+ const passwordInput = document.getElementById('password').value;
+ if (isChecked) {
+     localStorage.setItem('email', emailInput);
+     localStorage.setItem('password', passwordInput);
+     localStorage.setItem('rememberMe', 'true');
+ } else {
+     localStorage.removeItem('email');
+     localStorage.removeItem('password');
+     localStorage.removeItem('rememberMe');
+ }
+}
+
+/**
+* Prefill login data from local storage if Remember Me was selected.
+* @param {HTMLElement} checkbox - The remember me checkbox element.
+*/
+function prefillLoginDataFromStorage(checkbox) {
+ if (localStorage.getItem('rememberMe') === 'true') {
+     const emailInput = document.getElementById('email');
+     const passwordInput = document.getElementById('password');
+     emailInput.value = localStorage.getItem('email') || '';
+     passwordInput.value = localStorage.getItem('password') || '';
+     checkbox.checked = true;
+ }
+}
+
+
