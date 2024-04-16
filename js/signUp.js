@@ -1,23 +1,24 @@
 let checkboxState = false;
-
 /**
  * Initializes event listeners for UI elements related to the checkbox,
  * password input fields, and password visibility toggles upon DOM content fully loaded.
  * Only initializes on the sign-up page.
  */
-if (window.location.href === "../html/signUp.html") {
-	document.addEventListener("DOMContentLoaded", () => {
-		document.querySelector(".signUp-button").disabled = true;
-		document.getElementById("checkboxImg").onclick = toggleCheckbox;
-		document.getElementById("password").oninput = () =>
-			handlePasswordInput("password");
-		document.getElementById("confirmPw").oninput = () =>
-			handlePasswordInput("confirmPw");
-		document.getElementById("passwordIcon").onclick = () =>
-			togglePasswordVisibility("password", "passwordIcon");
-		document.getElementById("confirmPwIcon").onclick = () =>
-			togglePasswordVisibility("confirmPw", "confirmPwIcon");
-	});
+if (window.location.href.includes("signUp.html")) {
+ document.addEventListener("DOMContentLoaded", () => {
+     checkboxState = false;
+     document.querySelector(".signUp-button").disabled = true;
+     const checkboxImg = document.getElementById("checkboxImg");
+     checkboxImg.onclick = toggleCheckbox;
+     document.getElementById("password").oninput = () =>
+         handlePasswordInput("password");
+     document.getElementById("confirmPw").oninput = () =>
+         handlePasswordInput("confirmPw");
+     document.getElementById("passwordIcon").onclick = () =>
+         togglePasswordVisibility("password", "passwordIcon");
+     document.getElementById("confirmPwIcon").onclick = () =>
+         togglePasswordVisibility("confirmPw", "confirmPwIcon");
+ });
 }
 
 /**
@@ -25,12 +26,10 @@ if (window.location.href === "../html/signUp.html") {
  * based on the current state. Enables or disables the sign-up button based on checkbox state.
  */
 function toggleCheckbox() {
-	checkboxState = !checkboxState;
-	const checkboxImg = document.getElementById("checkboxImg");
-	checkboxImg.src = checkboxState
-		? "../img/CheckboxCheck.png"
-		: "../img/Checkbox.png";
-	document.querySelector(".signUp-button").disabled = !checkboxState;
+ checkboxState = !checkboxState;
+ const checkboxImg = document.getElementById("checkboxImg");
+ checkboxImg.src = checkboxState ? "../img/CheckboxCheck.png" : "../img/Checkbox.png";
+ document.querySelector(".signUp-button").disabled = !checkboxState;
 }
 
 /**

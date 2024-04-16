@@ -1,5 +1,8 @@
+
 document.addEventListener('DOMContentLoaded', () => {
  handleRememberMe();
+ showUserName();
+ showUserInitials(); // Show initials on load
 
  const loginButton = document.querySelector('.logIn-button');
  if (loginButton) {
@@ -17,12 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
          localStorage.removeItem('email');
          localStorage.removeItem('password');
          localStorage.removeItem('rememberMe');
- 
+
          window.location.href = '../html/summary.html';
      });
  }
 });
 
+/**
+ * Extracts the initials from the user's name stored in localStorage and displays them in the specified element.
+ */
+function showUserInitials() {
+ const userName = localStorage.getItem('userName');
+ const initialsElement = document.getElementById('initials');
+
+ if (initialsElement && userName) {
+     // Split the name by spaces to handle middle names and extract initials
+     const initials = userName.split(' ').map(name => name[0]).join('');
+     initialsElement.textContent = initials;
+ }
+}
 
 /**
 * Handles input in the password field and updates the icon based on field content.
