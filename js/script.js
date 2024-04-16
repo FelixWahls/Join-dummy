@@ -12,6 +12,7 @@ function showUserInitials() {
 		.join('');
 	initialsElement.textContent = initials;
 }
+
 const prioButtons = [
 	{
 		priority: 'urgent',
