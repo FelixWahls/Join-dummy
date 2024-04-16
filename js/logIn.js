@@ -8,8 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
  const guestLoginButton = document.getElementById('guestLogIn');
  if (guestLoginButton) {
-     guestLoginButton.addEventListener('click', function() {
-         window.location.href = '../html/summary.html'; // Pfad zur Ziel-Seite
+     guestLoginButton.addEventListener('click', function () {
+         const greetingName = document.getElementById('greeting-name');
+         if (greetingName) {
+             greetingName.textContent = ''; 
+         }
+         localStorage.removeItem('userName');
+         localStorage.removeItem('email');
+         localStorage.removeItem('password');
+         localStorage.removeItem('rememberMe');
+ 
+         window.location.href = '../html/summary.html';
      });
  }
 });
@@ -103,8 +112,13 @@ async function validateUserCredentials(email, password) {
  if (!users) {
      throw new Error("Keine Benutzerdaten gefunden.");
  }
- return users.find(user => user.email === email && user.password === password);
+ const user = users.find(user => user.email === email && user.password === password);
+ if (!user) {
+     return null;
+ }
+ return user; // Gibt das ganze User-Objekt zurück
 }
+
 
 /**
 * Processes the result of a login attempt.
@@ -121,6 +135,7 @@ function processLoginResult(user, email, password, rememberCheckbox) {
      displayWrongPasswordMessage();
  }
 }
+
 
 /**
 * Handles successful login by managing local storage based on remember me checkbox.
@@ -139,7 +154,25 @@ function handleSuccessfulLogin(user, email, password, rememberCheckbox) {
      localStorage.removeItem('password');
      localStorage.removeItem('rememberMe');
  }
+ localStorage.setItem('userName', user.name); 
 }
+
+/**
+ * Displays the username on the greeting section of the page if available in localStorage.
+ * Get the username from localStorage
+ * Check if the username exists
+ * If username exists, set it as the text content of the greeting section
+ */
+function showUserName() {
+ const userName = localStorage.getItem('userName');
+ const greetingName = document.getElementById('greeting-name');
+
+ if (greetingName) {
+     greetingName.textContent = userName ? userName : '';
+ }
+}
+
+document.addEventListener('DOMContentLoaded', showUserName);
 
 /**
 * Handles login errors by logging the error and applying wrong password styles.
@@ -244,5 +277,3 @@ function prefillLoginDataFromStorage(checkbox) {
      checkbox.checked = true;
  }
 }
-
-
