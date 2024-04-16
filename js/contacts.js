@@ -277,7 +277,7 @@ async function addNewContact(event) {
 	cancelInputValue();
 	animateCloseAddNewContainerDesktop();
 	findAndOpenContactCardByName(name);
-	document.querySelector('.createButtonContainer').style.display = 'flex';
+	document.querySelector('.createButtonContainer').style.display = 'block';
 	return false;
 }
 
