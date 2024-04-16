@@ -170,7 +170,8 @@ function createEditTaskHtml(taskIndex) {
                 id="due-date-input"
                 class="due-date-input"
                 placeholder="dd/mm/yyyy" 
-                value="${task.date}" />
+                value="${task.date}" 
+                onfocus="this.showPicker()"/>
             <div class="error d-none" id="error-due-date">
                 This field is required
             </div>
