@@ -267,7 +267,7 @@ function closeAddNewContactWindow() {
 
 async function addNewContact(event) {
 	event.preventDefault();
-	
+	document.querySelector('.createButtonContainer').style.display = 'none';
 	let name = document.querySelector('.nameInputContainer').value;
 	let email = document.querySelector('.emailInputContainer').value;
 	let phone = document.querySelector('.phoneInputContainer').value;
@@ -277,6 +277,7 @@ async function addNewContact(event) {
 	cancelInputValue();
 	animateCloseAddNewContainerDesktop();
 	findAndOpenContactCardByName(name);
+	document.querySelector('.createButtonContainer').style.display = 'flex';
 	return false;
 }
 
