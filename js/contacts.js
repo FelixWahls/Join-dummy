@@ -32,20 +32,18 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
-
-
 /**
  * @description Initializes the contact list by clearing previous entries and displaying sorted contacts.
  */
 
 async function initContactlist() {
-    let initContacts = document.querySelector('#initContacts');
-    initContacts.innerHTML = '';
-    let lastInitial = null;
-    if (contacts) {
-        contacts.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    displaySortedContactsByInitial(initContacts, lastInitial);
+	let initContacts = document.querySelector('#initContacts');
+	initContacts.innerHTML = '';
+	let lastInitial = null;
+	if (contacts) {
+		contacts.sort((a, b) => a.name.localeCompare(b.name));
+	}
+	displaySortedContactsByInitial(initContacts, lastInitial);
 }
 
 /**
@@ -54,15 +52,15 @@ async function initContactlist() {
  * @param {string} lastInitial - The last initial letter used to create a section header. Updated dynamically as contacts are processed.
  */
 function displaySortedContactsByInitial(initContacts, lastInitial) {
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        const currentInitial = contact.name[0].toUpperCase();
-        if (currentInitial !== lastInitial) {
-            initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
-            lastInitial = currentInitial;
-        }
-        initContacts.innerHTML += appendContactCardToDisplay(contact, i);
-    }
+	for (let i = 0; i < contacts.length; i++) {
+		const contact = contacts[i];
+		const currentInitial = contact.name[0].toUpperCase();
+		if (currentInitial !== lastInitial) {
+			initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
+			lastInitial = currentInitial;
+		}
+		initContacts.innerHTML += appendContactCardToDisplay(contact, i);
+	}
 }
 
 /**
@@ -243,8 +241,12 @@ function contactOverviewTemplate(i) {
  * Opens the modal window for adding a new contact by applying CSS transitions and displaying the overlay.
  */
 function openAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
@@ -252,8 +254,12 @@ function openAddNewContactWindow() {
  * Closes the modal window for adding a new contact by applying CSS transitions and hiding the overlay.
  */
 function closeAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransition');
 	document.querySelector('.overlay').style.display = 'none';
 }
 
@@ -267,7 +273,7 @@ function closeAddNewContactWindow() {
 function addNewContact(event) {
 	event.preventDefault();
 	const createButton = document.querySelector('.createButtonContainer');
-    createButton.disabled = true;
+	createButton.disabled = true;
 	let name = document.querySelector('.nameInputContainer').value;
 	let email = document.querySelector('.emailInputContainer').value;
 	let phone = document.querySelector('.phoneInputContainer').value;
@@ -298,11 +304,19 @@ function findAndOpenContactCardByName(name) {
  * Triggers a closing animation sequence on the 'CreateResponseContainer' element.
  */
 function animateCloseAddNewContainerDesktop() {
-	document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
-	document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.remove('CreateResponseContainerTransitionRemove');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.add('CreateResponseContainerTransition');
 	setTimeout(() => {
-		document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
-		document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.remove('CreateResponseContainerTransition');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.add('CreateResponseContainerTransitionRemove');
 	}, 1500);
 }
 
@@ -312,7 +326,7 @@ function animateCloseAddNewContainerDesktop() {
  * @param {string} email - The email address of the new contact.
  * @param {string} phone - The phone number of the new contact.
  */
-function createNewContactDesktop(name, email, phone) {
+async function createNewContactDesktop(name, email, phone) {
 	let newContact = {
 		name: name,
 		email: email,
@@ -322,7 +336,7 @@ function createNewContactDesktop(name, email, phone) {
 		addTask: false,
 	};
 	contacts.push(newContact);
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 }
 
 async function createNewRegContact(name, email, phone) {
@@ -336,7 +350,7 @@ async function createNewRegContact(name, email, phone) {
 		addTask: false,
 	};
 	contacts.push(newContact);
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 }
 
 /**
@@ -345,7 +359,7 @@ async function createNewRegContact(name, email, phone) {
  */
 async function deleteContact(i) {
 	contacts.splice(i, 1);
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 	initContactlist();
 	document.querySelector('.contactOverview').innerHTML = '';
 }
@@ -364,8 +378,12 @@ function cancelInputValue() {
  * @param {number} i - The index of the contact in the global `contacts` array.
  */
 function openEditContactWindow(i) {
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
 	document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
@@ -379,26 +397,30 @@ function openEditContactWindow(i) {
  * Closes the edit contact window and clears related visual effects.
  *
  * This function hides the edit contact modal by reversing the visual transition effects applied during opening.
- * It hides the overlay and resets the `currentContact` variable to zero, effectively clearing any specific contact 
+ * It hides the overlay and resets the `currentContact` variable to zero, effectively clearing any specific contact
  * selection context.
  *
  * @function closeEditContactWindow
- * 
+ *
  * @example
  * // Close the edit contact window and reset the editing context.
  * closeEditContactWindow();
  */
 
 function closeEditContactWindow() {
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'none';
 	currentContact = 0;
 }
 
 async function deleteContactInEditWindow() {
 	contacts.splice(currentContact, 1);
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 	initContactlist();
 	document.querySelector('.contactOverview').innerHTML = '';
 	closeEditContactWindow();
@@ -407,7 +429,7 @@ async function deleteContactInEditWindow() {
 async function editContact(event) {
 	event.preventDefault();
 	updateCurrentContactDetails();
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 	initContactlist();
 	closeEditContactWindow();
 	openMatchingContactCard();

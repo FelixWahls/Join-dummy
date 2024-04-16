@@ -67,7 +67,7 @@ textarea {
 }
 
 .req-label::after {
-	content: "*";
+	content: '*';
 	color: red;
 }
 
@@ -281,7 +281,7 @@ button:hover {
 }
 
 .required-info::before {
-	content: "*";
+	content: '*';
 	color: red;
 }
 
@@ -289,7 +289,7 @@ button:hover {
 
 #user-list {
 	width: 100%;
-	max-height: 285px;
+	max-height: 170px;
 	overflow-y: scroll;
 	background-color: white;
 	border-radius: 10px;
@@ -380,7 +380,7 @@ button:hover {
 }
 
 .todo-subtask::before {
-	content: "•";
+	content: '•';
 	position: absolute;
 	top: calc(50% - 11px);
 }
