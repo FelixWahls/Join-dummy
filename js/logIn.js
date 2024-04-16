@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
  handleRememberMe();
  showUserName();
- showUserInitials(); // Show initials on load
+ showUserInitials(); 
 
  const loginButton = document.querySelector('.logIn-button');
  if (loginButton) {
