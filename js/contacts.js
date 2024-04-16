@@ -39,11 +39,13 @@ function extractCapitalLetters(name) {
  */
 
 async function initContactlist() {
-	
-	let initContacts = document.querySelector('#initContacts');
-	initContacts.innerHTML = '';
-	let lastInitial = null;
-	displaySortedContactsByInitial(initContacts, lastInitial);
+    let initContacts = document.querySelector('#initContacts');
+    initContacts.innerHTML = '';
+    let lastInitial = null;
+    if (contacts) {
+        contacts.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    displaySortedContactsByInitial(initContacts, lastInitial);
 }
 
 /**
@@ -51,17 +53,16 @@ async function initContactlist() {
  *  @param {HTMLElement} initContacts - The HTML container where contacts will be displayed.
  * @param {string} lastInitial - The last initial letter used to create a section header. Updated dynamically as contacts are processed.
  */
-
 function displaySortedContactsByInitial(initContacts, lastInitial) {
-	for (let i = 0; i < contacts.length; i++) {
-		const contact = contacts[i];
-		const currentInitial = contact.name[0].toUpperCase();
-		if (currentInitial !== lastInitial) {
-			initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
-			lastInitial = currentInitial;
-		}
-		initContacts.innerHTML += appendContactCardToDisplay(contact, i);
-	}
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        const currentInitial = contact.name[0].toUpperCase();
+        if (currentInitial !== lastInitial) {
+            initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
+            lastInitial = currentInitial;
+        }
+        initContacts.innerHTML += appendContactCardToDisplay(contact, i);
+    }
 }
 
 /**
