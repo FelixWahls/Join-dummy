@@ -3,8 +3,9 @@ let checkboxState = false;
 /**
  * Initializes event listeners for UI elements related to the checkbox,
  * password input fields, and password visibility toggles upon DOM content fully loaded.
+ * Only initializes on the sign-up page.
  */
-if (window.location.href === "../html.signUp.html") {
+if (window.location.href === "../html/signUp.html") {
 	document.addEventListener("DOMContentLoaded", () => {
 		document.querySelector(".signUp-button").disabled = true;
 		document.getElementById("checkboxImg").onclick = toggleCheckbox;
@@ -21,7 +22,7 @@ if (window.location.href === "../html.signUp.html") {
 
 /**
  * Toggles the state of the checkbox and updates the checkbox image
- * based on the current state.
+ * based on the current state. Enables or disables the sign-up button based on checkbox state.
  */
 function toggleCheckbox() {
 	checkboxState = !checkboxState;
@@ -35,8 +36,6 @@ function toggleCheckbox() {
 /**
  * Handles input events on password fields and updates the icon
  * to indicate whether the field is empty or contains text.
- *
- * @param {string} fieldId - The ID of the password input field.
  */
 function handlePasswordInput(fieldId) {
 	const field = document.getElementById(fieldId);
@@ -48,9 +47,6 @@ function handlePasswordInput(fieldId) {
 /**
  * Toggles the visibility of the password in the specified field
  * and updates the icon to reflect the current visibility state.
- *
- * @param {string} fieldId - The ID of the password input field.
- * @param {string} iconId - The ID of the icon indicating visibility state.
  */
 function togglePasswordVisibility(fieldId, iconId) {
 	const field = document.getElementById(fieldId);
@@ -68,11 +64,8 @@ function togglePasswordVisibility(fieldId, iconId) {
 }
 
 /**
- * Validates the form by checking the checkbox state and comparing the passwords.
+ * Validates the form by ensuring the checkbox is checked and the passwords match.
  * Prevents form submission if validations fail.
- *
- * @param {Event} event - The form submission event.
- * @returns {boolean} - False if validations fail, to prevent form submission.
  */
 function validateForm(event) {
 	event.preventDefault();
@@ -86,9 +79,7 @@ function validateForm(event) {
 }
 
 /**
- * Validates the state of the checkbox.
- *
- * @returns {boolean} - True if the checkbox is checked, false otherwise.
+ * Checks if the privacy policy checkbox is checked and alerts if not.
  */
 function validateCheckbox() {
 	if (!checkboxState) {
@@ -101,10 +92,6 @@ function validateCheckbox() {
 /**
  * Compares the password and confirm password fields for equality.
  * Clears the fields and displays an error message if they do not match.
- *
- * @param {string} password - The password entered.
- * @param {string} confirmPw - The confirmation password entered.
- * @returns {boolean} - True if the passwords match, false otherwise.
  */
 function comparePasswords(password, confirmPw) {
 	if (password !== confirmPw) {
@@ -123,8 +110,7 @@ function comparePasswords(password, confirmPw) {
 }
 
 /**
- * Adds a new user to the users array and logs a message.
- * Redirects to the login page after adding the user.
+ * Adds a new user to the users array and redirects to the login page.
  */
 async function addUser() {
 	let email = document.getElementById("email").value;
@@ -138,34 +124,11 @@ async function addUser() {
 
 	currentUsers.push({ name, email, password });
 	await setItem("users", JSON.stringify(currentUsers));
-	console.log("Benutzer hinzugefügt: ", { name, email, password });
-	logUsersFromServer();
 	showPopup();
-}
-async function logUsersFromServer() {
-	try {
-		let usersFromServer = await getItem("users");
-		// Sicherstellen, dass das Ergebnis nicht leer oder ungültig ist
-		if (!usersFromServer || usersFromServer.length === 0) {
-			console.log("Keine Benutzerdaten gefunden.");
-			return;
-		}
-		console.log("Aktuell gespeicherte Benutzer:", usersFromServer);
-		// Detaillierte Ausgabe jedes Benutzers in einem lesbareren Format
-		usersFromServer.forEach((user, index) => {
-			console.log(
-				`User ${index + 1}: Name - ${user.name}, Email - ${
-					user.email
-				}, Password - ${user.password}`
-			);
-		});
-	} catch (error) {
-		console.error("Fehler beim Abrufen der Benutzerdaten:", error);
-	}
 }
 
 /**
- * Displays a popup message indicating successful sign-up.
+ * Displays a popup message indicating successful sign-up and redirects after 1 second.
  */
 function showPopup() {
 	const popup = document.createElement("div");
@@ -190,12 +153,4 @@ function showPopup() {
  */
 function redirectToLogin() {
 	window.location.href = "http://127.0.0.1:5501/html/logIn.html";
-}
-function displayUsers() {
-	console.log("Current users in the array:");
-	users.forEach((user, index) => {
-		console.log(
-			`User ${index + 1}: Name - ${user.name}, Email - ${user.email}`
-		);
-	});
 }
