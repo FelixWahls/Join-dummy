@@ -1,28 +1,26 @@
-    let submenuActive = false;
-   
+let submenuActive = false;
 
-    function notCloseSidebar(event){
-        if(submenuActive == true){
-            closeSidemenu();
-            submenuActive = false
-        }else{
-            event.stopPropagation();
-            submenuInit();
-            submenuActive = true;
-        }
-        
-    }
+function notCloseSidebar(event) {
+	if (submenuActive == true) {
+		closeSidemenu();
+		submenuActive = false;
+	} else {
+		event.stopPropagation();
+		submenuInit();
+		submenuActive = true;
+	}
+}
 
-    function closeSidemenu(){
-        document.getElementById('submenu').classList.add('submenuTransitionRemove');
-        document.getElementById('submenu').classList.remove('submenuTransition');
-    }
+function closeSidemenu() {
+	document.getElementById('submenu').classList.add('submenuTransitionRemove');
+	document.getElementById('submenu').classList.remove('submenuTransition');
+}
 
-    function submenuInit(){
-        let submenu = document.getElementById('submenu');
-        if(window.innerWidth <= 1100){
-            submenu.innerHTML = '';
-        submenu.innerHTML = `
+function submenuInit() {
+	let submenu = document.getElementById('submenu');
+	if (window.innerWidth <= 1100) {
+		submenu.innerHTML = '';
+		submenu.innerHTML = `
             <div class="submenu">
                 <a href="../html/help.html">
                     <div class="submenuItem">
@@ -46,12 +44,12 @@
                 </a>          
             </div>
         `;
-        }
-        document.getElementById('submenu').classList.add('submenuTransition');
-        document.getElementById('submenu').classList.remove('submenuTransitionRemove');
-        if(window.innerWidth > 1100){
-            submenu.innerHTML = '';
-        submenu.innerHTML = `
+	}
+	document.getElementById('submenu').classList.add('submenuTransition');
+	document.getElementById('submenu').classList.remove('submenuTransitionRemove');
+	if (window.innerWidth > 1100) {
+		submenu.innerHTML = '';
+		submenu.innerHTML = `
             <div class="submenu">
                 <a href="../html/legalNotice.html">
                     <div class="submenuItem">
@@ -70,9 +68,7 @@
                 </a>    
             </div>
         `;
-        }
-        document.getElementById('submenu').classList.add('submenuTransition');
-        document.getElementById('submenu').classList.remove('submenuTransitionRemove');
-        
-        
-    }
+	}
+	document.getElementById('submenu').classList.add('submenuTransition');
+	document.getElementById('submenu').classList.remove('submenuTransitionRemove');
+}

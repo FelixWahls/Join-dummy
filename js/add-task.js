@@ -5,6 +5,7 @@ const searchUserInput = document.querySelector('#assigned-to-input');
  */
 async function initAddTask() {
 	await includeHTML();
+	showUserInitials();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
 }

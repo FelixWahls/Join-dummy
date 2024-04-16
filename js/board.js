@@ -10,6 +10,7 @@ let taskCounts = {
 async function initBoard() {
 	await includeHTML();
 	await initAddTask();
+	showUserInitials();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
 	if (allTasks.length < 1) {

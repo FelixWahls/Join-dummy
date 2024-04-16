@@ -121,6 +121,10 @@ textarea:focus-visible {
 	position: relative;
 }
 
+.subtask-input {
+	padding-right: 110px;
+}
+
 .category-input,
 .due-date-input {
 	cursor: pointer;

@@ -5,6 +5,7 @@ let currentContact = 0;
  */
 async function initContacts() {
 	await includeHTML();
+	showUserInitials();
 	contacts = await getItem('contacts');
 	initContactlist();
 }
@@ -32,21 +33,19 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
-
-
 /**
  * @description Initializes the contact list by clearing previous entries and displaying sorted contacts.
  */
 
 async function initContactlist() {
-    let initContacts = document.querySelector('#initContacts');
-    initContacts.innerHTML = '';
-    let lastInitial = null;
+	let initContacts = document.querySelector('#initContacts');
+	initContacts.innerHTML = '';
+	let lastInitial = null;
 	contacts = await getItem('contacts');
-    if (contacts) {
-        contacts.sort((a, b) => a.name.localeCompare(b.name)); 
-    }
-    displaySortedContactsByInitial(initContacts, lastInitial);
+	if (contacts) {
+		contacts.sort((a, b) => a.name.localeCompare(b.name));
+	}
+	displaySortedContactsByInitial(initContacts, lastInitial);
 }
 
 /**
@@ -55,15 +54,15 @@ async function initContactlist() {
  * @param {string} lastInitial - The last initial letter used to create a section header. Updated dynamically as contacts are processed.
  */
 function displaySortedContactsByInitial(initContacts, lastInitial) {
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        const currentInitial = contact.name[0].toUpperCase();
-        if (currentInitial !== lastInitial) {
-            initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
-            lastInitial = currentInitial;
-        }
-        initContacts.innerHTML += appendContactCardToDisplay(contact, i);
-    }
+	for (let i = 0; i < contacts.length; i++) {
+		const contact = contacts[i];
+		const currentInitial = contact.name[0].toUpperCase();
+		if (currentInitial !== lastInitial) {
+			initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
+			lastInitial = currentInitial;
+		}
+		initContacts.innerHTML += appendContactCardToDisplay(contact, i);
+	}
 }
 
 /**
@@ -244,8 +243,12 @@ function contactOverviewTemplate(i) {
  * Opens the modal window for adding a new contact by applying CSS transitions and displaying the overlay.
  */
 function openAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
@@ -253,8 +256,12 @@ function openAddNewContactWindow() {
  * Closes the modal window for adding a new contact by applying CSS transitions and hiding the overlay.
  */
 function closeAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransition');
 	document.querySelector('.overlay').style.display = 'none';
 }
 
@@ -298,11 +305,19 @@ function findAndOpenContactCardByName(name) {
  * Triggers a closing animation sequence on the 'CreateResponseContainer' element.
  */
 function animateCloseAddNewContainerDesktop() {
-	document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
-	document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.remove('CreateResponseContainerTransitionRemove');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.add('CreateResponseContainerTransition');
 	setTimeout(() => {
-		document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
-		document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.remove('CreateResponseContainerTransition');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.add('CreateResponseContainerTransitionRemove');
 	}, 1500);
 }
 
@@ -365,8 +380,12 @@ function cancelInputValue() {
  * @param {number} i - The index of the contact in the global `contacts` array.
  */
 function openEditContactWindow(i) {
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
 	document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
@@ -380,8 +399,12 @@ function openEditContactWindow(i) {
  * Closes the edit contact window and clears related visual effects.
  */
 function closeEditContactWindow() {
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'none';
 	currentContact = 0;
 }
@@ -398,7 +421,7 @@ async function editContact(event) {
 	event.preventDefault();
 	updateCurrentContactDetails();
 	await setItem('contacts', contacts);
-	
+
 	closeEditContactWindow();
 	openMatchingContactCard();
 	initContactlist();

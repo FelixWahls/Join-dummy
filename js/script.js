@@ -2,7 +2,16 @@ const STORAGE_TOKEN = 'BG6WOK154AJ68UO0AQPTHWG0N5RXRC9BZCQ9TZVT';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let users = [];
 let contacts = [];
+const userName = localStorage.getItem('userName');
 
+function showUserInitials() {
+	const initialsElement = document.getElementById('initials');
+	const initials = userName
+		.split(' ')
+		.map((name) => name[0])
+		.join('');
+	initialsElement.textContent = initials;
+}
 const prioButtons = [
 	{
 		priority: 'urgent',

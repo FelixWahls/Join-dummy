@@ -8,6 +8,8 @@ let urgentCounter = 0;
 
 /** calls several functions and sets the counter for Tasks on Board */
 async function initSummary() {
+	await includeHTML();
+	showUserInitials();
 	allTasks = await getItem('allTasks');
 	getAllCounters();
 	getUrgentTasks();
