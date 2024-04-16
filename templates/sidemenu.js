@@ -1,3 +1,4 @@
+let submenuActive = false;
 
 function notCloseSidebar(event) {
 	if (submenuActive == true) {
