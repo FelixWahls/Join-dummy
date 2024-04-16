@@ -321,6 +321,20 @@ function createNewContactDesktop(name, email, phone) {
 	setItem('contacts', contacts);
 }
 
+async function createNewRegContact(name, email, phone) {
+	contacts = await getItem('contacts');
+	let newContact = {
+		name: name,
+		email: email,
+		telefon: phone,
+		color: getRandomColor(),
+		capitals: '',
+		addTask: false,
+	};
+	contacts.push(newContact);
+	setItem('contacts', contacts);
+}
+
 /**
  * Deletes a contact from the 'contacts' array and updates the display.
  * @param {number} i - The index of the contact to delete from the 'contacts' array.
