@@ -199,22 +199,6 @@ function createEditTaskHtml(taskIndex) {
                 </div>
             </div>
         </div>
-        <!-- <div class="d-flex-col m-0">
-            <label for="category-input" class="req-label">Category</label>
-            <select
-                name="category-input"
-                id="category-input"
-                class="category-input">
-                <option value="" disabled selected hidden>
-                    Select task category
-                </option>
-                <option value="User Story">User Story</option>
-                <option value="Technical Task">Technical Task</option>
-            </select>
-            <div class="error d-none" id="error-category">
-                This field is required
-            </div>
-        </div> -->
         <div class="d-flex-col m-0">
             <label for="subtask-input" class="">Subtasks</label>
             <div class="input-container">

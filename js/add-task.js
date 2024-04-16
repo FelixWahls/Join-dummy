@@ -416,6 +416,9 @@ function showSlider() {
 	}, 900);
 }
 
+/**
+ * checks current window location and sends user to board.html
+ */
 async function redirectToBoard() {
 	if ((window.location.href = '../html/board.html')) {
 		await initBoard();

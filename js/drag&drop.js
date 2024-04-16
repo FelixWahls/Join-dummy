@@ -47,12 +47,20 @@ function removeHighlight(id) {
 	document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
+/**
+ * toggles the move-to menu on a single card
+ * @param {number} taskId
+ */
 function showMoveToMenu(taskId) {
 	currentDraggedElement = taskId;
 	let currCardMenu = document.getElementById(`card-menu${taskId}`);
 	currCardMenu.classList.toggle('d-none');
 }
 
+/**
+ * moves the task to the target location
+ * @param {string} container
+ */
 async function clickMoveTo(container) {
 	allTasks[currentDraggedElement]['cardContainer'] = container;
 	await setItem('allTasks', allTasks);

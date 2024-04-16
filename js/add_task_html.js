@@ -325,6 +325,10 @@ function createAssignedUsersHtml(taskIndex) {
 	}
 }
 
+/**
+ * creates the last User Bubble if assigned users excced 5
+ * @param {number} taskIndex
+ */
 function createExceedingUsers(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`small-card-users${task.id}`);

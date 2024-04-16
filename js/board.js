@@ -52,6 +52,9 @@ function hideSlider() {
 	resetForm();
 }
 
+/**
+ * emptys the bigCardContainer
+ */
 function removeHtml() {
 	let bigCardContainer = document.querySelector('#big-card-slider');
 	bigCardContainer.innerHTML = '';
@@ -102,6 +105,9 @@ function renderTask(task, taskIndex) {
 	getEmptyContainers();
 }
 
+/**
+ * checks what containers are empty to display empty container task-html
+ */
 function getEmptyContainers() {
 	taskCounts = {
 		'to-do-container': 0,
@@ -117,6 +123,9 @@ function getEmptyContainers() {
 	renderEmptyContainers();
 }
 
+/**
+ * renders the empty containers
+ */
 function renderEmptyContainers() {
 	for (let containerType in taskCounts) {
 		if (taskCounts[containerType] === 0) {
@@ -127,6 +136,10 @@ function renderEmptyContainers() {
 	}
 }
 
+/**
+ * sets the toDoContainer to the value of the clicked add-Task column
+ * @param {string} container
+ */
 function setTaskContainer(container) {
 	toDoContainer = container;
 }

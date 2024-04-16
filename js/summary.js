@@ -82,6 +82,9 @@ function getUrgentTasks() {
 	document.getElementById('urgent-counter').innerHTML = urgentCounter;
 }
 
+/**
+ * greets the user with a certain text depending on the time of day
+ */
 function greet() {
 	const currentTime = new Date();
 	const currentHour = currentTime.getHours();
