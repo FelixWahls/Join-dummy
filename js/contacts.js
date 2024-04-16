@@ -25,6 +25,9 @@ function extractCapitalLetters(name) {
 				if (name[j] === name[j].toUpperCase() && name[j] !== ' ') {
 					capitals += name[j];
 				}
+				if (name[0] === name[0].toLowerCase() && name[0] !== ' ') {
+					capitals = name[0] + name[1];
+				}
 			}
 			contacts[i].capitals = capitals;
 			break;
