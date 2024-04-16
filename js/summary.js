@@ -103,5 +103,4 @@ function greet() {
 		greeting = 'Good Evening';
 	}
 	container.innerHTML = greeting;
-	console.log(greeting);
 }

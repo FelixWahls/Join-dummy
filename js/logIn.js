@@ -268,9 +268,9 @@ function toggleLocalStorage(isChecked) {
  * @param {HTMLElement} checkbox - The remember me checkbox element.
  */
 function prefillLoginDataFromStorage(checkbox) {
-		const emailInput = document.getElementById('email');
-		const passwordInput = document.getElementById('password');
-		emailInput.value = localStorage.getItem('email') || '';
-		passwordInput.value = localStorage.getItem('password') || '';
-		checkbox.checked = true;
-	}
+	const emailInput = document.getElementById('email');
+	const passwordInput = document.getElementById('password');
+	emailInput.value = localStorage.getItem('email') || '';
+	passwordInput.value = localStorage.getItem('password') || '';
+	checkbox.checked = true;
+}

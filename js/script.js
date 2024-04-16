@@ -5,12 +5,16 @@ let contacts = [];
 const userName = localStorage.getItem('userName');
 
 function showUserInitials() {
-	const initialsElement = document.getElementById('initials');
-	const initials = userName
-		.split(' ')
-		.map((name) => name[0])
-		.join('');
-	initialsElement.textContent = initials;
+	let initialsElement = document.getElementById('initials');
+	if (userName) {
+		const initials = userName
+			.split(' ')
+			.map((name) => name[0])
+			.join('');
+		initialsElement.textContent = initials;
+	} else {
+		initialsElement = 'G';
+	}
 }
 
 const prioButtons = [
