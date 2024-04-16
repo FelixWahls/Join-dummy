@@ -127,6 +127,10 @@ function renderEmptyContainers() {
 	}
 }
 
+function setTaskContainer(container) {
+	toDoContainer = container;
+}
+
 /**
  * starts the animation for opening a task in the bigger few
  * @param {number} taskIndex

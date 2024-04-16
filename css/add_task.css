@@ -355,7 +355,7 @@ button:hover {
 .todo-subtask {
 	align-items: center;
 	padding: 6px 16px;
-	height: 32px;
+	min-height: 32px;
 	position: relative;
 	max-width: 440px;
 	border-radius: 10px;

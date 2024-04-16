@@ -7,7 +7,6 @@ async function initAddTask() {
 	await includeHTML();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
-	console.log(contacts);
 }
 
 /**
@@ -439,7 +438,6 @@ function resetForm() {
 	subtasks = [];
 	toDoContainer = 'to-do-container';
 	renderSubtasks();
-	document.getElementById('add-task-button').disabled = false;
 }
 
 /**
