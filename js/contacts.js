@@ -6,6 +6,8 @@ let currentContact = 0;
 async function initContacts() {
 	await includeHTML();
 	contacts = await getItem('contacts');
+	users = await getItem('users');
+	console.log(users);
 	initContactlist();
 }
 
@@ -32,20 +34,46 @@ function extractCapitalLetters(name) {
 	return capitals;
 }
 
+/**
+ * @description This function registers a new user from the latest entry in the users array,
+ * adds them to contacts, sorts the list, and updates the UI to display all contacts grouped by initial letters.
+ */
 
+async function initRegisteredUser() {
+	let newRegUser = {
+		name: users[users.length - 1]['user'],
+		email: users[users.length - 1]['email'],
+		telefon: '',
+		color: getRandomColor(),
+		capitals: extractCapitalLetters(users[users.length - 1]['user']),
+		addTask: false,
+	};
+
+	contacts.push(newRegUser);
+	(newRegUser['name'] = ''),
+		(newRegUser['email'] = ''),
+		(newRegUser['telefon'] = ''),
+		(newRegUser['color'] = ''),
+		(newRegUser['capitals'] = ''),
+		(newUser['addTask'] = false);
+
+	let initContacts = document.querySelector('#initContacts');
+	initContacts.innerHTML = '';
+	let lastInitial = null;
+	contacts.sort((a, b) => a.name.localeCompare(b.name));
+	displaySortedContactsByInitial(initContacts, lastInitial);
+}
 
 /**
  * @description Initializes the contact list by clearing previous entries and displaying sorted contacts.
  */
 
 async function initContactlist() {
-    let initContacts = document.querySelector('#initContacts');
-    initContacts.innerHTML = '';
-    let lastInitial = null;
-    if (contacts) {
-        contacts.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    displaySortedContactsByInitial(initContacts, lastInitial);
+	initRegisteredUser();
+	let initContacts = document.querySelector('#initContacts');
+	initContacts.innerHTML = '';
+	let lastInitial = null;
+	displaySortedContactsByInitial(initContacts, lastInitial);
 }
 
 /**
@@ -53,16 +81,17 @@ async function initContactlist() {
  *  @param {HTMLElement} initContacts - The HTML container where contacts will be displayed.
  * @param {string} lastInitial - The last initial letter used to create a section header. Updated dynamically as contacts are processed.
  */
+
 function displaySortedContactsByInitial(initContacts, lastInitial) {
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        const currentInitial = contact.name[0].toUpperCase();
-        if (currentInitial !== lastInitial) {
-            initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
-            lastInitial = currentInitial;
-        }
-        initContacts.innerHTML += appendContactCardToDisplay(contact, i);
-    }
+	for (let i = 0; i < contacts.length; i++) {
+		const contact = contacts[i];
+		const currentInitial = contact.name[0].toUpperCase();
+		if (currentInitial !== lastInitial) {
+			initContacts.innerHTML += appendInitialSectionHeader(currentInitial);
+			lastInitial = currentInitial;
+		}
+		initContacts.innerHTML += appendContactCardToDisplay(contact, i);
+	}
 }
 
 /**
@@ -85,7 +114,7 @@ function appendInitialSectionHeader(currentInitial) {
 }
 
 /**
- * Generates HTML markup for a contact card that includes clickable behavior and some display details.
+ * @description Generates HTML markup for a contact card that includes clickable behavior and some display details.
  * @param {Object} contact - An object containing the contact's details such as name, email, and color.
  * @param {number} i - The index of the contact in the list, used to uniquely identify elements within the card.
  * @returns {string} HTML string representing a single contact card, ready to be inserted into the DOM.
@@ -123,7 +152,7 @@ function getRandomColor() {
 }
 
 /**
- * Handles the process of opening a contact card with transitions.
+ * @description Handles the process of opening a contact card with transitions.
  * @param {number} i - The index of the selected contact in the list, used to identify and manipulate specific elements.
  */
 function openContactCard(i) {
@@ -134,7 +163,7 @@ function openContactCard(i) {
 }
 
 /**
- * Adjusts the layout of the webpage to better suit mobile devices based on screen size.
+ * @description Adjusts the layout of the webpage to better suit mobile devices based on screen size.
  */
 
 function adjustLayoutForMobile() {
@@ -146,7 +175,7 @@ function adjustLayoutForMobile() {
 }
 
 /**
- * Renders a detailed view of a contact with a transition effect to enhance user interaction.
+ * @description Renders a detailed view of a contact with a transition effect to enhance user interaction.
  * @param {number} i - The index of the contact in the list, used to fetch and display the detailed contact information.
  */
 
@@ -159,7 +188,7 @@ function renderContactOverviewWithTransition(i) {
 }
 
 /**
- * Updates the visual styles of contact cards based on a selected index, with specific styles for desktop screens.
+ * @description Updates the visual styles of contact cards based on a selected index, with specific styles for desktop screens.
  * @param {number} i - The index of the currently selected contact, which is used to apply specific styles.
  */
 function updateContactCardsStyle(i) {
@@ -176,7 +205,7 @@ function updateContactCardsStyle(i) {
 }
 
 /**
- * Adjusts the text color of contact names in a list, highlighting the selected contact by changing its color.
+ * @description Adjusts the text color of contact names in a list, highlighting the selected contact by changing its color.
  * @param {number} j - The index of the contact whose color should be reset to black.
  * @param {number} i - The index of the selected contact whose color will be set to white.
  */
@@ -188,7 +217,7 @@ function updateContactNameColorForDesktop(j, i) {
 }
 
 /**
- * Generates HTML content for displaying an overview of a contact, including interactive edit and delete buttons.
+ * @description Generates HTML content for displaying an overview of a contact, including interactive edit and delete buttons.
  * @param {number} i - Index of the contact in the contacts array to generate the HTML content for.
  * @returns {string} A string of HTML content that can be directly inserted into a webpage to display the contact's overview.
  */
@@ -240,25 +269,33 @@ function contactOverviewTemplate(i) {
 }
 
 /**
- * Opens the modal window for adding a new contact by applying CSS transitions and displaying the overlay.
+ * @description Opens the modal window for adding a new contact by applying CSS transitions and displaying the overlay.
  */
 function openAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
 /**
- * Closes the modal window for adding a new contact by applying CSS transitions and hiding the overlay.
+ * @description Closes the modal window for adding a new contact by applying CSS transitions and hiding the overlay.
  */
 function closeAddNewContactWindow() {
-	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
-	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('addNewContactContainer')
+		.classList.remove('addNewContactContainerTransition');
 	document.querySelector('.overlay').style.display = 'none';
 }
 
 /**
- * Handles the event to add a new contact from form input fields, prevents default form submission,
+ * @description Handles the event to add a new contact from form input fields, prevents default form submission,
  * gathers data, and manages subsequent actions to update UI components and close the modal window.
  * @param {Event} event - The event object provided by the form submission.
  * @returns {boolean} Always returns false to ensure no further form submission occurs.
@@ -266,8 +303,6 @@ function closeAddNewContactWindow() {
 
 function addNewContact(event) {
 	event.preventDefault();
-	const createButton = document.querySelector('.createButtonContainer');
-    createButton.disabled = true;
 	let name = document.querySelector('.nameInputContainer').value;
 	let email = document.querySelector('.emailInputContainer').value;
 	let phone = document.querySelector('.phoneInputContainer').value;
@@ -277,12 +312,11 @@ function addNewContact(event) {
 	cancelInputValue();
 	animateCloseAddNewContainerDesktop();
 	findAndOpenContactCardByName(name);
-	createButton.disabled = false;
 	return false;
 }
 
 /**
- * Searches through the `contacts` array for a contact with a matching name and opens the contact card if found.
+ * @description Searches through the `contacts` array for a contact with a matching name and opens the contact card if found.
  * @param {string} name - The name of the contact to search for.
  */
 
@@ -295,24 +329,32 @@ function findAndOpenContactCardByName(name) {
 }
 
 /**
- * Triggers a closing animation sequence on the 'CreateResponseContainer' element.
+ * @description Triggers a closing animation sequence on the 'CreateResponseContainer' element.
  */
 function animateCloseAddNewContainerDesktop() {
-	document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
-	document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.remove('CreateResponseContainerTransitionRemove');
+	document
+		.querySelector('#CreateResponseContainer')
+		.classList.add('CreateResponseContainerTransition');
 	setTimeout(() => {
-		document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
-		document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.remove('CreateResponseContainerTransition');
+		document
+			.querySelector('#CreateResponseContainer')
+			.classList.add('CreateResponseContainerTransitionRemove');
 	}, 1500);
 }
 
 /**
- * Creates a new contact object and adds it to the 'contacts' array. It also updates the 'contacts' storage.
+ * @description Creates a new contact object and adds it to the 'contacts' array. It also updates the 'contacts' storage.
  * @param {string} name - The name of the new contact.
  * @param {string} email - The email address of the new contact.
  * @param {string} phone - The phone number of the new contact.
  */
-function createNewContactDesktop(name, email, phone) {
+async function createNewContactDesktop(name, email, phone) {
 	let newContact = {
 		name: name,
 		email: email,
@@ -322,36 +364,22 @@ function createNewContactDesktop(name, email, phone) {
 		addTask: false,
 	};
 	contacts.push(newContact);
-	setItem('contacts', contacts);
-}
-
-async function createNewRegContact(name, email, phone) {
-	contacts = await getItem('contacts');
-	let newContact = {
-		name: name,
-		email: email,
-		telefon: phone,
-		color: getRandomColor(),
-		capitals: '',
-		addTask: false,
-	};
-	contacts.push(newContact);
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 }
 
 /**
- * Deletes a contact from the 'contacts' array and updates the display.
+ * @description Deletes a contact from the 'contacts' array and updates the display.
  * @param {number} i - The index of the contact to delete from the 'contacts' array.
  */
 async function deleteContact(i) {
 	contacts.splice(i, 1);
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 	initContactlist();
 	document.querySelector('.contactOverview').innerHTML = '';
 }
 
 /**
- * Clears the input fields for creating a new contact.
+ * @description Clears the input fields for creating a new contact.
  */
 function cancelInputValue() {
 	document.querySelector('.nameInputContainer').value = '';
@@ -360,12 +388,16 @@ function cancelInputValue() {
 }
 
 /**
- * Opens the edit contact window for a specific contact.
+ * @description Opens the edit contact window for a specific contact.
  * @param {number} i - The index of the contact in the global `contacts` array.
  */
 function openEditContactWindow(i) {
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
 	document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
@@ -376,43 +408,48 @@ function openEditContactWindow(i) {
 }
 
 /**
- * Closes the edit contact window and clears related visual effects.
- *
- * This function hides the edit contact modal by reversing the visual transition effects applied during opening.
- * It hides the overlay and resets the `currentContact` variable to zero, effectively clearing any specific contact 
- * selection context.
- *
- * @function closeEditContactWindow
- * 
- * @example
- * // Close the edit contact window and reset the editing context.
- * closeEditContactWindow();
+ * @description Closes the edit contact window and clears related visual effects.
  */
-
 function closeEditContactWindow() {
-	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
-	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
+	document
+		.getElementById('editContactContainer')
+		.classList.remove('addNewContactContainerTransition');
+	document
+		.getElementById('editContactContainer')
+		.classList.add('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'none';
 	currentContact = 0;
 }
 
+/**
+ * @description Deletes the currently selected contact from the list and updates the storage and UI.
+ */
 async function deleteContactInEditWindow() {
 	contacts.splice(currentContact, 1);
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 	initContactlist();
 	document.querySelector('.contactOverview').innerHTML = '';
 	closeEditContactWindow();
 }
 
+/**
+ * @description Handles the submission of the edit contact form, updating the contact's details in the global list,
+ * persisting these changes, and updating the user interface.
+ * @param {Event} event - The event object associated with the form submission.
+ */
 async function editContact(event) {
 	event.preventDefault();
 	updateCurrentContactDetails();
-	setItem('contacts', contacts);
+	await setItem('contacts', contacts);
 	initContactlist();
 	closeEditContactWindow();
 	openMatchingContactCard();
 }
 
+/**
+ * @description Searches for a contact whose name matches the value entered in the edit contact form and opens
+ * that contact's card.
+ */
 function openMatchingContactCard() {
 	for (let k = 0; k < contacts.length; k++) {
 		if (document.querySelector('.nameEditContainer').value == contacts[k].name) {
@@ -421,6 +458,9 @@ function openMatchingContactCard() {
 	}
 }
 
+/**
+ * @description Updates the details of the currently selected contact in the contacts array.
+ */
 function updateCurrentContactDetails() {
 	contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
 	contacts[currentContact].email = document.querySelector('.emailEditContainer').value;
