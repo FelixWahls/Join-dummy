@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
- initAnimations();
+    initAnimations();
 });
 /**
 * Initializes animations for the website's logo and content visibility.
@@ -12,7 +12,7 @@ function initAnimations() {
  }, 500);
  setTimeout(() => {
      animateLogo(logo);
- }, 3500);
+ }, 2500);
 }
 
 /**

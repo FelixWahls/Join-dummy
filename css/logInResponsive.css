@@ -26,12 +26,37 @@
 }
 }
 @media (max-width: 1000px) {
-.logo-icon {
- width: 64px !important;
- height: 78.03px !important;
- top: 37px !important;
- left: 38px !important;
- position: absolute;
+ .backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(42, 55, 71);
+  z-index: 999; /* Unter dem Logo */
+  display: none; /* Standardmäßig nicht anzeigen */
+}
+ .logo-icon {
+  width: 100px;
+  height: 121px;
+  animation: logoMoveSmallScreen 2s forwards;
+}
+
+@keyframes logoMoveSmallScreen {
+  0% {
+      width: 100px;
+      height: 121px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  100% {
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      transform: translate(0, 0);
+  }
 }
 .Website {
  position: relative;

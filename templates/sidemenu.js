@@ -1,17 +1,5 @@
     let submenuActive = false;
-    /**
-    * Extracts the initials from the user's name stored in localStorage and displays them in the specified element.
-    */
-    function showUserInitials() {
-     const userName = localStorage.getItem('userName');
-     const initialsElement = document.getElementById('initials');
- 
-     if (initialsElement && userName) {
-         const initials = userName.split(' ').map(name => name[0]).join('');
-         initialsElement.textContent = initials.toUpperCase(); // Setze die Initialen in Großbuchstaben
-     }
- }
- 
+   
 
     function notCloseSidebar(event){
         if(submenuActive == true){
