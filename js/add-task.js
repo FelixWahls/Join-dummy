@@ -178,8 +178,10 @@ function setPrioColor(allBtns, priority) {
 		allBtns[i].classList.remove('active-low');
 	}
 	let prioBtn = document.getElementById(priority);
-	prioBtn.classList.add('active-' + priority);
-	prioName = priority;
+	if (prioBtn) {
+		prioBtn.classList.add('active-' + priority);
+		prioName = priority;
+	}
 }
 
 /**

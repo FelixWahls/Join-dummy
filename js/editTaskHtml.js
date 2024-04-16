@@ -157,7 +157,7 @@ function createEditTaskHtml(taskIndex) {
                     id="assigned-arrow"
                     onclick="event.stopPropagation(); openUserList()" />
             </div>
-            <div id="user-list" class="d-none absolute"></div>
+            <div id="user-list" class="d-none absolute" onclick="event.stopPropagation()"></div>
             <div id="selected-users"></div>
         </div>
     </div>

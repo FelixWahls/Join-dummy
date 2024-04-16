@@ -39,15 +39,17 @@ function createSelectedUserHtml(contact, i) {
  */
 function renderSelectedUsers() {
 	let selectedContainer = document.querySelector('#selected-users');
-	selectedContainer.innerHTML = '';
-	let capitalsHtml = createUserCapitalsHtml();
-	if (selectedUsers.length > 0) {
-		for (let i = 0; i < selectedUsers.length; i++) {
-			const element = selectedUsers[i];
-			selectedContainer.innerHTML = capitalsHtml;
+	if (selectedContainer) {
+		selectedContainer.innerHTML = '';
+		let capitalsHtml = createUserCapitalsHtml();
+		if (selectedUsers.length > 0) {
+			for (let i = 0; i < selectedUsers.length; i++) {
+				const element = selectedUsers[i];
+				selectedContainer.innerHTML = capitalsHtml;
+			}
+		} else {
+			selectedContainer = '';
 		}
-	} else {
-		selectedContainer = '';
 	}
 }
 
@@ -154,7 +156,7 @@ function renderAddTaskHtml() {
 										id="assigned-arrow"
 										onclick="event.stopPropagation(); openUserList()" />
 								</div>
-								<div id="user-list" class="d-none absolute"></div>
+								<div id="user-list" class="d-none absolute" onclick="event.stopPropagation()"></div>
 								<div id="selected-users"></div>
 							</div>
 						</div>
