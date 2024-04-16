@@ -7,6 +7,7 @@ async function initAddTask() {
 	await includeHTML();
 	allTasks = await getItem('allTasks');
 	contacts = await getItem('contacts');
+	console.log(contacts);
 }
 
 /**
