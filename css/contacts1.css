@@ -57,6 +57,9 @@ body {
 	background: #2a3647;
 	border: 1px solid #2a3647;
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .addContactBtn:hover {
@@ -78,8 +81,6 @@ body {
 .addPersonToListIcon {
 	width: 29.33px;
 	height: 20.91px;
-	margin-top: 4px;
-	margin-left: 10px;
 	color: #d9d9d9;
 }
 
