@@ -105,6 +105,14 @@
 }
 
 @media (max-width: 960px) {
+	.addNewContactContainer  {
+		display: none;
+	}
+
+	.overlay {
+		display: none !important;
+	}
+
 	.blueArrowLeftContainer,
 	.addNewContactIconContResp,
 	.editContactIconContResp {

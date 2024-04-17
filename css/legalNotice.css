@@ -2,11 +2,18 @@ body {
 	font-family: "Inter";
 	margin: 0;
 	background-color: #f6f7f8;
+	display: flex;
+	justify-content: center;
+	margin-left: -5px;
 }
 
 body::-webkit-scrollbar {
 	display: none;
 	overflow: scroll;
+}
+
+.main-content {
+	left : 0;
 }
 
 .arrow {
@@ -72,26 +79,29 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 1000px) {
-	.marginLeft {
-		margin-left: -3%;
-	}
 	.date {
 		padding-bottom: 80px;
 	}
 	.titleText {
 		font-size: 41px;
 	}
+	.legalNoticeDescription {
+		width: 90%;
+	}
 }
 
 @media (max-width: 500px) {
-	.marginLeft {
-		margin-left: -100px;
-	}
-	.arrow {
-		position: fixed;
-		right: 5%;
+	.main-content {
+		margin: -5px;
 	}
 	.titleText {
 		font-size: 45px;
+	}
+	.imprintListPadding {
+		padding-left: 15px;
+		padding-top: 48px;
+	}
+	.legalNoticeDescription {
+		width: 100%;
 	}
 }
