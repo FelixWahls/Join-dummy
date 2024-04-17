@@ -1,5 +1,5 @@
 let currentContact = 0;
-
+let closeContactDetailsResponsive = false;
 /**
  * @description Initializes contact management by dynamically loading HTML content and fetching contact and user data.
  */
@@ -8,6 +8,47 @@ async function initContacts() {
 	showUserInitials();
 	contacts = await getItem('contacts');
 	initContactlist();
+	setInterval(() => {
+		if(window.innerWidth > 960 && !closeContactDetailsResponsive){
+			closeContactDetailsResp();
+			closeContactDetailsResponsive = true;
+			document.querySelector('.addNewContactIconContResp').style.display = 'none';
+		}
+		if(window.innerWidth <= 960){
+			document.querySelector('.addNewContactIconContResp').style.display = 'flex';
+		}
+		closeContactDetailsResponsive = false;
+		if(window.innerHeight < 840){
+			document.querySelector('.addNewContactRespContainer ').style.height = '580px';
+			document.querySelector('.addNewContactWindowHeaderContainer').style.height = '252px';
+			document.querySelector('.addNewContactWindowHeader').style.marginTop = '0px';
+			document.querySelector('.addNewContactRespImageContainer').style.top = '192px';
+			document.querySelector('.addINewContWindowInputfields').style.top = '344px';
+			document.querySelector('.createButtonContainerAddNewContResp').style.top = '509px';
+
+			document.querySelector('.editContactRespContainer ').style.height = '580px';
+			document.querySelector('.editContactWindowHeaderContainer').style.height = '252px';
+			document.querySelector('.editContactWindowHeader').style.marginTop = '0px';
+			document.querySelector('.editContactRespImageContainer').style.top = '192px';
+			document.querySelector('.editContWindowInputfields').style.top = '344px';
+			document.querySelector('.editContactRespButtons').style.top = '517px';
+		}
+		if(window.innerHeight >= 840){
+			document.querySelector('.addNewContactRespContainer').style.height = '760px'
+			document.querySelector('.addNewContactWindowHeaderContainer').style.height = '352px';
+			document.querySelector('.addNewContactWindowHeader').style.marginTop = '100px;'
+			document.querySelector('.addNewContactRespImageContainer').style.top = '292px';
+			document.querySelector('.addINewContWindowInputfields').style.top = '444px';
+			document.querySelector('.createButtonContainerAddNewContResp').style.top = '629px';
+			
+			document.querySelector('.editContactRespContainer ').style.height = '760px';
+			document.querySelector('.editContactWindowHeaderContainer').style.height = '352px';
+			document.querySelector('.editContactWindowHeader').style.marginTop = '100px';
+			document.querySelector('.editContactRespImageContainer').style.top = '292px';
+			document.querySelector('.editContWindowInputfields').style.top = '444px';
+			document.querySelector('.editContactRespButtons').style.top = '667px';
+		}
+	}, 50);
 }
 
 /**

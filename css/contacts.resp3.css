@@ -191,6 +191,9 @@
 	.addNewContactWindowHeaderContainer {
 		width: 376px;
 	}
+	.editContactWindowHeaderContainer {
+		width: 376px;
+	}
 	.addNewContactRespCloseContainer {
 		left: 308px;
 		margin-left: 10px;
@@ -202,8 +205,12 @@
 	.addNewContactRespImageContainer {
 		left: 128px;
 	}
+	.editContactRespImageContainer {
+		left: 128px;
+	}
 	.contactDetailsRespHeader {
 		flex-direction: column;
+		align-items: center;
 	}
 	.contInfTitleCont {
 		margin-top: 80px;
@@ -227,6 +234,9 @@
 	.addNewContactWindowHeaderContainer {
 		width: 356px;
 	}
+	.editContactWindowHeaderContainer {
+		width: 356px;
+	}
 	.addNewContactRespCloseContainer {
 		left: 288px;
 	}
@@ -235,6 +245,9 @@
 		background-position: 284px;
 	}
 	.addNewContactRespImageContainer {
+		left: 118px;
+	}
+	.editContactRespImageContainer {
 		left: 118px;
 	}
 	.createButtonContainerAddNewContResp {
@@ -275,11 +288,17 @@
 	.addNewContactWindowHeaderContainer {
 		width: 336px;
 	}
+	.editContactWindowHeaderContainer {
+		width: 336px;
+	}
 	.addNewContactRespCloseContainer {
 		left: 248px;
 		margin-left: 30px;
 	}
 	.addNewContactRespImageContainer {
+		left: 113px;
+	}
+	.editContactRespImageContainer {
 		left: 113px;
 	}
 	.createButtonContainerAddNewContResp {
@@ -306,11 +325,17 @@
 	.addNewContactWindowHeaderContainer {
 		width: 316px;
 	}
+	.editContactWindowHeaderContainer {
+		width: 316px;
+	}
 	.addNewContactRespCloseContainer {
 		left: 228px;
 		margin-left: 30px;
 	}
 	.addNewContactRespImageContainer {
+		left: 103px;
+	}
+	.editContactRespImageContainer {
 		left: 103px;
 	}
 	.createButtonContainerAddNewContResp {

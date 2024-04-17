@@ -132,7 +132,6 @@ function editContactRespWindow() {
 	overlayCanBeHidden = false;
 	document.querySelector('.overlayResp').style.display = 'flex';
 	document.querySelector('.overlayResp').style.opacity = 0.3;
-	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
 	document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
 	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransitionRemove');
 	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransition');
@@ -255,7 +254,7 @@ function closeEditContactRespWindow() {
  * and the overlay can be hidden, hiding the overlay and adjusting CSS transitions.
  */
 function closeSmallEditField() {
-	if (window.innerWidth < 960 && overlayCanBeHidden) {
+	if (window.innerWidth < 960) {
 		document.querySelector('.overlayResp').style.display = 'none';
 		document.querySelector('.overlayResp').style.opacity = 0.3;
 		document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
