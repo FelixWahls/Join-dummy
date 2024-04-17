@@ -270,9 +270,6 @@ a {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-left: 16px;
-		padding-right: 16px;
-		gap: 15px;
 		width: 100%;
 		white-space: nowrap;
 	}
@@ -340,12 +337,10 @@ a {
 	}
 }
 
-@media (max-width: 380px) {
-	.menuItemsResponsiv {
-		padding-left: 4px;
-		padding-right: 4px;
+@media (max-width:450px) {
+	.sidebarResponsiv {
+		padding: 0px;
 	}
-
 	.menuItemResponsiv {
 		display: flex;
 		justify-content: center;
@@ -353,13 +348,15 @@ a {
 		flex-direction: column;
 		width: 80px;
 		height: 76px;
-		gap: 6px;
+		gap: 0px;
 		border-radius: 16px 0px 0px 0px;
 		opacity: 0px;
 		width: 80px;
 		height: 76px;
-		padding: 4px 0px 4px 0px;
-		gap: 4px;
-		opacity: 0px;
+		padding: 0;
 	}
+}
+
+@media (max-width: 380px) {
+
 }
