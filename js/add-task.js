@@ -28,6 +28,22 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
+ * remove input date typing and sets min value to current date
+ */
+document.addEventListener("DOMContentLoaded", function () {
+	// Check if the input field exists
+	let inputField = document.getElementById("due-date-input");
+	if (inputField) {
+		// Get the current date
+		let currentDate = new Date().toISOString().split("T")[0];
+		inputField.setAttribute("min", currentDate);
+		inputField.addEventListener("keydown", function (event) {
+			event.preventDefault();
+		});
+	}
+});
+
+/**
  * hides the userList dropdown
  * @param {HTMLElement} userList
  */
