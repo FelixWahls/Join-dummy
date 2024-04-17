@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /**
  * remove input date typing and sets min value to current date
  */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("click", function () {
 	// Check if the input field exists
 	let inputField = document.getElementById("due-date-input");
 	if (inputField) {
