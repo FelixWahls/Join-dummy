@@ -338,3 +338,16 @@
 		gap: 0;
 	}
 }
+
+@media (max-width: 960px) {
+	.addContactsBtnDiv {
+		display: none;
+	}
+	
+}
+
+@media (max-width: 960px) {
+	.contRespWindow {
+		display: none;
+	}
+}

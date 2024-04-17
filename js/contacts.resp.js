@@ -7,7 +7,7 @@ let overlayCanBeHidden = false;
 function openAddNewContactRespWindow() {
 	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransition');
 	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
-	document.querySelector('.overlay').style.display = 'flex';
+	document.querySelector('.overlayResp').style.display = 'flex';
 }
 
 /**
@@ -17,7 +17,7 @@ function openAddNewContactRespWindow() {
 function closeAddNewContactRespWindow() {
 	document.getElementById('addNewContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
 	document.getElementById('addNewContactRespContainer').classList.remove('addNewContactRespContainerTransition');
-	document.querySelector('.overlay').style.display = 'none';
+	document.querySelector('.overlayResp').style.display = 'none';
 }
 
 /**
@@ -130,8 +130,8 @@ function closeContactDetailsResp() {
  */
 function editContactRespWindow() {
 	overlayCanBeHidden = false;
-	document.querySelector('.overlay').style.display = 'flex';
-	document.querySelector('.overlay').style.opacity = 0.3;
+	document.querySelector('.overlayResp').style.display = 'flex';
+	document.querySelector('.overlayResp').style.opacity = 0.3;
 	document.querySelector('.editContactIconContResp').style.backgroundColor = '#29ABE2';
 	document.querySelector('.editContactIconContResp').style.border = '#29ABE2';
 	document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransitionRemove');
@@ -151,7 +151,7 @@ async function deleteContactResp() {
 	initContactlist();
 	closeContactDetailsResp();
 	resetEditContactStyleResponsive();
-	document.querySelector('.overlay').style.display = 'none';
+	document.querySelector('.overlayResp').style.display = 'none';
 	setTimeout(() => {
 		document.querySelector('.editContactIconContResp').style.display = 'none';
 	}, 350);
@@ -217,7 +217,7 @@ async function deleteContactByEditResp(event) {
  * initializing fields with the current contact's information.
  */
 function openEditContactRespWindow() {
-	document.querySelector('.overlay').style.display = 'flex';
+	document.querySelector('.overlayResp').style.display = 'flex';
 	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransition');
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransitionRemove');
 	document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
@@ -243,7 +243,7 @@ function editFContactDetailsResp() {
  * hiding the edit contact icon, and reopening the contact card of the current contact.
  */
 function closeEditContactRespWindow() {
-	document.querySelector('.overlay').style.display = 'none';
+	document.querySelector('.overlayResp').style.display = 'none';
 	document.querySelector('.editContactRespContainer').classList.add('addNewContactRespContainerTransitionRemove');
 	document.querySelector('.editContactRespContainer').classList.remove('addNewContactRespContainerTransition');
 	document.querySelector('.editContactIconContResp').style.display = 'none';
@@ -256,8 +256,8 @@ function closeEditContactRespWindow() {
  */
 function closeSmallEditField() {
 	if (window.innerWidth < 960 && overlayCanBeHidden) {
-		document.querySelector('.overlay').style.display = 'none';
-		document.querySelector('.overlay').style.opacity = 0.3;
+		document.querySelector('.overlayResp').style.display = 'none';
+		document.querySelector('.overlayResp').style.opacity = 0.3;
 		document.querySelector('.editContSmallContResp').classList.add('editContSmallContRespTransitionRemove');
 		document.querySelector('.editContSmallContResp').classList.remove('editContSmallContRespTransition');
 		document.querySelector('.editContactIconContResp').style.display = 'flex';

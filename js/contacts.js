@@ -173,9 +173,7 @@ function updateContactCardsStyle(i) {
 		updateContactNameColorForDesktop(j, i);
 		contactCard.style.backgroundColor = '#FFFFFF';
 	}
-	if (window.innerWidth > 960) {
 		contactCard.style.backgroundColor = '#2A3647';
-	}
 }
 
 /**
@@ -184,10 +182,8 @@ function updateContactCardsStyle(i) {
  * @param {number} i - The index of the selected contact whose color will be set to white.
  */
 function updateContactNameColorForDesktop(j, i) {
-	if (window.innerWidth > 960) {
-		document.querySelector(`#contactName${j}`).style.color = 'black';
-		document.querySelector(`#contactName${i}`).style.color = '#FFFFFF';
-	}
+	document.querySelector(`#contactName${j}`).style.color = 'black';
+	document.querySelector(`#contactName${i}`).style.color = '#FFFFFF';
 }
 
 /**
