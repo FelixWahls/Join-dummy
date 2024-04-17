@@ -8,47 +8,7 @@ async function initContacts() {
 	showUserInitials();
 	contacts = await getItem('contacts');
 	initContactlist();
-	setInterval(() => {
-		if(window.innerWidth > 960 && !closeContactDetailsResponsive){
-			closeContactDetailsResp();
-			closeContactDetailsResponsive = true;
-			document.querySelector('.addNewContactIconContResp').style.display = 'none';
-		}
-		if(window.innerWidth <= 960){
-			document.querySelector('.addNewContactIconContResp').style.display = 'flex';
-		}
-		closeContactDetailsResponsive = false;
-		if(window.innerHeight < 840){
-			document.querySelector('.addNewContactRespContainer ').style.height = '580px';
-			document.querySelector('.addNewContactWindowHeaderContainer').style.height = '252px';
-			document.querySelector('.addNewContactWindowHeader').style.marginTop = '0px';
-			document.querySelector('.addNewContactRespImageContainer').style.top = '192px';
-			document.querySelector('.addINewContWindowInputfields').style.top = '344px';
-			document.querySelector('.createButtonContainerAddNewContResp').style.top = '509px';
-
-			document.querySelector('.editContactRespContainer ').style.height = '580px';
-			document.querySelector('.editContactWindowHeaderContainer').style.height = '252px';
-			document.querySelector('.editContactWindowHeader').style.marginTop = '0px';
-			document.querySelector('.editContactRespImageContainer').style.top = '192px';
-			document.querySelector('.editContWindowInputfields').style.top = '344px';
-			document.querySelector('.editContactRespButtons').style.top = '517px';
-		}
-		if(window.innerHeight >= 840){
-			document.querySelector('.addNewContactRespContainer').style.height = '760px'
-			document.querySelector('.addNewContactWindowHeaderContainer').style.height = '352px';
-			document.querySelector('.addNewContactWindowHeader').style.marginTop = '100px;'
-			document.querySelector('.addNewContactRespImageContainer').style.top = '292px';
-			document.querySelector('.addINewContWindowInputfields').style.top = '444px';
-			document.querySelector('.createButtonContainerAddNewContResp').style.top = '629px';
-			
-			document.querySelector('.editContactRespContainer ').style.height = '760px';
-			document.querySelector('.editContactWindowHeaderContainer').style.height = '352px';
-			document.querySelector('.editContactWindowHeader').style.marginTop = '100px';
-			document.querySelector('.editContactRespImageContainer').style.top = '292px';
-			document.querySelector('.editContWindowInputfields').style.top = '444px';
-			document.querySelector('.editContactRespButtons').style.top = '667px';
-		}
-	}, 50);
+	adjustContactUIResponsively();
 }
 
 /**
@@ -283,12 +243,8 @@ function contactOverviewTemplate(i) {
  * Opens the modal window for adding a new contact by applying CSS transitions and displaying the overlay.
  */
 function openAddNewContactWindow() {
-	document
-		.getElementById('addNewContactContainer')
-		.classList.add('addNewContactContainerTransition');
-	document
-		.getElementById('addNewContactContainer')
-		.classList.remove('addNewContactContainerTransitionRemove');
+	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransition');
+	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 }
 
@@ -296,12 +252,8 @@ function openAddNewContactWindow() {
  * Closes the modal window for adding a new contact by applying CSS transitions and hiding the overlay.
  */
 function closeAddNewContactWindow() {
-	document
-		.getElementById('addNewContactContainer')
-		.classList.add('addNewContactContainerTransitionRemove');
-	document
-		.getElementById('addNewContactContainer')
-		.classList.remove('addNewContactContainerTransition');
+	document.getElementById('addNewContactContainer').classList.add('addNewContactContainerTransitionRemove');
+	document.getElementById('addNewContactContainer').classList.remove('addNewContactContainerTransition');
 	document.querySelector('.overlay').style.display = 'none';
 }
 
@@ -345,19 +297,11 @@ function findAndOpenContactCardByName(name) {
  * Triggers a closing animation sequence on the 'CreateResponseContainer' element.
  */
 function animateCloseAddNewContainerDesktop() {
-	document
-		.querySelector('#CreateResponseContainer')
-		.classList.remove('CreateResponseContainerTransitionRemove');
-	document
-		.querySelector('#CreateResponseContainer')
-		.classList.add('CreateResponseContainerTransition');
+	document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransitionRemove');
+	document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransition');
 	setTimeout(() => {
-		document
-			.querySelector('#CreateResponseContainer')
-			.classList.remove('CreateResponseContainerTransition');
-		document
-			.querySelector('#CreateResponseContainer')
-			.classList.add('CreateResponseContainerTransitionRemove');
+		document.querySelector('#CreateResponseContainer').classList.remove('CreateResponseContainerTransition');
+		document.querySelector('#CreateResponseContainer').classList.add('CreateResponseContainerTransitionRemove');
 	}, 1500);
 }
 
@@ -420,12 +364,8 @@ function cancelInputValue() {
  * @param {number} i - The index of the contact in the global `contacts` array.
  */
 function openEditContactWindow(i) {
-	document
-		.getElementById('editContactContainer')
-		.classList.add('addNewContactContainerTransition');
-	document
-		.getElementById('editContactContainer')
-		.classList.remove('addNewContactContainerTransitionRemove');
+	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransition');
+	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'flex';
 	document.querySelector('#imageColor').style.backgroundColor = contacts[i].color;
 	document.querySelector('#ContactInicial').innerHTML = contacts[i].capitals;
@@ -436,19 +376,19 @@ function openEditContactWindow(i) {
 }
 
 /**
- * Closes the edit contact window and clears related visual effects.
+ * @description Closes the edit contact window and clears related visual effects.
  */
 function closeEditContactWindow() {
-	document
-		.getElementById('editContactContainer')
-		.classList.remove('addNewContactContainerTransition');
-	document
-		.getElementById('editContactContainer')
-		.classList.add('addNewContactContainerTransitionRemove');
+	document.getElementById('editContactContainer').classList.remove('addNewContactContainerTransition');
+	document.getElementById('editContactContainer').classList.add('addNewContactContainerTransitionRemove');
 	document.querySelector('.overlay').style.display = 'none';
 	currentContact = 0;
 }
 
+/**
+ * @description Asynchronously deletes the currently selected contact from the contacts array,
+ * updates the storage, and refreshes the contact list UI.
+ */
 async function deleteContactInEditWindow() {
 	contacts.splice(currentContact, 1);
 	await setItem('contacts', contacts);
@@ -457,16 +397,21 @@ async function deleteContactInEditWindow() {
 	closeEditContactWindow();
 }
 
+/**
+ * @description Handles the contact edit form submission.
+ */
 async function editContact(event) {
 	event.preventDefault();
 	updateCurrentContactDetails();
 	await setItem('contacts', contacts);
-
 	closeEditContactWindow();
 	openMatchingContactCard();
 	initContactlist();
 }
 
+/**
+ * @description Iterates through the contacts array to find a contact matching the name entered in the '.nameEditContainer' input field.
+ */
 function openMatchingContactCard() {
 	for (let k = 0; k < contacts.length; k++) {
 		if (document.querySelector('.nameEditContainer').value == contacts[k].name) {
@@ -475,8 +420,77 @@ function openMatchingContactCard() {
 	}
 }
 
+/**
+ * @description Updates the details of the current contact based on the input fields in the form.
+ */
 function updateCurrentContactDetails() {
 	contacts[currentContact].name = document.querySelector('.nameEditContainer').value;
 	contacts[currentContact].email = document.querySelector('.emailEditContainer').value;
 	contacts[currentContact].telefon = document.querySelector('.phoneEditContainer').value;
+}
+
+/**
+ * @description Continuously monitors window dimensions every 50 milliseconds and adjusts the contact UI elements based on the current viewport size.
+ */
+function adjustContactUIResponsively(){
+	setInterval(() => {
+		if(window.innerWidth > 960 && !closeContactDetailsResponsive){
+			closeContactDetailsResp();
+			hideResponsiveContactDetails();
+		}
+		if(window.innerWidth <= 960){
+			document.querySelector('.addNewContactIconContResp').style.display = 'flex';
+		}
+		closeContactDetailsResponsive = false;
+		if(window.innerHeight < 840){
+			setCompactContactFormStyles();
+		}
+		if(window.innerHeight >= 840){
+			resetCompactContactFormStyles();
+		}
+	}, 50);
+}
+
+/**
+ * @description Hides the responsive elements related to contact details, specifically the 'Add New Contact' icon container.
+ */
+function hideResponsiveContactDetails(){
+	closeContactDetailsResponsive = true;
+	document.querySelector('.addNewContactIconContResp').style.display = 'none';
+}
+
+/**
+ * @description Adjusts the CSS styles of various elements in the contact forms to provide a more compact layout.
+ */
+function setCompactContactFormStyles(){
+	document.querySelector('.addNewContactRespContainer ').style.height = '580px';
+	document.querySelector('.addNewContactWindowHeaderContainer').style.height = '252px';
+	document.querySelector('.addNewContactWindowHeader').style.marginTop = '0px';
+	document.querySelector('.addNewContactRespImageContainer').style.top = '192px';
+	document.querySelector('.addINewContWindowInputfields').style.top = '344px';
+	document.querySelector('.createButtonContainerAddNewContResp').style.top = '509px';
+	document.querySelector('.editContactRespContainer ').style.height = '580px';
+	document.querySelector('.editContactWindowHeaderContainer').style.height = '252px';
+	document.querySelector('.editContactWindowHeader').style.marginTop = '0px';
+	document.querySelector('.editContactRespImageContainer').style.top = '192px';
+	document.querySelector('.editContWindowInputfields').style.top = '344px';
+	document.querySelector('.editContactRespButtons').style.top = '517px';
+}
+
+/**
+ * @description Resets the CSS styles of various elements within the new and edit contact forms to a default, more expanded layout.
+ */
+function resetCompactContactFormStyles(){
+	document.querySelector('.addNewContactRespContainer').style.height = '760px'
+	document.querySelector('.addNewContactWindowHeaderContainer').style.height = '352px';
+	document.querySelector('.addNewContactWindowHeader').style.marginTop = '100px;'
+	document.querySelector('.addNewContactRespImageContainer').style.top = '292px';
+	document.querySelector('.addINewContWindowInputfields').style.top = '444px';
+	document.querySelector('.createButtonContainerAddNewContResp').style.top = '629px';
+	document.querySelector('.editContactRespContainer ').style.height = '760px';
+	document.querySelector('.editContactWindowHeaderContainer').style.height = '352px';
+	document.querySelector('.editContactWindowHeader').style.marginTop = '100px';
+	document.querySelector('.editContactRespImageContainer').style.top = '292px';
+	document.querySelector('.editContWindowInputfields').style.top = '444px';
+	document.querySelector('.editContactRespButtons').style.top = '667px';
 }
