@@ -9,7 +9,7 @@ function initAnimations() {
  const websiteContent = document.querySelector('.Website');
  setTimeout(() => {
      websiteContent.style.display = 'flex';
- }, 500);
+ }, 700);
  setTimeout(() => {
      animateLogo(logo);
  }, 2500);

@@ -28,7 +28,7 @@ body::-webkit-scrollbar {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	animation: logoMove 2s forwards;
+	animation: logoMove 2.5s forwards;
 	z-index: 1000;
 }
 @keyframes logoMove {
