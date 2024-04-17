@@ -342,6 +342,8 @@ button:hover {
 #selected-users {
 	display: flex;
 	flex-wrap: wrap;
+	max-height: 90px;
+	overflow-y: scroll;
 }
 
 .input-error {
