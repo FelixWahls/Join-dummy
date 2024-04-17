@@ -433,10 +433,10 @@ async function redirectToBoard() {
  */
 function resetForm() {
 	resetAssignedUsers();
-	titleInput = '';
-	descriptionInput = '';
-	dateInput = '';
-	categoryInput = '';
+	document.getElementById('title-input').value = '';
+	document.getElementById('description-input').value = '';
+	document.getElementById('due-date-input').value = '';
+	document.getElementById('category-input').value = '1';
 	selectedUsers = [];
 	renderSelectedUsers();
 	setPrio('medium');
