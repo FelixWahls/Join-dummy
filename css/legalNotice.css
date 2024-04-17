@@ -1,7 +1,12 @@
 body {
-	font-family: 'Inter';
+	font-family: "Inter";
 	margin: 0;
 	background-color: #f6f7f8;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+	overflow: scroll;
 }
 
 .arrow {
@@ -63,10 +68,10 @@ body {
 }
 
 .joinBlue {
-    color: #0C8CE9;
+	color: #0c8ce9;
 }
 
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
 	.marginLeft {
 		margin-left: -3%;
 	}
@@ -78,7 +83,7 @@ body {
 	}
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
 	.marginLeft {
 		margin-left: -100px;
 	}
@@ -89,5 +94,4 @@ body {
 	.titleText {
 		font-size: 45px;
 	}
-	
 }
