@@ -38,9 +38,9 @@ function createSelectedUserHtml(contact, i) {
  * gets every selected user and calls the html for the capitals
  */
 function renderSelectedUsers() {
-	let selectedContainer = document.querySelector('#selected-users');
+	let selectedContainer = document.querySelector("#selected-users");
 	if (selectedContainer) {
-		selectedContainer.innerHTML = '';
+		selectedContainer.innerHTML = "";
 		let capitalsHtml = createUserCapitalsHtml();
 		if (selectedUsers.length > 0) {
 			for (let i = 0; i < selectedUsers.length; i++) {
@@ -48,7 +48,7 @@ function renderSelectedUsers() {
 				selectedContainer.innerHTML = capitalsHtml;
 			}
 		} else {
-			selectedContainer = '';
+			selectedContainer = "";
 		}
 	}
 }
@@ -58,9 +58,9 @@ function renderSelectedUsers() {
  * @returns html for capitals circles
  */
 function createUserCapitalsHtml() {
-	let capitalsHtml = '';
+	let capitalsHtml = "";
 	for (let i = 0; i < selectedUsers.length; i++) {
-		const element = selectedUsers[i]['userCapitals'];
+		const element = selectedUsers[i]["userCapitals"];
 		capitalsHtml += `
             <div class="user-icon d-flex" style="background-color:${selectedUsers[i].circleColor}">${element}</div>
         `;
@@ -72,8 +72,8 @@ function createUserCapitalsHtml() {
  * creates the list elements for every subtask that has been created for the current task
  */
 function renderSubtasks() {
-	let subtaskList = document.querySelector('#subtask-container');
-	subtaskList.innerHTML = '';
+	let subtaskList = document.querySelector("#subtask-container");
+	subtaskList.innerHTML = "";
 	for (let i = 0; i < subtasks.length; i++) {
 		const element = subtasks[i].subtaskName;
 		subtaskList.innerHTML += /*html*/ `
@@ -111,7 +111,7 @@ function renderSubtasks() {
  * renders the add Task form on the board site
  */
 function renderAddTaskHtml() {
-	let container = document.getElementById('add-task-slider');
+	let container = document.getElementById("add-task-slider");
 	container.innerHTML = /*html*/ `
         <img src="../img/close.png" class="close-window-btn" onclick="slideIn()" />
 				<h1>Add Task</h1>
@@ -279,7 +279,7 @@ function createCardHtml(taskId, taskIndex) {
 	let task = allTasks[taskIndex];
 	let categoryColor = setCategoryColor(taskIndex);
 	return /*html*/ `
-        <div class="flex-col single-task" id="task${taskId}" onclick="slideBigCard(${taskId})" draggable="true" ondragstart="startDragging(${taskId})" ontouchstart="onTouchStart(event, ${taskId})">
+        <div class="flex-col single-task" id="task${taskId}" onclick="slideBigCard(${taskId})" draggable="true" ondragstart="startDragging(${taskId})">
             <img src="../img/card-menu.png" alt="" class="small-card-menu" onclick="showMoveToMenu(${taskId}); event.stopPropagation()"/>
             <div class="card-menu d-none" id="card-menu${taskId}" onclick="event.stopPropagation()">
                 <div class="card-menu-item" onclick="clickMoveTo('to-do-container')">add to "To-do"</div>
@@ -314,7 +314,7 @@ function createCardHtml(taskId, taskIndex) {
 function createAssignedUsersHtml(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`small-card-users${task.id}`);
-	container.innerHTML = '';
+	container.innerHTML = "";
 	if (task.users.length <= 4) {
 		for (let i = 0; i < task.users.length; i++) {
 			const element = task.users[i];
@@ -333,7 +333,7 @@ function createExceedingUsers(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`small-card-users${task.id}`);
 	let excUsers = task.users.length - 4;
-	container.innerHTML = '';
+	container.innerHTML = "";
 	for (let i = 0; i < 4; i++) {
 		const element = task.users[i];
 		container.innerHTML += `<div class="user" style="background-color:${element.circleColor}">${element.userCapitals}</div>`;
@@ -349,7 +349,7 @@ function createExceedingUsers(taskIndex) {
 function createSubtasksHtml(taskIndex) {
 	let task = allTasks[taskIndex];
 	let container = document.getElementById(`subtask-content${task.id}`);
-	container.innerHTML = '';
+	container.innerHTML = "";
 	if (task.subtasks.length > 0) {
 		let subtaskBarWidth = calcSubtaskProgress(taskIndex);
 		container.innerHTML += /*html*/ `
@@ -359,7 +359,7 @@ function createSubtasksHtml(taskIndex) {
 				<span>${task.subtaskCounter}/${task.subtasks.length} Subtasks</span>
         `;
 	} else {
-		return '';
+		return "";
 	}
 }
 
@@ -380,22 +380,22 @@ function calcSubtaskProgress(taskIndex) {
  * @returns html template for no tasks in container
  */
 function createEmptyContainerHtml(containerType) {
-	let emptyText = '';
+	let emptyText = "";
 	switch (containerType) {
-		case 'to-do-container':
-			emptyText = 'No tasks to do';
+		case "to-do-container":
+			emptyText = "No tasks to do";
 			break;
-		case 'in-progress-container':
-			emptyText = 'No tasks in Progress';
+		case "in-progress-container":
+			emptyText = "No tasks in Progress";
 			break;
-		case 'await-feedback-container':
-			emptyText = 'No tasks await feedback';
+		case "await-feedback-container":
+			emptyText = "No tasks await feedback";
 			break;
-		case 'done-container':
-			emptyText = 'No tasks done';
+		case "done-container":
+			emptyText = "No tasks done";
 			break;
 		default:
-			emptyText = 'No tasks';
+			emptyText = "No tasks";
 	}
 	return /*html*/ `
         <div class="no-tasks">

@@ -308,6 +308,7 @@ h3 {
 	flex-direction: column;
 	gap: 24px;
 	font-size: 20px;
+	height: 100vh;
 	max-height: 850px;
 	overflow-y: scroll;
 }
