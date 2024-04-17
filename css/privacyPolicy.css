@@ -4,6 +4,17 @@ body {
 	background-color: #f6f7f8;
 }
 
+.main-content {
+	left : 0;
+}
+
+.content {
+	margin: 0;
+	width: 100%;
+	max-width: 1250px;
+	padding: 80px 32px;
+}
+
 body::-webkit-scrollbar {
 	display: none;
 	overflow: scroll;
@@ -28,6 +39,7 @@ body::-webkit-scrollbar {
 	font-size: 61px;
 	font-weight: 700;
 	text-align: left;
+	margin-left: 35px;
 }
 
 .content {
@@ -49,12 +61,7 @@ h3 {
 }
 
 @media (max-width: 1200px) {
-	.content {
-		margin: 0;
-		width: 100%;
-		max-width: 1250px;
-		padding: 80px 32px;
-	}
+	
 
 	.main-content {
 		margin: 24px 24px 0 24px;
@@ -62,7 +69,61 @@ h3 {
 }
 
 @media (max-width: 800px) {
+	.titleText {
+		margin-left: 10px;
+	}
 	.content {
-		padding: 80px 24px;
+		padding: 80px 14px;
+	}
+	h1 {
+		margin-bottom: 20px;
+	}
+	
+	h2 {
+		margin-bottom: 10px;
+	}
+	
+	h3 {
+		margin-bottom: 15px;
+	}
+}
+
+@media (max-width: 550px){
+	.content {
+		padding: 80px 4px;
+	}
+	.titleText {
+		font-size: 50px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	
+	h2 {
+		margin-bottom: 10px;
+	}
+	
+	h3 {
+		margin-bottom: 15px;
+	}
+}
+
+@media (max-width: 550px){
+	.titleText {
+		font-size: 40px;
+	}
+	h1 {
+		font-size: 21px;
+	}
+	
+	h2 {
+		font-size: 21px;
+	}
+	
+	h3 {
+		font-size: 21px;
+	}
+	p li {
+		font-size: 14px;
 	}
 }
