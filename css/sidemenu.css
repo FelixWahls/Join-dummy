@@ -49,7 +49,7 @@ body {
 	font-optical-sizing: auto;
 	font-weight: weight;
 	font-style: normal;
-	font-variation-settings: 'slnt' 0;
+	font-variation-settings: "slnt" 0;
 }
 
 .helpPng {
@@ -337,7 +337,7 @@ a {
 	}
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
 	.sidebarResponsiv {
 		padding: 0px;
 	}
@@ -358,5 +358,8 @@ a {
 }
 
 @media (max-width: 380px) {
+}
 
+.d-none {
+	display: none;
 }

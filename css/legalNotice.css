@@ -1,10 +1,7 @@
 body {
-	font-family: 'Inter';
+	font-family: "Inter";
 	margin: 0;
 	background-color: #f6f7f8;
-	display: flex;
-	justify-content: center;
-	margin-left: -5px;
 }
 
 body::-webkit-scrollbar {
@@ -13,7 +10,6 @@ body::-webkit-scrollbar {
 }
 
 .main-content {
-	left: 0;
 	margin-top: 16px;
 }
 
