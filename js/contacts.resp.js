@@ -31,8 +31,8 @@ async function addNewContactResp(event) {
 	let name = document.querySelector('.nameInputResp').value;
 	let email = document.querySelector('.emailInputResp').value;
 	let phone = document.querySelector('.phoneInputResp').value;
-	createNewContactDesktop(name, email, phone);
-	initContactlist();
+	await createNewContactDesktop(name, email, phone);
+	await initContactlist();
 	closeAddNewContactRespWindow();
 	cancelInputValueResp();
 	animateCloseAddNewContainerMobile();
